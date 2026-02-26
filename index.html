@@ -184,29 +184,41 @@
     </footer>
 
     <script>
-        // BANCO DE DADOS DOS POSTS
-        const posts = [
-            { title: "Análise com Python", desc: "Limpeza de dados da Unisanta.", tag: "python",status:"fin", link: "post-python.html",img: "https://images.unsplash.com/photo-1551288049-bbbda546697c?w=400" },
-            { title: "Queries SQL", desc: "Extração de KPIs reais.", tag: "sql", link: "post-sql.html",img:"https://images.unsplash.com/photo-1544383335-6da40218f748?w=400" } ,    
-            { title: "Predição de Mercado", desc: "Modelo de ML em Python.", tag: "ciencia", status: "fin", img: "https://images.unsplash.com/photo-1551288049-bbbda546697c?w=400" },
-            { title: "Dashboard Vendas", desc: "Análise de KPIs no PowerBI.", tag: "dashboards", status: "and", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400" },
-            { title: "Tratamento SQL", desc: "Limpeza de base legada.", tag: "sql", status: "fin", img: "https://images.unsplash.com/photo-1544383335-6da40218f748?w=400" },
-            { title: "Web Scraping", desc: "Coleta automática de dados.", tag: "python", status: "fin",link: "post-python.html", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400" }
-        ];
+        // BANCO DE DADOS - Verifique se os nomes em 'link' são iguais aos arquivos no GitHub
+const posts = [
+    { title: "Análise de Mercado Python", desc: "Projeto desenvolvido na Unisanta.", tag: "python", status: "fin", link: "post-python.html", img: "https://images.unsplash.com/photo-1551288049-bbbda546697c?w=400" },
+    { title: "Otimização SQL", desc: "Queries complexas para Big Data.", tag: "sql", status: "fin", link: "post-sql.html", img: "https://images.unsplash.com/photo-1544383335-6da40218f748?w=400" }
+];
 
-        function showHome() {
-            document.getElementById('home-view').classList.remove('hidden');
-            document.getElementById('filter-view').classList.add('hidden');
-            document.getElementById('carousel').classList.remove('hidden');
-            renderGrids();
+function showHome() {
+    document.getElementById('home-view').classList.remove('hidden');
+    document.getElementById('filter-view').classList.add('hidden');
+    renderGrids();
+}
+
+function renderGrids() {
+    const tags = ['ciencia', 'analise', 'sql', 'python', 'dashboards'];
+    tags.forEach(tag => {
+        const grid = document.getElementById(grid-${tag});
+        if (grid) {
+            const filtered = posts.filter(p => p.tag === tag).slice(0, 6);
+            // O segredo: o link <a> envolve todo o cartão agora
+            grid.innerHTML = filtered.map(p => `
+                <a href="${p.link}" class="card-projeto" style="text-decoration:none; color:inherit;">
+                    <img src="${p.img || p.imagem}"> <div class="card-body">
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                    </div>
+                </a>
+            `).join('');
         }
+    });
+    updateCounters(posts);
+}
 
-        // --- ESTA FUNÇÃO MONTA A LISTA QUANDO VOCÊ CLICA NO MENU ---
 function filterProjects(tag) {
     document.getElementById('home-view').classList.add('hidden');
-    document.getElementById('carousel').classList.add('hidden');
     document.getElementById('filter-view').classList.remove('hidden');
-    
     const container = document.getElementById('list-container');
     const filtered = posts.filter(p => p.tag === tag);
     
@@ -217,63 +229,19 @@ function filterProjects(tag) {
             <div class="list-item-content">
                 <h3>${p.title}</h3>
                 <p>${p.desc}</p>
-                <span style="color:var(--blue); font-weight:bold;">Ler post completo →</span>
             </div>
         </a>
     `).join('');
-    
     updateCounters(filtered);
 }
 
-        // --- ESTA FUNÇÃO MONTA A GRADE DO INÍCIO ---
-function renderGrids() {
-    const tags = ['ciencia', 'analise', 'sql', 'python', 'dashboards'];
-    tags.forEach(tag => {
-        const grid = document.getElementById(grid-${tag});
-        if (grid) {
-            const filtered = posts.filter(p => p.tag === tag).slice(0, 6);
-            // O segredo: o link <a> envolve todo o cartão agora
-            grid.innerHTML = filtered.map(p => `
-                <a href="${p.link}" class="card-projeto" style="text-decoration:none; color:inherit;">
-                    <img src="${p.img || p.imagem}"> 
-                    <div class="card-body">
-                        <h3>${p.title}</h3>
-                        <p>${p.desc}</p>
-                    </div>
-                </a>
-            `).join('');
-        }
-    });
-    updateCounters(posts);
+function toggleMenu() { document.getElementById('nav-links').classList.toggle('nav-active'); }
+function updateCounters(list) {
+    document.getElementById('count-and').innerText = list.filter(p => p.status === 'and').length;
+    document.getElementById('count-fin').innerText = list.filter(p => p.status === 'fin').length;
 }
-        function searchProjects() {
-            const val = document.getElementById('searchInput').value.toLowerCase();
-            if(val === "") { showHome(); return; }
-            const searchRes = posts.filter(p => p.title.toLowerCase().includes(val) || p.tag.toLowerCase().includes(val));
-            renderSearchResult(searchRes);
-        }
 
-        function renderSearchResult(res) {
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('filter-view').classList.remove('hidden');
-            const container = document.getElementById('list-container');
-            container.innerHTML = res.map(p => `<div class="list-item"><img src="${p.img}"><div class="list-item-content"><h3>${p.title}</h3><p>${p.desc}</p></div></div>`).join('');
-        }
-
-        function toggleMenu() { document.getElementById('nav-links').classList.toggle('nav-active'); }
-        function updateCounters(list) {
-            document.getElementById('count-and').innerText = list.filter(p => p.status === 'and').length;
-            document.getElementById('count-fin').innerText = list.filter(p => p.status === 'fin').length;
-        }
-
-        // Carrossel Automático
-        let sIdx = 0;
-        setInterval(() => {
-            sIdx = (sIdx + 1) % 2;
-            document.getElementById('slides').style.transform = `translateX(-${sIdx * 100}%)`;
-        }, 5000);
-
-        window.onload = showHome;
+window.onload = showHome;
     </script>
 </body>
 </html>
