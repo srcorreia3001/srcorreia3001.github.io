@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Domínio em SQL | SRCorreiaDados</title>
+    <style>
+        /* Mesmos estilos do post anterior para manter a identidade */
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.8; color: #333; max-width: 900px; margin: 0 auto; padding: 40px 20px; background: #f4f7f6; }
+        h1 { color: #003366; border-bottom: 4px solid #ffcc00; }
+        .code-box { background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 8px; font-family: monospace; }
+        .btn-voltar { display: inline-block; margin-bottom: 20px; color: #003366; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn-voltar">← Voltar para a Capa</a>
+    <h1>Consultas Complexas e Otimização SQL</h1>
+    <p>Como futuro Analista de Dados, o SQL é minha ferramenta diária para extração de KPIs.</p>
+    
+    <div class="code-box">
+        SELECT cliente, SUM(valor_venda) AS total<br>
+        FROM vendas<br>
+        WHERE data_venda >= '2026-01-01'<br>
+        GROUP BY cliente<br>
+        ORDER BY total DESC;<br>
+    </div>
+
+    <p>Este comando permite gerar um ranking dos melhores clientes do trimestre de forma instantânea.</p>
+</body>
+</html>
