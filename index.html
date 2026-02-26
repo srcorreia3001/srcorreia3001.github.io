@@ -3,50 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIAGO DATA | Portfólio de Ciência de Dados</title>
+    <title>TIAGO DATA | Portfólio Profissional</title>
     <style>
-        :root { --primary: #003366; --accent: #ffcc00; --dark: #001a33; --bg: #f8f9fa; --text: #333; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: var(--bg); margin: 0; color: var(--text); }
+        :root { --blue: #003366; --gold: #ffcc00; --dark: #001a33; --bg: #f4f7f6; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: var(--bg); color: #333; }
         
         /* CABEÇALHO */
-        header { background: var(--primary); color: white; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--accent); }
-        header h1 { margin: 0; font-size: 2.8em; letter-spacing: 2px; text-transform: uppercase; }
-        header p { opacity: 0.9; font-size: 1.2em; margin-top: 10px; }
+        header { background: var(--blue); color: white; padding: 50px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        header h1 { margin: 0; font-size: 2.5em; text-transform: uppercase; letter-spacing: 2px; }
+        header p { opacity: 0.8; margin-top: 10px; }
 
-        /* NAVEGAÇÃO ESTILO FOTO */
-        nav { background: var(--dark); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; flex-wrap: wrap; }
-        .nav-container a { color: white; text-decoration: none; padding: 18px 20px; font-weight: bold; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
-        .nav-container a:hover { color: var(--accent); background: rgba(255,255,255,0.05); }
-        .nav-container .active-btn { background: var(--accent); color: var(--primary); border-radius: 4px; margin: 10px; padding: 8px 15px; }
+        /* NAVEGAÇÃO ESTILO PROFISSIONAL */
+        nav { background: var(--dark); padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: var(--gold); }
+        .btn-port { background: var(--gold); color: var(--blue) !important; padding: 8px 15px; border-radius: 4px; }
 
-        /* GRID DE PROJETOS (ESTILO CARDS DA FOTO) */
-        .main-wrapper { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-        .section-title { border-left: 5px solid #00bcd4; padding-left: 15px; margin-bottom: 30px; color: #008ba3; text-transform: uppercase; font-weight: bold; }
+        /* GRADE DE PROJETOS */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-bottom: 5px solid var(--blue); transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-8px); }
+        .card img { width: 100%; height: 220px; object-fit: cover; background: #fff; }
         
-        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: 0.3s; position: relative; display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-8px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
-        
-        .card-img-wrapper { position: relative; height: 230px; overflow: hidden; }
-        .card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover img { scale: 1.1; }
+        .card-body { padding: 25px; text-align: center; flex-grow: 1; }
+        .card-body h3 { margin: 0 0 15px; font-size: 1.2em; color: var(--blue); line-height: 1.4; }
+        .btn-open { display: inline-block; padding: 12px 25px; background: var(--blue); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+        .btn-open:hover { background: var(--gold); color: var(--blue); }
 
-        .card-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 20px; color: white; }
-        .card-overlay h3 { margin: 0; font-size: 1.2em; line-height: 1.3; }
-
-        .card-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-content p { color: #666; font-size: 0.95em; line-height: 1.6; margin: 0 0 20px 0; }
-        
-        .btn-read { align-self: flex-start; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 0.9em; transition: 0.3s; }
-        .btn-read:hover { background: var(--accent); color: var(--primary); }
-
-        /* RODAPÉ COMPLETO */
-        footer { background: #111; color: white; padding: 60px 20px; text-align: center; margin-top: 80px; border-top: 4px solid var(--accent); }
-        .footer-info { margin-bottom: 20px; font-size: 15px; line-height: 1.8; }
-        .footer-info b { color: var(--accent); }
-        .copyright { font-size: 12px; opacity: 0.5; border-top: 1px solid #222; padding-top: 20px; margin-top: 20px; }
+        /* RODAPÉ COM SEUS DADOS */
+        footer { background: #111; color: white; padding: 50px 20px; text-align: center; margin-top: 60px; border-top: 4px solid var(--gold); }
+        .f-info { margin-bottom: 15px; font-size: 15px; line-height: 1.6; }
+        .f-info b { color: var(--gold); }
+        .copy { font-size: 12px; opacity: 0.5; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -57,70 +47,34 @@
 </header>
 
 <nav>
-    <div class="nav-container">
-        <a href="index.html">Início</a>
-        <a href="analise.html">Análise</a>
-        <a href="ciencia.html">Ciência</a>
-        <a href="dashboards.html">Dashboards</a>
-        <a href="python.html">Python</a>
-        <a href="sql.html">SQL</a>
-        <a href="portfolio.html" class="active-btn">PORTFÓLIO</a>
-    </div>
+    <a href="index.html">Início</a>
+    <a href="#">Python</a>
+    <a href="#">SQL</a>
+    <a href="#">Análise</a>
+    <a href="#">Dashboards</a>
+    <a href="#" class="btn-port">PORTFÓLIO</a>
 </nav>
 
-<div class="main-wrapper">
-    <h2 class="section-title">Projetos em Destaque</h2>
-    
+<div class="container">
     <div class="grid">
         <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1551288049-bbbda546697c?auto=format&fit=crop&w=800&q=80" alt="Python">
-                <div class="card-overlay">
-                    <h3>Python: Por que ela é a Linguagem Favorita?</h3>
-                </div>
-            </div>
-            <div class="card-content">
-                <p>Exploração das bibliotecas Pandas e Matplotlib aplicadas a datasets reais da área financeira.</p>
-                <a href="post-python.html" class="btn-read">LER PROJETO</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1544383335-6da40218f748?auto=format&fit=crop&w=800&q=80" alt="SQL">
-                <div class="card-overlay">
-                    <h3>Mão na Massa: Dominando Primeiros Comandos SQL</h3>
-                </div>
-            </div>
-            <div class="card-content">
-                <p>Criação de queries complexas para extração de relatórios e automação de KPIs em bancos relacionais.</p>
-                <a href="post-sql.html" class="btn-read">LER PROJETO</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-img-wrapper">
-                <img src="https://images.unsplash.com/photo-1599658880436-c61792e70672?auto=format&fit=crop&w=800&q=80" alt="Análise">
-                <div class="card-overlay">
-                    <h3>Ciência de dados o começo do caos</h3>
-                </div>
-            </div>
-            <div class="card-content">
-                <p>Um guia sobre como organizar seu workflow de dados e evitar erros comuns no início da carreira.</p>
-                <a href="post-caos.html" class="btn-read">LER PROJETO</a>
+            <img src="https://images.unsplash.com/photo-1551288049-bbbda546697c?w=600" alt="Análise de Dados">
+            <div class="card-body">
+                <h3>Python: Por que ela é a Linguagem Favorita da Ciência de Dados?</h3>
+                <p>Análise exploratória utilizando as bibliotecas Pandas e Matplotlib.</p>
+                <a href="post1.html" class="btn-open">LER PROJETO COMPLETO</a>
             </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <div class="footer-info">
-        <b>Email:</b> tiago.lima@outlook.com | <b>Localização:</b> Diadema, SP <br/>
-        <b>Formação:</b> Ciência de Dados - Universidade Santa Cecília (Unisanta) <br/>
-        <b>Foco Profissional:</b> Python, SQL e Inteligência de Negócios
+    <div class="f-info">
+        <b>Email:</b> tiago.lima@outlook.com | <b>Local:</b> Diadema, SP <br/>
+        <b>Formação:</b> Ciência de Dados - Universidade Santa Cecília (Unisanta)
     </div>
-    <div class="copyright">
-        Desenvolvido por Tiago de Lima Correia (Senhor Correa) &copy; 2026
+    <div class="copy">
+        Tiago de Lima Correia (Senhor Correa) &copy; 2026
     </div>
 </footer>
 
