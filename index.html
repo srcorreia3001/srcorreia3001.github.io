@@ -7,17 +7,17 @@
     <style>
         :root { --blue: #003366; --gold: #ffcc00; --bg: #f4f7f6; }
         body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: var(--bg); }
-        header { background: var(--blue); color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
+        header { background: var(--blue); color: white; padding: 50px 20px; text-align: center; border-bottom: 5px solid var(--gold); }
         nav { background: #001a33; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; }
         nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 13px; text-transform: uppercase; }
-        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-bottom: 4px solid var(--blue); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-bottom: 4px solid var(--blue); text-align: center; }
         .card img { width: 100%; height: 210px; object-fit: cover; background: #eee; }
-        .card-body { padding: 20px; text-align: center; }
-        .btn-abrir { display: inline-block; padding: 10px 20px; background: var(--blue); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; }
-        footer { background: #111; color: white; padding: 40px; text-align: center; margin-top: 50px; }
+        .card-body { padding: 25px; }
+        .btn-link { display: inline-block; padding: 12px 25px; background: var(--blue); color: white; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; }
+        .btn-link:hover { background: var(--gold); color: var(--blue); }
+        footer { background: #111; color: white; padding: 50px 20px; text-align: center; margin-top: 60px; border-top: 4px solid var(--gold); }
     </style>
 </head>
 <body>
@@ -39,14 +39,22 @@
             <div class="card-body">
                 <h3>Análise de Dados com Python</h3>
                 <p>Projeto de limpeza e tratamento de dados da Unisanta.</p>
-                <a href="projeto1.html" class="btn-abrir">ABRIR PROJETO</a>
+                <a href="post1.html" class="btn-link">ABRIR PROJETO</a>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544383335-6da40218f748?w=600" alt="Projeto SQL">
+            <div class="card-body">
+                <h3>Mão na Massa: Comandos SQL</h3>
+                <p>Criação de queries para extração de KPIs.</p>
+                <a href="post2.html" class="btn-link">ABRIR PROJETO</a>
             </div>
         </div>
     </div>
 </div>
 <footer>
-    <b>Email:</b> tiago.lima@outlook.com | <b>Local:</b> Diadema, SP <br/>
-    Estudante de Ciência de Dados - Unisanta | Tiago de Lima Correia © 2026
+    <p><b>Email:</b> tiago.lima@outlook.com | <b>Local:</b> Diadema, SP</p>
+    <p>Estudante de Ciência de Dados - Unisanta | Tiago de Lima Correia © 2026</p>
 </footer>
 </body>
 </html>
