@@ -201,45 +201,51 @@
             renderGrids();
         }
 
-        function filterProjects(tag) {
-            document.getElementById('home-view').classList.add('hidden');
-            document.getElementById('carousel').classList.add('hidden');
-            document.getElementById('filter-view').classList.remove('hidden');
-            
-            const container = document.getElementById('list-container');
-            const filtered = posts.filter(p => p.tag === tag);
-            
-            document.getElementById('filter-title').innerText = `Lista de Projetos: ${tag}`;
-            container.innerHTML = filtered.map(p => `
-                <div class="list-item">
-                    <img src="${p.img}">
-                    <div class="list-item-content">
+        // --- ESTA FUNÇÃO MONTA A LISTA QUANDO VOCÊ CLICA NO MENU ---
+function filterProjects(tag) {
+    document.getElementById('home-view').classList.add('hidden');
+    document.getElementById('carousel').classList.add('hidden');
+    document.getElementById('filter-view').classList.remove('hidden');
+    
+    const container = document.getElementById('list-container');
+    const filtered = posts.filter(p => p.tag === tag);
+    
+    document.getElementById('filter-title').innerText = Lista de Projetos: ${tag};
+    container.innerHTML = filtered.map(p => `
+        <a href="${p.link}" class="list-item" style="text-decoration:none; color:inherit;">
+            <img src="${p.img || p.imagem}">
+            <div class="list-item-content">
+                <h3>${p.title}</h3>
+                <p>${p.desc}</p>
+                <span style="color:var(--blue); font-weight:bold;">Ler post completo →</span>
+            </div>
+        </a>
+    `).join('');
+    
+    updateCounters(filtered);
+}
+
+        // --- ESTA FUNÇÃO MONTA A GRADE DO INÍCIO ---
+function renderGrids() {
+    const tags = ['ciencia', 'analise', 'sql', 'python', 'dashboards'];
+    tags.forEach(tag => {
+        const grid = document.getElementById(grid-${tag});
+        if (grid) {
+            const filtered = posts.filter(p => p.tag === tag).slice(0, 6);
+            // O segredo: o link <a> envolve todo o cartão agora
+            grid.innerHTML = filtered.map(p => `
+                <a href="${p.link}" class="card-projeto" style="text-decoration:none; color:inherit;">
+                    <img src="${p.img || p.imagem}"> 
+                    <div class="card-body">
                         <h3>${p.title}</h3>
                         <p>${p.desc}</p>
-                        <a href="post-exemplo.html" style="color:var(--blue); font-weight:bold;">Ver mais...</a>
                     </div>
-                </div>
+                </a>
             `).join('');
-            
-            updateCounters(filtered);
-            if(window.innerWidth <= 768) toggleMenu();
         }
-
-        function renderGrids() {
-            ['ciencia', 'analise', 'sql'].forEach(tag => {
-                const grid = document.getElementById(`grid-${tag}`);
-                if(grid) {
-                    const filtered = posts.filter(p => p.tag === tag).slice(0,6);
-                    grid.innerHTML = filtered.map(p => `
-                        <a href="post-exemplo.html" class="card-projeto">
-                            <img src="${p.img}"><div class="card-body"><h3>${p.title}</h3><p>${p.desc}</p></div>
-                        </a>
-                    `).join('');
-                }
-            });
-            updateCounters(posts);
-        }
-
+    });
+    updateCounters(posts);
+}
         function searchProjects() {
             const val = document.getElementById('searchInput').value.toLowerCase();
             if(val === "") { showHome(); return; }
