@@ -3,149 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago de Lima Correia | Portfólio Data Science</title>
+    <title>Tiago Correia | Portfólio Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- ESTILOS GERAIS --- */
+        :root { --dark: #1e272e; --blue: #00d8ff; --light: #f4f7f6; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f0f2f5; color: #333; }
+        body { background: var(--light); color: #333; }
         a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
-        /* --- HEADER E NAVEGAÇÃO --- */
-        header {
-            background-color: #1e272e;
-            color: white;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        /* HEADER & MENU */
+        header { background: var(--dark); color: white; height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; position: sticky; top: 0; z-index: 1000; }
+        .logo a { font-size: 1.5rem; font-weight: bold; color: var(--blue); }
+        
+        .nav-menu { display: flex; align-items: center; }
+        .nav-links { display: flex; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a:hover { color: var(--blue); }
 
-        .logo a { font-size: 1.3rem; font-weight: bold; color: #00d8ff; }
-
-        /* Menu Desktop */
-        .nav-container { display: flex; align-items: center; }
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li { margin-left: 18px; }
-        .nav-links a { font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
-        .nav-links a:hover { color: #00d8ff; }
-
-        /* Redes Sociais */
-        .social-links { margin-left: 20px; display: flex; gap: 15px; border-left: 1px solid #444; padding-left: 20px; }
-        .social-links a { font-size: 1.1rem; }
-        .social-links a:hover { color: #00d8ff; }
-
-        /* Menu Mobile (Escondido por padrão) */
         #check { display: none; }
         .menu-icon { display: none; font-size: 1.6rem; cursor: pointer; }
 
-        /* --- RESPONSIVIDADE (TABLET E SMARTPHONE) --- */
-        @media (max-width: 1100px) {
+        /* BUSCA */
+        .search-container { margin: 20px 5%; display: flex; justify-content: center; }
+        .search-container input { padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px 0 0 5px; }
+        .search-container button { padding: 10px 20px; background: var(--blue); border: none; border-radius: 0 5px 5px 0; cursor: pointer; }
+
+        /* CARROSSEL (Simples) */
+        .carousel { width: 90%; margin: 0 auto 40px; height: 300px; background: #ddd; display: flex; align-items: center; justify-content: center; position: relative; border-radius: 10px; overflow: hidden; }
+        .carousel-item { text-align: center; }
+
+        /* LISTA DE POSTS (GRID) */
+        .posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 5%; margin-bottom: 50px; }
+        .post-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .post-card img { width: 100%; height: 180px; object-fit: cover; }
+        .post-content { padding: 15px; }
+        .btn-mais { display: block; margin-top: 10px; background: var(--blue); padding: 8px; text-align: center; font-weight: bold; border-radius: 5px; }
+
+        /* FRASE DA SEMANA */
+        .quote { background: #fff; padding: 30px; text-align: center; font-style: italic; margin: 40px 5%; border-left: 5px solid var(--blue); }
+
+        /* CONTATO & INFO */
+        .contact-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 50px 5%; background: #fff; }
+        .info-pessoal h2 { margin-bottom: 15px; }
+        .social-links a { font-size: 1.5rem; margin-right: 15px; color: var(--dark); }
+        
+        form { display: flex; flex-direction: column; }
+        form input, form textarea { margin-bottom: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        form button { background: var(--dark); color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; }
+
+        /* RODAPÉ */
+        footer { background: var(--dark); color: white; text-align: center; padding: 20px; margin-top: 50px; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
             .menu-icon { display: block; }
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                right: -100%; /* Escondido à direita */
-                width: 280px;
-                height: calc(100vh - 70px);
-                background-color: #1e272e;
-                flex-direction: column;
-                padding: 40px 0;
-                transition: 0.4s ease-in-out;
-            }
-            .nav-links li { margin: 15px 0; width: 100%; text-align: center; }
-            .nav-links a { font-size: 1.1rem; display: block; }
+            .nav-links { position: fixed; top: 70px; right: -100%; width: 250px; height: 100vh; background: var(--dark); flex-direction: column; align-items: center; padding-top: 50px; transition: 0.4s; }
+            .nav-links li { margin: 20px 0; }
             #check:checked ~ .nav-links { right: 0; }
-            .social-links { border: none; margin-top: 20px; padding: 0; }
-        }
-
-        /* --- SEÇÕES E CARDS --- */
-        main { max-width: 1200px; margin: 30px auto; padding: 0 5%; }
-        .section-title { margin: 40px 0 20px; border-left: 5px solid #00d8ff; padding-left: 15px; }
-
-        .project-card {
-            display: flex;
-            background: white;
-            margin-bottom: 25px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            align-items: center;
-        }
-
-        .project-img-container { width: 300px; flex-shrink: 0; }
-        .project-img-container img { width: 100%; height: auto; display: block; }
-
-        .project-content { padding: 20px; flex-grow: 1; display: flex; justify-content: space-between; align-items: center; }
-        .project-text { padding-right: 20px; }
-        .project-text h3 { margin-bottom: 10px; color: #1e272e; }
-
-        .btn-more {
-            background: #00d8ff;
-            color: #1e272e;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 768px) {
-            .project-card { flex-direction: column; text-align: center; }
-            .project-img-container { width: 100%; }
-            .project-content { flex-direction: column; }
-            .project-text { padding: 0; margin-bottom: 15px; }
+            .posts-grid { grid-template-columns: 1fr; }
+            .contact-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo"><a href="index.html">TIAGO DE LIMA CORREIA</a></div>
-    
-    <nav class="nav-container">
-        <input type="checkbox" id="check">
-        <label for="check" class="menu-icon"><i class="fas fa-bars"></i></label>
-        
-        <ul class="nav-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="#ciencia">Ciência de Dados</a></li>
-            <li><a href="#analise">Análise de Dados</a></li>
-            <li><a href="#dashboards">Dashboards</a></li>
-            <li><a href="#python">Python</a></li>
-            <li><a href="#sql">SQL</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li><a href="#sobre">Sobre Mim</a></li>
+    <header>
+        <div class="logo"><a href="index.html">TIAGO CORREIA</a></div>
+        <nav class="nav-menu">
+            <input type="checkbox" id="check">
+            <label for="check" class="menu-icon"><i class="fas fa-bars"></i></label>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="#ciencia">Ciência de Dados</a></li>
+                <li><a href="#analise">Análise de Dados</a></li>
+                <li><a href="#dashboards">Dashboards</a></li>
+                <li><a href="#python">Python</a></li>
+                <li><a href="#sql">SQL</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="search-container">
+        <input type="text" placeholder="Pesquisar projetos...">
+        <button><i class="fas fa-search"></i></button>
+    </div>
+
+    <section class="carousel">
+        <div class="carousel-item">
+            <h2>Destaque 1: Análise de Dados com Python</h2>
+            <p>Clique para ver o projeto principal da semana.</p>
+        </div>
+    </section>
+
+    <main class="posts-grid">
+        <article class="post-card">
+            <img src="https://via.placeholder.com/300x180" alt="Projeto">
+            <div class="post-content">
+                <h3>Visualização SQL</h3>
+                <p>Preview do projeto de banco de dados...</p>
+                <a href="#" class="btn-mais">Veja mais</a>
+            </div>
+        </article>
+        </main>
+
+    <div class="quote">
+        <p>"A inteligência é a capacidade de se adaptar à mudança." - Stephen Hawking (Frase da Semana)</p>
+    </div>
+
+    <section class="contact-section" id="contato">
+        <div class="info-pessoal">
+            <h2>Tiago Correia</h2>
+            <p>Estudante de Ciência de Dados na Universidade Santa Cecília (UniSanta)</p>
+            <p><strong>WhatsApp:</strong> 11 95701-3454</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://linkedin.com/in/tiago-correia" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/tiago-correia" target="_blank"><i class="fab fa-github"></i></a>
             </div>
-        </ul>
-    </nav>
-</header>
-
-<main>
-    <h2 class="section-title" id="python">Projetos em Python</h2>
-    
-    <article class="project-card">
-        <div class="project-img-container">
-            <img src="https://via.placeholder.com/300x180" alt="Capa do Projeto">
         </div>
-        <div class="project-content">
-            <div class="project-text">
-                <h3>Análise de Vendas com Python</h3>
-                <p>Preview: Estudo de caso utilizando Pandas e Matplotlib para identificar tendências de mercado...</p>
-            </div>
-            <a href="#" class="btn-more">Veja mais</a>
-        </div>
-    </article>
 
-    <h2 class="section-title" id="dashboards">Dashboards</h2>
-    </main>
+        <div class="form-contato">
+            <h2>Envie uma mensagem</h2>
+            <form action="https://formspree.io/f/seu-id" method="POST">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
+                <input type="email" name="email" placeholder="Seu E-mail" required>
+                <textarea name="mensagem" rows="5" placeholder="Sua Mensagem" required></textarea>
+                <button type="submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>Criado por Tiago Correia | Todos os direitos reservados &copy; 2026</p>
+    </footer>
 
 </body>
 </html>
