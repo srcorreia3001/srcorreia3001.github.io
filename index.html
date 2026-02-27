@@ -65,6 +65,13 @@
             .contact-section { grid-template-columns: 1fr; }
         }
 
+        main {
+    max-width: 1200px; /* Define o limite de largura para não esticar demais em monitores grandes */
+    margin: 0 auto;    /* O "auto" centraliza a caixa no meio da tela */
+    padding: 40px 5%;  /* O '5%' garante que nunca cole nas beiras em telas menores */
+    width: 100%;       /* Garante que ocupe o espaço disponível até o limite de 1200px */
+}
+
 .posts-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* Cria as 3 colunas iguais */
