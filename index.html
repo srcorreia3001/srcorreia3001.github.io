@@ -94,6 +94,19 @@
     margin-top: 10px;
 }
 
+/* Quando a tela for menor que 1024px (Tablets e Smartphones) */
+@media (max-width: 1024px) {
+    .posts-container {
+        grid-template-columns: 1fr; /* Muda para apenas 1 coluna */
+        gap: 30px; /* Aumenta um pouco o espaço entre um post e outro */
+    }
+
+    .post-card {
+        width: 100%; /* Garante que o card ocupe a largura total da tela */
+    }
+}
+
+
 
 
     </style>
