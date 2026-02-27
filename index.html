@@ -171,20 +171,7 @@ main {
 
 
 
-<script>
-    function filterPosts(category) {
-        const groups = document.querySelectorAll('.category-group');
-        groups.forEach(group => {
-            if(group.id === 'group-' + category) {
-                group.style.display = 'block';
-                // Transforma a grade em LISTA e coloca o botão à direita
-                group.querySelector('.posts-container').classList.add('list-view');
-            } else {
-                group.style.display = 'none';
-            }
-        });
-    }
-</script>
+
 
 
     <main id="main-content">
