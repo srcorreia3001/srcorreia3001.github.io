@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Gestão EBD | Tiago Correia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ESTILO PROFISSIONAL E LIMPO */
+        :root { --dark: #1e272e; --blue: #00d8ff; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: var(--bg); color: #333; line-height: 1.6; }
+
+        /* HEADER DO POST */
+        header { background: var(--dark); color: white; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo-link { color: var(--blue); font-weight: bold; text-decoration: none; font-size: 1.2rem; }
+        .btn-voltar { color: white; text-decoration: none; font-size: 0.9rem; border: 1px solid var(--blue); padding: 5px 15px; border-radius: 5px; }
+
+        /* CONTEÚDO DO ARTIGO */
+        article { max-width: 900px; margin: 40px auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { color: var(--dark); margin-bottom: 10px; font-size: 2.2rem; }
+        .tag { background: var(--blue); color: var(--dark); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+        
+        .project-meta { margin: 20px 0; padding: 15px; background: #eef2f3; border-radius: 5px; font-size: 0.9rem; }
+        .project-image-full { width: 100%; border-radius: 8px; margin: 20px 0; }
+        
+        h2 { margin: 30px 0 15px; color: var(--dark); border-left: 5px solid var(--blue); padding-left: 15px; }
+        p { margin-bottom: 15px; text-align: justify; }
+        
+        /* RODAPÉ DO POST */
+        .footer-info { margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; }
+        .contact-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo-link">TIAGO CORREIA</a>
+    <a href="index.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> Voltar ao Início</a>
+</header>
+
+<article>
+    <span class="tag">Python & Gestão de Dados</span>
+    <h1>Gestão de Escola Bíblica Dominical (EBD)</h1>
+    
+    <div class="project-meta">
+        <strong>Status:</strong> Em Desenvolvimento (Projeto Real)<br>
+        <strong>Tecnologias:</strong> Python, SQLite, Lógica de Programação<br>
+        <strong>Instituição:</strong> Universidade Santa Cecília (UniSanta)
+    </div>
+
+    <img src="https://via.placeholder.com/900x450?text=Interface+do+Sistema+EBD" alt="Imagem do Projeto" class="project-image-full">
+
+    <h2>Descrição do Projeto</h2>
+    <p>
+        Este projeto nasceu da necessidade real de organizar e digitalizar o controle de uma Escola Bíblica Dominical. 
+        Como estudante de <strong>Ciência de Dados</strong>, apliquei conceitos de estruturação de dados para criar uma ferramenta 
+        capaz de gerenciar o cadastro de alunos, professores e o registro de frequências semanais.
+    </p>
+
+    <h2>Funcionalidades Técnicas</h2>
+    <p>
+        A aplicação foi construída utilizando a linguagem <strong>Python</strong>, focando em uma interface funcional e um back-end 
+        robusto para evitar a perda de dados. O sistema permite gerar relatórios de assiduidade, auxiliando a secretaria da igreja 
+        na tomada de decisões baseada em dados reais de participação.
+    </p>
+
+    <h2>Objetivo Acadêmico</h2>
+    <p>
+        Desenvolver este software me permite praticar a manipulação de bibliotecas Python e a integração com bancos de dados, 
+        habilidades fundamentais para minha transição de carreira para a área de análise e ciência de dados.
+    </p>
+
+    <div class="footer-info">
+        <div class="contact-item"><strong>Autor:</strong> Tiago de Lima Correia</div>
+        <div class="contact-item"><strong>Formação:</strong> Ciência de Dados na UniSanta</div>
+        <div class="contact-item"><strong>WhatsApp:</strong> 11 95701-3454</div>
+        <div class="contact-item">
+            <a href="https://github.com/tiago-correia" target="_blank" style="color:var(--dark); margin-right: 15px;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/tiago-correia" target="_blank" style="color:var(--dark);"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </div>
+</article>
+
+</body>
+</html>
