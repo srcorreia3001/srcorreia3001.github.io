@@ -65,54 +65,39 @@
             .contact-section { grid-template-columns: 1fr; }
         }
 
-        main {
-    max-width: 1200px; /* Define o limite de largura para não esticar demais em monitores grandes */
-    margin: 0 auto;    /* O "auto" centraliza a caixa no meio da tela */
-    padding: 40px 5%;  /* O '5%' garante que nunca cole nas beiras em telas menores */
-    width: 100%;       /* Garante que ocupe o espaço disponível até o limite de 1200px */
+       /* Container centralizado e descolado das bordas */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 5%;
 }
 
 .posts-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Cria as 3 colunas iguais */
-    gap: 20px; /* Espaço entre os cartões */
-    margin-bottom: 40px;
+    gap: 25px;
+    margin-bottom: 50px;
 }
 
-.post-card {
-    display: flex;
-    flex-direction: column; /* Faz o conteúdo ficar um abaixo do outro dentro do card */
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    height: 100%; /* Garante que todos tenham o mesmo tamanho */
-}
-
-.post-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover; /* Ajusta a imagem sem distorcer */
-}
-
-.btn-mais {
-    align-self: flex-end; /* Joga o botão para a direita */
-    width: auto; /* Tira a largura total */
-    padding: 8px 20px;
-    margin-top: 10px;
-}
-
-/* Quando a tela for menor que 1024px (Tablets e Smartphones) */
-@media (max-width: 1024px) {
+/* COMPUTADOR: Grade com 3 */
+@media (min-width: 1025px) {
     .posts-container {
-        grid-template-columns: 1fr; /* Muda para apenas 1 coluna */
-        gap: 30px; /* Aumenta um pouco o espaço entre um post e outro */
-    }
-
-    .post-card {
-        width: 100%; /* Garante que o card ocupe a largura total da tela */
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
+/* TABLET: Grade com 2 (Ideal para o seu Positivo Tab) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .posts-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* SMARTPHONE: Grade com 1 (Ideal para o seu Redmi) */
+@media (max-width: 600px) {
+    .posts-container {
+        grid-template-columns: 1fr;
+    }
+}
 
 
 
