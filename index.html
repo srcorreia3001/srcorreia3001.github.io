@@ -12,75 +12,68 @@
         body { background-color: var(--bg); color: #333; overflow-x: hidden; }
 
         /* HEADER */
-        header { background: var(--blue); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 2000; border-bottom: 3px solid var(--gold); }
-        .logo-link { text-decoration: none; color: var(--gold); font-size: 22px; font-weight: bold; text-transform: uppercase; cursor: pointer; }
+        header { background: var(--blue); color: white…
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRCORREIADADOS | Ciência de Dados</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --blue: #003366; --gold: #ffcc00; --dark: #001a33; --bg: #f4f7f6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Roboto', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: #333; overflow-x: hidden; }
 
-        /* NAVEGAÇÃO */
+        header { background: var(--blue); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 2000; border-bottom: 3px solid var(--gold); }
+        .logo { color: var(--gold); font-size: 22px; font-weight: bold; text-transform: uppercase; text-decoration: none; }
+
         .nav-links { display: flex; list-style: none; }
         .nav-links li { margin-left: 15px; }
         .nav-links a { color: white; text-decoration: none; font-weight: bold; font-size: 11px; text-transform: uppercase; cursor: pointer; }
         
-        /* MENU MOBILE (DIREITA PARA ESQUERDA) */
-        .burger { display: none; cursor: pointer; z-index: 2100; padding: 5px; }
-        .burger div { width: 30px; height: 3px; background: white; margin: 6px; transition: 0.3s; }
+        .burger { display: none; cursor: pointer; z-index: 2100; }
+        .burger div { width: 30px; height: 3px; background: white; margin: 6px; }
 
-        /* BUSCA À DIREITA */
         .search-area { background: var(--dark); padding: 10px 5%; display: flex; justify-content: flex-end; }
-        .search-box { position: relative; width: 250px; }
-        .search-box input { width: 100%; padding: 8px 15px; border-radius: 20px; border: none; outline: none; }
+        .search-box input { width: 250px; padding: 8px 15px; border-radius: 20px; border: none; outline: none; }
 
-        /* CARROSSEL */
         .carousel { width: 100%; height: 350px; position: relative; overflow: hidden; background: #000; }
-        .slides { display: flex; width: 100%; height: 100%; transition: 0.6s ease-in-out; }
-        .slide { min-width: 100%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
-        .slide-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); }
-        .slide-content { position: relative; z-index: 2; background: rgba(0,0,0,0.7); padding: 30px; border-left: 5px solid var(--gold); color: white; text-align: center; border-radius: 5px; }
-        .btn-slide { display: inline-block; margin-top: 15px; padding: 10px 20px; background: var(--gold); color: var(--blue); text-decoration: none; font-weight: bold; border-radius: 5px; }
+        .slide { width: 100%; height: 100%; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .slide-content { background: rgba(0,0,0,0.7); padding: 30px; border-left: 5px solid var(--gold); border-radius: 5px; }
 
-        /* CONTAINER PRINCIPAL */
         .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .section-title { color: var(--blue); border-left: 6px solid var(--gold); padding-left: 15px; margin: 40px 0 20px; text-transform: uppercase; }
 
-        /* GRADE 3x2 (INÍCIO) */
         .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
         .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-bottom: 4px solid var(--blue); text-decoration: none; color: inherit; }
         .card img { width: 100%; height: 160px; object-fit: cover; }
         .card-body { padding: 15px; text-align: center; }
 
-        /* FORMATO DE LISTA (FILTRO) */
         .list-item { display: flex; background: white; margin-bottom: 30px; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-left: 8px solid var(--blue); align-items: center; }
         .list-item img { width: 350px; height: 230px; object-fit: cover; }
         .list-item-content { padding: 30px; flex: 1; }
         .btn-veja { display: inline-block; background: var(--blue); color: var(--gold); padding: 10px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 15px; }
 
-        /* SEÇÃO DE CONTATO */
-        .contact-card { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .info-pessoal h3 { color: var(--blue); margin-bottom: 10px; }
-        .social-link { display: flex; align-items: center; text-decoration: none; color: #333; margin-bottom: 15px; font-weight: bold; }
-        .social-link i { font-size: 24px; color: var(--blue); margin-right: 15px; width: 35px; text-align: center; }
+        #contato { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
-        footer { background: var(--dark); color: white; text-align: center; padding: 30px; border-top: 4px solid var(--gold); }
-        .hidden { display: none !important; }
-
-        /* MOBILE */
         @media (max-width: 768px) {
-            .nav-links { position: fixed; right: -100%; top: 0; height: 100vh; width: 80%; background: var(--blue); flex-direction: column; padding: 100px 40px; transition: 0.5s ease; z-index: 2050; }
+            .nav-links { position: fixed; right: -100%; top: 0; height: 100vh; width: 80%; background: var(--blue); flex-direction: column; padding: 100px 40px; transition: 0.5s; }
             .nav-active { right: 0; }
-            .nav-links li { margin: 15px 0; }
-            .nav-links a { font-size: 1.8rem; }
             .burger { display: block; }
             .grid { grid-template-columns: 1fr; }
-            .list-item { flex-direction: column; text-align: center; }
-            .list-item img { width: 100%; height: 200px; }
-            .contact-card { grid-template-columns: 1fr; }
-            .search-container { justify-content: center; }
+            .list-item { flex-direction: column; }
+            .list-item img { width: 100%; }
+            #contato { grid-template-columns: 1fr; }
         }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><a onclick="showHome()" class="logo-link">SRCORREIADADOS</a></div>
+        <a href="index.html" class="logo">SRCORREIADADOS</a>
         <ul class="nav-links" id="nav-menu">
             <li><a onclick="showHome()">Início</a></li>
             <li><a onclick="filterBy('ciencia')">Ciência</a></li>
@@ -90,26 +83,23 @@
             <li><a onclick="filterBy('python')">Python</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
-        <div class="burger" id="burger-btn">
+        <div class="burger" onclick="toggleNav()">
             <div></div><div></div><div></div>
         </div>
     </header>
 
     <div class="search-area">
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Buscar projeto..." onkeyup="search()">
+            <input type="text" id="searchInput" placeholder="Buscar..." onkeyup="search()">
         </div>
     </div>
 
     <div id="carousel-area" class="carousel">
-        <div class="slides" id="slides-container">
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551288049-bbbda546697c?w=1200')">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <h2>Análise Exploratória Python</h2>
-                    <p>Dominando dados com foco na UniSanta.</p>
-                    <a href="post-python.html" class="btn-slide">Clique Aqui</a>
-                </div>
+        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1551288049-bbbda546697c?w=1200')">
+            <div class="slide-content">
+                <h2>Análise Exploratória Python</h2>
+                <p>Dominando dados com foco na UniSanta.</p>
+                <a href="post-python.html" class="btn-slide" style="background:var(--gold); color:var(--blue); padding:10px; text-decoration:none; font-weight:bold;">Clique Aqui</a>
             </div>
         </div>
     </div>
@@ -129,40 +119,33 @@
         </div>
 
         <section id="contato" style="margin-top: 80px;">
-            <h2 class="section-title">Minhas Informações e Contato</h2>
-            <div class="contact-card">
-                <div class="info-pessoal">
-                    <h3>Tiago de Lima Correia</h3>
-                    <p><strong>Estudante:</strong> Ciência de Dados</p>
-                    <p><strong>Faculdade:</strong> Universidade Santa Cecília (UniSanta)</p><br>
-                    <a href="https://wa.me/5511957013454" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i> 11 957013454</a>
-                    <a href="mailto:tiagocorreia380@outlook.com" class="social-link"><i class="far fa-envelope"></i> tiagocorreia380@outlook.com</a>
-                    <a href="https://github.com/srcorreia3001" target="_blank" class="social-link"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-                <div class="caixa-email">
-                    <form action="https://formspree.io/f/tiagocorreia380@outlook.com" method="POST">
-                        <input type="text" name="name" placeholder="Nome" required style="width:100%; padding:10px; margin-bottom:10px;">
-                        <textarea name="message" rows="4" placeholder="Sua Mensagem" required style="width:100%; padding:10px; margin-bottom:10px;"></textarea>
-                        <button type="submit" style="width:100%; background:var(--blue); color:var(--gold); padding:12px; border:none; font-weight:bold; cursor:pointer;">ENVIAR</button>
-                    </form>
-                </div>
+            <div>
+                <h2 class="section-title">Tiago de Lima Correia</h2>
+                <p>Estudante de Ciência de Dados - UniSanta</p><br>
+                <p><i class="fab fa-whatsapp"></i> 11 957013454</p>
+                <p><i class="far fa-envelope"></i> tiagocorreia380@outlook.com</p>
             </div>
+            <form action="https://formspree.io/f/tiagocorreia380@outlook.com" method="POST">
+                <input type="text" name="name" placeholder="Seu Nome" required style="width:100%; padding:10px; margin-bottom:10px; border:1px solid #ddd;">
+                <textarea name="message" rows="4" placeholder="Sua Mensagem" required style="width:100%; padding:10px; border:1px solid #ddd;"></textarea>
+                <button type="submit" style="width:100%; background:var(--blue); color:var(--gold); padding:12px; border:none; font-weight:bold; cursor:pointer; margin-top:10px;">ENVIAR</button>
+            </form>
         </section>
     </main>
 
-    <footer>
+    <footer style="background:var(--dark); color:white; text-align:center; padding:30px; border-top:4px solid var(--gold);">
         <p>&copy; 2026 SRCORREIADADOS | Tiago de Lima Correia</p>
     </footer>
 
     <script>
-        // BANCO DE DADOS - 7 POSTS POR CATEGORIA
         const posts = [];
-        const categorias = ['ciencia', 'analise', 'python', 'dashboards', 'sql'];
-        categorias.forEach(tag => {
+        const cats = ['ciencia', 'analise', 'python', 'dashboards', 'sql'];
+        
+        cats.forEach(tag => {
             for(let i=1; i<=7; i++) {
                 posts.push({
                     title: ${tag.toUpperCase()} Projeto ${i},
-                    desc: Estudo de caso ${i} de ${tag} realizado na Unisanta.,
+                    desc: Estudo de caso ${i} de ${tag} na Unisanta.,
                     tag: tag,
                     img: https://picsum.photos/seed/${tag}${i}/400/250,
                     link: post-${tag}.html
@@ -178,7 +161,7 @@
         }
 
         function renderGrids() {
-            categorias.forEach(tag => {
+            cats.forEach(tag => {
                 const el = document.getElementById(grid-${tag});
                 if (el) {
                     const filtered = posts.filter(p => p.tag === tag).slice(0, 6);
@@ -195,7 +178,6 @@
             document.getElementById('filter-view').classList.remove('hidden');
             const container = document.getElementById('list-container');
             const filtered = posts.filter(p => p.tag === tag);
-            
             document.getElementById('filter-title').innerText = "Categoria: " + tag.toUpperCase();
             container.innerHTML = filtered.map(p => `
                 <div class="list-item">
@@ -205,23 +187,12 @@
                         <a href="${p.link}" class="btn-veja">Veja Mais →</a>
                     </div>
                 </div>`).join('');
-            
-            closeNav();
+            if(window.innerWidth <= 768) toggleNav();
             window.scrollTo(0,0);
         }
 
-        // MENU MOBILE LÓGICA
-        const burgerBtn = document.getElementById('burger-btn');
-        const navMenu = document.getElementById('nav-menu');
+        function toggleNav() { document.getElementById('nav-menu').classList.toggle('nav-active'); }
         
-        burgerBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('nav-active');
-        });
-
-        function closeNav() {
-            navMenu.classList.remove('nav-active');
-        }
-
         function search() {
             const q = document.getElementById('searchInput').value.toLowerCase();
             const res = posts.filter(p => p.title.toLowerCase().includes(q));
