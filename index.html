@@ -3,114 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago de Lima Correia | Portfólio</title>
+    <title>Tiago de Lima Correia | Portfólio Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
-        /* --- ESTILOS BASE --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #f4f4f4; }
+        /* --- ESTILOS GERAIS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #f0f2f5; color: #333; }
         a { text-decoration: none; color: inherit; }
 
+        /* --- HEADER E NAVEGAÇÃO --- */
         header {
             background-color: #1e272e;
             color: white;
-            padding: 0 5%;
             height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0 5%;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .logo a {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #00d8ff;
-        }
+        .logo a { font-size: 1.3rem; font-weight: bold; color: #00d8ff; }
 
-        /* --- MENU PARA COMPUTADOR (Desktop) --- */
+        /* Menu Desktop */
         .nav-container { display: flex; align-items: center; }
-        
-        .nav-links { display: flex; list-style: none; }
-        
-        .nav-links li { margin-left: 20px; }
-        
-        .nav-links a {
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li { margin-left: 18px; }
+        .nav-links a { font-size: 0.85rem; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: #00d8ff; }
 
-        /* Esconder o ícone hambúrguer no PC */
-        .menu-icon { display: none; font-size: 1.5rem; cursor: pointer; }
+        /* Redes Sociais */
+        .social-links { margin-left: 20px; display: flex; gap: 15px; border-left: 1px solid #444; padding-left: 20px; }
+        .social-links a { font-size: 1.1rem; }
+        .social-links a:hover { color: #00d8ff; }
+
+        /* Menu Mobile (Escondido por padrão) */
         #check { display: none; }
+        .menu-icon { display: none; font-size: 1.6rem; cursor: pointer; }
 
         /* --- RESPONSIVIDADE (TABLET E SMARTPHONE) --- */
-        @media (max-width: 1024px) {
-            .menu-icon { display: block; } /* Mostra o hambúrguer */
-
+        @media (max-width: 1100px) {
+            .menu-icon { display: block; }
             .nav-links {
                 position: fixed;
                 top: 70px;
                 right: -100%; /* Escondido à direita */
-                background-color: #1e272e;
-                width: 250px;
+                width: 280px;
                 height: calc(100vh - 70px);
+                background-color: #1e272e;
                 flex-direction: column;
-                align-items: center;
-                transition: 0.4s;
-                padding-top: 20px;
-                box-shadow: -2px 5px 10px rgba(0,0,0,0.3);
+                padding: 40px 0;
+                transition: 0.4s ease-in-out;
             }
+            .nav-links li { margin: 15px 0; width: 100%; text-align: center; }
+            .nav-links a { font-size: 1.1rem; display: block; }
+            #check:checked ~ .nav-links { right: 0; }
+            .social-links { border: none; margin-top: 20px; padding: 0; }
+        }
 
-            .nav-links li {
-                margin: 15px 0;
-                width: 100%;
-                text-align: center;
-            }
+        /* --- SEÇÕES E CARDS --- */
+        main { max-width: 1200px; margin: 30px auto; padding: 0 5%; }
+        .section-title { margin: 40px 0 20px; border-left: 5px solid #00d8ff; padding-left: 15px; }
 
-            .nav-links a { font-size: 1.1rem; display: block; width: 100%; }
+        .project-card {
+            display: flex;
+            background: white;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            align-items: center;
+        }
 
-            /* Quando clicar no hambúrguer, o menu desliza da direita */
-            #check:checked ~ .nav-links {
-                right: 0;
-            }
+        .project-img-container { width: 300px; flex-shrink: 0; }
+        .project-img-container img { width: 100%; height: auto; display: block; }
+
+        .project-content { padding: 20px; flex-grow: 1; display: flex; justify-content: space-between; align-items: center; }
+        .project-text { padding-right: 20px; }
+        .project-text h3 { margin-bottom: 10px; color: #1e272e; }
+
+        .btn-more {
+            background: #00d8ff;
+            color: #1e272e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .project-card { flex-direction: column; text-align: center; }
+            .project-img-container { width: 100%; }
+            .project-content { flex-direction: column; }
+            .project-text { padding: 0; margin-bottom: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="index.html">TIAGO DE LIMA CORREIA</a>
+<header>
+    <div class="logo"><a href="index.html">TIAGO DE LIMA CORREIA</a></div>
+    
+    <nav class="nav-container">
+        <input type="checkbox" id="check">
+        <label for="check" class="menu-icon"><i class="fas fa-bars"></i></label>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="#ciencia">Ciência de Dados</a></li>
+            <li><a href="#analise">Análise de Dados</a></li>
+            <li><a href="#dashboards">Dashboards</a></li>
+            <li><a href="#python">Python</a></li>
+            <li><a href="#sql">SQL</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="#sobre">Sobre Mim</a></li>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2 class="section-title" id="python">Projetos em Python</h2>
+    
+    <article class="project-card">
+        <div class="project-img-container">
+            <img src="https://via.placeholder.com/300x180" alt="Capa do Projeto">
         </div>
+        <div class="project-content">
+            <div class="project-text">
+                <h3>Análise de Vendas com Python</h3>
+                <p>Preview: Estudo de caso utilizando Pandas e Matplotlib para identificar tendências de mercado...</p>
+            </div>
+            <a href="#" class="btn-more">Veja mais</a>
+        </div>
+    </article>
 
-        <nav class="nav-container">
-            <input type="checkbox" id="check">
-            <label for="check" class="menu-icon">
-                <i class="fas fa-bars"></i>
-            </label>
-
-            <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
-                <li><a href="#">Ciência de Dados</a></li>
-                <li><a href="#">Análise de Dados</a></li>
-                <li><a href="#">Dashboards</a></li>
-                <li><a href="#">Python</a></li>
-                <li><a href="#">SQL</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#">Sobre Mim</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main style="padding: 50px; text-align: center;">
-        <h1>Estrutura Base Pronta</h1>
-        <p>Redimensione a janela ou teste no seu Tablet/Redmi para ver o menu mudar!</p>
+    <h2 class="section-title" id="dashboards">Dashboards</h2>
     </main>
 
 </body>
