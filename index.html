@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago de Lima Correia | Data Science Portfolio</title>
+    <title>Tiago de Lima Correia | Portfólio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- ESTILOS GERAIS --- */
-        :root {
-            --primary-color: #1e272e;
-            --accent-color: #00d8ff;
-            --text-light: #ffffff;
-            --bg-light: #f4f7f6;
-        }
+        /* --- ESTILOS BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background-color: #f4f4f4; }
+        a { text-decoration: none; color: inherit; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: var(--bg-light); }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-
-        /* --- HEADER E NAVEGAÇÃO --- */
         header {
-            background: var(--primary-color);
-            color: var(--text-light);
-            padding: 1rem 5%;
+            background-color: #1e272e;
+            color: white;
+            padding: 0 5%;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -33,98 +26,92 @@
         }
 
         .logo a {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
-            color: var(--accent-color);
-            text-transform: uppercase;
+            color: #00d8ff;
         }
 
-        /* Menu Desktop */
+        /* --- MENU PARA COMPUTADOR (Desktop) --- */
+        .nav-container { display: flex; align-items: center; }
+        
         .nav-links { display: flex; list-style: none; }
+        
         .nav-links li { margin-left: 20px; }
-        .nav-links a:hover { color: var(--accent-color); }
+        
+        .nav-links a {
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
 
-        /* Redes Sociais no Header */
-        .social-icons { margin-left: 20px; display: flex; gap: 15px; }
-        .social-icons a { font-size: 1.2rem; color: var(--text-light); }
-        .social-icons a:hover { color: var(--accent-color); }
+        .nav-links a:hover { color: #00d8ff; }
 
-        /* Hamburguer Menu */
-        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
+        /* Esconder o ícone hambúrguer no PC */
+        .menu-icon { display: none; font-size: 1.5rem; cursor: pointer; }
         #check { display: none; }
 
-        /* --- RESPONSIVIDADE (Tablet e Smartphone) --- */
+        /* --- RESPONSIVIDADE (TABLET E SMARTPHONE) --- */
         @media (max-width: 1024px) {
-            .menu-toggle { display: block; }
-            
-            .nav-container {
+            .menu-icon { display: block; } /* Mostra o hambúrguer */
+
+            .nav-links {
                 position: fixed;
-                top: 0;
+                top: 70px;
                 right: -100%; /* Escondido à direita */
-                width: 280px;
-                height: 100vh;
-                background: var(--primary-color);
+                background-color: #1e272e;
+                width: 250px;
+                height: calc(100vh - 70px);
                 flex-direction: column;
-                padding-top: 80px;
-                transition: 0.5s all ease-in-out;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                align-items: center;
+                transition: 0.4s;
+                padding-top: 20px;
+                box-shadow: -2px 5px 10px rgba(0,0,0,0.3);
             }
 
-            .nav-links { flex-direction: column; align-items: center; }
-            .nav-links li { margin: 20px 0; }
-            
-            /* Quando o Checkbox é marcado, o menu entra */
-            #check:checked ~ .nav-container { right: 0; }
-        }
+            .nav-links li {
+                margin: 15px 0;
+                width: 100%;
+                text-align: center;
+            }
 
-        /* --- SEÇÕES DO BLOG --- */
-        main { padding: 40px 5%; max-width: 1200px; margin: auto; }
-        .section-header { 
-            border-bottom: 2px solid var(--accent-color); 
-            margin-bottom: 30px; 
-            padding-bottom: 10px; 
-        }
+            .nav-links a { font-size: 1.1rem; display: block; width: 100%; }
 
+            /* Quando clicar no hambúrguer, o menu desliza da direita */
+            #check:checked ~ .nav-links {
+                right: 0;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="logo">
-            <a href="index.html">Tiago de Lima Correia</a>
+            <a href="index.html">TIAGO DE LIMA CORREIA</a>
         </div>
 
-        <input type="checkbox" id="check">
-        <label for="check" class="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </label>
-
         <nav class="nav-container">
+            <input type="checkbox" id="check">
+            <label for="check" class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </label>
+
             <ul class="nav-links">
                 <li><a href="index.html">Início</a></li>
-                <li><a href="#ciencia-dados">Ciência de Dados</a></li>
-                <li><a href="#analise-dados">Análise de Dados</a></li>
-                <li><a href="#dashboards">Dashboards</a></li>
-                <li><a href="#python">Python</a></li>
-                <li><a href="#sql">SQL</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="#sobre-mim">Sobre Mim</a></li>
+                <li><a href="#">Ciência de Dados</a></li>
+                <li><a href="#">Análise de Dados</a></li>
+                <li><a href="#">Dashboards</a></li>
+                <li><a href="#">Python</a></li>
+                <li><a href="#">SQL</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Sobre Mim</a></li>
             </ul>
-            
-            <div class="social-icons">
-                <a href="https://linkedin.com/in/seu-perfil" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/seu-usuario" target="_blank"><i class="fab fa-github"></i></a>
-            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="section-header">
-            <h1>Projetos e Estudos</h1>
-            <p>Foco em Python, SQL e Visualização de Dados.</p>
-        </section>
-
-        </main>
+    <main style="padding: 50px; text-align: center;">
+        <h1>Estrutura Base Pronta</h1>
+        <p>Redimensione a janela ou teste no seu Tablet/Redmi para ver o menu mudar!</p>
+    </main>
 
 </body>
 </html>
