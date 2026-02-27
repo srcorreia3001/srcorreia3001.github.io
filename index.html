@@ -168,20 +168,6 @@ main {
         </div>
         
     </section>
-    <section class="carousel">
-        <div class="carousel-item">
-            <h2>Destaque 2: Análise de Dados com Python</h2>
-            <p>Clique para ver o projeto principal da semana.</p>
-        </div>
-        
-    </section>
-    <section class="carousel">
-        <div class="carousel-item">
-            <h2>Destaque 3: Análise de Dados com Python</h2>
-            <p>Clique para ver o projeto principal da semana.</p>
-        </div>
-        
-    </section>
 
 
 
@@ -419,6 +405,31 @@ main {
     <footer>
         <p>Criado por Tiago Correia | Todos os direitos reservados &copy; 2026</p>
     </footer>
+
+    <script>
+function filterPosts(categoria) {
+    // 1. Seleciona todas as seções de projetos
+    const grupos = document.querySelectorAll('.category-group');
+    
+    grupos.forEach(group => {
+        const container = group.querySelector('.posts-container');
+        
+        // 2. Verifica se o ID da seção corresponde ao clique (ex: group-python)
+        if (group.id === 'group-' + categoria) {
+            group.style.display = 'block'; // Mostra a seção
+            // 3. Transforma em LISTA (Imagem à esquerda, texto/botão à direita)
+            container.classList.add('lista-ativa'); 
+        } else {
+            // Esconde as seções que não foram clicadas
+            group.style.display = 'none';
+        }
+    });
+
+    // Fecha o menu hambúrguer automaticamente no smartphone após o clique
+    const check = document.getElementById('check');
+    if(check) check.checked = false;
+}
+</script>
 
 </body>
 </html>
