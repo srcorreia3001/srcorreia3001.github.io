@@ -585,35 +585,7 @@ function moveSlide(n) {
 // Troca automática a cada 5 segundos
 setInterval(() => moveSlide(1), 5000);
 
-    function filterPosts(categoria) {
-    const grupos = document.querySelectorAll('.category-group');
     
-    grupos.forEach(group => {
-        const container = group.querySelector('.posts-container');
-        const posts = group.querySelectorAll('.post-card');
-
-        if (categoria === 'inicio') {
-            // VOLTAR PARA HOME: Mostra todas as seções em GRADE
-            group.style.display = 'block';
-            container.classList.remove('lista-ativa'); // Remove formato de lista
-            // Mostra apenas 3 posts
-            posts.forEach((post, index) => {
-                post.style.display = (index < 3) ? 'flex' : 'none';
-            });
-        } 
-        else if (group.id === 'group-' + categoria) {
-            // CLIQUE NO MENU: Mostra só a seção clicada em LISTA
-            group.style.display = 'block';
-            container.classList.add('lista-ativa'); // Ativa formato de lista
-            // Mostra TODOS os posts daquela categoria
-            posts.forEach(post => post.style.display = 'flex');
-        } 
-        else {
-            // Esconde as outras seções
-            group.style.display = 'none';
-        }
-    });
-}
 
 // Inicia o site no modo Home (Grade com 3 posts)
 window.onload = () => filterPosts('inicio');
