@@ -203,6 +203,22 @@ main {
 .next { right: 0; }
 .prev { left: 0; }
 
+    lista-ativa {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.lista-ativa .post-card {
+    flex-direction: row !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+}
+
+.lista-ativa .post-card img {
+    width: 250px;
+    height: 150px;
+}
+
 
     </style>
 </head>
@@ -214,7 +230,7 @@ main {
             <input type="checkbox" id="check">
             <label for="check" class="menu-icon"><i class="fas fa-bars"></i></label>
             <ul class="nav-links">
-                <li><a href="index.html">Início</a></li>
+                <li><a href="#" onclick="filterPosts('inicio')"> Inicio">Início</a></li>
                 <li><a href="#" onclick="filterPosts('ciencia')">Ciência de Dados</a></li>
                 <li><a href="#"onclick="filterPosts('analise')">Análise de Dados</a></li>
                 <li><a href="#"onclick="filterPosts('dashboards')">Dashboards</a></li>
