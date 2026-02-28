@@ -551,7 +551,23 @@ main {
     </footer>
 
     <script>
-
+function filterPosts(categoria) {
+    // 1. Seleciona todas as seções de projetos
+    const grupos = document.querySelectorAll('.category-group');
+    
+    grupos.forEach(group => {
+        const container = group.querySelector('.posts-container');
+        
+        // 2. Verifica se o ID da seção corresponde ao clique (ex: group-python)
+        if (group.id === 'group-' + categoria) {
+            group.style.display = 'block'; // Mostra a seção
+            // 3. Transforma em LISTA (Imagem à esquerda, texto/botão à direita)
+            container.classList.add('lista-ativa'); 
+        } else {
+            // Esconde as seções que não foram clicadas
+            group.style.display = 'none';
+        }
+    });
 
     // Fecha o menu hambúrguer automaticamente no smartphone após o clique
     const check = document.getElementById('check');
