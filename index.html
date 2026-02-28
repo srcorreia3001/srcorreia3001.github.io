@@ -585,37 +585,38 @@ function moveSlide(n) {
 // Troca automática a cada 5 segundos
 setInterval(() => moveSlide(1), 5000);
 
-    function filterPosts(categoria) {
+  function filterPosts(categoria) {
     const grupos = document.querySelectorAll('.category-group');
     
-    grupos.forEach(group => {
-        const container = group.querySelector('.posts-container');
-        const posts = group.querySelectorAll('.post-card');
+    grupos.forEach(grupo => {
+        const posts = grupo.querySelectorAll('.post-card');
 
         if (categoria === 'inicio') {
-            // VOLTAR PARA HOME: Mostra todas as seções em GRADE
-            group.style.display = 'block';
-            container.classList.remove('lista-ativa'); // Remove formato de lista
-            // Mostra apenas 3 posts
+            // HOME: Mostra todas as seções, mas apenas 3 posts por seção
+            grupo.style.display = 'block';
             posts.forEach((post, index) => {
                 post.style.display = (index < 3) ? 'flex' : 'none';
             });
         } 
-        else if (group.id === 'group-' + categoria) {
-            // CLIQUE NO MENU: Mostra só a seção clicada em LISTA
-            group.style.display = 'block';
-            container.classList.add('lista-ativa'); // Ativa formato de lista
-            // Mostra TODOS os posts daquela categoria
-            posts.forEach(post => post.style.display = 'flex');
+        else if (grupo.id === 'group-' + categoria) {
+            // FILTRO: Mostra apenas a categoria clicada com TODOS os posts dela
+            grupo.style.display = 'block';
+            posts.forEach(post => {
+                post.style.display = 'flex';
+            });
         } 
         else {
-            // Esconde as outras seções
-            group.style.display = 'none';
+            // Esconde as outras categorias
+            grupo.style.display = 'none';
         }
     });
+
+    // Fecha menu no celular após o clique
+    const check = document.getElementById('check');
+    if(check) check.checked = false;
 }
 
-// Inicia o site no modo Home (Grade com 3 posts)
+// Inicializa a página como Home
 window.onload = () => filterPosts('inicio');
 </script>
     
