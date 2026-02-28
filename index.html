@@ -255,6 +255,39 @@ main {
     width: 100%;
 }
 
+    /* Container Geral */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 5%;
+}
+
+/* Força a GRADE em qualquer situação */
+.posts-container {
+    display: grid !important; /* O !important garante que nada mude para lista */
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Configuração de Colunas Adaptáveis */
+@media (min-width: 1025px) {
+    .posts-container { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .posts-container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .posts-container { grid-template-columns: 1fr; }
+}
+
+/* Ajuste das imagens para não deformarem */
+.post-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
 
     </style>
 </head>
