@@ -219,6 +219,42 @@ main {
     height: 150px;
 }
 
+    /* --- MODO GRADE (HOME) --- */
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas no PC */
+    gap: 25px;
+}
+
+/* Responsividade da Grade */
+@media (max-width: 1024px) { .posts-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .posts-container { grid-template-columns: 1fr; } }
+
+/* --- MODO LISTA (AO CLICAR NO MENU) --- */
+.lista-ativa {
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.lista-ativa .post-card {
+    flex-direction: row !important; /* Imagem na esquerda, texto na direita */
+    width: 100% !important;
+    align-items: center;
+    padding: 15px;
+}
+
+.lista-ativa .post-card img {
+    width: 250px; /* Tamanho da imagem na lista */
+    height: 150px;
+    margin-right: 20px;
+}
+
+.lista-ativa .post-content {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
     </style>
 </head>
