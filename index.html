@@ -522,6 +522,17 @@ function filterPosts(categoria) {
     if(check) check.checked = false;
 }
 </script>
+    let slideIndex = 0;
+const slides = document.querySelectorAll('.carousel-item');
+
+function moveSlide(n) {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + n + slides.length) % slides.length;
+    slides[slideIndex].classList.add('active');
+}
+
+// Troca automática a cada 5 segundos
+setInterval(() => moveSlide(1), 5000);
 
 </body>
 </html>
