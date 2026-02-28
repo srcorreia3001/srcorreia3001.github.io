@@ -532,6 +532,37 @@ function moveSlide(n) {
 
 // Troca automática a cada 5 segundos
 setInterval(() => moveSlide(1), 5000);
+
+        function filterPosts(categoria) {
+    const grupos = document.querySelectorAll('.category-group');
+    
+    grupos.forEach(grupo => {
+        const posts = grupo.querySelectorAll('.post-card');
+        const container = grupo.querySelector('.posts-container');
+        
+        if (categoria === 'inicio') {
+            // VOLTAR PARA HOME: Mostra todas as seções, mas apenas 3 posts em cada
+            grupo.style.display = 'block';
+            container.classList.remove('lista-ativa');
+            posts.forEach((post, index) => {
+                post.style.display = (index < 3) ? 'flex' : 'none';
+            });
+        } 
+        else if (grupo.id === 'group-' + categoria) {
+            // CLIQUE NO MENU: Mostra APENAS a seção clicada e TODOS os posts dela
+            grupo.style.display = 'block';
+            container.classList.add('lista-ativa');
+            posts.forEach(post => post.style.display = 'flex');
+        } 
+        else {
+            // Esconde as outras seções
+            grupo.style.display = 'none';
+        }
+    });
+}
+
+// Executa ao carregar a página para começar apenas com 3 posts
+window.onload = () => filterPosts('inicio');
 </script>
     
 </body>
