@@ -584,6 +584,25 @@ main {
     </footer>
 
     <script>
+
+        function filterPosts(categoria) {
+    // 1. Seleciona todas as seções de projetos
+    const grupos = document.querySelectorAll('.category-group');
+    
+    grupos.forEach(group => {
+        // 2. Verifica se o ID da seção corresponde ao clique (ex: group-python)
+        if (group.id === 'group-' + categoria) {
+            group.style.display = 'block'; // Mostra a seção em GRADE (padrão do CSS)
+        } else {
+            // Esconde as seções que não foram clicadas
+            group.style.display = 'none';
+        }
+    });
+    
+    // Opcional: Fecha o menu mobile após o clique
+    const check = document.getElementById('check');
+    if(check) check.checked = false;
+}
 /*function filterPosts(categoria) {
     // 1. Seleciona todas as seções de projetos
     const grupos = document.querySelectorAll('.category-group');
