@@ -289,6 +289,46 @@ main {
     object-fit: cover;
 }
 
+    /* Torna o header fixo no topo */
+.navbar-fixa {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a; /* Cor de fundo escura */
+    z-index: 1000; /* Garante que fique acima de tudo */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Espaçamento para o conteúdo não ficar escondido atrás do menu */
+body {
+    padding-top: 70px; 
+}
+
+/* Estilo dos links do menu */
+#menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 15px 0;
+    margin: 0;
+}
+
+#menu li {
+    margin: 0 15px;
+}
+
+#menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#menu a:hover {
+    color: #00bcd4; /* Cor de destaque ao passar o mouse */
+}
+
     </style>
 </head>
 <body>
