@@ -293,23 +293,19 @@ main {
 </head>
 <body>
 
-    <header>
-        <div class="logo"><a href="index.html">TIAGO CORREIA</a></div>
-        <nav class="nav-menu">
-            <input type="checkbox" id="check">
-            <label for="check" class="menu-icon"><i class="fas fa-bars"></i></label>
-            <ul class="nav-links">
-                <li><a href="#" onclick="filterPosts('inicio')">Início</a></li>
-                <li><a href="#" onclick="filterPosts('ciencia')">Ciência de Dados</a></li>
-                <li><a href="#"onclick="filterPosts('analise')">Análise de Dados</a></li>
-                <li><a href="#"onclick="filterPosts('dashboards')">Dashboards</a></li>
-                <li><a href="#" onclick="filterPosts('python')">Python</a></li>
-                <li><a href="#" onclick="filterPosts('sql')">SQL</a></li>
-                <li><a href="#" onclick="filterPosts('contato')">Contato</a></li>
-                <li><a href="#sobre">Sobre Mim</a></li>
-            </ul>
-        </nav>
-    </header>
+    <header class="navbar-fixa">
+    <nav id="nav">
+        <div class="logo">Tiago Correia</div>
+        <ul id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="python.html">Python</a></li>
+            <li><a href="sql.html">SQL</a></li>
+            <li><a href="ciencia-de-dados.html">Ciência de Dados</a></li>
+            <li><a href="analise-de-dados.html">Análise de Dados</a></li>
+            <li><a href="dashboards.html">Dashboards</a></li>
+        </ul>
+    </nav>
+</header>
 
     <div class="search-container">
         <input type="text" placeholder="Pesquisar projetos...">
