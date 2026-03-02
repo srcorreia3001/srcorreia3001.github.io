@@ -289,46 +289,72 @@ main {
     object-fit: cover;
 }
 
-    /* Torna o header fixo no topo */
+   /* Importando uma fonte moderna e profissional */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
 .navbar-fixa {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #1a1a1a; /* Cor de fundo escura */
-    z-index: 1000; /* Garante que fique acima de tudo */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-/* Espaçamento para o conteúdo não ficar escondido atrás do menu */
-body {
-    padding-top: 70px; 
-}
-
-/* Estilo dos links do menu */
-#menu {
-    display: flex;
-    justify-content: center;
-    list-style: none;
+    background-color: #1a1c20; /* Tom de cinza escuro profissional */
+    z-index: 1000;
     padding: 15px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Logo na esquerda, Menu na direita */
+    align-items: center;
+    padding: 0 30px;
+}
+
+.logo-link {
+    text-decoration: none;
+}
+
+.logo {
+    color: #00f2ff; /* Cor azul neon que você usou na imagem */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+#menu {
+    display: flex; /* Força os itens a ficarem um ao lado do outro */
+    list-style: none;
     margin: 0;
+    padding: 0;
 }
 
 #menu li {
-    margin: 0 15px;
+    margin-left: 25px; /* Espaço entre os nomes no menu */
 }
 
 #menu a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
 #menu a:hover {
-    color: #00bcd4; /* Cor de destaque ao passar o mouse */
+    color: #00f2ff; /* Muda para a cor da logo ao passar o mouse */
 }
 
+/* Espaço para o site começar abaixo do menu fixo */
+body {
+    padding-top: 80px;
+    margin: 0;
+    background-color: #f4f4f4;
+}
     </style>
 </head>
 <body>
