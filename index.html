@@ -289,86 +289,107 @@ main {
     object-fit: cover;
 }
 
-  /* Importando uma fonte limpa e profissional */
+/* Importando fonte robusta INICIO DA CONFIGURAÇÃO DO MENU*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
+/* HEADER FIXO - FORÇADO */
 .navbar-fixa {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1f2937; /* Cinza escuro elegante */
-    z-index: 1000;
-    padding: 15px 0;
-    font-family: 'Inter', sans-serif;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #1a1c20 !important; 
+    z-index: 9999 !important;
+    padding: 12px 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4) !important;
 }
 
-#nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between; /* Empurra o menu para a direita */
-    align-items: center;
-    padding: 0 20px;
+/* CONTAINER DE ALINHAMENTO */
+.nav-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important; 
+    align-items: center !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 25px !important;
 }
 
-.logo-link {
-    text-decoration: none;
+.logo-texto {
+    color: #00f2ff !important;
+    font-weight: 700 !important;
+    font-size: 1.3rem !important;
+    text-decoration: none !important;
+    letter-spacing: 1px !important;
 }
 
-.logo {
-    color: #00f2ff; /* O azul neon da sua logo */
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 1px;
+/* LISTA DO MENU - FORÇANDO HORIZONTALIDADE NA DIREITA */
+.menu-lista {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-#menu {
-    display: flex; /* ESSENCIAL: Coloca os itens lado a lado */
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.menu-lista li {
+    margin-left: 20px !important;
 }
 
-#menu li {
-    margin-left: 20px; /* Espaço entre as palavras do menu */
+.menu-lista a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    transition: 0.3s !important;
+    white-space: nowrap !important;
 }
 
-#menu a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+.menu-lista a:hover {
+    color: #00f2ff !important;
 }
 
-#menu a:hover {
-    color: #00f2ff; /* Cor de destaque ao passar o mouse */
+/* DESTAQUE ESPECIAL PARA O BOTÃO PORTFÓLIO */
+.menu-lista a.btn-destaque {
+    background-color: #00f2ff !important; /* Fundo Azul Neon */
+    color: #1a1c20 !important; /* Texto Escuro para Contraste */
+    padding: 8px 18px !important;
+    border-radius: 5px !important;
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.5) !important;
 }
 
-/* Espaço para o conteúdo não ficar escondido pelo menu fixo */
+.menu-lista a.btn-destaque:hover {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.8) !important;
+    transform: scale(1.05) !important;
+}
+
+/* AJUSTE DO CORPO */
 body {
-    padding-top: 80px;
-    margin: 0;
-}
+    padding-top: 80px !important;
+    margin: 0 !important;
+} /* FINAL DA CONFIGURAÇÃODO MENU */
     </style>
 </head>
 <body>
 
     <header class="navbar-fixa">
-    <nav id="nav-container">
+    <nav class="nav-container">
         <a href="index.html" class="logo-link">
-            <span class="logo">TIAGO CORREIA</span>
+            <span class="logo-texto">TIAGO CORREIA</span>
         </a>
 
-        <ul id="menu">
+        <ul class="menu-lista">
             <li><a href="index.html">Início</a></li>
             <li><a href="python.html">Python</a></li>
             <li><a href="sql.html">SQL</a></li>
             <li><a href="ciencia-de-dados.html">Ciência de Dados</a></li>
-            <li><a href="analise-de-dados.html">Análise de Dados</a></li>
-            <li><a href="dashboards.html">Dashboards</a></li>
+            <li><a href="analise-de-dados.html">Análise</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li><a href="index.html#projetos" class="btn-destaque">Portfólio</a></li>
         </ul>
     </nav>
 </header>
