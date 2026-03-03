@@ -207,3 +207,20 @@
 
 
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
+
+
+/* Estilo do Rodapé */
+footer.bg-dark-blue {
+    background-color: #0a192f !important; /* Mesmo azul do menu */
+    border-top: 1px solid #3a86ff; /* Linha sutil de destaque */
+}
+
+footer .text-blue-logo {
+    color: #3a86ff !important;
+}
+
+footer .text-muted {
+    color: #8892b0 !important; /* Cinza azulado para suavizar o texto */
+}
+
+/*FIM DAS CONFIGURAÇÕES DE RODAPÉ */
