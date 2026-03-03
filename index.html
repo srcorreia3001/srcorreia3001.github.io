@@ -221,21 +221,12 @@
 </section>
 
 <!--INFORMAÇÕES DE RODAPÉ -->
-<footer class="bg-dark-blue text-white py-4 mt-5">
+<footer class="footer-limpo py-3">
     <div class="container text-center">
-        <div class="row">
-            <div class="col-12">
-                <p class="mb-2">Criado por <span class="text-blue-logo fw-bold">Tiago Correia</span></p>
-                <p class="small text-muted mb-0">
-                    &copy; <span id="ano-atual"></span> Todos os direitos reservados.
-                </p>
-            </div>
-        </div>
-        <div class="mt-3">
-            <a href="#" class="text-blue-logo text-decoration-none small">
-                <i class="fas fa-chevron-up"></i> Voltar ao topo
-            </a>
-        </div>
+        <p class="mb-0">
+            Criado por <strong>Tiago Correia</strong> | 
+            &copy; <span id="ano-atual"></span> Todos os direitos reservados.
+        </p>
     </div>
 </footer>
 
@@ -277,8 +268,14 @@
 
     // Executa a função assim que a página carrega
     window.onload = mudarFrase;
+
+
+// Atualiza o ano no rodapé automaticamente
+document.getElementById('ano-atual').textContent = new Date().getFullYear();
+
 </script>
 
+    
 
 
 </body>
