@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciência de Dados | Tiago Correia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id="nav">
+            <ul id="menu">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="ciencia-de-dados.html" class="active">Ciência de Dados</a></li>
+                <li><a href="analise-de-dados.html">Análise de Dados</a></li>
+                <li><a href="dashboards.html">Dashboards</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <header class="category-header">
+            <h1>Ciência de Dados</h1>
+            <p>Projetos envolvendo Machine Learning, Modelagem e Python.</p>
+        </header>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="img/ebd.jpg" alt="EBD">
+                <h3>Gestão de Escola Bíblica Dominical</h3>
+                <p>Sistema completo para gestão escolar desenvolvido em Python.</p>
+                <a href="#" class="btn-veja-mais">Veja mais</a>
+            </div>
+            </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tiago de Lima Correia</p>
+    </footer>
+</body>
+</html>
