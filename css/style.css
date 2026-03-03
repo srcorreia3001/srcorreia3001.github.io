@@ -151,3 +151,33 @@
 
 
 /* FIM DAS DEFINIÇOES DO GRID */
+
+
+/* Estilo Reforçado da Frase da Semana */
+.frase-da-semana {
+    background-color: #0a192f !important; /* Azul Escuro Profundo */
+    background: linear-gradient(145deg, #0a192f, #112240) !important;
+    border: 2px solid #3a86ff !important; /* Borda Azul Brilhante */
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.frase-texto-estilo {
+    color: #ffffff !important; /* Força a letra a ser branca sobre o fundo escuro */
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Ajuste para o texto não sumir no Mobile/Tablet */
+@media (max-width: 768px) {
+    .frase-da-semana {
+        margin: 10px;
+        padding: 20px;
+    }
+    .frase-texto-estilo {
+        font-size: 1rem;
+    }
+}
+
+/* FIM DAS CONFIGURAÇOES PARA A FRASE DE MOTIVAÇÃO */
