@@ -181,3 +181,29 @@
 }
 
 /* FIM DAS CONFIGURAÇOES PARA A FRASE DE MOTIVAÇÃO */
+
+
+/* Estilo da Seção de Contato */
+#contato {
+    background-color: #f8f9fa !important;
+}
+
+#contato .card {
+    border-radius: 15px;
+}
+
+#contato .form-control:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+}
+
+/* Ícones sociais no mobile */
+@media (max-width: 768px) {
+    #contato .btn {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+
+/* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
