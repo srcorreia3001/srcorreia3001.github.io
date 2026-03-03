@@ -209,18 +209,19 @@
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
 
 
-/* Estilo do Rodapé */
-footer.bg-dark-blue {
-    background-color: #0a192f !important; /* Mesmo azul do menu */
-    border-top: 1px solid #3a86ff; /* Linha sutil de destaque */
+/* Estilo do Rodapé Fino e Limpo */
+.footer-limpo {
+    background-color: #0a192f !important; /* Mesmo azul profundo do menu */
+    color: #ffffff;
+    border-top: 1px solid #3a86ff; /* Linha sutil de destaque azul */
+    font-size: 0.9rem; /* Texto ligeiramente menor para delicadeza */
 }
 
-footer .text-blue-logo {
-    color: #3a86ff !important;
+/* Cor de destaque para o nome */
+.footer-limpo strong {
+    color: #3a86ff;
+    font-weight: 600;
 }
 
-footer .text-muted {
-    color: #8892b0 !important; /* Cinza azulado para suavizar o texto */
-}
 
 /*FIM DAS CONFIGURAÇÕES DE RODAPÉ */
