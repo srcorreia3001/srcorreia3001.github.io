@@ -1,0 +1,46 @@
+
+
+/* Definição das cores do seu blog */
+:root {
+    --azul-fundo: #0a192f;
+    --azul-brilhante: #3a86ff;
+    --azul-botao: #0d6efd;
+    --branco: #ffffff;
+}
+
+/* Cor do fundo do menu */
+.navbar {
+    background-color: var(--azul-fundo) !important;
+    border-bottom: 2px solid var(--azul-botao);
+}
+
+/* Cor do nome TIAGO CORREIA (Logo) */
+.navbar-brand {
+    color: var(--azul-brilhante) !important;
+    font-weight: bold;
+}
+
+/* Cor dos links do menu */
+.nav-link {
+    color: var(--branco) !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--azul-brilhante) !important;
+}
+
+/* Destaque especial do item Portfólio */
+.btn-destaque {
+    background-color: var(--azul-botao);
+    border-radius: 20px;
+    padding: 8px 20px !important;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
+}
+
+.btn-destaque:hover {
+    transform: scale(1.1);
+    background-color: var(--azul-brilhante);
+}
+
