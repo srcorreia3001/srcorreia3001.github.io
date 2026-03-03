@@ -7,7 +7,29 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">  
+
+/* Destaque para o último item do menu (Portfólio) */
+#menu-portfolio {
+    color: #0d6efd !important;
+    border: 2px solid #0d6efd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+#menu-portfolio:hover {
+    background-color: #0d6efd !important;
+    color: white !important;
+    transform: scale(1.05); /* Pequeno aumento ao passar o mouse */
+}
+
+/* Ajuste para garantir que o menu fixo não esconda o conteúdo ao clicar nos links */
+html {
+    scroll-padding-top: 70px;
+}
+
+
 </head>
 <body>
 
