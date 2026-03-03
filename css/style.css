@@ -86,6 +86,29 @@
     }
 }
 
+/* Garante que a legenda apareça bem no celular */
+@media (max-width: 767px) {
+    .carousel-caption {
+        background: rgba(10, 25, 47, 0.85) !important; /* Fundo mais sólido para leitura */
+        bottom: 5% !important; /* Posiciona mais abaixo */
+        padding: 10px !important;
+    }
+
+    .carousel-caption h2 {
+        font-size: 1.1rem !important; /* Diminui o título no celular */
+    }
+
+    .carousel-caption p {
+        font-size: 0.8rem !important; /* Diminui a descrição no celular */
+        margin-bottom: 10px;
+    }
+
+    .carousel-caption .btn {
+        padding: 5px 15px !important;
+        font-size: 0.8rem !important; /* Botão menor para caber na tela */
+    }
+}
+
 
 
 /*FIM DAS DEFINIÇOES DO CARROCEL */
