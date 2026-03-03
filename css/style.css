@@ -122,4 +122,32 @@
 
 
 
+/* Estilo do Botão Ver Projeto */
+.btn-ver-mais {
+    background-color: transparent;
+    color: #3a86ff !important;
+    border: 2px solid #3a86ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-ver-mais:hover {
+    background-color: #3a86ff;
+    color: #ffffff !important;
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Alinhamento dos botões */
+.card-body {
+    min-height: 200px; /* Garante um espaço mínimo para o conteúdo */
+}
+
+
+
+
 /* FIM DAS DEFINIÇOES DO GRID */
