@@ -18,3 +18,59 @@
 html {
     scroll-padding-top: 70px;
 }
+
+
+/* DEFINIÇOES PARA O MENU */
+
+/* Tons de Azul do Blog */
+:root {
+    --azul-escuro: #0a192f;
+    --azul-primario: #0d6efd;
+    --azul-logo: #3a86ff;
+    --branco: #ffffff;
+}
+
+/* Fundo do Menu */
+.bg-dark-blue {
+    background-color: var(--azul-escuro) !important;
+    border-bottom: 2px solid var(--azul-primario);
+}
+
+/* Logo Azul */
+.text-blue-logo {
+    color: var(--azul-logo) !important;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* Links do Menu - Efeito Dinâmico */
+.navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: 0.3s ease;
+    margin-right: 5px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--azul-logo) !important;
+    transform: translateY(-2px); /* Eleva levemente o texto */
+}
+
+/* Botão Portfólio com Destaque e Sobreposição */
+.btn-portfolio-destaque {
+    background-color: var(--azul-primario);
+    color: white !important;
+    padding: 8px 20px !important;
+    border-radius: 50px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+    transition: all 0.4s ease;
+}
+
+.btn-portfolio-destaque:hover {
+    background-color: var(--azul-logo);
+    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.5);
+    transform: scale(1.1); /* Aumenta o tamanho no hover */
+}
+
+/* FIM DAS DEFINIÇOES PARA O MENU */
