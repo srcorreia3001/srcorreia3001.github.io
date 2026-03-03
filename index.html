@@ -141,6 +141,20 @@
     </section>
 </div>
 
+<!--AQUI É A SEÇÃO DE PARA AS FRASES DE MOTIVAÇÃO RELACIONADAS A DADOS-->
+<div class="frase-da-semana shadow-sm">
+    <div class="card-body text-center py-4">
+        <span class="badge rounded-pill bg-primary mb-3">Insight do Dia</span>
+        <blockquote class="blockquote mb-0">
+            <p id="texto-frase" class="text-white fs-5 italic">
+                </p>
+            <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;">
+                </footer>
+        </blockquote>
+    </div>
+</div>
+
+
 
     <header class="bg-light py-5 border-bottom">
         <div class="container text-center py-5">
@@ -154,6 +168,36 @@
     </header>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- CODIGO EM JAVA SCRIPT PARA DEIXAR FRASES DE MOTVAÇÃO DINAMICAS -->
+<script>
+    const frasesDeDados = [
+        { texto: "Em Deus nós confiamos; todos os outros devem trazer dados.", autor: "W. Edwards Deming" },
+        { texto: "Torture os dados o suficiente e eles confessarão qualquer coisa.", autor: "Ronald Coase" },
+        { texto: "O objetivo é transformar dados em informação, e informação em insights.", autor: "Carly Fiorina" },
+        { texto: "Dados são o novo petróleo, mas o SQL é a refinaria que gera valor.", autor: "Especialista em Dados" },
+        { texto: "A simplicidade é o último grau de sofisticação no código Python.", autor: "Adaptado de Da Vinci" },
+        { texto: "Sem dados, você é apenas mais uma pessoa com uma opinião.", autor: "W. Edwards Deming" },
+        { texto: "O aprendizado de máquina é a ciência de fazer os computadores agirem sem serem explicitamente programados.", autor: "Andrew Ng" }
+    ];
+
+    function mudarFrase() {
+        // Escolhe uma frase aleatória da lista
+        const indiceAleatorio = Math.floor(Math.random() * frasesDeDados.length);
+        const selecao = frasesDeDados[indiceAleatorio];
+
+        // Atualiza o HTML com a frase escolhida
+        document.getElementById('texto-frase').innerText = `"${selecao.texto}"`;
+        document.getElementById('autor-frase').innerText = selecao.autor;
+    }
+
+    // Executa a função assim que a página carrega
+    window.onload = mudarFrase;
+</script>
+
+
+
 </body>
 </html>
+
 
