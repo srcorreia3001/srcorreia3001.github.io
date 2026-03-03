@@ -1,76 +1,46 @@
 
-/* Destaque para o último item do menu (Portfólio) */
-#menu-portfolio {
-    color: #0d6efd !important;
-    border: 2px solid #0d6efd;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    font-weight: bold;
-}
 
-#menu-portfolio:hover {
-    background-color: #0d6efd !important;
-    color: white !important;
-    transform: scale(1.05); /* Pequeno aumento ao passar o mouse */
-}
-
-/* Ajuste para garantir que o menu fixo não esconda o conteúdo ao clicar nos links */
-html {
-    scroll-padding-top: 70px;
-}
-
-
-/* DEFINIÇOES PARA O MENU */
-
-/* Tons de Azul do Blog */
+/* Definição das cores do seu blog */
 :root {
-    --azul-escuro: #0a192f;
-    --azul-primario: #0d6efd;
-    --azul-logo: #3a86ff;
+    --azul-fundo: #0a192f;
+    --azul-brilhante: #3a86ff;
+    --azul-botao: #0d6efd;
     --branco: #ffffff;
 }
 
-/* Fundo do Menu */
-.bg-dark-blue {
-    background-color: var(--azul-escuro) !important;
-    border-bottom: 2px solid var(--azul-primario);
+/* Cor do fundo do menu */
+.navbar {
+    background-color: var(--azul-fundo) !important;
+    border-bottom: 2px solid var(--azul-botao);
 }
 
-/* Logo Azul */
-.text-blue-logo {
-    color: var(--azul-logo) !important;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-}
-
-/* Links do Menu - Efeito Dinâmico */
-.navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 0.8) !important;
-    transition: 0.3s ease;
-    margin-right: 5px;
-}
-
-.navbar-nav .nav-link:hover {
-    color: var(--azul-logo) !important;
-    transform: translateY(-2px); /* Eleva levemente o texto */
-}
-
-/* Botão Portfólio com Destaque e Sobreposição */
-.btn-portfolio-destaque {
-    background-color: var(--azul-primario);
-    color: white !important;
-    padding: 8px 20px !important;
-    border-radius: 50px;
+/* Cor do nome TIAGO CORREIA (Logo) */
+.navbar-brand {
+    color: var(--azul-brilhante) !important;
     font-weight: bold;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
-    transition: all 0.4s ease;
 }
 
-.btn-portfolio-destaque:hover {
-    background-color: var(--azul-logo);
-    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.5);
-    transform: scale(1.1); /* Aumenta o tamanho no hover */
+/* Cor dos links do menu */
+.nav-link {
+    color: var(--branco) !important;
+    transition: 0.3s;
 }
 
-/* FIM DAS DEFINIÇOES PARA O MENU */
+.nav-link:hover {
+    color: var(--azul-brilhante) !important;
+}
+
+/* Destaque especial do item Portfólio */
+.btn-destaque {
+    background-color: var(--azul-botao);
+    border-radius: 20px;
+    padding: 8px 20px !important;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
+}
+
+.btn-destaque:hover {
+    transform: scale(1.1);
+    background-color: var(--azul-brilhante);
+}
+
