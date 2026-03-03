@@ -32,8 +32,8 @@
 
 /* Destaque especial do item Portfólio */
 .btn-destaque {
-    background-color: var(--azul-botao);
-    border-radius: 20px;
+    background-color: var(--azul-brinhante);
+    border-radius: 25px;
     padding: 8px 20px !important;
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(13, 110, 253, 0.4);
