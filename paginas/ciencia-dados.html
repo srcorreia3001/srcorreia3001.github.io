@@ -72,6 +72,23 @@
         .footer-limpo { background-color: var(--azul-escuro) !important; color: white; border-top: 1px solid var(--azul-brilhante); }
         
         html { scroll-padding-top: 70px; }
+
+/* Esconde do 10º projeto em diante apenas em telas pequenas (Smartphone) */
+@media (max-width: 767px) {
+    .projeto-item:nth-child(n+10) {
+        display: none !important;
+    }
+}
+
+/* Esconde do 16º projeto em diante em telas grandes (PC/Tablet) */
+@media (min-width: 768px) {
+    .projeto-item:nth-child(n+16) {
+        display: none !important;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
