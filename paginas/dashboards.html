@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciência de Dados | Tiago Correia</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS GERAL E CORES --- */
+        :root {
+            --azul-escuro: #0a192f;
+            --azul-brilhante: #3a86ff;
+            --azul-botao: #0d6efd;
+            --amarelo: #ffca28;
+            --branco: #ffffff;
+        }
+
+        body { background-color: #f8f9fa; }
+
+        /* --- MENU --- */
+        .navbar { background-color: var(--azul-escuro) !important; border-bottom: 2px solid var(--azul-botao); }
+        .navbar-brand { color: var(--azul-brilhante) !important; font-weight: bold; }
+        .nav-link { color: var(--branco) !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--azul-brilhante) !important; }
+
+        /* Destaque Amarelo Portfólio */
+        #menu-portfolio {
+            color: var(--amarelo) !important;
+            border: 2px solid var(--amarelo) !important;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 5px 15px !important;
+            margin-left: 10px;
+        }
+        #menu-portfolio:hover {
+            background-color: var(--amarelo) !important;
+            color: var(--azul-escuro) !important;
+        }
+
+        /* --- CARROSSEL --- */
+        .carousel-item { height: 60vh; min-height: 350px; background-color: var(--azul-escuro); }
+        .banner-img { height: 100%; object-fit: cover; filter: brightness(45%); }
+        .capa-filtro { 
+            background: rgba(10, 25, 47, 0.8); 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: 1px solid var(--azul-brilhante);
+        }
+
+        /* --- GRADE DE POSTS --- */
+        .bg-dark-blue { background-color: var(--azul-escuro) !important; }
+        .border-blue { border: 1px solid var(--azul-botao) !important; transition: 0.3s; }
+        .border-blue:hover { transform: translateY(-5px); border-color: var(--azul-brilhante) !important; }
+        .text-blue-logo { color: var(--azul-brilhante) !important; }
+        
+        .btn-ver-mais {
+            background-color: transparent;
+            color: var(--azul-brilhante) !important;
+            border: 2px solid var(--azul-brilhante);
+            font-weight: bold;
+            transition: 0.4s;
+        }
+        .btn-ver-mais:hover { background-color: var(--azul-brilhante); color: white !important; }
+
+        /* --- FRASE DA SEMANA --- */
+        .frase-da-semana { background: var(--azul-escuro); border: 1px solid var(--azul-brilhante); border-radius: 15px; }
+
+        /* --- RODAPÉ --- */
+        .footer-limpo { background-color: var(--azul-escuro) !important; color: white; border-top: 1px solid var(--azul-brilhante); }
+        
+        html { scroll-padding-top: 70px; }
+
+/* Esconde do 10º projeto em diante apenas em telas pequenas (Smartphone) */
+@media (max-width: 767px) {
+    .projeto-item:nth-child(n+10) {
+        display: none !important;
+    }
+}
+
+/* Esconde do 16º projeto em diante em telas grandes (PC/Tablet) */
+@media (min-width: 768px) {
+    .projeto-item:nth-child(n+16) {
+        display: none !important;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- MENU -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="HTTPS://srcorreia3001.github.io">TIAGO CORREIA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="ciencia-dados.html">Ciência de Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="analise-dados.html">Análise de Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboards.html">Dashboards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="python.html">Python</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sql.html">SQL</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio" id="menu-portfolio">Portfólio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<!-- POSTS EM DESTAQUE TIPO CARROCEL MAIS AQUI USAREMOS COMO DESTAQUES UNICO-->
+
+    <div id="carrosselProjetos" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1551288049-bbbda536ad79?q=80&w=1000" class="d-block w-100 banner-img" alt="Ciência de Dados">
+                <div class="carousel-caption capa-filtro">
+                    <h2 class="fw-bold">Modelos Preditivos</h2>
+                    <p>Desenvolvimento de algoritmos de Machine Learning para análise de tendências.</p>
+                    <a href="#ciencia-dados" class="btn btn-primary">Explorar Grade</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- GRADE DE POSTS -->
+
+    <div class="container my-5">
+    <section id="ciencia-dados">
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4 text-uppercase">Projetos de Ciência de Dados</h2>
+        
+        <div class="row g-4">
+            
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda536ad79?q=80&w=500" class="card-img-top" alt="Projeto 1">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Previsão de Vendas</h5>
+                        <p class="card-text small">Análise de séries temporais com Python e Scikit-learn.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1527474305487-b87b222841cc?q=80&w=500" class="card-img-top" alt="Projeto 2">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Classificação de Risco</h5>
+                        <p class="card-text small">Detecção de fraudes financeiras e análise de crédito.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" class="card-img-top" alt="Projeto 3">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Dashboard de BI</h5>
+                        <p class="card-text small">Visualização de dados interativa com Dash e Plotly.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=500" class="card-img-top" alt="Projeto 4">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Análise de E-commerce</h5>
+                        <p class="card-text small">Estudo de comportamento de compra e churn rate.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1551446591-142875a901a1?q=80&w=500" class="card-img-top" alt="Projeto 5">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">NLP - Análise de Sentimento</h5>
+                        <p class="card-text small">Processamento de Linguagem Natural em redes sociais.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1543286386-713bdd54867e?q=80&w=500" class="card-img-top" alt="Projeto 6">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Previsão do Tempo</h5>
+                        <p class="card-text small">Modelo de regressão para dados climáticos históricos.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e905263543?q=80&w=500" class="card-img-top" alt="Projeto 7">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Clusterização de Clientes</h5>
+                        <p class="card-text small">Segmentação de mercado usando o algoritmo K-Means.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=500" class="card-img-top" alt="Projeto 8">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Detecção de Anomalias</h5>
+                        <p class="card-text small">Identificação de erros em processos de manufatura.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1454165833767-019672459d42?q=80&w=500" class="card-img-top" alt="Projeto 9">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Sistemas de Recomendação</h5>
+                        <p class="card-text small">Filtragem colaborativa para sugestão de filmes.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda536ad79?q=80&w=500" class="card-img-top" alt="Projeto 10">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 10</h5>
+                        <p class="card-text small">Descrição breve do seu décimo projeto aqui.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1527474305487-b87b222841cc?q=80&w=500" class="card-img-top" alt="Projeto 11">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 11</h5>
+                        <p class="card-text small">Descrição breve do seu décimo primeiro projeto.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" class="card-img-top" alt="Projeto 12">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 12</h5>
+                        <p class="card-text small">Descrição breve do seu décimo segundo projeto.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=500" class="card-img-top" alt="Projeto 13">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 13</h5>
+                        <p class="card-text small">Descrição breve do seu décimo terceiro projeto.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1551446591-142875a901a1?q=80&w=500" class="card-img-top" alt="Projeto 14">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 14</h5>
+                        <p class="card-text small">Descrição breve do seu décimo quarto projeto.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://images.unsplash.com/photo-1543286386-713bdd54867e?q=80&w=500" class="card-img-top" alt="Projeto 15">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Projeto 15</h5>
+                        <p class="card-text small">Descrição breve do seu décimo quinto projeto.</p>
+                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+
+
+<!--FRASE DA SEMANA -->
+
+    <div class="container my-5">
+        <div class="frase-da-semana p-4 text-center">
+            <blockquote class="blockquote mb-0">
+                <p id="texto-frase" class="text-white italic fs-5"></p>
+                <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;"></footer>
+            </blockquote>
+        </div>
+    </div>
+
+<!--CONTATO-->
+
+<section id="contato" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4">Contato & Projetos</h2>
+        <div class="row g-5">
+            
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm border-blue">
+                    <h4 class="mb-3" style="color: #0a192f;">Mande uma Mensagem</h4>
+                    <form action="https://formspree.io/f/meelzjdn" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="name" class="form-control" placeholder="Seu nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Como posso ajudar?</label>
+                            <textarea name="message" class="form-control" rows="4" placeholder="Descreva seu projeto..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-ver-mais w-100">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <div class="ps-md-4">
+                    <h3 style="color: #0d6efd;">Tiago de Lima Correia</h3>
+                    <p class="lead text-muted">Estudante de Ciência e Análise de Dados</p>
+                    <p><strong>Instituição:</strong> Universidade Santa Cecília (UniSanta)</p>
+                    
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-2">
+                            <i class="fab fa-whatsapp text-success me-2"></i> 
+                            <a href="https://wa.me/5511957013453" target="_blank" class="text-decoration-none text-dark">11 95701-3454</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope text-primary me-2"></i> 
+                            <a href="mailto:tiagocorreia380@outlook.com" class="text-decoration-none text-dark">tiagocorreia380@outlook.com</a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <h5 class="mb-3">Redes Profissionais:</h5>
+                        <a href="https://www.linkedin.com/in/tiago-correia380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+
+" target="_blank" class="btn btn-outline-primary me-2">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/srcorreia3001" target="_blank" class="btn btn-outline-dark">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <footer class="footer-limpo py-3">
+        <div class="container text-center">
+            <p class="mb-0">Criado por <strong>Tiago Correia</strong> | &copy; <span id="ano-atual"></span> Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const frases = [
+            { t: "Em Deus nós confiamos; todos os outros devem trazer dados.", a: "W. Edwards Deming" },
+            { t: "O objetivo é transformar dados em informação, e informação em insights.", a: "Carly Fiorina" }
+        ];
+
+        function carregar() {
+            const f = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('texto-frase').innerText = `"${f.t}"`;
+            document.getElementById('autor-frase').innerText = f.a;
+            document.getElementById('ano-atual').textContent = new Date().getFullYear();
+        }
+        window.onload = carregar;
+    </script>
+</body>
+</html>
+
+
