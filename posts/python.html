@@ -56,6 +56,140 @@
 }
 
 
+/* Estilo dos Cards da Grade */
+.bg-dark-blue {
+    background-color: #0a192f !important;
+}
+
+.border-blue {
+    border: 1px solid #0d6efd !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.border-blue:hover {
+    transform: translateY(-5px);
+    border-color: #3a86ff !important;
+}
+
+.post-card img {
+    height: 180px;
+    object-fit: cover;
+}
+
+.text-blue-logo {
+    color: #3a86ff !important;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+
+
+/* Estilo do Botão Ver Projeto */
+.btn-ver-mais {
+    background-color: transparent;
+    color: #3a86ff !important;
+    border: 2px solid #3a86ff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.btn-ver-mais:hover {
+    background-color: #3a86ff;
+    color: #ffffff !important;
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* Alinhamento dos botões */
+.card-body {
+    min-height: 200px; /* Garante um espaço mínimo para o conteúdo */
+}
+
+
+
+
+/* FIM DAS DEFINIÇOES DO GRID */
+
+
+/* Estilo Reforçado da Frase da Semana */
+.frase-da-semana {
+    background-color: #0a192f !important; /* Azul Escuro Profundo */
+    background: linear-gradient(145deg, #0a192f, #112240) !important;
+    border: 2px solid #3a86ff !important; /* Borda Azul Brilhante */
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.frase-texto-estilo {
+    color: #ffffff !important; /* Força a letra a ser branca sobre o fundo escuro */
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Ajuste para o texto não sumir no Mobile/Tablet */
+@media (max-width: 768px) {
+    .frase-da-semana {
+        margin: 10px;
+        padding: 20px;
+    }
+    .frase-texto-estilo {
+        font-size: 1rem;
+    }
+}
+
+/* FIM DAS CONFIGURAÇOES PARA A FRASE DE MOTIVAÇÃO */
+
+
+/* Estilo da Seção de Contato */
+#contato {
+    background-color: #f8f9fa !important;
+}
+
+#contato .card {
+    border-radius: 15px;
+}
+
+#contato .form-control:focus {
+    border-color: #3a86ff;
+    box-shadow: 0 0 0 0.25rem rgba(58, 134, 255, 0.25);
+}
+
+/* Ícones sociais no mobile */
+@media (max-width: 768px) {
+    #contato .btn {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
+
+
+/* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
+
+
+/* Estilo do Rodapé Fino e Limpo */
+.footer-limpo {
+    background-color: #0a192f !important; /* Mesmo azul profundo do menu */
+    color: #ffffff;
+    border-top: 1px solid #3a86ff; /* Linha sutil de destaque azul */
+    font-size: 0.9rem; /* Texto ligeiramente menor para delicadeza */
+}
+
+/* Cor de destaque para o nome */
+.footer-limpo strong {
+    color: #3a86ff;
+    font-weight: 600;
+}
+
+
+/*FIM DAS CONFIGURAÇÕES DE RODAPÉ */
+
+
 
     </style>
 
