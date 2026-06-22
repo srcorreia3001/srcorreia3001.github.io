@@ -140,14 +140,46 @@
     <h2 class="post-title">Prevendo a evasão escolar com Machine Learning: Uma abordagem com base na ciência.</h2>
     <div class="post-meta">22 de Junho, 2026 • 4 min de leitura</div>
 
-    <p>A evasão escolar é um dos desafios mais complexos e impactantes...</p>
+    <p>A evasão escolar é um dos desafios mais complexos e impactantes da gestão educacional pública e privada. Reter um aluno não é só visto como uma vitória financeira para uma instituição, mas uma real transformação social na vida do estudante.
+</p>
     
-    <p>Nesse projeto de ciência de dados, fiz uso de técnicas de inteligência artificial...</p>
+    <p>Nesse projeto de ciência de dados, fiz uso de técnicas de inteligência artificial para identificar padrões comportamentais e prever quais alunos estão com maior risco de abandonar os estudos.
+</p>
 
     <h2>O Dataset e Ferramentas</h2>
     
     <p>Utilizei o respeitado dataset acadêmico "Predict Students Dropout and Academic Success" da UCI Machine Learning Repo. O projeto foi desenvolvido totalmente em Python, utilizando bibliotecas como Pandas para manipulação de dados, Seaborn para visualização e Scikit-Learn para modelagem preditiva.</p>
 
+   <h2>Insights da Análise Exploratória (EDA)</h2>
+
+   <p>Durante a análise de dados, dois fatores saltaram aos olhos como os principais influenciadores da permanência do aluno:</p>
+
+	<ul>
+      <li>O desempenho no 1º semestre é crucial: Alunos que terminam o primeiro período com notas baixas ou zeradas possuem uma taxa de evasão alarmante. A intervenção pedagógica precisa acontecer logo nos primeiros meses.</li>
+      <li>O impacto Vital do auxílio financeiro: A análise mostrou que alunos de bolsistas possuem uma taxa de evasão muito menor em comparação aos alunos não-bolsistas. Programas de assistência financeira mostram-se um dos pilares mais eficientes para a retenção escolar.</li>
+
+  </ul>
+
+     <img src=" " alt=" " width="500" height="300">
+
+<h2>Modelagem Preditiva com Machine Learning</h2>
+
+<p>Para criar um sistema de alerta precoce, treinei um algoritmo de Random Forest (Floresta Aleatória). O objetivo era classificar se o estudante iria se formar ou evadir com base em suas características socioeconômicas e acadêmicas.</p>
+
+<p>Os resultados foram surpreendentes para uma primeira versão:</p>
+
+    <ul>
+       <li>Acurácia Geral: 90,22% da previsões corretas.</li>
+       <li>Precisão para Evasão (Dropout): 91% isso significa que o modelo é altamente confiável quando aciona o “Alerta Vermelho” para um estudante em risco.</li>
+
+     <img src=" " alt=" " width="500" height="300">
+
+
+<h2>Conclusão e impacto de negócio </h2>
+
+<p>Com um modelo predito rodando com 90% de acurácia, a coordenação pedagógica de um instituição pode agir de forma proativa em vez de reativa. Em vez de descobrir a evasão quando o aluno já cancelou a matricula, a IA permite criar planos de apoio personalizados, mentorias e direcionamento de bolsas para quem realmente precisa, salvando semestres e mudando futuros.</p>
+
+<p>Gostou do projeto? Veja o código completo e estruturado no meu GitHub!</p>
 </div>
 
 
