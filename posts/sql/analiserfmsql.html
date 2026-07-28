@@ -146,36 +146,43 @@
 <div class="post-container">
 
     <span class="post-tag">SQL</span>
-    <h2 class="post-title">Análise Relacional e Consultas SQL para Negócios</h2>
-    <div class="post-meta">22 de Julho, 2026 • 4 min de leitura</div>
+    <h2 class="post-title">Análise de Comportamento e segmentação de Clientes (RFM) com SQL e PYTHON </h2>
+    <div class="post-meta">28 de Julho, 2026 • 4 min de leitura</div>
 <p></p>
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" alt="imagem 1" width="900" height="500">
 
     <h4>Sobre o Projeto...</h4>
-    <p>Desenvolvi esse projeto focado em SQL(Structured Query Language) utilizando um ambiente corporativo simulado via SQlite no Kaggle.O objetivo foi transformar dados brutos em inteligência comercial através de consultas estruturadas, cobrindo desde os filtros fundamentais até agregação financeiras complexas.
+    <p>Neste projeto, foi contruido um pipeline análitico completo utilizando Python,SQLite e SQL avançado para aplicar a metodologia RFM(Recência, Frequência e Monetário) utilizando a base de dados pública da Olist.
 </p>
 
 
     <h4>Desenvolvimento do projeto</h4>
+<h5>Ingestão e Modelagem Ralacional(ETL)</h5>
+<p>A base da Olist é estruturada em multiplos arquivos relacionais. O primeiro passo consistiu em varrer o diretório de entrada, carregar as tabelas transacionais em DataFrames do Pandas e estruturá-las dentro de um banco de dados SQLite local (banco_rfm.db):</p>
 
 
         <ul>
-      <li><b>Arquitetura e carga:</b>Importação de dados transacionais e criação e um banco de dados relaiconal local (SQlite) utilizando Python como ponte de integração.</li>
-      <li><b>Inspeção de Esquema:</b>Utilização de comandos de metadados (PRAGMA table_info) para validar estruturas e os tipos de dados das colunas.</li>
-      <li><b>Consultas Básicas:</b>(SELECT, WHERE, ORDER BT): Filtragens de registros de alto valor e ordenação de maiores faturamentos e lucros por cliente.</li>
-      <li><b>Agregação Comercial (GROUP BY, SUM):</b> Agrupamento estratégico de dados para calcular o faturamento total e o lucro acumulado por categoria de produto.</li>
+      <li><b>tb_customers:</b>Dados cadastrais e identificação única dos clientes (customer_unique_id)</li>
+      <li><b>tb_orders:</b>Histórico e carimbo de data/hora dos pedidos (order_purchase_timestamp).<</li>
+      <li><b>tb_order_items:</b>itens de pedido vinculados aos preços valores monetários (price)</li>
 
   </ul>
 
      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhC7hfsLRBfzqmcObLL0_BZdck7eufyGz0Gm4niPLCZ83GTb3oJCPJ8fQA3LeI2PdcbTUlqKmBoz9PHr6Cp-3ofQsnrvTyX5NWJEVtB-vKc4DD5YqhCt2X-1vgPTBdCEXCzNUjKxl8UxZxcXY-AfKg2poJ8tKJYQQqimDSof983T7tCzFxIzpjeKe6wJ2WD/s1670/99783.png" alt="imagem 1" width="900" height="500">
 
 
-<h4>Principais Insights</h4>
+<h4>O cálculo da Métricas RFM (Query Base com join)</h4>
+<p>Para consolidar o histórico de cada consumidor em uma única linha analítica, utilizei consultas relacionando as três tabelas, aplicando funções de agregação e manipulação de datas:</p>
+
   <ul>
-<li>A categoria Technology destacou-se com o maior volume de faturamento agregado na base</li>
-<li>o uso de funções de agregação permitiu uma visão gerencial imediata, provando a eficiência de estruturar dados em bancos relacionais.</li>
+<li><b>Recência (R):</b>Dias decorridos desde a última compra do cliente em relaçãoa data de corte simulada.</li>
+<li><b>Frequência (F):</b>Contagem distintas de pedidos realizados (COUNT(DISTINT o.order_id).</li>
+<li><b>Monetário (m):</b>Soma total investida pelo cliente nos produtos (SUM.price).
 </ul>
+
+<h4>Inteligência Comercial com CTEs e CASE WHEN</h4>
+<p>Utilizando CTS (WHTH),estruturamos uma consulta modular que calcula os  alors brutos de RFM em uma etapa intermediaária
 
 
 <h4>Tecnologias Utilizadas: </h4>
@@ -186,7 +193,7 @@
    <li>SQL(Consultas, filtros e agregações</li>
    <li>Kaggle Notebooks (Ambiente de desenvolvimento)</li>
  </ul>
-
+ 
 
      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvzRvTL_ZftqhvGffP9a5LTQaXYIPPpIxGG-vuf4JR9B5JIZ9MEJd9MHUEEStrur_2IhWgSheEKGTV6hPQa47OEnSifkATiqVGomGzA0lLYAahmsi8Z3BBUty3Sq5nP2fGkkdtRtQpPghVYW4bW_8uoSmVLDvgTTTvFIrLXsVign6DlinP81qj9rdC3BQA/s1907/99784.png" alt="imagem 2" width="500" height="300">
 
