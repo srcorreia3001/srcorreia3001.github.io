@@ -177,21 +177,34 @@
 
   <ul>
 <li><b>Recência (R):</b>Dias decorridos desde a última compra do cliente em relaçãoa data de corte simulada.</li>
-<li><b>Frequência (F):</b>Contagem distintas de pedidos realizados (COUNT(DISTINT o.order_id).</li>
+<li><b>Frequência (F):</b>Contagem distintas de pedidos realizados (CAOUNTS(DISTINT o.order_id).</li>
 <li><b>Monetário (m):</b>Soma total investida pelo cliente nos produtos (SUM.price).
 </ul>
 
 <h4>Inteligência Comercial com CTEs e CASE WHEN</h4>
-<p>Utilizando CTS (WHTH),estruturamos uma consulta modular que calcula os  alors brutos de RFM em uma etapa intermediaária
+<p>Utilizando CTS (WHTH),estruturamos uma consulta modular que calcula os  alors brutos de RFM em uma etapa intermediaária e, em seguida,aplica regras de negócio por meio do comando(CASE WHEN). Isso classifica automaticamente a base em categorias estratégicas para marketing:</p>
+
+<ul>
+	<li><b>VIP/Campeão:</b>O cliente de alto valor ou com histórico de alta recorrẽncia.</li>
+	<li><b>Em Risco (Alto Valor):</b>Consumidores valiosos que estão a muito tempo sem realizar compras.</li>
+	<li><b>Cliente Novo/Recentemente Ativo:</b>Compradores com engajamento recente.</li>
+	<li><b>Base/Potencial:</b>Demais perfis na base de clientes.</li>
+</ul>
+
+<h4>Principais Insights e aplicações Práticas</h4>
+
+<ul>
+	<li><b>Retenção de Alto Valor:<\b> A identificação de clientes com tickets elevados inseridos na categoria "Em Risco" possibilita a criação de campanhas automatizadas de e-mail marketing focada em cupons de reativação (recuperação de churn).</li>
+	<li><b>Fidelização:</b> O mapeamento de perfis recorrentes fundamenta estratégias de clubes de beneficios e programas VIP, otimizando o Retorno sobre o investimento (ROI) das equipes comerciais.
+
 
 
 <h4>Tecnologias Utilizadas: </h4>
 
  <ul>
-   <li>Python e SQlite(Gerenciamento e conexão de banco de dados</li>
-   <li>Pandas (Exibição e manipulação de DataFrames)</li>
-   <li>SQL(Consultas, filtros e agregações</li>
-   <li>Kaggle Notebooks (Ambiente de desenvolvimento)</li>
+   <li><b>Linguagem:</b>Python (Pandas para manipução de dados).</li>
+   <li><b>Banco de Dados:</b>SQLite (Criação de um ambiente relacional local).</li>
+   <li><b>Linguagem de Consulta:</b>SQL Avançado (múltiplos "JOINS". funções de agregação,manipulação temporal com "julianday", CTEs com WITH e lógica condicional com CASE WHEN).</li>
  </ul>
  
 
