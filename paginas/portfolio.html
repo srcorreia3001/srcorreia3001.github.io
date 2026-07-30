@@ -235,6 +235,170 @@
     font-weight: 600;
 }
 
+
+
+/* --- SEÇÃO HERO --- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh; /* Altura visível */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* Camada para a imagem de fundo complexa */
+.hero-bg-visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Substitua 'background-wireframe.jpg' pelo caminho da sua imagem */
+    /* Crie uma imagem de fundo com linhas geométricas teal e gold sobre fundo escuro */
+    background-image: url('background-wireframe.jpg'); 
+    
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1; /* Fica atrás do conteúdo */
+}
+
+/* Adiciona uma sobreposição escura para garantir o contraste do texto */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(10, 23, 36, 0.7), rgba(10, 23, 36, 0.9));
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10; /* Fica na frente do fundo e da sobreposição */
+    max-width: 800px;
+    padding: 20px;
+}
+
+/* Título Principal: Tiago de Lima Correia */
+.hero-content h1 {
+    font-family: 'Merriweather', serif;
+    font-size: 64px;
+    font-weight: 700;
+    
+    /* Efeito Dourado Metálico */
+    background: linear-gradient(45deg, #bfa35e 25%, #e9d38d 50%, #bfa35e 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    
+    margin-bottom: 15px;
+}
+
+/* Subtítulo: Cientista de Dados... */
+.hero-content h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+}
+
+/* Parágrafo de descrição */
+.hero-description {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/* Botões Sociais */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.1); /* Botão transparente */
+}
+
+.btn-social:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px); /* Pequeno efeito hover */
+}
+
+.btn-social i {
+    font-size: 20px;
+}
+
+/* Estilos específicos para cada botão */
+.btn-github {
+    color: #ffffff;
+}
+
+.btn-linkedin {
+    color: #ffffff;
+    background-color: #0077b5; /* Fundo azul do LinkedIn */
+    border-color: #0077b5;
+}
+
+.btn-linkedin:hover {
+    background-color: #005a8c;
+    border-color: #005a8c;
+}
+
+/* --- RESPONSIVIDADE (Mobile) --- */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero-content h1 {
+        font-size: 42px;
+    }
+    
+    .hero-content h2 {
+        font-size: 18px;
+    }
+    
+    .hero-description {
+        font-size: 16px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 200px;
+        margin: 0 auto;
+    }
+}
+
+
+
+
         
     </style>
 </head>
