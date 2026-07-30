@@ -154,6 +154,43 @@
             width:500px;
             height:auto;
         }
+
+        
+
+/* Container principal da grade (Computador: até 3 colunas) */
+.grade-habilidades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Espaçamento entre os blocos */
+    padding: 20px;
+}
+
+/* Estilo individual de cada bloco (Card) */
+.item-habilidade {
+    background-color: rgba(0, 119, 182, 0.45); /* Azul transparente */
+    color: #ffffff;                             /* Letra branca */
+    font-weight: 500;                           /* Levemente em bold */
+    text-align: center;                         /* Texto centralizado */
+    padding: 15px 10px;                         /* Altura e largura interna do bloco */
+    border-radius: 8px;                         /* Bordas arredondadas */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil brilhante */
+    backdrop-filter: blur(4px);                 /* Efeito de desfoque no fundo (opcional) */
+}
+
+/* Responsividade para Smartphones (2 colunas) */
+@media (max-width: 768px) {
+    .grade-habilidades {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .item-habilidade {
+        font-size: 14px; /* Ajusta o tamanho da fonte para telas menores, se necessário */
+        padding: 12px 8px;
+    }
+}
+
         
     </style>
 </head>
@@ -284,6 +321,18 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
             </div>
 
             </div>
+        <div class="grade-habilidades">
+    <div class="item-habilidade">Gestão de Projetos</div>
+    <div class="item-habilidade">Trabalho de Equipe</div>
+    <div class="item-habilidade">Linguagem Python</div>
+    <div class="item-habilidade">Resolução de Problemas</div>
+    <div class="item-habilidade">Big Data</div>
+    <div class="item-habilidade">Estatística</div>
+    <div class="item-habilidade">Técnica de Coleta de Dados</div>
+    <div class="item-habilidade">Visualização de Dados</div>
+    <div class="item-habilidade">Análise Exploratória</div>
+</div>
+
 
         <h2 class="section-title">Contato</h2>
         <div class="row">
