@@ -394,7 +394,22 @@
     width: 100%;
 }
 
+@media (max-width: 768px) {
+  /* ... (mantenha as configurações de hero-area, hero-nome, etc que já estavam aqui) ... */
 
+  .hero-botoes {
+    flex-direction: row; /* Garante que fiquem lado a lado */
+    flex-wrap: wrap; /* Segurança: se a tela for microscópica, eles não vazam da tela */
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .btn {
+    width: auto; /* Remove a largura de 100% que estava antes */
+    padding: 10px 15px; /* Diminui o preenchimento para caberem os dois na tela do celular */
+    font-size: 0.9rem; /* Letra ligeiramente menor no celular */
+  }
+}
 
         
 
@@ -424,6 +439,11 @@
 
     <section class="hero-area">
   <div class="hero-content">
+    
+    <!-- NOVA IMAGEM DE DESTAQUE AQUI -->
+    <!-- Substitua 'sua-foto.jpg' pelo nome do seu arquivo de imagem -->
+    <img src="sua-foto.jpg" alt="Foto de Perfil" class="hero-foto">
+    
     <h1 class="hero-nome">Tiago de Lima Correia</h1>
     <h2 class="hero-cargo">Cientista de Dados | Especialista em IA & BI</h2>
     <p class="hero-descricao">
