@@ -364,6 +364,36 @@
     margin-top: 300px; /* <- Ajuste este valor! Use pixels (px) ou porcentagem (%) */
 }
 
+/* Bloco de Conteúdo Centralizado */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Garante alinhamento central */
+    padding: 0 15px;
+}
+
+/* Título com alinhamento forçado ao centro e tamanho responsivo */
+.hero-content h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(28px, 5.5vw, 56px); /* Ajusta dinamicamente para não quebrar feio no celular */
+    font-weight: 700;
+    background: linear-gradient(135deg, #e6c567 0%, #f9f1d5 50%, #b89735 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    text-align: center;
+    width: 100%;
+}
+
+
+
         
 
         
