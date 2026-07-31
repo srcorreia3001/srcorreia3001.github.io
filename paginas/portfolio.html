@@ -237,123 +237,124 @@
 
 
 
-/* --- SEÇÃO HERO (CENTRALIZADA E RESPONSIVA) --- */
-.hero-section {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 65px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden;
-    padding: 40px 20px;
+/* --- ESTILO GERAL DA SEÇÃO --- */
+.hero-area {
+  /* Substitua 'fundo.jpg' pelo caminho da sua imagem de redes/grafos */
+  /* O linear-gradient escurece a imagem para o texto branco destacar bem */
+  background-image: linear-gradient(rgba(0, 20, 40, 0.7), rgba(0, 20, 40, 0.7)), url('fundo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Flexbox para centralizar tudo perfeitamente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  /* Aqui está o segredo: padding ajusta o espaço, min-height não deixa sumir, mas não ocupa a tela toda no PC */
+  padding: 80px 20px;
+  min-height: 400px; 
+  color: #ffffff;
 }
 
-/* Fundo elegante simulando malha de dados sem imagens externas */
-.hero-tech-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 36%;
-    background: 
-        radial-gradient(circle at 80% 20%, rgba(0, 168, 232, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
-        linear-gradient(135deg, #070c14 0%, #0d1b2a 50%, #04080c 100%);
-    z-index: 1;
-}
-
-/* Bloco de Conteúdo */
 .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  max-width: 800px;
+  width: 100%;
 }
 
-/* Título com Efeito Dourado Metálico */
-.hero-content h1 {
-    font-family: 'Merriweather', serif;
-    font-size: clamp(44px, 8vw, 66px);
-    font-weight: 700;
-    background: linear-gradient(135deg, #e6c567 0%, #f9f1d5 50%, #b89735 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 12px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+/* --- TEXTOS --- */
+.hero-nome {
+  font-size: 3rem;
+  margin-bottom: 5px;
+  /* Cor e sombra para imitar o efeito metálico/bege da foto do tablet */
+  color: #e6d5b8;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  font-family: 'Georgia', serif; /* Ajuste para a fonte que estiver usando */
 }
 
-/* Subtítulo */
-.hero-content h2 {
-    font-size: clamp(15px, 2vw, 20px);
-    font-weight: 400;
-    color: #d1d5db;
-    margin-bottom: 20px;
-    letter-spacing: 0.5px;
+.hero-cargo {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 15px;
 }
 
-/* Descrição */
-.hero-desc {
-    font-size: clamp(14px, 1.8vw, 16px);
-    color: #9ca3af;
-    margin-bottom: 30px;
-    line-height: 1.6;
+.hero-descricao {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
-/* Botões Lado a Lado (Funcionando perfeitamente no celular e tablet) */
-.hero-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    width: 100%;
+/* --- BOTÕES --- */
+.hero-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espaço entre os botões */
 }
 
-.btn-social {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 26px;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.btn-social:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espaço entre o ícone e o texto */
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .btn-github {
-    background-color: #1f2937;
-    color: #ffffff;
-    border: 1px solid #374151;
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .btn-github:hover {
-    background-color: #374151;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-linkedin {
-    background-color: #0077b5;
-    color: #ffffff;
-    border: 1px solid #0077b5;
+  background: #0077b5; /* Azul padrão do LinkedIn */
+  color: #ffffff;
+  border: 1px solid #0077b5;
 }
 
 .btn-linkedin:hover {
-    background-color: #005a8c;
+  background: #005e93;
 }
 
+/* --- ADAPTAÇÃO PARA CELULAR (RESPONSIVIDADE) --- */
+@media (max-width: 768px) {
+  .hero-area {
+    padding: 50px 15px; /* Diminui o espaçamento interno no celular */
+    min-height: auto; /* Deixa a altura livre para se moldar aos textos */
+  }
+
+  .hero-nome {
+    font-size: 2.2rem; /* Fonte menor para não quebrar a palavra */
+  }
+
+  .hero-cargo {
+    font-size: 1.2rem;
+  }
+
+  .hero-descricao {
+    font-size: 1rem;
+  }
+
+  .hero-botoes {
+    flex-direction: column; /* Empilha os botões no celular */
+    width: 100%;
+    max-width: 300px; /* Evita que o botão fique gigante */
+    margin: 0 auto;
+  }
+  
+  .btn {
+    width: 100%; /* Botões ocupam 100% da largura máxima permitida no celular */
+  }
+}
 
 /* --- A SEÇÃO CLARA (Onde está o texto que está sendo coberto) --- */
 .main-content-claro {
