@@ -237,165 +237,121 @@
 
 
 
-/* --- SEÇÃO HERO --- */
+/* --- SEÇÃO HERO (CENTRALIZADA E RESPONSIVA) --- */
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 60vh; /* Altura visível */
+    min-height: calc(100vh - 65px);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #ffffff;
     overflow: hidden;
+    padding: 40px 20px;
 }
 
-/* Camada para a imagem de fundo complexa */
-.hero-bg-visual {
+/* Fundo elegante simulando malha de dados sem imagens externas */
+.hero-tech-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Substitua 'https://www.goireland.in/assets/scope-of-data-science-in-ireland.jpg' pelo caminho da sua imagem */
-    /* Crie uma imagem de fundo com linhas geométricas teal e gold sobre fundo escuro */
-    background-image: url('background-wireframe.jpg'); 
-    
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: 1; /* Fica atrás do conteúdo */
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(0, 168, 232, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        linear-gradient(135deg, #070c14 0%, #0d1b2a 50%, #04080c 100%);
+    z-index: 1;
 }
 
-/* Adiciona uma sobreposição escura para garantir o contraste do texto */
-.hero-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 38%;
-    background: linear-gradient(to bottom, rgba(10, 23, 36, 0.7), rgba(10, 23, 36, 0.9));
-    z-index: 2;
-}
-
+/* Bloco de Conteúdo */
 .hero-content {
     position: relative;
-    z-index: 10; /* Fica na frente do fundo e da sobreposição */
-    max-width: 700px;
-    padding: 10px;
-    text-align: center; /*texto no centro*/
-    margin: 0 auto; 	/* Centraliza caixa de conteudo */
-}
-
-/* Título Principal: Tiago de Lima Correia */
-.hero-content h1 {
-    font-family: 'Merriweather', serif;
-    font-size: 64px;
-    font-weight: 700;
-    
-    /* Efeito Dourado Metálico */
-    background: linear-gradient(45deg, #bfa35e 25%, #e9d38d 50%, #bfa35e 75%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    
-    margin-bottom: 10px;
-}
-
-/* Subtítulo: Cientista de Dados... */
-.hero-content h2 {
-    font-size: 24px;
-    font-weight: 400;
-    color: #ffffff;
-    margin-bottom: 25px;
-    letter-spacing: 0.5px;
-}
-
-/* Parágrafo de descrição */
-.hero-description {
-    font-size: 18px;
-    color: #e0e0e0;
-    margin-bottom: 40px;
-    font-weight: 400;
-}
-
-/* Botões Sociais */
-.hero-buttons {
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-.btn-social {
+/* Título com Efeito Dourado Metálico */
+.hero-content h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    background: linear-gradient(135deg, #e6c567 0%, #f9f1d5 50%, #b89735 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+/* Subtítulo */
+.hero-content h2 {
+    font-size: clamp(15px, 2vw, 20px);
+    font-weight: 400;
+    color: #d1d5db;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+/* Descrição */
+.hero-desc {
+    font-size: clamp(14px, 1.8vw, 16px);
+    color: #9ca3af;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Botões Lado a Lado (Funcionando perfeitamente no celular e tablet) */
+.hero-buttons {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.btn-social {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 12px 28px;
-    font-size: 16px;
+    padding: 12px 26px;
+    font-size: 15px;
     font-weight: 600;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-color: rgba(255, 255, 255, 0.1); /* Botão transparente */
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 .btn-social:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px); /* Pequeno efeito hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
 
-.btn-social i {
-    font-size: 20px;
-}
-
-/* Estilos específicos para cada botão */
 .btn-github {
+    background-color: #1f2937;
     color: #ffffff;
+    border: 1px solid #374151;
+}
+
+.btn-github:hover {
+    background-color: #374151;
 }
 
 .btn-linkedin {
+    background-color: #0077b5;
     color: #ffffff;
-    background-color: #0077b5; /* Fundo azul do LinkedIn */
-    border-color: #0077b5;
+    border: 1px solid #0077b5;
 }
 
 .btn-linkedin:hover {
     background-color: #005a8c;
-    border-color: #005a8c;
-}
-
-/* --- RESPONSIVIDADE (Mobile) --- */
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-    
-    .hero-content h1 {
-        font-size: 42px;
-    }
-    
-    .hero-content h2 {
-        font-size: 18px;
-    }
-    
-    .hero-description {
-        font-size: 16px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        width: 200px;
-        margin: 0 auto;
-    }
 }
 
 
@@ -425,31 +381,30 @@
         </div>
     </nav>
 
-<!-- SEÇÃO HERO (ÁREA PRINCIPAL) -->
+    <!-- SEÇÃO HERO (MODELO SELECIONADO) -->
     <section class="hero-section">
-        <!-- A imagem de fundo complexa será aplicada via CSS nesta div -->
-        <div class="hero-bg-visual"></div>
+        <!-- Fundo tecnológico em CSS (sem erro de imagem faltando) -->
+        <div class="hero-tech-bg"></div>
         
         <div class="hero-content">
             <h1>Tiago de Lima Correia</h1>
             <h2>Cientista de Dados | Especialista em IA & BI</h2>
             
-            <p class="hero-description">
+            <p class="hero-desc">
                 Transformando dados brutos em insights acionáveis.<br>
                 Apaixonado por Machine Learning e Data Visualization.
             </p>
             
             <div class="hero-buttons">
-                <a href="LINK_DO_SEU_GITHUB" target="_blank" class="btn-social btn-github">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="https://github.com/srcorreia3001" target="_blank" class="btn-social btn-github">
+                    <i class="fa-brands fa-github"></i> GitHub
                 </a>
-                <a href="LINK_DO_SEU_LINKEDIN" target="_blank" class="btn-social btn-linkedin">
-                    <i class="fab fa-linkedin"></i> LinkedIn
+                <a href="https://linkedin.com" target="_blank" class="btn-social btn-linkedin">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
                 </a>
             </div>
         </div>
     </section>
-
 
 
 <!--teste
