@@ -217,21 +217,23 @@
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
 
 
-/* Rodapé de canto a canto, independente e que não acompanha a rolagem */
-.rodape-canto-a-canto {
-    width: 100%;                  /* Ocupa a largura total da tela (de canto a canto) */
-    background-color: #1a1a2e;    /* Cor de fundo */
-    color: #ffffff;               /* Cor do texto */
-    padding: 24px 0;              /* Espaçamento vertical (sem padding lateral para encostar nas bordas) */
-    box-sizing: border-box;       /* Garante que o padding não quebre a largura */
-    text-align: center;           /* Centraliza o texto */
+/* O conteúdo principal ocupa o espaço e empurra o rodapé para baixo */
+.conteudo-do-site {
+    flex: 1;
 }
 
-/* Opcional: Se quiser que o conteúdo interno tenha um limite de largura para não colar nas pontas extremas da tela */
-.rodape-interno {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* O Rodapé de Canto a Canto e Independente */
+.rodape-canto-a-canto {
+    width: 100vw;                 /* Ocupa 100% da largura da janela do navegador */
+    position: relative;           /* Fica no fluxo normal, sem acompanhar a rolagem */
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;          /* Truque infalível para forçar 100vw mesmo se houver padding no pai */
+    background-color: #263238;    /* Cor escura igual à da sua foto */
+    color: #ffffff;               /* Texto branco */
+    text-align: center;           /* Centralizado */
+    padding: 20px 0;              /* Altura do rodapé */
 }
 /* --- ESTILO GERAL DA SEÇÃO --- */
 
@@ -712,10 +714,14 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
     </div>
 </section>
 
-       <footer class="rodape-canto-a-canto">
-    <div class="rodape-interno">
-        <p>&copy; 2026 Meu Site. Todos os direitos reservados.</p>
-    </div>
+       <!-- 1. Todo o conteúdo do seu site fica aqui dentro -->
+<div class="conteudo-do-site">
+        <!-- Seus textos, formulários e projetos -->
+</div>
+
+    <!-- 2. O rodapé fica FORA de tudo, direto no body (De canto a canto) -->
+<footer class="rodape-canto-a-canto">
+    <p>&copy; 2026 Tiago de Lima Correia. Todos os direitos reservados.</p>
 </footer>
 
 </div>
