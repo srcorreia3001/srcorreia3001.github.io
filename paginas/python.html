@@ -151,6 +151,20 @@
     backdrop-filter: blur(4px);                 /* Efeito de desfoque no fundo (opcional) */
 }
 
+        /* Responsividade para Smartphones (2 colunas) */
+@media (max-width: 768px) {
+    .grade-habilidades {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .item-habilidade {
+        font-size: 14px; /* Ajusta o tamanho da fonte para telas menores, se necessário */
+        padding: 12px 8px;
+    }
+}
+
         /* --- FRASE DA SEMANA --- */
         .frase-da-semana { background: var(--azul-escuro); border: 1px solid var(--azul-brilhante); border-radius: 15px; }
 
