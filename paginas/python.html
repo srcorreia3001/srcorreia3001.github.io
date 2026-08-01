@@ -50,6 +50,86 @@
             border: 1px solid var(--azul-brilhante);
         }
 
+        /* Estilo dos Títulos */
+        .section-title {
+            color: var(--accent-blue);
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 15px;
+            margin: 50px 0 30px;
+        }
+
+        /* Cards de Projeto - Idênticos ao seu Estilo */
+        .card-custom {
+            background-color: var(--branco) !important;
+            border: 1px solid var(--accent-blue) !important;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card-custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 168, 232, 0.4) !important;
+        }
+
+        .img-wrapper {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-ver-mais {
+            border: 2px solid var(--accent-blue);
+            color: dark blue;
+            background: transparent;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-ver-mais:hover {
+            background-color: var(--accent-blue);
+            color: var(--bg-body);
+        }
+
+        /* Lógica de Quantidade Solicitada */
+        /* Desktop: 3 por fila (máximo 15) */
+        @media (min-width: 768px) {
+            .projeto-item:nth-child(n+16) { display: none !important; }
+        }
+
+        /* Smartphone: 1 por fila (máximo 9) */
+        @media (max-width: 767px) {
+            .projeto-item:nth-child(n+10) { display: none !important; }
+        }
+
+        /* Seção Formação Acadêmica */
+        .formacao-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .titulo-cursos {
+            display:flex;
+            align-items: center;
+            gap:12px;
+        }
+        .icone-cursos{
+            width:500px;
+            height:auto;
+        }
+
         /* --- GRADE DE POSTS --- */
         /* Container principal da grade (Computador: até 3 colunas) */
 .grade-habilidades {
