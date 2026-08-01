@@ -217,43 +217,53 @@
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
 
 
-/* 1. Estrutura para fixar o rodapé na base da tela */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* O conteúdo principal empurra o rodapé para baixo */
-main, .conteudo-principal {
-    flex: 1;
-}
-
-/* 2. Estilização exclusiva do rodapé de ponta a ponta */
-.rodape-completo {
+/* Escopo isolado para o rodapé desmembrado */
+.isolated-footer-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    background-color: #0a111a;
-    color: #9ca3af;
-    text-align: center;
-    padding: 15px 0;
-    margin: 0;
-    border-top: 1px solid rgba(0, 168, 232, 0.2);
+    background-color: #1a1a2e; /* Tom moderno e neutro */
+    color: #ffffff;
+    padding: 16px 24px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
-    margin-left: 10px;
-
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999999; /* Garante que fique acima de qualquer elemento da página */
+    box-sizing: border-box;
 }
 
-.rodape-completo strong {
+.isolated-footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.isolated-footer-text {
+    margin: 0;
+}
+
+.isolated-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.isolated-footer-links a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.isolated-footer-links a:hover {
     color: #ffffff;
 }
-
-
 
 /* --- ESTILO GERAL DA SEÇÃO --- */
 
@@ -741,9 +751,16 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
         </div>
     </section>
 
-    <!-- CÓDIGO HTML DO RODAPÉ (Coloque logo antes de fechar o </body>) -->
-<footer>
-        <p>&copy; 2026 Meu Site. Todos os direitos reservados.</p>
-    </footer>
+    <!-- Bloco do Rodapé Desmembrado -->
+<footer class="isolated-footer-container">
+    <div class="isolated-footer-content">
+        <p class="isolated-footer-text">&copy; 2026 Sua Marca. Todos os direitos reservados.</p>
+        <ul class="isolated-footer-links">
+            <li><a href="#privacidade">Privacidade</a></li>
+            <li><a href="#termos">Termos de Uso</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </div>
+</footer>
 </body>
 </html>
