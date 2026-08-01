@@ -51,19 +51,25 @@
         }
 
         /* --- GRADE DE POSTS --- */
-        .bg-dark-blue { background-color: var(--azul-escuro) !important; }
-        .border-blue { border: 1px solid var(--azul-botao) !important; transition: 0.3s; }
-        .border-blue:hover { transform: translateY(-5px); border-color: var(--azul-brilhante) !important; }
-        .text-blue-logo { color: var(--azul-brilhante) !important; }
-        
-        .btn-ver-mais {
-            background-color: transparent;
-            color: var(--azul-brilhante) !important;
-            border: 2px solid var(--azul-brilhante);
-            font-weight: bold;
-            transition: 0.4s;
-        }
-        .btn-ver-mais:hover { background-color: var(--azul-brilhante); color: white !important; }
+        /* Container principal da grade (Computador: até 3 colunas) */
+.grade-habilidades {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px; /* Espaçamento entre os blocos */
+    padding: 20px;
+}
+
+/* Estilo individual de cada bloco (Card) */
+.item-habilidade {
+    background-color: rgba(0, 119, 182, 0.45); /* Azul transparente */
+    color: #050a14;                             /* Letra com um azul escuro */
+    font-weight: 500;                           /* Levemente em bold */
+    text-align: center;                         /* Texto centralizado */
+    padding: 15px 10px;                         /* Altura e largura interna do bloco */
+    border-radius: 8px;                         /* Bordas arredondadas */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil brilhante */
+    backdrop-filter: blur(4px);                 /* Efeito de desfoque no fundo (opcional) */
+}
 
         /* --- FRASE DA SEMANA --- */
         .frase-da-semana { background: var(--azul-escuro); border: 1px solid var(--azul-brilhante); border-radius: 15px; }
