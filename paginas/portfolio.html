@@ -217,19 +217,23 @@
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
 
 
-/* Escopo isolado para o rodapé desmembrado */
+/* 1. O container pai precisa ser 'relative' para servir de âncora */
+.isolated-page-wrapper {
+    position: relative;
+    min-height: 100vh; /* Garante altura mínima da tela inteira */
+    padding-bottom: 70px; /* IMPORTANTE: Espaço para o rodapé não cobrir o texto final */
+    box-sizing: border-box;
+}
+
+/* 2. O Rodapé com position: absolute empurrado para baixo */
 .isolated-footer-container {
     position: absolute;
-    bottom: 0;
+    bottom: 0;   /* Empurra o rodapé para a base do container pai */
     left: 0;
     width: 100%;
-    background-color: #1a1a2e; /* Tom moderno e neutro */
+    background-color: #1a1a2e;
     color: #ffffff;
     padding: 16px 24px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 999999; /* Garante que fique acima de qualquer elemento da página */
     box-sizing: border-box;
 }
 
@@ -239,30 +243,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
 }
-
-.isolated-footer-text {
-    margin: 0;
-}
-
-.isolated-footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px;
-}
-
-.isolated-footer-links a {
-    color: #a0aec0;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.isolated-footer-links a:hover {
-    color: #ffffff;
 }
 /* --- ESTILO GERAL DA SEÇÃO --- */
 
@@ -743,16 +724,22 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
     </div>
 </section>
 
-        <!-- Bloco do Rodapé Desmembrado -->
-<footer class="isolated-footer-container">
-    <div class="isolated-footer-content">
-        <p class="isolated-footer-text">&copy; 2026 Sua Marca. Todos os direitos reservados.</p>
-        <ul class="isolated-footer-links">
-            <li><a href="#privacidade">Privacidade</a></li>
-            <li><a href="#termos">Termos de Uso</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+       <!-- Container que serve de âncora para o absolute -->
+<div class="isolated-page-wrapper">
+    
+    <!-- Conteúdo Principal -->
+    <div class="isolated-main-content">
+        <h1>Meu Site</h1>
+        <p>Este conteúdo está dentro da página. O rodapé agora é absoluto em relação a este bloco.</p>
     </div>
-</footer>
+
+    <!-- Rodapé Desmembrado preso embaixo via absolute -->
+    <footer class="isolated-footer-container">
+        <div class="isolated-footer-content">
+            <p class="isolated-footer-text">&copy; 2026 Sua Marca. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</div>
 </body>
 </html>
