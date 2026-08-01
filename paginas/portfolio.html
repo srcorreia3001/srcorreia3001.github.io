@@ -217,33 +217,21 @@
 /* FIM DAS CONFIGURAÇÕES DE CONTATO E MINHAS INFORMAÇÕES DE CONTATO */
 
 
-/* 1. O container pai precisa ser 'relative' para servir de âncora */
-.isolated-page-wrapper {
-    position: relative;
-    min-height: 100vh; /* Garante altura mínima da tela inteira */
-    padding-bottom: 70px; /* IMPORTANTE: Espaço para o rodapé não cobrir o texto final */
-    box-sizing: border-box;
+/* Rodapé de canto a canto, independente e que não acompanha a rolagem */
+.rodape-canto-a-canto {
+    width: 100%;                  /* Ocupa a largura total da tela (de canto a canto) */
+    background-color: #1a1a2e;    /* Cor de fundo */
+    color: #ffffff;               /* Cor do texto */
+    padding: 24px 0;              /* Espaçamento vertical (sem padding lateral para encostar nas bordas) */
+    box-sizing: border-box;       /* Garante que o padding não quebre a largura */
+    text-align: center;           /* Centraliza o texto */
 }
 
-/* 2. O Rodapé com position: absolute empurrado para baixo */
-.isolated-footer-container {
-    position: absolute;
-    bottom: 0;   /* Empurra o rodapé para a base do container pai */
-    left: 0;
-    width: 100%;
-    background-color: #1a1a2e;
-    color: #ffffff;
-    padding: 16px 24px;
-    box-sizing: border-box;
-}
-
-.isolated-footer-content {
+/* Opcional: Se quiser que o conteúdo interno tenha um limite de largura para não colar nas pontas extremas da tela */
+.rodape-interno {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    padding: 0 20px;
 }
 /* --- ESTILO GERAL DA SEÇÃO --- */
 
@@ -724,21 +712,11 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
     </div>
 </section>
 
-       <!-- Container que serve de âncora para o absolute -->
-<div class="isolated-page-wrapper">
-    
-    <!-- Conteúdo Principal -->
-    <div class="isolated-main-content">
-        <h1>Meu Site</h1>
-        <p>Este conteúdo está dentro da página. O rodapé agora é absoluto em relação a este bloco.</p>
+       <footer class="rodape-canto-a-canto">
+    <div class="rodape-interno">
+        <p>&copy; 2026 Meu Site. Todos os direitos reservados.</p>
     </div>
-
-    <!-- Rodapé Desmembrado preso embaixo via absolute -->
-    <footer class="isolated-footer-container">
-        <div class="isolated-footer-content">
-            <p class="isolated-footer-text">&copy; 2026 Sua Marca. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+</footer>
 
 </div>
 </body>
