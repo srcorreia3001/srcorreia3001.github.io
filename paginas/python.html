@@ -187,6 +187,156 @@
     }
 }
 
+        
+/* --- TEXTOS --- */
+.hero-nome {
+  font-size: 3rem;
+  margin-bottom: 5px;
+  /* Cor e sombra para imitar o efeito metálico/bege da foto do tablet */
+  color: #e6d5b8;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  font-family: 'Georgia', serif; /* Ajuste para a fonte que estiver usando */
+}
+
+.hero-cargo {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.hero-descricao {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* --- BOTÕES --- */
+.hero-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espaço entre os botões */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* Espaço entre o ícone e o texto */
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-github {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+
+.btn-github:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-linkedin {
+  background: #0077b5; /* Azul padrão do LinkedIn */
+  color: #ffffff;
+  border: 1px solid #0077b5;
+}
+
+.btn-linkedin:hover {
+  background: #005e93;
+}
+
+/* --- ADAPTAÇÃO PARA CELULAR (RESPONSIVIDADE) --- */
+@media (max-width: 768px) {
+  .hero-area {
+    padding: 50px 15px; /* Diminui o espaçamento interno no celular */
+    min-height: auto; /* Deixa a altura livre para se moldar aos textos */
+  }
+
+  .hero-nome {
+    font-size: 2.2rem; /* Fonte menor para não quebrar a palavra */
+  }
+
+  .hero-cargo {
+    font-size: 1.2rem;
+  }
+
+  .hero-descricao {
+    font-size: 1rem;
+  }
+
+  .hero-botoes {
+    flex-direction: column; /* Empilha os botões no celular */
+    width: 100%;
+    max-width: 300px; /* Evita que o botão fique gigante */
+    margin: 0 auto;
+  }
+  
+  .btn {
+    width: 100%; /* Botões ocupam 100% da largura máxima permitida no celular */
+  }
+}
+
+/* --- A SEÇÃO CLARA (Onde está o texto que está sendo coberto) --- */
+.main-content-claro {
+    /* Substitua 'main-content-claro' pela classe real do seu contêiner de texto */
+    
+    /* ADICIONE ESTA LINHA: */
+    /* A margem superior deve ser pelo menos a altura da sua seção escura */
+    margin-top:150;  /* <- Ajuste este valor! Use pixels (px) ou porcentagem (%) */
+    padding-top:0;
+}
+
+/* Bloco de Conteúdo Centralizado */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Garante alinhamento central */
+    padding: 0 15px;
+}
+
+/* Título com alinhamento forçado ao centro e tamanho responsivo */
+.hero-content h1 {
+    font-family: 'Merriweather', serif;
+    font-size: clamp(28px, 5.5vw, 56px); /* Ajusta dinamicamente para não quebrar feio no celular */
+    font-weight: 700;
+    background: linear-gradient(135deg, #e6c567 0%, #f9f1d5 50%, #b89735 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    text-align: center;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* ... (mantenha as configurações de hero-area, hero-nome, etc que já estavam aqui) ... */
+
+  .hero-botoes {
+    flex-direction: row; /* Garante que fiquem lado a lado */
+    flex-wrap: wrap; /* Segurança: se a tela for microscópica, eles não vazam da tela */
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .btn {
+    width: auto; /* Remove a largura de 100% que estava antes */
+    padding: 10px 15px; /* Diminui o preenchimento para caberem os dois na tela do celular */
+    font-size: 0.9rem; /* Letra ligeiramente menor no celular */
+  }
+}
+
+
 
 
     </style>
