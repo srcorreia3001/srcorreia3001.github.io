@@ -151,44 +151,93 @@
 <p></p>
      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg" alt="imagem 1" width="900" height="500">
 
-    <p>A evasão escolar é um dos desafios mais complexos e impactantes da gestão educacional pública e privada. Reter um aluno não é só visto como uma vitória financeira para uma instituição, mas uma real transformação social na vida do estudante.
-</p>
+    <h1>📈 Previsão de Vendas e Demanda no Varejo: Pipeline de Séries Temporais com SQL, Python e Machine Learning</h1>
 
-    <p>Nesse projeto de ciência de dados, fiz uso de técnicas de inteligência artificial para identificar padrões comportamentais e prever quais alunos estão com maior risco de abandonar os estudos.
-</p>
+    <p>No setor varejista, o planejamento de estoque e a gestão de fluxo de caixa são pilares críticos para a saúde financeira de qualquer rede de lojas. Decisões baseadas puramente na intuição geram prejuízos severos: o excesso de mercadorias imobiliza capital de giro, enquanto a falta de produtos (<em>stockout</em>) resulta em perda direta de faturamento e insatisfação do cliente.</p>
 
-    <h2>O Dataset e Ferramentas</h2>
+    <p>Neste projeto de portfólio de nível sênior, desenvolvemos um pipeline analítico completo para <strong>Previsão de Vendas e Séries Temporais</strong>, utilizando dados reais do varejo para estruturar um banco de dados relacional, realizar engenharia de atributos temporais e treinar um modelo preditivo de Machine Learning.</p>
 
-    <p>Utilizei o respeitado dataset acadêmico "Predict Students Dropout and Academic Success" da UCI Machine Learning Repo. O projeto foi desenvolvido totalmente em Python, utilizando bibliotecas como Pandas para manipulação de dados, Seaborn para visualização e Scikit-Learn para modelagem preditiva.</p>
+    <hr>
 
-   <h2>Insights da Análise Exploratória (EDA)</h2>
-
-   <p>Durante a análise de dados, dois fatores saltaram aos olhos como os principais influenciadores da permanência do aluno:</p>
-
-        <ul>
-      <li>O desempenho no 1º semestre é crucial: Alunos que terminam o primeiro período com notas baixas ou zeradas possuem uma taxa de evasão alarmante. A intervenção pedagógica precisa acontecer logo nos primeiros meses.</li>
-      <li>O impacto Vital do auxílio financeiro: A análise mostrou que alunos de bolsistas possuem uma taxa de evasão muito menor em comparação aos alunos não-bolsistas. Programas de assistência financeira mostram-se um dos pilares mais eficientes para a retenção escolar.</li>
-
-  </ul>
-
-     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcLO5onM-BFULAP9NmdzOAtoGfII5xKeUnAbGr0mZCniRqEVoYGzys8lvYRDYAHxZMPdEgkiUqR4SDvaabqrqjRLuA3nzF7DZlkQVxjxXdX-nnmd_kBkxU-PuKvLpDAMdqQfa4QCTDX2ymDXtAqghyphenhyphenskbtQRWQWa74MLRx7rTS5lYi9gASfASpf1YzXbY9/s1055/1000000093.jpg" alt="imagem 1" width="900" height="500">
-
-<h2>Modelagem Preditiva com Machine Learning</h2>
-
-<p>Para criar um sistema de alerta precoce, treinei um algoritmo de Random Forest (Floresta Aleatória). O objetivo era classificar se o estudante iria se formar ou evadir com base em suas características socioeconômicas e acadêmicas.</p>
-
-<p>Os resultados foram surpreendentes para uma primeira versão:</p>
-
+    <h2>🛠️ Stack Tecnológica e Arquitetura</h2>
     <ul>
-       <li>Acurácia Geral: 90,22% da previsões corretas.</li>
-       <li>Precisão para Evasão (Dropout): 91% isso significa que o modelo é altamente confiável quando aciona o “Alerta Vermelho” para um estudante em risco.</li>
+        <li><strong>Linguagem:</strong> Python (Pandas, Scikit-Learn).</li>
+        <li><strong>Banco de Dados:</strong> SQLite (persistência e modelagem de dados relacionais locais).</li>
+        <li><strong>Linguagem de Consulta:</strong> SQL Avançado (agregações temporais e extração de métricas históricas).</li>
+        <li><strong>Machine Learning:</strong> Random Forest Regressor (<code>sklearn.ensemble</code>).</li>
+        <li><strong>Ambiente:</strong> Kaggle Notebooks.</li>
+    </ul>
 
-     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiY4bLqhvi6BZ_e1EI-ucBq-hz9X1Sx3iRn5hGbdisdUS_E9Z71uit3WDOonhHLs2iLl-VZqNnztOfdzth2sYzP5FcNj66zgYEfdDVNXnUCKvKZ2cWtIA2AZ2uU2ird0SegLVpY615Lxm_D2KWAkgPKU16XudvVqKu2z-m_UwWYUr-jtnGb008e98pAiluL/s550/1000000094.jpg" alt="imagem 2" width="500" height="300">
+    <hr>
 
+    <h2>📊 Etapas de Desenvolvimento do Projeto</h2>
 
-<h2>Conclusão e impacto de negócio </h2>
+    <h3>1. Ingestão e Estruturação no Banco Relacional (ETL)</h3>
+    <p>A partir da base transacional de vendas diárias por loja, criamos um script automatizado de ETL que varre a fonte de dados, extrai as informações brutas e as consolida em uma tabela estruturada dentro de um banco de dados SQLite local (<code>banco_vendas_varejo.db</code>).</p>
 
-<p>Com um modelo predito rodando com 90% de acurácia, a coordenação pedagógica de um instituição pode agir de forma proativa em vez de reativa. Em vez de descobrir a evasão quando o aluno já cancelou a matricula, a IA permite criar planos de apoio personalizados, mentorias e direcionamento de bolsas para quem realmente precisa, salvando semestres e mudando futuros.</p>
+    <h3>2. Análise Exploratória e Histórico Anual via SQL</h3>
+    <p>Utilizando consultas SQL avançadas, realizamos a extração e o cruzamento dos dados temporais para mapear o comportamento da rede ao longo dos anos:</p>
+    <ul>
+        <li><strong>Expansão da Rede:</strong> Acompanhamento do crescimento do número de lojas ativas de 47 em 2013 para 54 em 2017.</li>
+        <li><strong>Volume de Transações:</strong> Identificação dos picos de movimentação da rede (ultrapassando 31 milhões de transações anuais entre 2015 e 2016) e análise da média diária estável por unidade (faixa de 1.600 a 1.750 transações/dia).</li>
+    </ul>
+
+    <h3>3. Engenharia de Atributos Temporais (Feature Engineering)</h3>
+    <p>Em séries temporais, o modelo precisa aprender com o comportamento passado para antecipar o futuro. Consolidamos o total de transações diárias de toda a rede e criamos variáveis explicativas fundamentais:</p>
+    <ul>
+        <li><strong><code>Lag_1</code> (Defasagem de 1 dia):</strong> Captura o comportamento e o volume de transações imediatamente anterior.</li>
+        <li><strong><code>Lag_7</code> (Defasagem de 7 dias):</strong> Captura a <strong>sazonalidade semanal</strong> (o volume de vendas no mesmo dia da semana anterior).</li>
+        <li><strong><code>Media_Movel_7d</code> (Média Móvel de 7 dias):</strong> Suaviza flutuações diárias e destaca a tendência de curto prazo da operação.</li>
+    </ul>
+
+    <h3>4. Divisão Cronológica e Treinamento do Modelo (Machine Learning)</h3>
+    <p>Diferente de problemas tradicionais de classificação, em séries temporais <strong>nunca realizamos divisões aleatórias</strong>, preservando rigorosamente a ordem cronológica do tempo para evitar vazamento de dados futuros.</p>
+    <ul>
+        <li><strong>Conjunto de Treino:</strong> 80% iniciais da série temporal (passado).</li>
+        <li><strong>Conjunto de Teste:</strong> 20% finais da série temporal (futuro).</li>
+        <li><strong>Algoritmo:</strong> Utilizou-se o <strong>Random Forest Regressor</strong> para capturar relações não lineares complexas entre as defasagens temporais e o volume real de transações.</li>
+    </ul>
+
+    <hr>
+
+    <h2>💻 Código Principal do Modelo Preditivo</h2>
+
+    <pre><code>import pandas as pd
+import sqlite3
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.metrics import mean_absolute_error
+
+# 1. Conexão e leitura da base tratada de série temporal
+conexao = sqlite3.connect('banco_vendas_varejo.db')
+df_ts = pd.read_sql("SELECT * FROM tb_serie_temporal_tratada", conexao)
+
+# 2. Definição de Features (X) e Target (y)
+features = ['Lag_1', 'Lag_7', 'Media_Movel_7d']
+X = df_ts[features]
+y = df_ts['Total_Transacoes_Dia']
+
+# 3. Divisão Cronológica (Respeitando a ordem do tempo)
+tamanho_treino = int(len(df_ts) * 0.8)
+X_train, X_test = X.iloc[:tamanho_treino], X.iloc[tamanho_treino:]
+y_train, y_test = y.iloc[:tamanho_treino], y.iloc[tamanho_treino:]
+
+# 4. Treinamento do Random Forest Regressor
+modelo = RandomForestRegressor(n_estimators=100, random_state=42)
+modelo.fit(X_train, y_train)
+
+# 5. Previsão e Avaliação com Erro Absoluto Médio (MAE)
+previsoes = modelo.predict(X_test)
+mae = mean_absolute_error(y_test, previsoes)
+
+print(f"Erro Absoluto Médio (MAE) no teste: {mae:.2f} transações por dia")</code></pre>
+
+    <hr>
+
+    <h2>💡 Resultados e Impacto de Negócio</h2>
+    <ul>
+        <li><strong>Alta Precisão Operacional:</strong> O modelo alcançou um <strong>Erro Absoluto Médio (MAE) de 5.116,83 transações por dia</strong> no conjunto de teste. Considerando o volume massivo de dezenas de milhares de transações diárias da rede, o erro percentual mostra-se altamente controlado e confiável.</li>
+        <li><strong>Previsibilidade Logística:</strong> A capacidade de antecipar a demanda diária permite que os gestores planejem com antecedência a reposição de estoques, otimizem a escala de colaboradores por loja e evitem rupturas operacionais que prejudicam a receita da empresa.</li>
+    </ul>
 
 <p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/projeto-de-eves-o-escolar/blob/main/C%C3%B3pia_de_projeto_de_ci_ncia_de_dados_evas_o_escolar.ipynb">GitHub</a></p>
 </div>
