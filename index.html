@@ -700,6 +700,8 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             margin-bottom: 20px;
             font-family: sans-serif;
+            box-sizing: border-box;
+            overflow: hidden;
         }
         .sidebar-widget-block .widget-heading {
             font-size: 1.1rem;
@@ -712,14 +714,17 @@
         }
         .sidebar-widget-block .widget-content-box {
             color: #555555;
+            width: 100%;
+            box-sizing: border-box;
         }
         .weather-info {
             display: flex;
             flex-direction: column;
             gap: 4px;
+            margin-bottom: 12px;
         }
         .weather-city {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #666666;
             font-weight: 500;
         }
@@ -727,22 +732,23 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 6px 0;
+            margin: 4px 0;
         }
         .weather-temp {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             color: #222222;
         }
         .weather-icon {
-            font-size: 2.2rem;
+            font-size: 2rem;
         }
         .weather-desc {
             font-size: 0.85rem;
             color: #777777;
-            margin: 0 0 12px 0;
+            margin: 0;
+            text-transform: capitalize;
         }
-        /* Estilos da Previsão de 5 Dias */
+        /* Estilos ajustados da Previsão de 5 Dias para não vazar */
         .weather-forecast {
             border-top: 1px solid #f0f0f0;
             padding-top: 10px;
@@ -756,13 +762,14 @@
             justify-content: space-between;
             font-size: 0.85rem;
             color: #555;
+            width: 100%;
         }
         .forecast-day {
             font-weight: 500;
             width: 35px;
         }
         .forecast-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .forecast-temps {
             display: flex;
@@ -780,17 +787,16 @@
     <h3 class="widget-heading">Clima</h3>
     <div class="widget-content-box">
         <div class="weather-info">
-            <span class="weather-city" id="weather-city">Carregando local...</span>
+            <span class="weather-city" id="weather-city">Carregando...</span>
             <div class="weather-main">
                 <span class="weather-temp" id="weather-temp">--°C</span>
                 <span class="weather-icon" id="weather-icon">⏳</span>
             </div>
-            <p class="weather-desc" id="weather-desc">Obtendo dados...</p>
+            <p class="weather-desc" id="weather-desc">Buscando dados...</p>
         </div>
 
-        <!-- Lista da Previsão de 5 Dias -->
         <div class="weather-forecast" id="weather-forecast-list">
-            <!-- Os dias serão inseridos dinamicamente aqui via JavaScript -->
+            <!-- Previsão dinâmica -->
         </div>
     </div>
 
@@ -808,24 +814,22 @@
 
             try {
                 if (navigator.geolocation) {
-                    await new Promise((resolve, reject) => {
+                    await new Promise((resolve) => {
                         navigator.geolocation.getCurrentPosition(position => {
                             lat = position.coords.latitude;
                             lon = position.coords.longitude;
                             nomeLocalidade = "Sua Localização";
                             resolve();
-                        }, err => resolve(), { timeout: 4000 });
+                        }, err => resolve(), { timeout: 3000 });
                     });
                 }
 
-                // Requisição unificada para clima atual + previsão diária de 5 dias
                 const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
                 
                 const resposta = await fetch(url);
                 const dados = await resposta.json();
 
                 if (dados && dados.current) {
-                    // Clima Atual
                     const temperatura = Math.round(dados.current.temperature_2m);
                     const infoClimaAtual = traduzirCodigoClima(dados.current.weather_code);
 
@@ -839,10 +843,9 @@
                     forecastListEl.innerHTML = '';
                     const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
-                    // Exibe a partir de amanhã até os próximos 5 dias (índices 1 a 5)
                     for (let i = 1; i <= 5; i++) {
                         const dataStr = dados.daily.time[i];
-                        const dataObj = new Date(dataStr + 'T00:00:00'); // Evita problemas de fuso horário
+                        const dataObj = new Date(dataStr + 'T00:00:00');
                         const nomeDia = diasSemana[dataObj.getDay()];
                         
                         const maxTemp = Math.round(dados.daily.temperature_2m_max[i]);
@@ -862,12 +865,11 @@
                         forecastListEl.innerHTML += itemHTML;
                     }
                 }
-
             } catch (erro) {
                 tempEl.textContent = "--°C";
-                descEl.textContent = "Erro ao carregar clima";
+                descEl.textContent = "Erro ao carregar";
                 cityEl.textContent = "Indisponível";
-                forecastListEl.innerHTML = '<span style="font-size:0.8rem; color:#888;">Previsão indisponível</span>';
+                forecastListEl.innerHTML = '';
             }
         }
 
@@ -878,9 +880,9 @@
                 2: { descricao: "Parcialmente nublado", icone: "⛅" },
                 3: { descricao: "Nublado", icone: "☁️" },
                 45: { descricao: "Nevoeiro", icone: "🌫️" },
-                48: { descricao: "Nevoeiro com geada", icone: "🌫️" },
+                48: { descricao: "Nevoeiro", icone: "🌫️" },
                 51: { descricao: "Garoa leve", icone: "🌧️" },
-                53: { descricao: "Garoa moderada", icone: "🌧️" },
+                53: { descricao: "Garoa", icone: "🌧️" },
                 55: { descricao: "Garoa densa", icone: "🌧️" },
                 61: { descricao: "Chuva leve", icone: "🌧️" },
                 63: { descricao: "Chuva moderada", icone: "🌧️" },
