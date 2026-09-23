@@ -691,7 +691,7 @@
         <!-- Coluna da Direita (Barra Lateral Fixa ao Lado) -->
         <aside class="blog-sidebar-section">
             <!-- Clima -->
-            <<div class="sidebar-widget-block widget-clima">
+            <div class="sidebar-widget-block widget-clima">
     <style>
         .sidebar-widget-block.widget-clima {
             background: #ffffff;
@@ -740,7 +740,40 @@
         .weather-desc {
             font-size: 0.85rem;
             color: #777777;
-            margin: 0;
+            margin: 0 0 12px 0;
+        }
+        /* Estilos da Previsão de 5 Dias */
+        .weather-forecast {
+            border-top: 1px solid #f0f0f0;
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .forecast-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        .forecast-day {
+            font-weight: 500;
+            width: 35px;
+        }
+        .forecast-icon {
+            font-size: 1.1rem;
+        }
+        .forecast-temps {
+            display: flex;
+            gap: 8px;
+        }
+        .forecast-max {
+            font-weight: 600;
+            color: #222;
+        }
+        .forecast-min {
+            color: #888;
         }
     </style>
 
@@ -752,7 +785,12 @@
                 <span class="weather-temp" id="weather-temp">--°C</span>
                 <span class="weather-icon" id="weather-icon">⏳</span>
             </div>
-            <p class="weather-desc" id="weather-desc">Obtendo dados em tempo real...</p>
+            <p class="weather-desc" id="weather-desc">Obtendo dados...</p>
+        </div>
+
+        <!-- Lista da Previsão de 5 Dias -->
+        <div class="weather-forecast" id="weather-forecast-list">
+            <!-- Os dias serão inseridos dinamicamente aqui via JavaScript -->
         </div>
     </div>
 
@@ -762,14 +800,13 @@
             const descEl = document.getElementById('weather-desc');
             const cityEl = document.getElementById('weather-city');
             const iconEl = document.getElementById('weather-icon');
+            const forecastListEl = document.getElementById('weather-forecast-list');
 
-            // Coordenadas padrão (São Bernardo do Campo - SP) caso o navegador negue a localização
             let lat = -23.6944;
             let lon = -46.5654;
             let nomeLocalidade = "São Bernardo do Campo";
 
             try {
-                // Tenta pegar a geolocalização real do usuário se permitida
                 if (navigator.geolocation) {
                     await new Promise((resolve, reject) => {
                         navigator.geolocation.getCurrentPosition(position => {
@@ -781,33 +818,60 @@
                     });
                 }
 
-                // Chamada à API gratuita Open-Meteo para clima atual
-                const resposta = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`);
+                // Requisição unificada para clima atual + previsão diária de 5 dias
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+                
+                const resposta = await fetch(url);
                 const dados = await resposta.json();
 
                 if (dados && dados.current) {
+                    // Clima Atual
                     const temperatura = Math.round(dados.current.temperature_2m);
-                    const codigoClima = dados.current.weather_code;
+                    const infoClimaAtual = traduzirCodigoClima(dados.current.weather_code);
 
                     tempEl.textContent = `${temperatura}°C`;
                     cityEl.textContent = nomeLocalidade;
-                    
-                    // Conversão básica do código WMO do clima para texto e ícone amigável
-                    const infoClima = traduzirCodigoClima(codigoClima);
-                    descEl.textContent = infoClima.descricao;
-                    iconEl.textContent = infoClima.icone;
-                } else {
-                    throw new Error("Dados indisponíveis");
+                    descEl.textContent = infoClimaAtual.descricao;
+                    iconEl.textContent = infoClimaAtual.icone;
                 }
+
+                if (dados && dados.daily) {
+                    forecastListEl.innerHTML = '';
+                    const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+                    // Exibe a partir de amanhã até os próximos 5 dias (índices 1 a 5)
+                    for (let i = 1; i <= 5; i++) {
+                        const dataStr = dados.daily.time[i];
+                        const dataObj = new Date(dataStr + 'T00:00:00'); // Evita problemas de fuso horário
+                        const nomeDia = diasSemana[dataObj.getDay()];
+                        
+                        const maxTemp = Math.round(dados.daily.temperature_2m_max[i]);
+                        const minTemp = Math.round(dados.daily.temperature_2m_min[i]);
+                        const infoDia = traduzirCodigoClima(dados.daily.weather_code[i]);
+
+                        const itemHTML = `
+                            <div class="forecast-item">
+                                <span class="forecast-day">${nomeDia}</span>
+                                <span class="forecast-icon">${infoDia.icone}</span>
+                                <div class="forecast-temps">
+                                    <span class="forecast-max">${maxTemp}°</span>
+                                    <span class="forecast-min">${minTemp}°</span>
+                                </div>
+                            </div>
+                        `;
+                        forecastListEl.innerHTML += itemHTML;
+                    }
+                }
+
             } catch (erro) {
                 tempEl.textContent = "--°C";
                 descEl.textContent = "Erro ao carregar clima";
                 cityEl.textContent = "Indisponível";
+                forecastListEl.innerHTML = '<span style="font-size:0.8rem; color:#888;">Previsão indisponível</span>';
             }
         }
 
         function traduzirCodigoClima(codigo) {
-            // Tabela padrão de códigos meteorológicos WMO
             const codigos = {
                 0: { descricao: "Céu limpo", icone: "☀️" },
                 1: { descricao: "Principalmente limpo", icone: "🌤️" },
@@ -824,10 +888,9 @@
                 71: { descricao: "Neve leve", icone: "🌨️" },
                 95: { descricao: "Tempestade", icone: "⚡" }
             };
-            return codigos[codigo] || { descricao: "Condição estável", icone: "🌡️" };
+            return codigos[codigo] || { descricao: "Estável", icone: "🌡️" };
         }
 
-        // Executa ao carregar o widget
         carregarClima();
     </script>
 </div>
