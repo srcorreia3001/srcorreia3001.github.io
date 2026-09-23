@@ -508,6 +508,37 @@
 // Atualiza o ano no rodapé automaticamente
 document.getElementById('ano-atual').textContent = new Date().getFullYear();
 
+
+    document.addEventListener("DOMContentLoaded", () => {
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const currentPageSpan = document.getElementById("currentPage");
+
+    let paginaAtual = 1;
+
+    nextBtn.addEventListener("click", () => {
+        paginaAtual++;
+        currentPageSpan.textContent = paginaAtual;
+    });
+
+    prevBtn.addEventListener("click", () => {
+        if (paginaAtual > 1) {
+            paginaAtual--;
+            currentPageSpan.textContent = paginaAtual;
+        }
+    });
+
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+            const termoBusca = searchInput.value.trim();
+            if (termoBusca !== "") {
+                alert(`Buscando por dados relacionados a: "${termoBusca}"`);
+            }
+        }
+    });
+});
+
 </script>
 
     
