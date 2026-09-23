@@ -691,10 +691,146 @@
         <!-- Coluna da Direita (Barra Lateral Fixa ao Lado) -->
         <aside class="blog-sidebar-section">
             <!-- Clima -->
-            <div class="sidebar-widget-block">
-                <h3 class="widget-heading">Clima</h3>
-                <div class="widget-content-box">Widget do clima</div>
+            <<div class="sidebar-widget-block widget-clima">
+    <style>
+        .sidebar-widget-block.widget-clima {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            font-family: sans-serif;
+        }
+        .sidebar-widget-block .widget-heading {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+        .sidebar-widget-block .widget-content-box {
+            color: #555555;
+        }
+        .weather-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .weather-city {
+            font-size: 0.9rem;
+            color: #666666;
+            font-weight: 500;
+        }
+        .weather-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 6px 0;
+        }
+        .weather-temp {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #222222;
+        }
+        .weather-icon {
+            font-size: 2.2rem;
+        }
+        .weather-desc {
+            font-size: 0.85rem;
+            color: #777777;
+            margin: 0;
+        }
+    </style>
+
+    <h3 class="widget-heading">Clima</h3>
+    <div class="widget-content-box">
+        <div class="weather-info">
+            <span class="weather-city" id="weather-city">Carregando local...</span>
+            <div class="weather-main">
+                <span class="weather-temp" id="weather-temp">--°C</span>
+                <span class="weather-icon" id="weather-icon">⏳</span>
             </div>
+            <p class="weather-desc" id="weather-desc">Obtendo dados em tempo real...</p>
+        </div>
+    </div>
+
+    <script>
+        async function carregarClima() {
+            const tempEl = document.getElementById('weather-temp');
+            const descEl = document.getElementById('weather-desc');
+            const cityEl = document.getElementById('weather-city');
+            const iconEl = document.getElementById('weather-icon');
+
+            // Coordenadas padrão (São Bernardo do Campo - SP) caso o navegador negue a localização
+            let lat = -23.6944;
+            let lon = -46.5654;
+            let nomeLocalidade = "São Bernardo do Campo";
+
+            try {
+                // Tenta pegar a geolocalização real do usuário se permitida
+                if (navigator.geolocation) {
+                    await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(position => {
+                            lat = position.coords.latitude;
+                            lon = position.coords.longitude;
+                            nomeLocalidade = "Sua Localização";
+                            resolve();
+                        }, err => resolve(), { timeout: 4000 });
+                    });
+                }
+
+                // Chamada à API gratuita Open-Meteo para clima atual
+                const resposta = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code`);
+                const dados = await resposta.json();
+
+                if (dados && dados.current) {
+                    const temperatura = Math.round(dados.current.temperature_2m);
+                    const codigoClima = dados.current.weather_code;
+
+                    tempEl.textContent = `${temperatura}°C`;
+                    cityEl.textContent = nomeLocalidade;
+                    
+                    // Conversão básica do código WMO do clima para texto e ícone amigável
+                    const infoClima = traduzirCodigoClima(codigoClima);
+                    descEl.textContent = infoClima.descricao;
+                    iconEl.textContent = infoClima.icone;
+                } else {
+                    throw new Error("Dados indisponíveis");
+                }
+            } catch (erro) {
+                tempEl.textContent = "--°C";
+                descEl.textContent = "Erro ao carregar clima";
+                cityEl.textContent = "Indisponível";
+            }
+        }
+
+        function traduzirCodigoClima(codigo) {
+            // Tabela padrão de códigos meteorológicos WMO
+            const codigos = {
+                0: { descricao: "Céu limpo", icone: "☀️" },
+                1: { descricao: "Principalmente limpo", icone: "🌤️" },
+                2: { descricao: "Parcialmente nublado", icone: "⛅" },
+                3: { descricao: "Nublado", icone: "☁️" },
+                45: { descricao: "Nevoeiro", icone: "🌫️" },
+                48: { descricao: "Nevoeiro com geada", icone: "🌫️" },
+                51: { descricao: "Garoa leve", icone: "🌧️" },
+                53: { descricao: "Garoa moderada", icone: "🌧️" },
+                55: { descricao: "Garoa densa", icone: "🌧️" },
+                61: { descricao: "Chuva leve", icone: "🌧️" },
+                63: { descricao: "Chuva moderada", icone: "🌧️" },
+                65: { descricao: "Chuva forte", icone: "🌧️" },
+                71: { descricao: "Neve leve", icone: "🌨️" },
+                95: { descricao: "Tempestade", icone: "⚡" }
+            };
+            return codigos[codigo] || { descricao: "Condição estável", icone: "🌡️" };
+        }
+
+        // Executa ao carregar o widget
+        carregarClima();
+    </script>
+</div>
 
             <!-- Redes Sociais -->
             <div class="sidebar-widget-block">
