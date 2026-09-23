@@ -267,7 +267,314 @@
 </div>
 
 <!--SEÇÃO DE POSTS DE INFORMAÇÃO
+<!-- INÍCIO DO BLOCO DA SEÇÃO DE POSTS - TIAGO DATA -->
 <div class="blog-data-wrapper">
+    <style>
+        /* Estilos encapsulados para o layout de dados */
+        .blog-data-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .blog-data-wrapper *, 
+        .blog-data-wrapper *::before, 
+        .blog-data-wrapper *::after {
+            box-sizing: border-box;
+        }
+
+        /* Layout Grid Rigoroso para Desktop (Lado a Lado Garantido) */
+        .blog-grid-container {
+            display: grid;
+            grid-template-columns: 2.1fr 1fr;
+            gap: 35px;
+            width: 100%;
+            align-items: start;
+        }
+
+        /* Seção Principal */
+        .blog-main-section {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .content-header-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+        }
+
+        .section-main-title {
+            color: #0044cc;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        /* Caixa de Pesquisa */
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 5px 12px;
+            background: #fff;
+            width: 210px;
+        }
+
+        .search-input-wrapper input {
+            border: none;
+            outline: none;
+            margin-left: 6px;
+            font-size: 14px;
+            color: #0044cc;
+            width: 100%;
+            background: transparent;
+        }
+
+        .search-input-wrapper input::placeholder {
+            color: #0044cc;
+        }
+
+        /* Lista e Cards de Artigos */
+        .blog-articles-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .blog-card-item {
+            display: flex;
+            gap: 20px;
+            background: #fff;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+        }
+
+        /* Container da Imagem (Preparado para receber tag <img> futuramente) */
+        .card-image-box {
+            width: 180px;
+            height: 110px;
+            border: 2px solid #111;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            background: #f1f1f1;
+            flex-shrink: 0;
+            overflow: hidden; /* Garante que futuras imagens respeitem as bordas arredondadas */
+        }
+
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-details-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+        }
+
+        .card-tag-text {
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+        }
+
+        .card-title-text {
+            font-size: 22px;
+            color: #000;
+            margin: 0;
+            line-height: 1.25;
+        }
+
+        /* Rodapé do Card: Data/Autor + Seção de Likes Futura */
+        .card-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .card-meta-text {
+            font-size: 13px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Espaço reservado estruturado para os Likes/Interações */
+        .card-likes-box {
+            font-size: 12px;
+            color: #0044cc;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        /* Paginação */
+        .blog-pagination-wrapper {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .pagination-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 20px;
+            color: #0044cc;
+            font-weight: bold;
+        }
+
+        .pg-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: #0044cc;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .active-pg {
+            color: #0044cc;
+        }
+
+        .pg-instructions {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Barra Lateral (Sidebar) */
+        .blog-sidebar-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            min-width: 0;
+        }
+
+        .sidebar-widget-block {
+            background: transparent;
+            width: 100%;
+        }
+
+        .widget-heading {
+            font-size: 22px;
+            color: #0044cc;
+            border-bottom: 2px solid #222;
+            padding-bottom: 5px;
+            margin: 0 0 15px 0;
+        }
+
+        .widget-content-box {
+            border: 2px solid #111;
+            border-radius: 8px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #fff;
+            color: #111;
+        }
+
+        /* Redes Sociais */
+        .social-icons-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .social-ico-box {
+            width: 100%;
+            height: 45px;
+            border: 1px solid #111;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            background: #fff;
+        }
+
+        .social-lbl {
+            font-size: 9px;
+            color: #333;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Mais Lidos */
+        .trending-items-list {
+            padding-left: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .trending-items-list li {
+            font-size: 18px;
+            color: #0044cc;
+            font-weight: bold;
+        }
+
+        .trending-items-list li::marker {
+            color: #0044cc;
+        }
+
+        /* Responsividade Mobile (Telas até 768px) */
+        @media screen and (max-width: 768px) {
+            .blog-grid-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .content-header-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .blog-card-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-image-box {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
+
     <!-- Container Principal do Layout -->
     <div class="blog-grid-container">
         
@@ -281,52 +588,88 @@
                 </div>
             </div>
 
-            <!-- Lista de Artigos -->
+            <!-- Lista de Artigos (Estruturada com suporte a imagem e likes futuros) -->
             <div class="blog-articles-stack">
+                
+                <!-- Artigo 1 -->
                 <article class="blog-card-item">
-                    <div class="card-image-box">Imagem</div>
+                    <div class="card-image-box">
+                        <!-- Substituir o texto abaixo por: <img src="URL_DA_IMAGEM" alt="Título"> quando for adicionar -->
+                        Imagem
+                    </div>
                     <div class="card-details-box">
                         <span class="card-tag-text">TAG</span>
                         <h2 class="card-title-text">Título do Artigo 1</h2>
-                        <p class="card-meta-text">Data | nome do autor</p>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">Data | nome do autor</p>
+                            <!-- Espaço reservado estruturado para os Likes -->
+                            <div class="card-likes-box" title="Curtir artigo">
+                                ❤️ <span>0</span>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Artigo 2 -->
                 <article class="blog-card-item">
                     <div class="card-image-box">Imagem</div>
                     <div class="card-details-box">
                         <span class="card-tag-text">TAG</span>
                         <h2 class="card-title-text">Título do Artigo 2</h2>
-                        <p class="card-meta-text">Data | nome do autor</p>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">Data | nome do autor</p>
+                            <div class="card-likes-box" title="Curtir artigo">
+                                ❤️ <span>0</span>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Artigo 3 -->
                 <article class="blog-card-item">
                     <div class="card-image-box">Imagem</div>
                     <div class="card-details-box">
                         <span class="card-tag-text">TAG</span>
                         <h2 class="card-title-text">Título do Artigo 3</h2>
-                        <p class="card-meta-text">Data | nome do autor</p>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">Data | nome do autor</p>
+                            <div class="card-likes-box" title="Curtir artigo">
+                                ❤️ <span>0</span>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Artigo 4 -->
                 <article class="blog-card-item">
                     <div class="card-image-box">Imagem</div>
                     <div class="card-details-box">
                         <span class="card-tag-text">TAG</span>
                         <h2 class="card-title-text">Título do Artigo 4</h2>
-                        <p class="card-meta-text">Data | nome do autor</p>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">Data | nome do autor</p>
+                            <div class="card-likes-box" title="Curtir artigo">
+                                ❤️ <span>0</span>
+                            </div>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Artigo 5 -->
                 <article class="blog-card-item">
                     <div class="card-image-box">Imagem</div>
                     <div class="card-details-box">
                         <span class="card-tag-text">TAG</span>
                         <h2 class="card-title-text">Título do Artigo 5</h2>
-                        <p class="card-meta-text">Data | nome do autor</p>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">Data | nome do autor</p>
+                            <div class="card-likes-box" title="Curtir artigo">
+                                ❤️ <span>0</span>
+                            </div>
+                        </div>
                     </div>
                 </article>
+
             </div>
 
             <!-- Paginação -->
@@ -387,9 +730,7 @@
 
     </div>
 </div>
-
-<script src="script.js"></script>
-
+<!-- FIM DO BLOCO DA SEÇÃO DE POSTS -->
 <!--AQUI É A SEÇÃO DE PARA AS FRASES DE MOTIVAÇÃO RELACIONADAS A DADOS-->
 <div class="container my-5">
     <div class="row justify-content-center">
