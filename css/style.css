@@ -308,36 +308,38 @@
 }
 
 /*SEÇAO DE POSTS
-/* Configurações Globais e Reset */
-* {
+/* Escopo isolado para evitar conflito com o restante do blog */
+.blog-data-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #f9f9f9;
-    color: #111;
-    padding: 20px;
+.blog-data-wrapper *, 
+.blog-data-wrapper *::before, 
+.blog-data-wrapper *::after {
+    box-sizing: border-box;
 }
 
-/* Container Principal - Mantém o Layout em 2 Colunas Fixas para Telas Grandes */
-.blog-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
+/* Layout em Grid Rigoroso para Desktop (Lado a Lado Garantido) */
+.blog-grid-container {
+    display: grid;
+    grid-template-columns: 2.1fr 1fr;
+    gap: 35px;
+    width: 100%;
+    align-items: start;
 }
 
-/* Coluna Principal de Artigos */
-.main-content {
-    flex: 2;
-    width: 65%;
+/* Seção Principal */
+.blog-main-section {
+    width: 100%;
+    min-width: 0; /* Impede que elementos internos estourein o grid */
 }
 
-.content-header {
+.content-header-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -346,43 +348,45 @@ body {
     padding-bottom: 10px;
 }
 
-.section-title {
+.section-main-title {
     color: #0044cc;
     font-size: 28px;
+    margin: 0;
 }
 
-/* Barra de Pesquisa */
-.search-box {
+/* Caixa de Pesquisa */
+.search-input-wrapper {
     display: flex;
     align-items: center;
     border: 1px solid #222;
     border-radius: 20px;
     padding: 5px 12px;
     background: #fff;
-    width: 220px;
+    width: 210px;
 }
 
-.search-box input {
+.search-input-wrapper input {
     border: none;
     outline: none;
     margin-left: 6px;
     font-size: 14px;
     color: #0044cc;
     width: 100%;
+    background: transparent;
 }
 
-.search-box input::placeholder {
+.search-input-wrapper input::placeholder {
     color: #0044cc;
 }
 
-/* Cards de Artigos */
-.articles-list {
+/* Lista e Cards de Artigos */
+.blog-articles-stack {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.article-card {
+.blog-card-item {
     display: flex;
     gap: 20px;
     background: #fff;
@@ -391,7 +395,7 @@ body {
     align-items: center;
 }
 
-.article-image {
+.card-image-box {
     width: 180px;
     height: 110px;
     border: 2px solid #111;
@@ -405,40 +409,40 @@ body {
     flex-shrink: 0;
 }
 
-/* Organização Interna do Card (Tag em cima, Título no meio, Meta embaixo) */
-.article-info {
+.card-details-box {
     display: flex;
     flex-direction: column;
     gap: 4px;
     width: 100%;
 }
 
-.article-tag {
+.card-tag-text {
     font-size: 11px;
     font-weight: bold;
     color: #333;
     text-transform: uppercase;
 }
 
-.article-title {
+.card-title-text {
     font-size: 22px;
     color: #000;
-    line-height: 1.2;
+    margin: 0;
+    line-height: 1.25;
 }
 
-.article-meta {
+.card-meta-text {
     font-size: 13px;
     color: #555;
-    margin-top: 4px;
+    margin: 4px 0 0 0;
 }
 
 /* Paginação */
-.pagination-container {
+.blog-pagination-wrapper {
     margin-top: 30px;
     text-align: center;
 }
 
-.pagination {
+.pagination-controls {
     display: inline-flex;
     align-items: center;
     gap: 15px;
@@ -447,7 +451,7 @@ body {
     font-weight: bold;
 }
 
-.page-btn {
+.pg-btn {
     background: none;
     border: none;
     font-size: 22px;
@@ -456,39 +460,39 @@ body {
     font-weight: bold;
 }
 
-.page-number.active {
+.active-pg {
     color: #0044cc;
 }
 
-.pagination-text {
+.pg-instructions {
     margin-top: 8px;
     font-size: 14px;
     color: #333;
 }
 
 /* Barra Lateral (Sidebar) */
-.sidebar {
-    flex: 1;
-    width: 35%;
+.blog-sidebar-section {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    min-width: 0;
 }
 
-.sidebar-widget {
+.sidebar-widget-block {
     background: transparent;
+    width: 100%;
 }
 
-.widget-title {
+.widget-heading {
     font-size: 22px;
     color: #0044cc;
     border-bottom: 2px solid #222;
     padding-bottom: 5px;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
 }
 
-/* Widget Clima */
-.weather-box {
+.widget-content-box {
     border: 2px solid #111;
     border-radius: 8px;
     height: 140px;
@@ -497,16 +501,17 @@ body {
     justify-content: center;
     font-weight: bold;
     background: #fff;
+    color: #111;
 }
 
 /* Redes Sociais */
-.social-icons {
+.social-icons-row {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
 }
 
-.social-item {
+.social-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -514,7 +519,7 @@ body {
     flex: 1;
 }
 
-.social-icon-box {
+.social-ico-box {
     width: 100%;
     height: 45px;
     border: 1px solid #111;
@@ -526,7 +531,7 @@ body {
     background: #fff;
 }
 
-.social-name {
+.social-lbl {
     font-size: 9px;
     color: #333;
     text-align: center;
@@ -534,65 +539,47 @@ body {
 }
 
 /* Mais Lidos */
-.trending-list {
+.trending-items-list {
     padding-left: 20px;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.trending-list li {
+.trending-items-list li {
     font-size: 18px;
     color: #0044cc;
     font-weight: bold;
 }
 
-.trending-list li::marker {
+.trending-items-list li::marker {
     color: #0044cc;
 }
 
-/* Propaganda */
-.ads-box {
-    border: 2px solid #111;
-    border-radius: 8px;
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    background: #fff;
-}
-
-/* --- RESPONSIVIDADE APENAS PARA SMARTPHONES (Telas menores que 768px) --- */
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
+/* --- RESPONSIVIDADE PARA SMARTPHONES (Telas até 768px) --- */
+@media screen and (max-width: 768px) {
+    .blog-grid-container {
+        grid-template-columns: 1fr; /* Transforma em uma única coluna no celular */
+        gap: 25px;
     }
 
-    .blog-container {
-        flex-direction: column; /* Só empilha em telas mobile */
-    }
-
-    .main-content, .sidebar {
-        width: 100%;
-    }
-
-    .content-header {
+    .content-header-box {
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
-    .search-box {
+    .search-input-wrapper {
         width: 100%;
     }
 
-    .article-card {
+    .blog-card-item {
         flex-direction: column;
         align-items: flex-start;
     }
 
-    .article-image {
+    .card-image-box {
         width: 100%;
         height: 150px;
     }
