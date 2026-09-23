@@ -855,36 +855,55 @@
 document.getElementById('ano-atual').textContent = new Date().getFullYear();
 
 
-    document.addEventListener("DOMContentLoaded", () => {
-    const prevBtn = document.getElementById("prevBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const currentPageSpan = document.getElementById("currentPage");
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    // Lógica básica de paginação numérica
+    const prevPageBtn = document.getElementById("prevPageBtn");
+    const nextPageBtn = document.getElementById("nextPageBtn");
+    const currentPgNum = document.getElementById("currentPgNum");
 
-    let paginaAtual = 1;
+    let numeroPagina = 1;
 
-    nextBtn.addEventListener("click", () => {
-        paginaAtual++;
-        currentPageSpan.textContent = paginaAtual;
-    });
+    if (nextPageBtn && prevPageBtn && currentPgNum) {
+        nextPageBtn.addEventListener("click", () => {
+            numeroPagina++;
+            currentPgNum.textContent = numeroPagina;
+        });
 
-    prevBtn.addEventListener("click", () => {
-        if (paginaAtual > 1) {
-            paginaAtual--;
-            currentPageSpan.textContent = paginaAtual;
-        }
-    });
-
-    const searchInput = document.getElementById("searchInput");
-    searchInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            const termoBusca = searchInput.value.trim();
-            if (termoBusca !== "") {
-                alert(`Buscando por dados relacionados a: "${termoBusca}"`);
+        prevPageBtn.addEventListener("click", () => {
+            if (numeroPagina > 1) {
+                numeroPagina--;
+                currentPgNum.textContent = numeroPagina;
             }
-        }
+        });
+    }
+
+    // Funcionalidade de Pesquisa
+    const blogSearchInput = document.getElementById("blogSearchInput");
+    if (blogSearchInput) {
+        blogSearchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                const termoPesquisa = blogSearchInput.value.trim();
+                if (termoPesquisa !== "") {
+                    alert(`Pesquisando no blog por: "${termoPesquisa}"`);
+                }
+            }
+        });
+    }
+
+    // Estrutura pronta para interatividade de Likes (pode ser expandida futuramente)
+    const likesBoxes = document.querySelectorAll(".card-likes-box");
+    likesBoxes.forEach(box => {
+        box.addEventListener("click", () => {
+            const spanCount = box.querySelector("span");
+            let count = parseInt(spanCount.textContent);
+            spanCount.textContent = count + 1;
+            box.style.transform = "scale(1.1)";
+            setTimeout(() => box.style.transform = "scale(1)", 200);
+        });
     });
 });
-
+</script>
 </script>
 
     
