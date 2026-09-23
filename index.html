@@ -267,107 +267,110 @@
 </div>
 
 <!--SEÇÃO DE POSTS DE INFORMAÇÃO
-<div class="blog-container">
-        <!-- Coluna Principal (Destaques, Artigos e Paginação) -->
-        <main class="main-content">
-            <header class="content-header">
-                <h1 class="section-title">Destaques!</h1>
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Pesquisa">
+<div class="blog-data-wrapper">
+    <!-- Container Principal do Layout -->
+    <div class="blog-grid-container">
+        
+        <!-- Coluna da Esquerda (Destaques, Artigos e Paginação) -->
+        <main class="blog-main-section">
+            <div class="content-header-box">
+                <h1 class="section-main-title">Destaques!</h1>
+                <div class="search-input-wrapper">
+                    <span class="search-ico">🔍</span>
+                    <input type="text" id="blogSearchInput" placeholder="Pesquisa">
                 </div>
-            </header>
+            </div>
 
             <!-- Lista de Artigos -->
-            <div class="articles-list" id="articlesList">
-                <article class="article-card">
-                    <div class="article-image">Imagem</div>
-                    <div class="article-info">
-                        <span class="article-tag">TAG</span>
-                        <h2 class="article-title">Título do Artigo 1</h2>
-                        <p class="article-meta">Data | nome do autor</p>
+            <div class="blog-articles-stack">
+                <article class="blog-card-item">
+                    <div class="card-image-box">Imagem</div>
+                    <div class="card-details-box">
+                        <span class="card-tag-text">TAG</span>
+                        <h2 class="card-title-text">Título do Artigo 1</h2>
+                        <p class="card-meta-text">Data | nome do autor</p>
                     </div>
                 </article>
 
-                <article class="article-card">
-                    <div class="article-image">Imagem</div>
-                    <div class="article-info">
-                        <span class="article-tag">TAG</span>
-                        <h2 class="article-title">Título do Artigo 2</h2>
-                        <p class="article-meta">Data | nome do autor</p>
+                <article class="blog-card-item">
+                    <div class="card-image-box">Imagem</div>
+                    <div class="card-details-box">
+                        <span class="card-tag-text">TAG</span>
+                        <h2 class="card-title-text">Título do Artigo 2</h2>
+                        <p class="card-meta-text">Data | nome do autor</p>
                     </div>
                 </article>
 
-                <article class="article-card">
-                    <div class="article-image">Imagem</div>
-                    <div class="article-info">
-                        <span class="article-tag">TAG</span>
-                        <h2 class="article-title">Título do Artigo 3</h2>
-                        <p class="article-meta">Data | nome do autor</p>
+                <article class="blog-card-item">
+                    <div class="card-image-box">Imagem</div>
+                    <div class="card-details-box">
+                        <span class="card-tag-text">TAG</span>
+                        <h2 class="card-title-text">Título do Artigo 3</h2>
+                        <p class="card-meta-text">Data | nome do autor</p>
                     </div>
                 </article>
 
-                <article class="article-card">
-                    <div class="article-image">Imagem</div>
-                    <div class="article-info">
-                        <span class="article-tag">TAG</span>
-                        <h2 class="article-title">Título do Artigo 4</h2>
-                        <p class="article-meta">Data | nome do autor</p>
+                <article class="blog-card-item">
+                    <div class="card-image-box">Imagem</div>
+                    <div class="card-details-box">
+                        <span class="card-tag-text">TAG</span>
+                        <h2 class="card-title-text">Título do Artigo 4</h2>
+                        <p class="card-meta-text">Data | nome do autor</p>
                     </div>
                 </article>
 
-                <article class="article-card">
-                    <div class="article-image">Imagem</div>
-                    <div class="article-info">
-                        <span class="article-tag">TAG</span>
-                        <h2 class="article-title">Título do Artigo 5</h2>
-                        <p class="article-meta">Data | nome do autor</p>
+                <article class="blog-card-item">
+                    <div class="card-image-box">Imagem</div>
+                    <div class="card-details-box">
+                        <span class="card-tag-text">TAG</span>
+                        <h2 class="card-title-text">Título do Artigo 5</h2>
+                        <p class="card-meta-text">Data | nome do autor</p>
                     </div>
                 </article>
             </div>
 
             <!-- Paginação -->
-            <div class="pagination-container">
-                <div class="pagination">
-                    <button class="page-btn" id="prevBtn">&lt;</button>
-                    <span class="page-number active" id="currentPage">1</span>
-                    <button class="page-btn" id="nextBtn">&gt;</button>
+            <div class="blog-pagination-wrapper">
+                <div class="pagination-controls">
+                    <button class="pg-btn" id="prevPageBtn">&lt;</button>
+                    <span class="pg-number active-pg" id="currentPgNum">1</span>
+                    <button class="pg-btn" id="nextPageBtn">&gt;</button>
                 </div>
-                <p class="pagination-text">Aqui vamos colocar uma paginação numérica</p>
+                <p class="pg-instructions">Aqui vamos colocar uma paginação numérica</p>
             </div>
         </main>
 
-        <!-- Barra Lateral (Sidebar) - Posicionada Corretamente ao Lado no Desktop -->
-        <aside class="sidebar">
+        <!-- Coluna da Direita (Barra Lateral Fixa ao Lado) -->
+        <aside class="blog-sidebar-section">
             <!-- Clima -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Clima</h3>
-                <div class="weather-box">Widget do clima</div>
+            <div class="sidebar-widget-block">
+                <h3 class="widget-heading">Clima</h3>
+                <div class="widget-content-box">Widget do clima</div>
             </div>
 
             <!-- Redes Sociais -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Redes sociais</h3>
-                <div class="social-icons">
-                    <div class="social-item">
-                        <div class="social-icon-box">Ícone</div>
-                        <span class="social-name">Nome da rede social</span>
+            <div class="sidebar-widget-block">
+                <h3 class="widget-heading">Redes sociais</h3>
+                <div class="social-icons-row">
+                    <div class="social-card">
+                        <div class="social-ico-box">Ícone</div>
+                        <span class="social-lbl">Nome da rede social</span>
                     </div>
-                    <div class="social-item">
-                        <div class="social-icon-box">Ícone</div>
-                        <span class="social-name">Nome da rede social</span>
+                    <div class="social-card">
+                        <div class="social-ico-box">Ícone</div>
+                        <span class="social-lbl">Nome da rede social</span>
                     </div>
-                    <div class="social-item">
-                        <div class="social-icon-box">Ícone</div>
-                        <span class="social-name">Nome da rede social</span>
+                    <div class="social-card">
+                        <div class="social-ico-box">Ícone</div>
+                        <span class="social-lbl">Nome da rede social</span>
                     </div>
                 </div>
             </div>
 
             <!-- Mais Lidos -->
-            <div class="sidebar-widget">
-                <h3 class="widget-title">Mais Lidos</h3>
-                <ol class="trending-list">
+            <div class="sidebar-widget-block">
+                <h3 class="widget-heading">Mais Lidos</h3>
+                <ol class="trending-items-list">
                     <li>Título</li>
                     <li>Título</li>
                     <li>Título</li>
@@ -377,13 +380,15 @@
             </div>
 
             <!-- Propaganda -->
-            <div class="sidebar-widget">
-                <div class="ads-box">Propaganda</div>
+            <div class="sidebar-widget-block">
+                <div class="widget-content-box">Propaganda</div>
             </div>
         </aside>
-    </div>
 
-    <script src="script.js"></script>
+    </div>
+</div>
+
+<script src="script.js"></script>
 
 <!--AQUI É A SEÇÃO DE PARA AS FRASES DE MOTIVAÇÃO RELACIONADAS A DADOS-->
 <div class="container my-5">
