@@ -322,18 +322,19 @@ body {
     padding: 20px;
 }
 
-/* Layout Responsivo Principal (Grid/Flex adaptativo) */
+/* Container Principal - Mantém o Layout em 2 Colunas Fixas para Telas Grandes */
 .blog-container {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: row;
     gap: 40px;
 }
 
-/* Conteúdo Principal */
+/* Coluna Principal de Artigos */
 .main-content {
     flex: 2;
-    min-width: 0; /* Evita estouro de conteúdo em flexbox */
+    width: 65%;
 }
 
 .content-header {
@@ -343,8 +344,6 @@ body {
     margin-bottom: 25px;
     border-bottom: 2px solid #222;
     padding-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 15px;
 }
 
 .section-title {
@@ -352,7 +351,7 @@ body {
     font-size: 28px;
 }
 
-/* Barra de Pesquisa Flexível */
+/* Barra de Pesquisa */
 .search-box {
     display: flex;
     align-items: center;
@@ -406,10 +405,12 @@ body {
     flex-shrink: 0;
 }
 
+/* Organização Interna do Card (Tag em cima, Título no meio, Meta embaixo) */
 .article-info {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px;
+    width: 100%;
 }
 
 .article-tag {
@@ -422,11 +423,13 @@ body {
 .article-title {
     font-size: 22px;
     color: #000;
+    line-height: 1.2;
 }
 
 .article-meta {
     font-size: 13px;
     color: #555;
+    margin-top: 4px;
 }
 
 /* Paginação */
@@ -466,10 +469,10 @@ body {
 /* Barra Lateral (Sidebar) */
 .sidebar {
     flex: 1;
+    width: 35%;
     display: flex;
     flex-direction: column;
     gap: 30px;
-    min-width: 0;
 }
 
 .sidebar-widget {
@@ -519,7 +522,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 11px;
     background: #fff;
 }
 
@@ -527,6 +530,7 @@ body {
     font-size: 9px;
     color: #333;
     text-align: center;
+    white-space: nowrap;
 }
 
 /* Mais Lidos */
@@ -559,38 +563,38 @@ body {
     background: #fff;
 }
 
-/* --- ADAPTAÇÕES PARA SMARTPHONES E TELAS MENORES (RESPONSIVIDADE) --- */
+/* --- RESPONSIVIDADE APENAS PARA SMARTPHONES (Telas menores que 768px) --- */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
     .blog-container {
-        flex-direction: column; /* Empilha o conteúdo principal e a barra lateral */
-        gap: 30px;
+        flex-direction: column; /* Só empilha em telas mobile */
+    }
+
+    .main-content, .sidebar {
+        width: 100%;
     }
 
     .content-header {
         flex-direction: column;
         align-items: flex-start;
+        gap: 15px;
     }
 
     .search-box {
-        width: 100%; /* Barra de pesquisa ocupa toda a largura em telas pequenas */
+        width: 100%;
     }
 
     .article-card {
-        flex-direction: column; /* Empilha a imagem e o texto do artigo no celular */
+        flex-direction: column;
         align-items: flex-start;
     }
 
     .article-image {
-        width: 100%; /* Imagem se estende preenchendo o card no mobile */
+        width: 100%;
         height: 150px;
-    }
-
-    .article-title {
-        font-size: 18px; /* Reduz levemente o tamanho do título em mobile */
     }
 }
 
