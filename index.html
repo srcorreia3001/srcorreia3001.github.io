@@ -975,6 +975,7 @@
 </div>
             <!-- Redes Sociais -->
             <!-- Bloco de Estilos CSS (pode ser colocado no <head> ou junto ao HTML) -->
+<!-- Bloco de Estilos CSS -->
 <style>
     .sidebar-widget-block {
         background-color: #ffffff;
@@ -1020,9 +1021,19 @@
         transform: translateY(-2px);
     }
 
+    /* Caixa e tamanho fixo para os ícones em imagem */
     .social-ico-box {
-        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 24px;
         margin-bottom: 6px;
+    }
+
+    .social-ico-box img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain; /* Mantém a proporção correta da imagem */
     }
 
     .social-lbl {
@@ -1039,26 +1050,28 @@
         <!-- LinkedIn -->
         <a href="COLE_O_LINK_DO_LINKEDIN_AQUI" target="_blank" class="social-card">
             <div class="social-ico-box">
-                                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm_JXJOaPFjFRRB9O5OSV2CwJ48uPAFUWmXEwEZyIdVrdqnKVz6NrWXvtS-MbElXeNnMZK5QOqsJ6uM01B8cVQt8uNOIR9rco87q-e7SnxSp1ZRslz5XknANYn0KKk0h5r5qN59lk9wABbBYV-Q892aPYgfXpJegpHz3BoiCnAUheObSw3-Vy8_BVO62TX/s240/logolinkedin.png" alt="Título"> 
-
+                <img src="CAMINHO_DO_ICONE_LINKEDIN.png" alt="LinkedIn">
             </div>
             <span class="social-lbl">LinkedIn</span>
         </a>
         
         <!-- GitHub -->
         <a href="COLE_O_LINK_DO_GITHUB_AQUI" target="_blank" class="social-card">
-            <div class="social-ico-box">💻</div>
+            <div class="social-ico-box">
+                <img src="CAMINHO_DO_ICONE_GITHUB.png" alt="GitHub">
+            </div>
             <span class="social-lbl">GitHub</span>
         </a>
         
         <!-- WhatsApp -->
         <a href="COLE_O_LINK_DO_WHATSAPP_AQUI" target="_blank" class="social-card">
-            <div class="social-ico-box">💬</div>
+            <div class="social-ico-box">
+                <img src="CAMINHO_DO_ICONE_WHATSAPP.png" alt="WhatsApp">
+            </div>
             <span class="social-lbl">WhatsApp</span>
         </a>
     </div>
 </div>
-
             <!-- Mais Lidos -->
             <div class="sidebar-widget-block">
                 <h3 class="widget-heading">Mais Lidos</h3>
