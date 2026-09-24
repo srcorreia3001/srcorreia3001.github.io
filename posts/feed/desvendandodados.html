@@ -143,14 +143,14 @@
 
 <div class="post-container">
 
-    <span class="post-tag">Mais Projetos</span>
-    <h2 class="post-title">Sistema Leve de Cadastro de Alunos em Python</h2>
+    <span class="post-tag">feed</span>
+    <h2 class="post-title">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</h2>
     <div class="post-meta">20 de setembro, 2026 • 3 min de leitura</div>
 <p></p>
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN9QKs5WbKELqoQrQYDQ4c5XtPd8P2az2cHHHrxCnkN6BWee9AVlSe_IhLbR53iJwfTtWYUdLUz8vBgnIkFRBOxlc80K7GKM5UHbMNCwFyTeNjU6U4UWgGR2u8jVo4bHU_aUIF1mAtsv1Tc3KkWD532eQCkvZJ-0xQUABPv9gSFIzGMg0Tnf9T-t4B2BVr/s852/Captura%20de%20tela%202026-09-21%20224757.png" alt="imagem 1" width="900" height="500">
 <article class="post-analise-de-dados">
-    <h1>Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</h1>
+  
 
     <div class="keywords-box" style="font-size: 0.9em; color: #555555; background-color: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; margin-bottom: 30px;">
         <strong>Palavras-chave:</strong> análise de dados, o que é análise de dados, diferença entre análise de dados, ciência de dados, big data, inteligência de negócios.
@@ -227,6 +227,37 @@
     <p>A análise de dados é a arte de traduzir números frios em histórias compreensíveis. Ela conversa de perto com o Big Data, o BI e a Ciência de Dados, mas tem seu próprio charme e utilidade prática.</p>
 
     <p>E você, já parou para analisar os dados da sua própria rotina hoje? Conta aqui nos comentários qual foi o último dado que te fez mudar de ideia sobre alguma coisa!</p>
+
+    <!-- Seção de Comentários (API Disqus) -->
+    <section class="comments-section" style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e0e0e0;">
+        <h2>Deixe um comentário</h2>
+        <p style="color: #555; font-size: 0.95em; margin-bottom: 20px;">O que você achou deste artigo? Compartilhe sua opinião conosco!</p>
+        
+        <!-- Container onde a API do Disqus vai injetar os comentários -->
+        <div id="disqus_thread"></div>
+    </section>
+
+    <!-- Script de Integração da API -->
+    <script>
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables\
+        */
+        
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // Substitua pela URL canônica da página se preferir
+            this.page.identifier = window.location.pathname; // Identificador único do post
+        };
+        
+        (function() { // NÃO EDITE ABAIXO DESTA LINHA
+            var d = document, s = d.createElement('script');
+            s.src = 'https://SEU-SHORTNAME-AQUI.disqus.com/embed.js'; // <-- TROQUE 'SEU-SHORTNAME-AQUI' pelo nome do seu fórum no Disqus
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Por favor, ative o JavaScript para ver os <a href="https://disqus.com/?ref_noscript">comentários providos por Disqus.</a></noscript>
+    
 </article>
 
 <p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/cadastro_alunos_com_tkinter">GitHub</a></p>
