@@ -693,106 +693,131 @@
             <!-- Clima -->
             <div class="sidebar-widget-block widget-clima">
     <style>
+        /* Força a remoção de qualquer borda preta herdada do tema */
+        .sidebar-widget-block.widget-clima,
+        .sidebar-widget-block.widget-clima * {
+            border-color: transparent !important;
+            outline: none !important;
+        }
+
         .sidebar-widget-block.widget-clima {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-            font-family: sans-serif;
-            box-sizing: border-box;
-            overflow: hidden;
+            background: #ffffff !important;
+            border-radius: 8px !important;
+            padding: 16px !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+            margin-bottom: 20px !important;
+            font-family: sans-serif !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            border: none !important;
         }
+
         .sidebar-widget-block .widget-heading {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333333;
-            margin-top: 0;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 8px;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            color: #333333 !important;
+            margin-top: 0 !important;
+            margin-bottom: 12px !important;
+            border-bottom: 2px solid #f0f0f0 !important;
+            padding-bottom: 8px !important;
         }
+
         .sidebar-widget-block .widget-content-box {
-            color: #555555;
-            width: 100%;
-            box-sizing: border-box;
+            color: #555555 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            border: none !important;
+            background: transparent !important;
+            padding: 0 !important;
         }
+
         .weather-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            margin-bottom: 12px;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 4px !important;
+            margin-bottom: 12px !important;
         }
+
         .weather-city {
-            font-size: 0.85rem;
-            color: #666666;
-            font-weight: 500;
+            font-size: 0.9rem !important;
+            color: #666666 !important;
+            font-weight: 500 !important;
         }
+
         .weather-main {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 4px 0;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            margin: 4px 0 !important;
         }
+
         .weather-temp {
-            font-size: 2.2rem;
-            font-weight: bold;
-            color: #222222;
+            font-size: 2.2rem !important;
+            font-weight: bold !important;
+            color: #222222 !important;
         }
+
         .weather-icon {
-            font-size: 2rem;
+            font-size: 2rem !important;
         }
+
         .weather-desc {
-            font-size: 0.85rem;
-            color: #777777;
-            margin: 0;
-            text-transform: capitalize;
+            font-size: 0.85rem !important;
+            color: #777777 !important;
+            margin: 0 !important;
+            text-transform: capitalize !important;
         }
-        /* Estilos ajustados da Previsão de 5 Dias para não vazar */
+
         .weather-forecast {
-            border-top: 1px solid #f0f0f0;
-            padding-top: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+            border-top: 1px solid #f0f0f0 !important;
+            padding-top: 10px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
         }
+
         .forecast-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #555;
-            width: 100%;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            font-size: 0.85rem !important;
+            color: #555 !important;
+            width: 100% !important;
         }
+
         .forecast-day {
-            font-weight: 500;
-            width: 35px;
+            font-weight: 500 !important;
+            width: 35px !important;
         }
+
         .forecast-icon {
-            font-size: 1rem;
+            font-size: 1rem !important;
         }
+
         .forecast-temps {
-            display: flex;
-            gap: 8px;
+            display: flex !important;
+            gap: 8px !important;
         }
+
         .forecast-max {
-            font-weight: 600;
-            color: #222;
+            font-weight: 600 !important;
+            color: #222 !important;
         }
+
         .forecast-min {
-            color: #888;
+            color: #888 !important;
         }
     </style>
 
     <h3 class="widget-heading">Clima</h3>
     <div class="widget-content-box">
         <div class="weather-info">
-            <span class="weather-city" id="weather-city">Carregando...</span>
+            <span class="weather-city" id="weather-city">Buscando local...</span>
             <div class="weather-main">
                 <span class="weather-temp" id="weather-temp">--°C</span>
                 <span class="weather-icon" id="weather-icon">⏳</span>
             </div>
-            <p class="weather-desc" id="weather-desc">Buscando dados...</p>
+            <p class="weather-desc" id="weather-desc">Aguardando GPS...</p>
         </div>
 
         <div class="weather-forecast" id="weather-forecast-list">
@@ -801,37 +826,49 @@
     </div>
 
     <script>
-        async function carregarClima() {
+        async function carregarClimaComLocalizacao() {
             const tempEl = document.getElementById('weather-temp');
             const descEl = document.getElementById('weather-desc');
             const cityEl = document.getElementById('weather-city');
             const iconEl = document.getElementById('weather-icon');
             const forecastListEl = document.getElementById('weather-forecast-list');
 
+            // Padrão inicial: São Bernardo do Campo - SP
             let lat = -23.6944;
             let lon = -46.5654;
             let nomeLocalidade = "São Bernardo do Campo";
 
             try {
+                // Tenta obter a localização exata do dispositivo via navegador
                 if (navigator.geolocation) {
-                    await new Promise((resolve) => {
-                        navigator.geolocation.getCurrentPosition(position => {
-                            lat = position.coords.latitude;
-                            lon = position.coords.longitude;
-                            nomeLocalidade = "Sua Localização";
-                            resolve();
-                        }, err => resolve(), { timeout: 3000 });
+                    const posicao = await new Promise((resolve, reject) => {
+                        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
                     });
+                    
+                    lat = posicao.coords.latitude;
+                    lon = posicao.coords.longitude;
+
+                    // Busca o nome real da cidade através das coordenadas (Geocodificação Reversa)
+                    try {
+                        const respostaGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
+                        const dadosGeo = await respostaGeo.json();
+                        if (dadosGeo && dadosGeo.address) {
+                            nomeLocalidade = dadosGeo.address.city || dadosGeo.address.town || dadosGeo.address.municipality || dadosGeo.address.village || "Sua Localização";
+                        }
+                    } catch (e) {
+                        nomeLocalidade = "Localização Atual";
+                    }
                 }
 
-                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+                // Busca o clima atual e a previsão na Open-Meteo
+                const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
                 
-                const resposta = await fetch(url);
-                const dados = await resposta.json();
+                const respostaClima = await fetch(urlClima);
+                const dadosClima = await respostaClima.json();
 
-                if (dados && dados.current) {
-                    const temperatura = Math.round(dados.current.temperature_2m);
-                    const infoClimaAtual = traduzirCodigoClima(dados.current.weather_code);
+                if (dadosClima && dadosClima.current) {
+                    const temperatura = Math.round(dadosClima.current.temperature_2m);
+                    const infoClimaAtual = traduzirCodigoClima(dadosClima.current.weather_code);
 
                     tempEl.textContent = `${temperatura}°C`;
                     cityEl.textContent = nomeLocalidade;
@@ -839,18 +876,18 @@
                     iconEl.textContent = infoClimaAtual.icone;
                 }
 
-                if (dados && dados.daily) {
+                if (dadosClima && dadosClima.daily) {
                     forecastListEl.innerHTML = '';
                     const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
                     for (let i = 1; i <= 5; i++) {
-                        const dataStr = dados.daily.time[i];
+                        const dataStr = dadosClima.daily.time[i];
                         const dataObj = new Date(dataStr + 'T00:00:00');
                         const nomeDia = diasSemana[dataObj.getDay()];
                         
-                        const maxTemp = Math.round(dados.daily.temperature_2m_max[i]);
-                        const minTemp = Math.round(dados.daily.temperature_2m_min[i]);
-                        const infoDia = traduzirCodigoClima(dados.daily.weather_code[i]);
+                        const maxTemp = Math.round(dadosClima.daily.temperature_2m_max[i]);
+                        const minTemp = Math.round(dadosClima.daily.temperature_2m_min[i]);
+                        const infoDia = traduzirCodigoClima(dadosClima.daily.weather_code[i]);
 
                         const itemHTML = `
                             <div class="forecast-item">
@@ -866,10 +903,53 @@
                     }
                 }
             } catch (erro) {
+                // Caso o usuário negue a localização, ele cai no padrão de São Bernardo do Campo perfeitamente
+                carregarClimaPadrao(lat, lon, nomeLocalidade);
+            }
+        }
+
+        async function carregarClimaPadrao(lat, lon, nomeLocalidade) {
+            const tempEl = document.getElementById('weather-temp');
+            const descEl = document.getElementById('weather-desc');
+            const cityEl = document.getElementById('weather-city');
+            const iconEl = document.getElementById('weather-icon');
+            const forecastListEl = document.getElementById('weather-forecast-list');
+
+            try {
+                const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+                const respostaClima = await fetch(urlClima);
+                const dadosClima = await respostaClima.json();
+
+                if (dadosClima && dadosClima.current) {
+                    tempEl.textContent = `${Math.round(dadosClima.current.temperature_2m)}°C`;
+                    cityEl.textContent = nomeLocalidade;
+                    const info = traduzirCodigoClima(dadosClima.current.weather_code);
+                    descEl.textContent = info.descricao;
+                    iconEl.textContent = info.icone;
+                }
+
+                if (dadosClima && dadosClima.daily) {
+                    forecastListEl.innerHTML = '';
+                    const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+                    for (let i = 1; i <= 5; i++) {
+                        const dataObj = new Date(dadosClima.daily.time[i] + 'T00:00:00');
+                        const nomeDia = diasSemana[dataObj.getDay()];
+                        const infoDia = traduzirCodigoClima(dadosClima.daily.weather_code[i]);
+                        forecastListEl.innerHTML += `
+                            <div class="forecast-item">
+                                <span class="forecast-day">${nomeDia}</span>
+                                <span class="forecast-icon">${infoDia.icone}</span>
+                                <div class="forecast-temps">
+                                    <span class="forecast-max">${Math.round(dadosClima.daily.temperature_2m_max[i])}°</span>
+                                    <span class="forecast-min">${Math.round(dadosClima.daily.temperature_2m_min[i])}°</span>
+                                </div>
+                            </div>
+                        `;
+                    }
+                }
+            } catch (e) {
                 tempEl.textContent = "--°C";
-                descEl.textContent = "Erro ao carregar";
-                cityEl.textContent = "Indisponível";
-                forecastListEl.innerHTML = '';
+                descEl.textContent = "Indisponível";
             }
         }
 
@@ -882,21 +962,17 @@
                 45: { descricao: "Nevoeiro", icone: "🌫️" },
                 48: { descricao: "Nevoeiro", icone: "🌫️" },
                 51: { descricao: "Garoa leve", icone: "🌧️" },
-                53: { descricao: "Garoa", icone: "🌧️" },
-                55: { descricao: "Garoa densa", icone: "🌧️" },
                 61: { descricao: "Chuva leve", icone: "🌧️" },
                 63: { descricao: "Chuva moderada", icone: "🌧️" },
                 65: { descricao: "Chuva forte", icone: "🌧️" },
-                71: { descricao: "Neve leve", icone: "🌨️" },
                 95: { descricao: "Tempestade", icone: "⚡" }
             };
             return codigos[codigo] || { descricao: "Estável", icone: "🌡️" };
         }
 
-        carregarClima();
+        carregarClimaComLocalizacao();
     </script>
 </div>
-
             <!-- Redes Sociais -->
             <div class="sidebar-widget-block">
                 <h3 class="widget-heading">Redes sociais</h3>
