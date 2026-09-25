@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciência de Dados | Tiago Correia</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS GERAL E CORES --- */
+        :root {
+            --azul-escuro: #0a192f;
+            --azul-brilhante: #3a86ff;
+            --azul-botao: #0d6efd;
+            --amarelo: #ffca28;
+            --branco: #ffffff;
+        }
+
+        body { background-color: #f8f9fa; }
+
+        /* --- MENU --- */
+        .navbar { background-color: var(--azul-escuro) !important; border-bottom: 2px solid var(--azul-botao); }
+        .navbar-brand { color: var(--azul-brilhante) !important; font-weight: bold; }
+        .nav-link { color: var(--branco) !important; transition: 0.3s; }
+        .nav-link:hover { color: var(--azul-brilhante) !important; }
+
+        /* Destaque Amarelo Portfólio */
+        #menu-portfolio {
+            color: var(--amarelo) !important;
+            border: 2px solid var(--amarelo) !important;
+            border-radius: 5px;
+            font-weight: bold;
+            padding: 5px 15px !important;
+            margin-left: 10px;
+        }
+        #menu-portfolio:hover {
+            background-color: var(--amarelo) !important;
+            color: var(--azul-escuro) !important;
+        }
+
+        /* --- CARROSSEL --- */
+        .carousel-item { height: 60vh; min-height: 350px; background-color: var(--azul-escuro); }
+        .banner-img { height: 100%; object-fit: cover; filter: brightness(45%); }
+        .capa-filtro { 
+            background: rgba(10, 25, 47, 0.8); 
+            padding: 20px; 
+            border-radius: 15px; 
+            border: 1px solid var(--azul-brilhante);
+        }
+
+        /* --- GRADE DE POSTS --- */
+        .bg-dark-blue { background-color: var(--azul-escuro) !important; }
+        .border-blue { border: 1px solid var(--azul-botao) !important; transition: 0.3s; }
+        .border-blue:hover { transform: translateY(-5px); border-color: var(--azul-brilhante) !important; }
+        .text-blue-logo { color: var(--azul-brilhante) !important; }
+
+        .btn-ver-mais {
+            background-color: transparent;
+            color: var(--azul-brilhante) !important;
+            border: 2px solid var(--azul-brilhante);
+            font-weight: bold;
+            transition: 0.4s;
+        }
+        .btn-ver-mais:hover { background-color: var(--azul-brilhante); color: white !important; }
+
+        /* --- FRASE DA SEMANA --- */
+        .frase-da-semana { background: var(--azul-escuro); border: 1px solid var(--azul-brilhante); border-radius: 15px; }
+
+        /* --- RODAPÉ --- */
+        .footer-limpo { background-color: var(--azul-escuro) !important; color: white; border-top: 1px solid var(--azul-brilhante); }
+
+        html { scroll-padding-top: 70px; }
+
+/* Esconde do 10º projeto em diante apenas em telas pequenas (Smartphone) */
+@media (max-width: 767px) {
+    .projeto-item:nth-child(n+10) {
+        display: none !important;
+    }
+}
+
+/* Esconde do 16º projeto em diante em telas grandes (PC/Tablet) */
+@media (min-width: 768px) {
+    .projeto-item:nth-child(n+16) {
+        display: none !important;
+    }
+}
+
+     /* Caixa que vai envelopar e organizar o seu post */
+.post-container {
+    background-color: #ffffff; /* Fundo branco para dar contraste */
+    max-width: 900px;          /* Limita a largura para não esticar demais em telas grandes */
+    margin: 40px auto;         /* Centraliza a caixa e joga ela para baixo do menu */
+    padding: 30px;             /* Cria um espaçamento interno para o texto não colar nas bordas */
+    border-radius: 8px;        /* Arredonda levemente os cantos da caixa */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra bem sutil para dar profundidade */
+}
+
+/* Garante que a imagem do post se ajuste perfeitamente dentro da nova caixa */
+.post-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* Garante que a imagem do post fique centralizada e ajustada */
+.post-container img {
+    max-width: 100%;
+    height: auto;
+    display: block;       /* Transforma a imagem em bloco para permitir o alinhamento */
+    margin: 0 auto 20px auto; /* O 'auto' nas laterais centraliza a imagem perfeitamente */
+    border-radius: 6px;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!-- MENU -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="HTTPS://srcorreia3001.github.io">TIAGO CORREIA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="https://srcorreia3001.github.io/paginas/ciencia-dados.html">Ciência de Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://srcorreia3001.github.io/paginas/analise-dados.html">Análise de Dados</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://srcorreia3001.github.io/paginas/dashboards.html">Mais projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://srcorreia3001.github.io/paginas/portfolio.html" id="menu-portfolio">SOBRE MIM</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="post-container">
+
+    <span class="post-tag">feed</span>
+    <h2 class="post-title">Python vs Linguagem R: O duelo da análise de dados</h2>
+    <div class="post-meta">25 de setembro, 2026 • 3 min de leitura | Tiago Correia</div>
+<p></p>
+
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOySnwK9SBGbV7qMCN-B-RiSmF8ZYxOesEZ8XZLtgvJ6fUKNjiYalpEvPmCZOO7Hv0RgdH51lwjlrl8ss4Hzewic50RGrcor-OSdfaf9OKWTnO_s49ylJOEe8SaPwEaVCVn7yBgxdk4xvhTPVb8Y8_b_Hvh1_7DssdHkT0fllVaNUz-XWJp1bNEqx96RSq/s2816/wwwtiagodatacombrpythonvsr.jpg" alt="imagem 1" width="900" height="500">
+<article class="post-analise-de-dados">
+  
+
+    <!--<div class="keywords-box" style="font-size: 0.9em; color: #555555; background-color: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; margin-bottom: 30px;">
+    <strong>Palavras-chave:</strong> python para analise de dados, linguagem R, bibliotecas de python, pandas, r vs python, cientista de dados, machine learning.
+</div>-->
+
+<p>Se você decidiu entrar de cabeça no universo da análise de dados, mais cedo ou mais tarde vai se deparar com a pergunta clássica que divide rodas de programadores e cientistas de dados: <em>"Afinal, devo aprender Python ou R?"</em></p>
+
+<p>A boa notícia é que você não precisa escolher um lado para o resto da vida igual torcida de futebol. Ambas são ferramentas incrivelmente poderosas, mas carregam personalidades bem distintas. Vamos destrinchar o que cada uma faz de melhor, quais são suas caixas de ferramentas (as famosas bibliotecas) e como dar o primeiro passo na sua jornada analítica. Bora lá?</p>
+
+<hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
+
+<h2>Python: O Canivete Suíço do Mundo Tecnológico</h2>
+
+<p>O <strong>Python</strong> é aquela linguagem amigável que conquistou o mercado corporativo e o desenvolvimento de software. Ele nasceu com o propósito de ser legível e intuitivo, parecendo quase um texto em inglês natural.</p>
+
+<p>Por ser uma linguagem de propósito geral, você não se limita a analisar números: pode criar aplicações web, automatizar tarefas chatas do escritório, construir sistemas de inteligência artificial e muito mais.</p>
+
+<h3>As Principais Bibliotecas de Python para Dados</h3>
+<ul>
+    <li><strong>Pandas:</strong> A rainha das tabelas e manipulação de dados. Se você domina o Excel, o Pandas vai parecer um salto quântico para organizar bases gigantescas de forma rápida.</li>
+    <li><strong>NumPy:</strong> O motor de alta performance por trás dos cálculos matemáticos e manipulação de arrays multidimensionais.</li>
+    <li><strong>Matplotlib e Seaborn:</strong> A duplinha dinâmica para desenhar gráficos claros, informativos e visualmente agradáveis.</li>
+    <li><strong>Scikit-Learn:</strong> O ponto de partida definitivo para quem quer aplicar algoritmos de Machine Learning e modelagem preditiva sem reinventar a roda.</li>
+</ul>
+
+<hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
+
+<h2>Linguagem R: O Paraíso dos Estatísticos e Pesquisadores</h2>
+
+<p>Enquanto o Python foi desenhado para ser versátil, a <strong>linguagem R</strong> nasceu nos corredores acadêmicos e laboratórios de pesquisa. Ela foi construída por estatísticos, pensando estritamente em resolver problemas estatísticos complexos.</p>
+
+<p>Se o seu foco envolve modelagem matemática avançada, testes de hipóteses profundos e gráficos de nível editorial perfeitos para publicações científicas, o R dá um show à parte.</p>
+
+<h3>As Principais Bibliotecas do ecossistema R</h3>
+<ul>
+    <li><strong>Tidyverse (com dplyr e tidyr):</strong> Um ecossistema integrado que torna a limpeza, tratamento e transformação de dados extremamente elegantes e fáceis de ler.</li>
+    <li><strong>ggplot2:</strong> Para muitos, simplesmente a melhor biblioteca de visualização de dados do mundo, baseada numa rigorosa "gramática de gráficos".</li>
+    <li><strong>Shiny:</strong> Permite criar dashboards interativos web completos direto pelo R, sem precisar escrever uma linha de HTML ou JavaScript.</li>
+</ul>
+
+<hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
+
+<h2>Semelhanças: O que Python e R têm em comum?</h2>
+
+<p>Apesar da famosa "rivalidade", as duas linguagens compartilham pilares fundamentais no ecossistema de dados:</p>
+<ul>
+    <li><strong>Código Aberto (Open Source):</strong> Ambas são totalmente gratuitas e mantidas por comunidades globais extremamente ativas.</li>
+    <li><strong>Capacidade de Big Data:</strong> Embora tenham abordagens diferentes, ambas conseguem se conectar a bancos de dados massivos e processar milhões de linhas.</li>
+    <li><strong>Foco em Decisão:</strong> No fim do dia, o objetivo de ambas é o mesmo: transformar dados brutos em histórias compreensíveis para eliminar o "achômetro" dos negócios.</li>
+</ul>
+
+<hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
+
+<h2>Qual delas escolher primeiro?</h2>
+
+<p>A resposta de ouro na programação é: **depende do seu objetivo de carreira!**</p>
+<ul>
+    <li>Vá de **Python** se você busca o mercado corporativo tradicional, deseja flexibilidade para criar softwares, mexer com IA ou quer uma curva de aprendizado inicial mais suave.</li>
+    <li>Vá de **R** se você atua em pesquisa acadêmica, biomedicina, economia avançada ou deseja se tornar um especialista focado em estatística profunda e visualização gráfica refinada.</li>
+</ul>
+
+<!--<div class="blog-tags" style="margin: 35px 0 25px 0; font-size: 0.9em; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+    <strong style="color: #444;">Tags:</strong>
+    <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Python</span>
+    <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Linguagem R</span>
+    <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Pandas</span>
+    <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Ciência de Dados</span>
+    <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Bibliotecas</span>
+</div>
+
+<div class="notebook-sources" style="margin-top: 30px; padding: 20px; background-color: #f1f3f5; border-radius: 8px; border-left: 4px solid #4a90e2;">
+    <h3 style="margin-top: 0; color: #2c3e50; font-size: 1.2em;">Fontes do Notebook</h3>
+    <ul style="margin: 0; padding-left: 20px; color: #555; font-size: 0.95em;">
+        <li>Blog do TC - Termos e Condições</li>
+        <li>Marketing - Serviços e valores</li>
+    </ul>
+</div>-->
+
+<!-- Seção de Comentários (API Disqus) -->
+<section class="comments-section" style="margin-top: 50px; padding-top: 30px; border-top: 1px solid #e0e0e0;">
+    <h2>Deixe um comentário</h2>
+    <p style="color: #555; font-size: 0.95em; margin-bottom: 20px;">E aí, você prefere a versatilidade do Python ou o poder estatístico do R? Conta pra gente!</p>
+    
+    <div id="disqus_thread"></div>
+</section>
+
+<!-- Script de Integração da API do Disqus -->
+<script>
+    var disqus_config = function () {
+        this.page.url = window.location.href;  
+        this.page.identifier = window.location.pathname; 
+    };
+    
+    (function() { 
+        var d = document, s = d.createElement('script');
+        s.src = '[https://https-www-tiagodata-com-br.disqus.com/embed.js](https://https-www-tiagodata-com-br.disqus.com/embed.js)'; 
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+    
+
+
+
+
+</div>
+
+    
+<!----- POSTS---->
+
+
+
+<!-- GRADE DE POSTS -->
+
+    
+    <div class="container my-5">
+    <section id="ciencia-dados">
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4 text-uppercase">Projetos de Ciência de Dados</h2>
+
+        <div class="row g-4">
+
+            <div class="col-12 col-md-4 projeto-item">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1" width="350">
+                    <div class="card-body text-white d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
+                        <p class="card-text small">Projeto com o obejtivo de transformar dados brutos em inteligência comercial</p>
+                        <a href="https://srcorreia3001.github.io/posts/sql/analiserelacionalsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 post-card">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 2">
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes(RFM) </h5>
+                        <p class="card-text small">Construção de um pipeline análitico utilizando Python e SQL aplicado a metodologia RFM (Rec
+ẽncia, Frequência e Monetário)</p>
+                        <a href="https://srcorreia3001.github.io/posts/sql/analiserfmsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+
+                     <div class="col-12 col-sm-6 col-md-4 post-card">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" class="card-img-top" alt="Projeto 1">
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">Análise de Vendas e Desempenho Comercial</h5>
+                        <p class="card-text small">Projeto de análise de vendas usando Python e Pandas.</p>
+                        <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+
+<!--FRASE DA SEMANA -->
+
+    <div class="container my-5">
+        <div class="frase-da-semana p-4 text-center">
+            <blockquote class="blockquote mb-0">
+                <p id="texto-frase" class="text-white italic fs-5"></p>
+                <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;"></footer>
+            </blockquote>
+        </div>
+    </div>
+
+<!--CONTATO-->
+
+<section id="contato" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4">Contato & Projetos</h2>
+        <div class="row g-5">
+
+            <div class="col-md-6">
+                <div class="card p-4 shadow-sm border-blue">
+                    <h4 class="mb-3" style="color: #0a192f;">Mande uma Mensagem</h4>
+                    <form action="https://formspree.io/f/meelzjdn" method="POST">
+                        <div class="mb-3">
+                            <label class="form-label">Nome</label>
+                            <input type="text" name="name" class="form-control" placeholder="Seu nome" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">E-mail</label>
+                            <input type="email" name="email" class="form-control" placeholder="nome@exemplo.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Como posso ajudar?</label>
+                            <textarea name="message" class="form-control" rows="4" placeholder="Descreva seu projeto..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-ver-mais w-100">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-6 d-flex flex-column justify-content-center">
+                <div class="ps-md-4">
+                    <h3 style="color: #0d6efd;">Tiago de Lima Correia</h3>
+                    <p class="lead text-muted">Estudante de Ciência e Análise de Dados</p>
+                    <p><strong>Instituição:</strong> Universidade Santa Cecília (UniSanta)</p>
+
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-2">
+                            <i class="fab fa-whatsapp text-success me-2"></i> 
+                            <a href="https://wa.me/5511957013453" target="_blank" class="text-decoration-none text-dark">11 95701-3454</a>
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-envelope text-primary me-2"></i> 
+                            <a href="mailto:tiagocorreia380@outlook.com" class="text-decoration-none text-dark">tiagocorreia380@outlook.com</a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <h5 class="mb-3">Redes Profissionais:</h5>
+                        <a href="https://www.linkedin.com/in/tiago-correia380?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
+
+" target="_blank" class="btn btn-outline-primary me-2">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/srcorreia3001" target="_blank" class="btn btn-outline-dark">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <footer class="footer-limpo py-3">
+        <div class="container text-center">
+            <p class="mb-0">Criado por <strong>Tiago Correia</strong> | &copy; <span id="ano-atual"></span> Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const frases = [
+            { t: "Em Deus nós confiamos; todos os outros devem trazer dados.", a: "W. Edwards Deming" },
+            { t: "O objetivo é transformar dados em informação, e informação em insights.", a: "Carly Fiorina" }
+        ];
+
+        function carregar() {
+            const f = frases[Math.floor(Math.random() * frases.length)];
+            document.getElementById('texto-frase').innerText = `"${f.t}"`;
+            document.getElementById('autor-frase').innerText = f.a;
+            document.getElementById('ano-atual').textContent = new Date().getFullYear();
+        }
+        window.onload = carregar;
+    </script>
+</body>
+</html>
