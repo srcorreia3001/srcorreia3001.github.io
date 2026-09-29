@@ -1184,25 +1184,30 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         });
 
-        // Remove duplicatas com base na URL (garantindo que cada post seja único)
+        // Remove duplicatas com base no TÍTULO e na URL (garantindo unicidade absoluta)
         const dadosArtigos = [];
+        const titulosVistos = new Set();
         const urlsVistas = new Set();
+
         for (const post of dadosArtigosTemp) {
-            if (!urlsVistas.has(post.url)) {
+            // Normaliza o título para evitar pequenas variações de maiúsculas/espaços
+            const tituloLimpo = post.titulo.toLowerCase().replace(/\s+/g, ' ').trim();
+            
+            if (!titulosVistos.has(tituloLimpo) && !urlsVistas.has(post.url)) {
+                titulosVistos.add(tituloLimpo);
                 urlsVistas.add(post.url);
                 dadosArtigos.push(post);
             }
         }
 
         // Chave do localStorage para salvar os cliques de forma persistente
-        const STORAGE_KEY = "tiagodata_cliques_posts";
+        const STORAGE_KEY = "tiagodata_cliques_posts_v2";
         let cliques = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
         // Adiciona o monitor de cliques em cada link do feed principal
         todosArtigos.forEach(artigo => {
             const linkEl = artigo.querySelector("h4 a");
             if (linkEl) {
-                // Evita múltiplos listeners caso o script rode mais de uma vez
                 if (!linkEl.dataset.tracked) {
                     linkEl.dataset.tracked = "true";
                     linkEl.addEventListener("click", function () {
@@ -1221,7 +1226,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return cliquesB - cliquesA;
         });
 
-        // Renderiza os top 5 sem repetições na lista de "Mais Lidos"
+        // Renderiza os top posts sem repetições na lista de "Mais Lidos"
         listaMaisLidosEl.innerHTML = "";
         const topArtigos = artigosOrdenados.slice(0, 5);
 
@@ -1238,7 +1243,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
     
 </script>
 
