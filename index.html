@@ -264,9 +264,7 @@
 
         </div>
     </section>
-</div>
-
-<!--SEÇÃO DE POSTS DE INFORMAÇÃO
+</div><!-- SEÇÃO DE POSTS DE INFORMAÇÃO -->
 <!-- INÍCIO DO BLOCO DA SEÇÃO DE POSTS - TIAGO DATA -->
 <div class="blog-data-wrapper">
     <style>
@@ -357,7 +355,7 @@
             align-items: center;
         }
 
-        /* Container da Imagem (Preparado para receber tag <img> futuramente) */
+        /* Container da Imagem */
         .card-image-box {
             width: 180px;
             height: 110px;
@@ -370,7 +368,7 @@
             font-weight: bold;
             background: #f1f1f1;
             flex-shrink: 0;
-            overflow: hidden; /* Garante que futuras imagens respeitem as bordas arredondadas */
+            overflow: hidden;
         }
 
         .card-image-box img {
@@ -386,13 +384,6 @@
             width: 100%;
         }
 
-        .card-tag-text {
-            font-size: 11px;
-            font-weight: bold;
-            color: #333;
-            text-transform: uppercase;
-        }
-
         .card-title-text {
             font-size: 22px;
             color: #000;
@@ -400,7 +391,6 @@
             line-height: 1.25;
         }
 
-        /* Rodapé do Card: Data/Autor + Seção de Likes Futura */
         .card-footer-meta {
             display: flex;
             justify-content: space-between;
@@ -414,17 +404,6 @@
             margin: 0;
         }
 
-        /* Espaço reservado estruturado para os Likes/Interações */
-        .card-likes-box {
-            font-size: 12px;
-            color: #0044cc;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-        }
-
         /* Paginação */
         .blog-pagination-wrapper {
             margin-top: 30px;
@@ -434,23 +413,42 @@
         .pagination-controls {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
-            font-size: 20px;
+            gap: 12px;
+            font-size: 18px;
             color: #0044cc;
             font-weight: bold;
         }
 
         .pg-btn {
             background: none;
-            border: none;
-            font-size: 22px;
+            border: 1px solid #0044cc;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 16px;
             color: #0044cc;
             cursor: pointer;
             font-weight: bold;
         }
 
+        .pg-btn:hover {
+            background-color: #0044cc;
+            color: #fff;
+        }
+
+        .pg-number {
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .pg-number:hover {
+            background-color: #f1f1f1;
+        }
+
         .active-pg {
-            color: #0044cc;
+            background-color: #0044cc !important;
+            color: #fff !important;
         }
 
         .pg-instructions {
@@ -459,94 +457,7 @@
             color: #333;
         }
 
-        /* Barra Lateral (Sidebar) */
-        .blog-sidebar-section {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            min-width: 0;
-        }
-
-        .sidebar-widget-block {
-            background: transparent;
-            width: 100%;
-        }
-
-        .widget-heading {
-            font-size: 22px;
-            color: #0044cc;
-            border-bottom: 2px solid #222;
-            padding-bottom: 5px;
-            margin: 0 0 15px 0;
-        }
-
-        .widget-content-box {
-            border: 2px solid #111;
-            border-radius: 8px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            background: #fff;
-            color: #111;
-        }
-
-        /* Redes Sociais */
-        .social-icons-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .social-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-            flex: 1;
-        }
-
-        .social-ico-box {
-            width: 100%;
-            height: 45px;
-            border: 1px solid #111;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            background: #fff;
-        }
-
-        .social-lbl {
-            font-size: 9px;
-            color: #333;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        /* Mais Lidos */
-        .trending-items-list {
-            padding-left: 20px;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .trending-items-list li {
-            font-size: 18px;
-            color: #0044cc;
-            font-weight: bold;
-        }
-
-        .trending-items-list li::marker {
-            color: #0044cc;
-        }
-
-        /* Responsividade Mobile (Telas até 768px) */
+        /* Responsividade Mobile */
         @media screen and (max-width: 768px) {
             .blog-grid-container {
                 grid-template-columns: 1fr;
@@ -588,7 +499,7 @@
                 </div>
             </div>
 
-            <!-- Lista de Artigos (Estruturada com suporte a imagem e likes futuros) -->
+            <!-- Lista de Artigos -->
             <div class="blog-articles-stack">
                 
                 <!-- Artigo 1 -->
@@ -601,7 +512,6 @@
                         <h4><a href="https://srcorreia3001.github.io/posts/feed/desvendandodados.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
                         <div class="card-footer-meta">
                             <p class="card-meta-text">24/09/2026 | Tiago Correia</p>
-                            <!-- Espaço reservado estruturado para os Likes -->
                         </div>
                     </div>
                 </article>
@@ -616,7 +526,6 @@
                         <h4><a href="https://srcorreia3001.github.io/posts/feed/pythonvsr.html" style="text-decoration: none; color: blue;">Python vs Linguagem R: O duelo da análise de dados</a></h4>
                         <div class="card-footer-meta">
                             <p class="card-meta-text">25/09/2026 | Tiago Correia</p>
-                            <!-- Espaço reservado estruturado para os Likes -->
                         </div>
                     </div>
                 </article>
@@ -631,7 +540,6 @@
                         <h4><a href="https://srcorreia3001.github.io/posts/feed/inteligencia.html" style="text-decoration: none; color: blue;">O Papel da Inteligência Artificial na Análise de Dados: Ela vai roubar o seu emprego?</a></h4>
                         <div class="card-footer-meta">
                             <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
-                            <!-- Espaço reservado estruturado para os Likes -->
                         </div>
                     </div>
                 </article>
@@ -646,7 +554,6 @@
                         <h4><a href="https://srcorreia3001.github.io/posts/feed/omitodografico.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
                         <div class="card-footer-meta">
                             <p class="card-meta-text">27/09/2026 | Tiago Correia</p>
-                            <!-- Espaço reservado estruturado para os Likes -->
                         </div>
                     </div>
                 </article>
@@ -661,7 +568,6 @@
                         <h4><a href="https://srcorreia3001.github.io/posts/feed/metricas.html" style="text-decoration: none; color: blue;">Métricas de Vaidade vs. Métricas Reais: O que realmente importa nos seus dados?</a></h4>
                         <div class="card-footer-meta">
                             <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
-                            <!-- Espaço reservado estruturado para os Likes -->
                         </div>
                     </div>
                 </article>
@@ -670,14 +576,16 @@
 
             <!-- Paginação -->
             <div class="blog-pagination-wrapper">
-                <div class="pagination-controls">
+                <div class="pagination-controls" id="paginationControlsContainer">
                     <button class="pg-btn" id="prevPageBtn">&lt;</button>
-                    <span class="pg-number active-pg" id="currentPgNum">1</span>
+                    <!-- Os números das páginas serão inseridos aqui dinamicamente -->
                     <button class="pg-btn" id="nextPageBtn">&gt;</button>
                 </div>
-                <p class="pg-instructions">Aqui vamos colocar uma paginação numérica</p>
+                <p class="pg-instructions">Navegue pelas páginas de destaques</p>
             </div>
         </main>
+    </div>
+</div>
 
         <!-- Coluna da Direita (Barra Lateral Fixa ao Lado) -->
         <aside class="blog-sidebar-section">
@@ -1245,6 +1153,102 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const itensPorPagina = 3; // Quantidade de posts exibidos por vez no espaço
+    let paginaAtual = 1;
+
+    const inputPesquisa = document.getElementById("blogSearchInput");
+    const containerArtigos = document.querySelector(".blog-articles-stack");
+    const todosArtigos = Array.from(containerArtigos.querySelectorAll(".blog-card-item"));
+    const controlesPaginacao = document.getElementById("paginationControlsContainer");
+    const btnAnterior = document.getElementById("prevPageBtn");
+    const btnProximo = document.getElementById("nextPageBtn");
+
+    function obterArtigosFiltrados() {
+        const termo = inputPesquisa.value.toLowerCase().trim();
+        if (!termo) return todosArtigos;
+
+        return todosArtigos.filter(artigo => {
+            const tituloElemento = artigo.querySelector("h4 a");
+            const textoTitulo = tituloElemento ? tituloElemento.textContent.toLowerCase() : "";
+            return textoTitulo.includes(termo);
+        });
+    }
+
+    function atualizarPaginacao() {
+        const artigosFiltrados = obterArtigosFiltrados();
+        const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina) || 1;
+
+        if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+        if (paginaAtual < 1) paginaAtual = 1;
+
+        // Esconde todos os artigos primeiro
+        todosArtigos.forEach(artigo => artigo.style.display = "none");
+
+        // Mostra apenas os artigos da página atual que passaram na busca
+        const inicio = (paginaAtual - 1) * itensPorPagina;
+        const fim = inicio + itensPorPagina;
+        const artigosDaPagina = artigosFiltrados.slice(inicio, fim);
+
+        artigosDaPagina.forEach(artigo => artigo.style.display = "flex");
+
+        // Remove os números de página antigos antes de renderizar os novos
+        const botoesNumericosAntigos = controlesPaginacao.querySelectorAll(".pg-number-dynamic");
+        botoesNumericosAntigos.forEach(b => b.remove());
+
+        // Cria os botões numéricos dinamicamente
+        for (let i = 1; i <= totalPaginas; i++) {
+            const spanNum = document.createElement("span");
+            spanNum.className = `pg-number pg-number-dynamic ${i === paginaAtual ? "active-pg" : ""}`;
+            spanNum.textContent = i;
+
+            spanNum.addEventListener("click", () => {
+                paginaAtual = i;
+                atualizarPaginacao();
+            });
+
+            // Insere o número antes do botão de avançar (&gt;)
+            controlesPaginacao.insertBefore(spanNum, btnProximo);
+        }
+
+        // Controla o estado de opacidade e cliques dos botões de seta
+        btnAnterior.style.opacity = paginaAtual === 1 ? "0.4" : "1";
+        btnAnterior.style.pointerEvents = paginaAtual === 1 ? "none" : "auto";
+
+        btnProximo.style.opacity = paginaAtual === totalPaginas || totalPaginas === 0 ? "0.4" : "1";
+        btnProximo.style.pointerEvents = paginaAtual === totalPaginas || totalPaginas === 0 ? "none" : "auto";
+    }
+
+    // Ações das setas
+    btnAnterior.addEventListener("click", () => {
+        if (paginaAtual > 1) {
+            paginaAtual--;
+            atualizarPaginacao();
+        }
+    });
+
+    btnProximo.addEventListener("click", () => {
+        const artigosFiltrados = obterArtigosFiltrados();
+        const totalPaginas = Math.ceil(artigosFiltrados.length / itensPorPagina);
+        if (paginaAtual < totalPaginas) {
+            paginaAtual++;
+            atualizarPaginacao();
+        }
+    });
+
+    // Ação ao digitar na caixa de pesquisa
+    inputPesquisa.addEventListener("input", () => {
+        paginaAtual = 1; // Reseta para a primeira página ao pesquisar
+        atualizarPaginacao();
+    });
+
+    // Inicialização ao carregar a página
+    atualizarPaginacao();
+});
+
+
+    
 </script>
 
     
