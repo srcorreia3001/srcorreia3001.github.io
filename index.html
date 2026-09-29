@@ -386,162 +386,397 @@
 </script>  
     
 
-<!-- ================================================= -->
-<!-- GRADE DE POSTS DO BLOG (CIÊNCIA, ANÁLISE E MAIS)  -->
-<!-- ================================================= -->
+<!-- INÍCIO DO BLOCO DA SEÇÃO DE POSTS - TIAGO DATA -->
+<div class="blog-data-wrapper">
+    <style>
+        /* Estilos encapsulados para o layout de dados */
+        .blog-data-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-<!-- 1. CIÊNCIA DE DADOS -->
-<div class="container my-5">
-    <section id="ciencia-dados" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4" style="color: #0044cc; font-weight: bold;">Ciência de Dados</h2>
-        <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">PREVENDO a Evasão Escolar com Machine Learning</h5>
-                        <p class="card-text small text-muted">A Evasão Escolar é um dos desafios mais complexos da gestão educacional pública e privada.</p>
-                        <a href="https://srcorreia3001.github.io/posts/cienciadados/projetodeevasaoescolar.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        .blog-data-wrapper *, 
+        .blog-data-wrapper *::before, 
+        .blog-data-wrapper *::after {
+            box-sizing: border-box;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL5kx-V6atTiTllXQGBen9AG2XlJguf4pxiDZDTdoJxVxkGOA3rTM1oJbF6bEsedpC1hyphenhyphennZ-BhxdASPXY3g7g9oeB2bQG5B2Uej-7TcrQIPhDl_Px4sgN61W8f0e4GeQMGSm44jgpGwlfqCV8IIOR-3YvhSN47TEFx6co1N3mFI1gj3wboAdZ0fJcS8xYC/s1920/pabitrakaity-credit-card-6401275_1920.png" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Risco de Credito</h5>
-                        <p class="card-text small text-muted">Ser rigoroso demais significa perder receita e clientes em potencial; ser permissivo eleva drasticamente os prejuízos.</p>
-                        <a href="https://srcorreia3001.github.io/posts/cienciadados/analisederiscodecredito.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        /* Layout Grid Rigoroso para Desktop (Feed + Barra Lateral Lado a Lado) */
+        .blog-grid-container {
+            display: grid;
+            grid-template-columns: 2.1fr 1fr;
+            gap: 35px;
+            width: 100%;
+            align-items: start;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqVXe7NVciIvf1lw9XawVYdXjl0y8avIUEYtbru0BKbbNQypfw7Km29FveY9sHBkw99hL4thrpmIRdrHb_lwhyphenhyphenHQvNrsR4NmTU5FHpjHKTgBc3qdMouxsdUk6EZJee7-r-QeusSpD92LzamTHaFA5F33MZlez6UYoV3j-ihAjv_Laui4hdOkzrVHoaSK_/s2000/reaxionlab-ecommerce-1706103.png" class="card-img-top" alt="Projeto 3">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Previsão de Vendas e Demanda no Varejo</h5>
-                        <p class="card-text small text-muted">No setor varejista, o planejamento de estoque e a gestão de fluxo de caixa são pilares críticos.</p>
-                        <a href="https://srcorreia3001.github.io/posts/cienciadados/previsaovendas.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        /* Seção Principal (Feed) */
+        .blog-main-section {
+            width: 100%;
+            min-width: 0;
+        }
 
-        </div>
-    </section>
-</div>
+        .content-header-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+        }
 
-<!-- 2. ANÁLISE DE DADOS -->
-<div class="container my-5">
-    <section id="analise-de-dados" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4" style="color: #0044cc; font-weight: bold;">Análise de Dados</h2>
-        <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Vendas e Desempenho Comercial</h5>
-                        <p class="card-text small text-muted">Projeto de análise de vendas usando Python e Pandas.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        .section-main-title {
+            color: #0044cc;
+            font-size: 28px;
+            margin: 0;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small text-muted">Transformando dados brutos em inteligência comercial.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analise/analiserelacional.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        /* Caixa de Pesquisa */
+        .search-input-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 5px 12px;
+            background: #fff;
+            width: 210px;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 3">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes (RFM)</h5>
-                        <p class="card-text small text-muted">Pipeline analítico utilizando Python e SQL.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analise/analiserfm.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        .search-input-wrapper input {
+            border: none;
+            outline: none;
+            margin-left: 6px;
+            font-size: 14px;
+            color: #0044cc;
+            width: 100%;
+            background: transparent;
+        }
 
-        </div>
-    </section>
-</div>
+        .search-input-wrapper input::placeholder {
+            color: #0044cc;
+        }
 
-<!-- 3. MAIS PROJETOS -->
-<div class="container my-5">
-    <section id="mais-projetos" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4" style="color: #0044cc; font-weight: bold;">Mais Projetos</h2>
-        <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Analise de venda online E-commerce</h5>
-                        <p class="card-text small text-muted">Analisar o desempenho de vendas de uma loja virtual, identificando categorias de produtos.</p>
-                        <a href="https://srcorreia3001.github.io/posts/maisprojetos/analisedevendaspb.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        /* Lista e Cards de Artigos */
+        .blog-articles-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN9QKs5WbKELqoQrQYDQ4c5XtPd8P2az2cHHHrxCnkN6BWee9AVlSe_IhLbR53iJwfTtWYUdLUz8vBgnIkFRBOxlc80K7GKM5UHbMNCwFyTeNjU6U4UWgGR2u8jVo4bHU_aUIF1mAtsv1Tc3KkWD532eQCkvZJ-0xQUABPv9gSFIzGMg0Tnf9T-t4B2BVr/s852/Captura%20de%20tela%202026-09-21%20224757.png" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Sistema Leve de Cadastro de Alunos em Python</h5>
-                        <p class="card-text small text-muted">Demonstra como a automação de processos simples pode ser feita com tecnologia.</p>
-                        <a href="https://srcorreia3001.github.io/posts/maisprojetos/cadastrosimplestkinter.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        .blog-card-item {
+            display: flex;
+            gap: 20px;
+            background: #fff;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+        }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow" style="background-color: #0a1128; border: 1px solid #0044cc;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 3">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small text-muted">Transformando dados brutos em inteligência comercial.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analise/analiserelacional.html" class="btn btn-ver-mais mt-auto tracked-post-link" style="background-color: #0044cc; color: white;">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+        /* Container da Imagem */
+        .card-image-box {
+            width: 180px;
+            height: 110px;
+            border: 2px solid #111;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-weight: bold;
+            background: #f1f1f1;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
 
-        </div>
-    </section>
-</div>
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
+        .card-details-box {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 100%;
+        }
 
-<!-- ================================================= -->
-<!-- SCRIPT INTELIGENTE PARA OS "MAIS LIDOS"           -->
-<!-- ================================================= -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Rastreia os cliques em qualquer card do feed para atualizar os Mais Lidos na barra lateral
-        const todosLinksPosts = document.querySelectorAll('.tracked-post-link');
-        const STORAGE_KEY = "tiagodata_cliques_grid_puro_v1";
-        let cliques = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        .card-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 4px;
+        }
 
-        todosLinksPosts.forEach(link => {
-            if (!link.dataset.tracked) {
-                link.dataset.tracked = "true";
-                link.addEventListener("click", function () {
-                    const urlPost = link.href;
-                    cliques[urlPost] = (cliques[urlPost] || 0) + 1;
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(cliques));
-                });
+        .card-meta-text {
+            font-size: 13px;
+            color: #555;
+            margin: 0;
+        }
+
+        /* Paginação */
+        .blog-pagination-wrapper {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .pagination-controls {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+            color: #0044cc;
+            font-weight: bold;
+        }
+
+        .pg-btn {
+            background: none;
+            border: 1px solid #0044cc;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 16px;
+            color: #0044cc;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pg-btn:hover {
+            background-color: #0044cc;
+            color: #fff;
+        }
+
+        .pg-number {
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .pg-number:hover {
+            background-color: #f1f1f1;
+        }
+
+        .active-pg {
+            background-color: #0044cc !important;
+            color: #fff !important;
+        }
+
+        .pg-instructions {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Barra Lateral (Sidebar) */
+        .blog-sidebar-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        .sidebar-widget-block {
+            background-color: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .widget-heading {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0044cc;
+            border-bottom: 2px solid #222;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .widget-content-box {
+            border: 2px solid #111;
+            border-radius: 8px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #fff;
+            color: #111;
+        }
+
+        /* Widget Clima Personalizado */
+        .sidebar-widget-block.widget-clima {
+            border: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+            padding: 16px !important;
+        }
+
+        .weather-info {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 4px !important;
+            margin-bottom: 12px !important;
+        }
+
+        .weather-city {
+            font-size: 0.9rem !important;
+            color: #666666 !important;
+            font-weight: 500 !important;
+        }
+
+        .weather-main {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            margin: 4px 0 !important;
+        }
+
+        .weather-temp {
+            font-size: 2.2rem !important;
+            font-weight: bold !important;
+            color: #222222 !important;
+        }
+
+        .weather-icon {
+            font-size: 2rem !important;
+        }
+
+        .weather-desc {
+            font-size: 0.85rem !important;
+            color: #777777 !important;
+            margin: 0 !important;
+            text-transform: capitalize !important;
+        }
+
+        .weather-forecast {
+            border-top: 1px solid #f0f0f0 !important;
+            padding-top: 10px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 8px !important;
+        }
+
+        .forecast-item {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            font-size: 0.85rem !important;
+            color: #555 !important;
+            width: 100% !important;
+        }
+
+        .forecast-day {
+            font-weight: 500 !important;
+            width: 35px !important;
+        }
+
+        .forecast-temps {
+            display: flex !important;
+            gap: 8px !important;
+        }
+
+        .forecast-max {
+            font-weight: 600 !important;
+            color: #222 !important;
+        }
+
+        .forecast-min {
+            color: #888 !important;
+        }
+
+        /* Redes Sociais na Sidebar */
+        .social-icons-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 8px;
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .social-card:hover {
+            background: #ebf0f4;
+            border-color: #d1d5da;
+            transform: translateY(-2px);
+        }
+
+        .social-card img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        .social-lbl {
+            font-size: 12px;
+            font-weight: 500;
+            color: #586069;
+        }
+
+        /* Mais Lidos */
+        .trending-items-list {
+            padding-left: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .trending-items-list li {
+            font-size: 16px;
+            color: #0044cc;
+            font-weight: bold;
+        }
+
+        .trending-items-list li::marker {
+            color: #0044cc;
+        }
+
+        /* Responsividade Mobile (Telas até 768px) */
+        @media screen and (max-width: 768px) {
+            .blog-grid-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
-        });
-    });
-</script>
+
+            .content-header-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .blog-card-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-image-box {
+                width: 100%;
+                height: 150px;
+            }
+        }
+    </style>
 
     <!-- Container Principal do Layout (Grid Lado a Lado) -->
     <div class="blog-grid-container">
@@ -633,144 +868,8 @@
                     <!-- Os números das páginas serão inseridos aqui dinamicamente -->
                     <button class="pg-btn" id="nextPageBtn">&gt;</button>
                 </div>
-                <p class="pg-instructions"></p>
+                <p class="pg-instructions">Navegue pelas páginas de destaques</p>
             </div>
-<!-- Widget: Apps & Downloads (Ocupando o espaço em branco) -->
-<div class="blog-downloads-section">
-    <style>
-        .blog-downloads-section {
-            background-color: #ffffff;
-            border: 1px solid #e1e4e8;
-            border-radius: 12px;
-            padding: 20px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            font-family: Arial, sans-serif;
-        }
-
-        .downloads-heading {
-            font-size: 20px;
-            font-weight: 600;
-            color: #0044cc;
-            border-bottom: 2px solid #222;
-            padding-bottom: 8px;
-            margin-top: 0;
-            margin-bottom: 18px;
-        }
-
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .download-card-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            padding: 14px;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .download-card-item:hover {
-            background: #ebf0f4;
-            border-color: #0044cc;
-            transform: translateY(-2px);
-        }
-
-        .download-info-box {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-
-        .download-item-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #24292e;
-            margin: 0;
-        }
-
-        .download-item-desc {
-            font-size: 12px;
-            color: #586069;
-            margin: 0;
-        }
-
-        .download-action-btn {
-            background-color: #0044cc;
-            color: #fff;
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-        }
-
-        .download-card-item:hover .download-action-btn {
-            background-color: #003399;
-        }
-    </style>
-
-    <h3 class="downloads-heading">Apps & Downloads</h3>
-    
-    <div class="downloads-grid">
-        
-        <!-- Programa Windows 1 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">💻 Gestão Escolar</h4>
-                <p class="download-item-desc">Programa Windows (Flet / SQLite)</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Programa Windows 2 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">💻 Scripts de Análise</h4>
-                <p class="download-item-desc">Automação Python / Pandas</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Aplicativo Android 1 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">📱 App Mobile Dados</h4>
-                <p class="download-item-desc">Aplicativo para Android (.apk)</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Repositório Geral -->
-        <a href="https://tiagodata.com.br" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">📁 Repositório Dev</h4>
-                <p class="download-item-desc">Central de Ferramentas</p>
-            </div>
-            <div class="download-action-btn">
-                🔍 Acessar
-            </div>
-        </a>
-
-    </div>
-</div>
         </main>
 
         <!-- Coluna da Direita (Barra Lateral) -->
@@ -817,12 +916,16 @@
             </div>
 
             <!-- Mais Lidos -->
-<div class="sidebar-widget-block">
-    <h3 class="widget-heading">Mais Lidos</h3>
-    <ol class="trending-items-list" id="trendingPostsList">
-        <!-- O JavaScript vai preencher os links e títulos automaticamente aqui -->
-    </ol>
-</div>
+            <div class="sidebar-widget-block">
+                <h3 class="widget-heading">Mais Lidos</h3>
+                <ol class="trending-items-list">
+                    <li>Título</li>
+                    <li>Título</li>
+                    <li>Título</li>
+                    <li>Título</li>
+                    <li>Título</li>
+                </ol>
+            </div>
 
             <!-- Propaganda -->
             <div class="sidebar-widget-block">
@@ -833,6 +936,23 @@
     </div>
 </div>
 <!-- FIM DO BLOCO DA SEÇÃO DE POSTS -->
+
+<!-- SEÇÃO DE FRASES DE MOTIVAÇÃO -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            <div class="frase-da-semana shadow-lg p-4"> 
+                <div class="text-center">
+                    <span class="badge rounded-pill bg-primary mb-3">Insight do Dia</span>
+                    <blockquote class="blockquote mb-0">
+                        <p id="texto-frase" class="frase-texto-estilo italic"></p>
+                        <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;"></footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- SEÇÃO DE FRASES DE MOTIVAÇÃO -->
 <div class="container my-5">
