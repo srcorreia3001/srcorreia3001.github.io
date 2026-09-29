@@ -795,16 +795,12 @@
             </div>
 
             <!-- Mais Lidos -->
-            <div class="sidebar-widget-block">
-                <h3 class="widget-heading">Mais Lidos</h3>
-                <ol class="trending-items-list">
-                    <li><a href="https://srcorreia3001.github.io/posts/feed/metricas.html" style="text-decoration: none; color: blue;">Métricas de Vaidade vs. Métricas Reais: O que realmente importa nos seus dados?</a></li>
-                    <li>Título</li>
-                    <li>Título</li>
-                    <li>Título</li>
-                    <li>Título</li>
-                </ol>
-            </div>
+<div class="sidebar-widget-block">
+    <h3 class="widget-heading">Mais Lidos</h3>
+    <ol class="trending-items-list" id="trendingPostsList">
+        <!-- O JavaScript vai preencher os links e títulos automaticamente aqui -->
+    </ol>
+</div>
 
             <!-- Propaganda -->
             <div class="sidebar-widget-block">
@@ -1170,6 +1166,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     carregarClimaComLocalizacao();
+});
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const listaMaisLidosEl = document.getElementById("trendingPostsList");
+    const containerArtigos = document.querySelector(".blog-articles-stack");
+
+    if (listaMaisLidosEl && containerArtigos) {
+        const todosArtigos = Array.from(containerArtigos.querySelectorAll(".blog-card-item"));
+        
+        // Mapeia todos os artigos do feed para extrair título e URL
+        const dadosArtigos = todosArtigos.map(artigo => {
+            const linkEl = artigo.querySelector("h4 a");
+            return {
+                titulo: linkEl ? linkEl.textContent.trim() : "Sem Título",
+                url: linkEl ? linkEl.href : "#"
+            };
+        });
+
+        // Chave do localStorage para salvar os cliques de forma persistente
+        const STORAGE_KEY = "tiagodata_cliques_posts";
+        let cliques = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+        // Adiciona um ouvinte de clique em cada artigo do feed
+        todosArtigos.forEach(artigo => {
+            const linkEl = artigo.querySelector("h4 a");
+            if (linkEl) {
+                linkEl.addEventListener("click", function () {
+                    const urlPost = linkEl.href;
+                    cliques[urlPost] = (cliques[urlPost] || 0) + 1;
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(cliques));
+                });
+            }
+        });
+
+        // Ordena os artigos com base nos cliques (do mais acessado para o menos acessado)
+        const artigosOrdenados = [...dadosArtigos].sort((a, b) => {
+            const cliquesA = cliques[a.url] || 0;
+            const cliquesB = cliques[b.url] || 0;
+            return cliquesB - cliquesA;
+        });
+
+        // Renderiza os top 5 na lista de "Mais Lidos"
+        listaMaisLidosEl.innerHTML = "";
+        const topArtigos = artigosOrdenados.slice(0, 5);
+
+        topArtigos.forEach(post => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = post.url;
+            a.textContent = post.titulo;
+            a.style.textDecoration = "none";
+            a.style.color = "#0044cc";
+            
+            li.appendChild(a);
+            listaMaisLidosEl.appendChild(li);
+        });
+    }
 });
 
     
