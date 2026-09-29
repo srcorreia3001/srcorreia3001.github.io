@@ -284,7 +284,7 @@
             box-sizing: border-box;
         }
 
-        /* Layout Grid Rigoroso para Desktop (Lado a Lado Garantido) */
+        /* Layout Grid Rigoroso para Desktop (Feed + Barra Lateral Lado a Lado) */
         .blog-grid-container {
             display: grid;
             grid-template-columns: 2.1fr 1fr;
@@ -293,7 +293,7 @@
             align-items: start;
         }
 
-        /* Seção Principal */
+        /* Seção Principal (Feed) */
         .blog-main-section {
             width: 100%;
             min-width: 0;
@@ -384,13 +384,6 @@
             width: 100%;
         }
 
-        .card-title-text {
-            font-size: 22px;
-            color: #000;
-            margin: 0;
-            line-height: 1.25;
-        }
-
         .card-footer-meta {
             display: flex;
             justify-content: space-between;
@@ -457,177 +450,51 @@
             color: #333;
         }
 
-        /* Responsividade Mobile */
-        @media screen and (max-width: 768px) {
-            .blog-grid-container {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .content-header-box {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-
-            .search-input-wrapper {
-                width: 100%;
-            }
-
-            .blog-card-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .card-image-box {
-                width: 100%;
-                height: 150px;
-            }
-        }
-    </style>
-
-    <!-- Container Principal do Layout -->
-    <div class="blog-grid-container">
-        
-        <!-- Coluna da Esquerda (Destaques, Artigos e Paginação) -->
-        <main class="blog-main-section">
-            <div class="content-header-box">
-                <h1 class="section-main-title">Destaques!</h1>
-                <div class="search-input-wrapper">
-                    <span class="search-ico">🔍</span>
-                    <input type="text" id="blogSearchInput" placeholder="Pesquisa">
-                </div>
-            </div>
-
-            <!-- Lista de Artigos -->
-            <div class="blog-articles-stack">
-                
-                <!-- Artigo 1 -->
-                <article class="blog-card-item">
-                    <div class="card-image-box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2jp1w9v_8dQwqtg_naLmhWKdyoRWuQVimqa6ut1_47BlgfrOaS-hLSqkRamU4dhSoGDg2jPSUFAK0xhC7Rs1o3P_RGqAr26__oTopgDSWieQikT_OQZ-KbPDZz3y3ecG1D1RlagM7iyabvWeqAQLG3vxMnd3Pvrk_GRiQUlgrI39GcjqtWA9oJjqHaaWO/s6000/dadoswwwtiagodatacombr.jpg" alt="Título"> 
-                    </div>
-                    <div class="card-details-box">
-                        <h2 class="card-title-text"></h2>
-                        <h4><a href="https://srcorreia3001.github.io/posts/feed/desvendandodados.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
-                        <div class="card-footer-meta">
-                            <p class="card-meta-text">24/09/2026 | Tiago Correia</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Artigo 2 -->
-                <article class="blog-card-item">
-                    <div class="card-image-box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOySnwK9SBGbV7qMCN-B-RiSmF8ZYxOesEZ8XZLtgvJ6fUKNjiYalpEvPmCZOO7Hv0RgdH51lwjlrl8ss4Hzewic50RGrcor-OSdfaf9OKWTnO_s49ylJOEe8SaPwEaVCVn7yBgxdk4xvhTPVb8Y8_b_Hvh1_7DssdHkT0fllVaNUz-XWJp1bNEqx96RSq/s2816/wwwtiagodatacombrpythonvsr.jpg" alt="Título"> 
-                    </div>
-                    <div class="card-details-box">
-                        <h2 class="card-title-text"></h2>
-                        <h4><a href="https://srcorreia3001.github.io/posts/feed/pythonvsr.html" style="text-decoration: none; color: blue;">Python vs Linguagem R: O duelo da análise de dados</a></h4>
-                        <div class="card-footer-meta">
-                            <p class="card-meta-text">25/09/2026 | Tiago Correia</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Artigo 3 -->
-                <article class="blog-card-item">
-                    <div class="card-image-box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JmlVzHUDcA0WZ31KvAMoTMYEwtNWpt-kLLZ3jbkIGk9A3eZnSO3s7WvQX5mPwq9JtYtWAXm5Y0iuaaaFmUkqAEhQ7padGxy4lKgvXVbITJGNZUiVFbJQIhtx1TmiGa0jkEk3ZlNXCTU5iUHK6YgJAE46ayqp4Nxiw4hyHA5LNA4xD7_RKyrHyFIgR5D8/s2816/wwwtiagodatacombrinteligencia.jpeg" alt="Título"> 
-                    </div>
-                    <div class="card-details-box">
-                        <h2 class="card-title-text"></h2>
-                        <h4><a href="https://srcorreia3001.github.io/posts/feed/inteligencia.html" style="text-decoration: none; color: blue;">O Papel da Inteligência Artificial na Análise de Dados: Ela vai roubar o seu emprego?</a></h4>
-                        <div class="card-footer-meta">
-                            <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Artigo 4 -->
-                <article class="blog-card-item">
-                    <div class="card-image-box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5gS9ZyusnZuDWPEq9zzi86t2xW3UydH0EWOjUW2wXycQzMWoz9-hk0ATNLEG3XDwe2frm7ug9Ats6DZQ8weLjWFssEsf52pnNyprq7KVj1EuSvDB95OhsFGXBhexaQzvriDONZGk6EFfoXvqJgI-oJkXNapHPx3BzMEm3XySAkdQr8Jm13rNX0yE-ZuHP/s2816/omitodografico_wwwtiagodatacombr.jpeg" alt="Título"> 
-                    </div>
-                    <div class="card-details-box">
-                        <h2 class="card-title-text"></h2>
-                        <h4><a href="https://srcorreia3001.github.io/posts/feed/omitodografico.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
-                        <div class="card-footer-meta">
-                            <p class="card-meta-text">27/09/2026 | Tiago Correia</p>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Artigo 5 -->
-                <article class="blog-card-item">
-                    <div class="card-image-box">
-                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEja2ucWwnalLupvQg27jrjK94bqETU9KieE4973fDgS3Q3lLn8lRtR5QleGs_tOIDCH1lvjRKOh2TnvfI09xOUBX0v5R5yxRkHq1QwOFNfxFlKaPKk3BcsCmVnnPcBZ8q6L4Rkijd0lNhOwsRQX55EpAZ9zkyjAySZ3mz-e5ZFLwz63Uc5B1w1pUefKNR4A/s2816/metricas_www_tiagodata_com_br.jpeg" alt="Título"> 
-                    </div>
-                    <div class="card-details-box">
-                        <h2 class="card-title-text"></h2>
-                        <h4><a href="https://srcorreia3001.github.io/posts/feed/metricas.html" style="text-decoration: none; color: blue;">Métricas de Vaidade vs. Métricas Reais: O que realmente importa nos seus dados?</a></h4>
-                        <div class="card-footer-meta">
-                            <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
-                        </div>
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- Paginação -->
-            <div class="blog-pagination-wrapper">
-                <div class="pagination-controls" id="paginationControlsContainer">
-                    <button class="pg-btn" id="prevPageBtn">&lt;</button>
-                    <!-- Os números das páginas serão inseridos aqui dinamicamente -->
-                    <button class="pg-btn" id="nextPageBtn">&gt;</button>
-                </div>
-                <p class="pg-instructions">Navegue pelas páginas de destaques</p>
-            </div>
-        </main>
-    </div>
-</div>
-
-        <!-- Coluna da Direita (Barra Lateral Fixa ao Lado) -->
-        <aside class="blog-sidebar-section">
-            <!-- Clima -->
-            <div class="sidebar-widget-block widget-clima">
-    <style>
-        /* Força a remoção de qualquer borda preta herdada do tema */
-        .sidebar-widget-block.widget-clima,
-        .sidebar-widget-block.widget-clima * {
-            border-color: transparent !important;
-            outline: none !important;
+        /* Barra Lateral (Sidebar) */
+        .blog-sidebar-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-width: 0;
         }
 
+        .sidebar-widget-block {
+            background-color: #ffffff;
+            border: 1px solid #e1e4e8;
+            border-radius: 12px;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .widget-heading {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0044cc;
+            border-bottom: 2px solid #222;
+            padding-bottom: 5px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .widget-content-box {
+            border: 2px solid #111;
+            border-radius: 8px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: #fff;
+            color: #111;
+        }
+
+        /* Widget Clima Personalizado */
         .sidebar-widget-block.widget-clima {
-            background: #ffffff !important;
-            border-radius: 8px !important;
-            padding: 16px !important;
+            border: none !important;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
-            margin-bottom: 20px !important;
-            font-family: sans-serif !important;
-            box-sizing: border-box !important;
-            width: 100% !important;
-            border: none !important;
-        }
-
-        .sidebar-widget-block .widget-heading {
-            font-size: 1.1rem !important;
-            font-weight: 600 !important;
-            color: #333333 !important;
-            margin-top: 0 !important;
-            margin-bottom: 12px !important;
-            border-bottom: 2px solid #f0f0f0 !important;
-            padding-bottom: 8px !important;
-        }
-
-        .sidebar-widget-block .widget-content-box {
-            color: #555555 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            border: none !important;
-            background: transparent !important;
-            padding: 0 !important;
+            padding: 16px !important;
         }
 
         .weather-info {
@@ -689,10 +556,6 @@
             width: 35px !important;
         }
 
-        .forecast-icon {
-            font-size: 1rem !important;
-        }
-
         .forecast-temps {
             display: flex !important;
             gap: 8px !important;
@@ -706,260 +569,231 @@
         .forecast-min {
             color: #888 !important;
         }
+
+        /* Redes Sociais na Sidebar */
+        .social-icons-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 8px;
+            background: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .social-card:hover {
+            background: #ebf0f4;
+            border-color: #d1d5da;
+            transform: translateY(-2px);
+        }
+
+        .social-card img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        .social-lbl {
+            font-size: 12px;
+            font-weight: 500;
+            color: #586069;
+        }
+
+        /* Mais Lidos */
+        .trending-items-list {
+            padding-left: 20px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .trending-items-list li {
+            font-size: 16px;
+            color: #0044cc;
+            font-weight: bold;
+        }
+
+        .trending-items-list li::marker {
+            color: #0044cc;
+        }
+
+        /* Responsividade Mobile (Telas até 768px) */
+        @media screen and (max-width: 768px) {
+            .blog-grid-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .content-header-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .blog-card-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .card-image-box {
+                width: 100%;
+                height: 150px;
+            }
+        }
     </style>
 
-    <h3 class="widget-heading">Clima</h3>
-    <div class="widget-content-box">
-        <div class="weather-info">
-            <span class="weather-city" id="weather-city">Buscando local...</span>
-            <div class="weather-main">
-                <span class="weather-temp" id="weather-temp">--°C</span>
-                <span class="weather-icon" id="weather-icon">⏳</span>
+    <!-- Container Principal do Layout (Grid Lado a Lado) -->
+    <div class="blog-grid-container">
+        
+        <!-- Coluna da Esquerda (Destaques, Artigos e Paginação) -->
+        <main class="blog-main-section">
+            <div class="content-header-box">
+                <h1 class="section-main-title">Destaques!</h1>
+                <div class="search-input-wrapper">
+                    <span class="search-ico">🔍</span>
+                    <input type="text" id="blogSearchInput" placeholder="Pesquisa">
+                </div>
             </div>
-            <p class="weather-desc" id="weather-desc">Aguardando GPS...</p>
-        </div>
 
-        <div class="weather-forecast" id="weather-forecast-list">
-            <!-- Previsão dinâmica -->
-        </div>
-    </div>
-
-    <script>
-        async function carregarClimaComLocalizacao() {
-            const tempEl = document.getElementById('weather-temp');
-            const descEl = document.getElementById('weather-desc');
-            const cityEl = document.getElementById('weather-city');
-            const iconEl = document.getElementById('weather-icon');
-            const forecastListEl = document.getElementById('weather-forecast-list');
-
-            // Padrão inicial: São Bernardo do Campo - SP
-            let lat = -23.6944;
-            let lon = -46.5654;
-            let nomeLocalidade = "São Bernardo do Campo";
-
-            try {
-                // Tenta obter a localização exata do dispositivo via navegador
-                if (navigator.geolocation) {
-                    const posicao = await new Promise((resolve, reject) => {
-                        navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
-                    });
-                    
-                    lat = posicao.coords.latitude;
-                    lon = posicao.coords.longitude;
-
-                    // Busca o nome real da cidade através das coordenadas (Geocodificação Reversa)
-                    try {
-                        const respostaGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
-                        const dadosGeo = await respostaGeo.json();
-                        if (dadosGeo && dadosGeo.address) {
-                            nomeLocalidade = dadosGeo.address.city || dadosGeo.address.town || dadosGeo.address.municipality || dadosGeo.address.village || "Sua Localização";
-                        }
-                    } catch (e) {
-                        nomeLocalidade = "Localização Atual";
-                    }
-                }
-
-                // Busca o clima atual e a previsão na Open-Meteo
-                const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+            <!-- Lista de Artigos -->
+            <div class="blog-articles-stack">
                 
-                const respostaClima = await fetch(urlClima);
-                const dadosClima = await respostaClima.json();
+                <!-- Artigo 1 -->
+                <article class="blog-card-item">
+                    <div class="card-image-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2jp1w9v_8dQwqtg_naLmhWKdyoRWuQVimqa6ut1_47BlgfrOaS-hLSqkRamU4dhSoGDg2jPSUFAK0xhC7Rs1o3P_RGqAr26__oTopgDSWieQikT_OQZ-KbPDZz3y3ecG1D1RlagM7iyabvWeqAQLG3vxMnd3Pvrk_GRiQUlgrI39GcjqtWA9oJjqHaaWO/s6000/dadoswwwtiagodatacombr.jpg" alt="Título"> 
+                    </div>
+                    <div class="card-details-box">
+                        <h4><a href="https://srcorreia3001.github.io/posts/feed/desvendandodados.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">24/09/2026 | Tiago Correia</p>
+                        </div>
+                    </div>
+                </article>
 
-                if (dadosClima && dadosClima.current) {
-                    const temperatura = Math.round(dadosClima.current.temperature_2m);
-                    const infoClimaAtual = traduzirCodigoClima(dadosClima.current.weather_code);
+                <!-- Artigo 2 -->
+                <article class="blog-card-item">
+                    <div class="card-image-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOySnwK9SBGbV7qMCN-B-RiSmF8ZYxOesEZ8XZLtgvJ6fUKNjiYalpEvPmCZOO7Hv0RgdH51lwjlrl8ss4Hzewic50RGrcor-OSdfaf9OKWTnO_s49ylJOEe8SaPwEaVCVn7yBgxdk4xvhTPVb8Y8_b_Hvh1_7DssdHkT0fllVaNUz-XWJp1bNEqx96RSq/s2816/wwwtiagodatacombrpythonvsr.jpg" alt="Título"> 
+                    </div>
+                    <div class="card-details-box">
+                        <h4><a href="https://srcorreia3001.github.io/posts/feed/pythonvsr.html" style="text-decoration: none; color: blue;">Python vs Linguagem R: O duelo da análise de dados</a></h4>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">25/09/2026 | Tiago Correia</p>
+                        </div>
+                    </div>
+                </article>
 
-                    tempEl.textContent = `${temperatura}°C`;
-                    cityEl.textContent = nomeLocalidade;
-                    descEl.textContent = infoClimaAtual.descricao;
-                    iconEl.textContent = infoClimaAtual.icone;
-                }
+                <!-- Artigo 3 -->
+                <article class="blog-card-item">
+                    <div class="card-image-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JmlVzHUDcA0WZ31KvAMoTMYEwtNWpt-kLLZ3jbkIGk9A3eZnSO3s7WvQX5mPwq9JtYtWAXm5Y0iuaaaFmUkqAEhQ7padGxy4lKgvXVbITJGNZUiVFbJQIhtx1TmiGa0jkEk3ZlNXCTU5iUHK6YgJAE46ayqp4Nxiw4hyHA5LNA4xD7_RKyrHyFIgR5D8/s2816/wwwtiagodatacombrinteligencia.jpeg" alt="Título"> 
+                    </div>
+                    <div class="card-details-box">
+                        <h4><a href="https://srcorreia3001.github.io/posts/feed/inteligencia.html" style="text-decoration: none; color: blue;">O Papel da Inteligência Artificial na Análise de Dados: Ela vai roubar o seu emprego?</a></h4>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
+                        </div>
+                    </div>
+                </article>
 
-                if (dadosClima && dadosClima.daily) {
-                    forecastListEl.innerHTML = '';
-                    const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+                <!-- Artigo 4 -->
+                <article class="blog-card-item">
+                    <div class="card-image-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj5gS9ZyusnZuDWPEq9zzi86t2xW3UydH0EWOjUW2wXycQzMWoz9-hk0ATNLEG3XDwe2frm7ug9Ats6DZQ8weLjWFssEsf52pnNyprq7KVj1EuSvDB95OhsFGXBhexaQzvriDONZGk6EFfoXvqJgI-oJkXNapHPx3BzMEm3XySAkdQr8Jm13rNX0yE-ZuHP/s2816/omitodografico_wwwtiagodatacombr.jpeg" alt="Título"> 
+                    </div>
+                    <div class="card-details-box">
+                        <h4><a href="https://srcorreia3001.github.io/posts/feed/omitodografico.html" style="text-decoration: none; color: blue;">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</a></h4>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">27/09/2026 | Tiago Correia</p>
+                        </div>
+                    </div>
+                </article>
 
-                    for (let i = 1; i <= 5; i++) {
-                        const dataStr = dadosClima.daily.time[i];
-                        const dataObj = new Date(dataStr + 'T00:00:00');
-                        const nomeDia = diasSemana[dataObj.getDay()];
-                        
-                        const maxTemp = Math.round(dadosClima.daily.temperature_2m_max[i]);
-                        const minTemp = Math.round(dadosClima.daily.temperature_2m_min[i]);
-                        const infoDia = traduzirCodigoClima(dadosClima.daily.weather_code[i]);
+                <!-- Artigo 5 -->
+                <article class="blog-card-item">
+                    <div class="card-image-box">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEja2ucWwnalLupvQg27jrjK94bqETU9KieE4973fDgS3Q3lLn8lRtR5QleGs_tOIDCH1lvjRKOh2TnvfI09xOUBX0v5R5yxRkHq1QwOFNfxFlKaPKk3BcsCmVnnPcBZ8q6L4Rkijd0lNhOwsRQX55EpAZ9zkyjAySZ3mz-e5ZFLwz63Uc5B1w1pUefKNR4A/s2816/metricas_www_tiagodata_com_br.jpeg" alt="Título"> 
+                    </div>
+                    <div class="card-details-box">
+                        <h4><a href="https://srcorreia3001.github.io/posts/feed/metricas.html" style="text-decoration: none; color: blue;">Métricas de Vaidade vs. Métricas Reais: O que realmente importa nos seus dados?</a></h4>
+                        <div class="card-footer-meta">
+                            <p class="card-meta-text">29/09/2026 | Tiago Correia</p>
+                        </div>
+                    </div>
+                </article>
 
-                        const itemHTML = `
-                            <div class="forecast-item">
-                                <span class="forecast-day">${nomeDia}</span>
-                                <span class="forecast-icon">${infoDia.icone}</span>
-                                <div class="forecast-temps">
-                                    <span class="forecast-max">${maxTemp}°</span>
-                                    <span class="forecast-min">${minTemp}°</span>
-                                </div>
-                            </div>
-                        `;
-                        forecastListEl.innerHTML += itemHTML;
-                    }
-                }
-            } catch (erro) {
-                // Caso o usuário negue a localização, ele cai no padrão de São Bernardo do Campo perfeitamente
-                carregarClimaPadrao(lat, lon, nomeLocalidade);
-            }
-        }
+            </div>
 
-        async function carregarClimaPadrao(lat, lon, nomeLocalidade) {
-            const tempEl = document.getElementById('weather-temp');
-            const descEl = document.getElementById('weather-desc');
-            const cityEl = document.getElementById('weather-city');
-            const iconEl = document.getElementById('weather-icon');
-            const forecastListEl = document.getElementById('weather-forecast-list');
+            <!-- Paginação -->
+            <div class="blog-pagination-wrapper">
+                <div class="pagination-controls" id="paginationControlsContainer">
+                    <button class="pg-btn" id="prevPageBtn">&lt;</button>
+                    <!-- Os números das páginas serão inseridos aqui dinamicamente -->
+                    <button class="pg-btn" id="nextPageBtn">&gt;</button>
+                </div>
+                <p class="pg-instructions">Navegue pelas páginas de destaques</p>
+            </div>
+        </main>
 
-            try {
-                const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
-                const respostaClima = await fetch(urlClima);
-                const dadosClima = await respostaClima.json();
+        <!-- Coluna da Direita (Barra Lateral) -->
+        <aside class="blog-sidebar-section">
+            
+            <!-- Clima -->
+            <div class="sidebar-widget-block widget-clima">
+                <h3 class="widget-heading">Clima</h3>
+                <div class="widget-content-box" style="border: none; height: auto; display: block; background: transparent;">
+                    <div class="weather-info">
+                        <span class="weather-city" id="weather-city">Buscando local...</span>
+                        <div class="weather-main">
+                            <span class="weather-temp" id="weather-temp">--°C</span>
+                            <span class="weather-icon" id="weather-icon">⏳</span>
+                        </div>
+                        <p class="weather-desc" id="weather-desc">Aguardando GPS...</p>
+                    </div>
+                    <div class="weather-forecast" id="weather-forecast-list">
+                        <!-- Previsão dinâmica -->
+                    </div>
+                </div>
+            </div>
 
-                if (dadosClima && dadosClima.current) {
-                    tempEl.textContent = `${Math.round(dadosClima.current.temperature_2m)}°C`;
-                    cityEl.textContent = nomeLocalidade;
-                    const info = traduzirCodigoClima(dadosClima.current.weather_code);
-                    descEl.textContent = info.descricao;
-                    iconEl.textContent = info.icone;
-                }
-
-                if (dadosClima && dadosClima.daily) {
-                    forecastListEl.innerHTML = '';
-                    const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
-                    for (let i = 1; i <= 5; i++) {
-                        const dataObj = new Date(dadosClima.daily.time[i] + 'T00:00:00');
-                        const nomeDia = diasSemana[dataObj.getDay()];
-                        const infoDia = traduzirCodigoClima(dadosClima.daily.weather_code[i]);
-                        forecastListEl.innerHTML += `
-                            <div class="forecast-item">
-                                <span class="forecast-day">${nomeDia}</span>
-                                <span class="forecast-icon">${infoDia.icone}</span>
-                                <div class="forecast-temps">
-                                    <span class="forecast-max">${Math.round(dadosClima.daily.temperature_2m_max[i])}°</span>
-                                    <span class="forecast-min">${Math.round(dadosClima.daily.temperature_2m_min[i])}°</span>
-                                </div>
-                            </div>
-                        `;
-                    }
-                }
-            } catch (e) {
-                tempEl.textContent = "--°C";
-                descEl.textContent = "Indisponível";
-            }
-        }
-
-        function traduzirCodigoClima(codigo) {
-            const codigos = {
-                0: { descricao: "Céu limpo", icone: "☀️" },
-                1: { descricao: "Principalmente limpo", icone: "🌤️" },
-                2: { descricao: "Parcialmente nublado", icone: "⛅" },
-                3: { descricao: "Nublado", icone: "☁️" },
-                45: { descricao: "Nevoeiro", icone: "🌫️" },
-                48: { descricao: "Nevoeiro", icone: "🌫️" },
-                51: { descricao: "Garoa leve", icone: "🌧️" },
-                61: { descricao: "Chuva leve", icone: "🌧️" },
-                63: { descricao: "Chuva moderada", icone: "🌧️" },
-                65: { descricao: "Chuva forte", icone: "🌧️" },
-                95: { descricao: "Tempestade", icone: "⚡" }
-            };
-            return codigos[codigo] || { descricao: "Estável", icone: "🌡️" };
-        }
-
-        carregarClimaComLocalizacao();
-    </script>
-</div>
             <!-- Redes Sociais -->
-            <!-- Bloco de Estilos CSS (pode ser colocado no <head> ou junto ao HTML) -->
-<!-- Bloco de Estilos CSS -->
-<!-- Estilos CSS -->
-<style>
-    .sidebar-widget-block {
-        background-color: #ffffff;
-        border: 1px solid #e1e4e8;
-        border-radius: 12px;
-        padding: 20px;
-        width: 100%;
-        max-width: 320px;
-        box-sizing: border-box;
-        font-family: inherit;
-    }
+            <div class="sidebar-widget-block">
+                <h3 class="widget-heading">Redes sociais</h3>
+                <div class="social-icons-row">
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/tiago-correia380/" target="_blank" class="social-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm_JXJOaPFjFRRB9O5OSV2CwJ48uPAFUWmXEwEZyIdVrdqnKVz6NrWXvtS-MbElXeNnMZK5QOqsJ6uM01B8cVQt8uNOIR9rco87q-e7SnxSp1ZRslz5XknANYn0KKk0h5r5qN59lk9wABbBYV-Q892aPYgfXpJegpHz3BoiCnAUheObSw3-Vy8_BVO62TX/s240/logolinkedin.png" alt="LinkedIn">
+                        <span class="social-lbl">LinkedIn</span>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/srcorreia3001" target="_blank" class="social-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg01VhgzEl2wWr8NLHyjfDucrkzlk0o9tJ0HVsAwvYm6auNwHMgSY1OuFRY-jruuDG2u6v_hZiTyQstzXdiTH2XT1Dx4Cx8dpL26iZLKdrqZnr_iq2CgjjIPDa7yD_JJmVkpGmy9TClOBkxJKMtz4W980xsd6aVt5AXS3NAmOwp6aNSQSPypeBViC-U0i2b/s320/github-6980894_640.png" alt="GitHub">
+                        <span class="social-lbl">GitHub</span>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="COLE_O_LINK_DO_WHATSAPP_AQUI" target="_blank" class="social-card">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzieeMSOwOAk73Ig-D6RsITrkpiBtmhoTlqHbWVzJTjIBLZGUrIizKf9EWYbvuq-WaKz1SbD8kIoaMCKz5UAPq2I4hRT4b7wRGCikVEKKBByq2z1bUDcG4qmHg2gCV3EHGO46cBhP8Qxw_WodWKS7_cHOpDrTLuLjOZbm2eD7-l9HWzcNV6ETmkXjfWMa5/s1280/whatsapp-1623579_1280.png" alt="WhatsApp">
+                        <span class="social-lbl">WhatsApp</span>
+                    </a>
+                </div>
+            </div>
 
-    .widget-heading {
-        font-size: 16px;
-        font-weight: 600;
-        color: #24292e;
-        margin-top: 0;
-        margin-bottom: 16px;
-    }
-
-    .social-icons-row {
-        display: flex;
-        gap: 12px;
-    }
-
-    /* O card agora é limpo e abriga a imagem e o texto diretamente */
-    .social-card {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 14px 8px;
-        background: #f6f8fa;
-        border: 1px solid #e1e4e8;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .social-card:hover {
-        background: #ebf0f4;
-        border-color: #d1d5da;
-        transform: translateY(-2px);
-    }
-
-    /* Imagem dimensionada perfeitamente sem caixas extras */
-    .social-card img {
-        width: 36px;
-        height: 36px;
-        object-fit: contain;
-        margin-bottom: 16px;
-    }
-
-    .social-lbl {
-        font-size: 12px;
-        font-weight: 500;
-        color: #586069;
-    }
-</style>
-
-<!-- Estrutura HTML limpa -->
-<div class="sidebar-widget-block">
-    <h3 class="widget-heading">Redes sociais</h3>
-    <div class="social-icons-row">
-        <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/tiago-correia380/" target="_blank" class="social-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgm_JXJOaPFjFRRB9O5OSV2CwJ48uPAFUWmXEwEZyIdVrdqnKVz6NrWXvtS-MbElXeNnMZK5QOqsJ6uM01B8cVQt8uNOIR9rco87q-e7SnxSp1ZRslz5XknANYn0KKk0h5r5qN59lk9wABbBYV-Q892aPYgfXpJegpHz3BoiCnAUheObSw3-Vy8_BVO62TX/s240/logolinkedin.png" alt="LinkedIn">
-            <span class="social-lbl">LinkedIn</span>
-        </a>
-        
-        <!-- GitHub -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="social-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg01VhgzEl2wWr8NLHyjfDucrkzlk0o9tJ0HVsAwvYm6auNwHMgSY1OuFRY-jruuDG2u6v_hZiTyQstzXdiTH2XT1Dx4Cx8dpL26iZLKdrqZnr_iq2CgjjIPDa7yD_JJmVkpGmy9TClOBkxJKMtz4W980xsd6aVt5AXS3NAmOwp6aNSQSPypeBViC-U0i2b/s320/github-6980894_640.png" alt="GitHub">
-            <span class="social-lbl">GitHub</span>
-        </a>
-        
-        <!-- WhatsApp -->
-        <a href="COLE_O_LINK_DO_WHATSAPP_AQUI" target="_blank" class="social-card">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjzieeMSOwOAk73Ig-D6RsITrkpiBtmhoTlqHbWVzJTjIBLZGUrIizKf9EWYbvuq-WaKz1SbD8kIoaMCKz5UAPq2I4hRT4b7wRGCikVEKKBByq2z1bUDcG4qmHg2gCV3EHGO46cBhP8Qxw_WodWKS7_cHOpDrTLuLjOZbm2eD7-l9HWzcNV6ETmkXjfWMa5/s1280/whatsapp-1623579_1280.png" alt="WhatsApp">
-            <span class="social-lbl">WhatsApp</span>
-        </a>
-    </div>
-</div>
             <!-- Mais Lidos -->
             <div class="sidebar-widget-block">
                 <h3 class="widget-heading">Mais Lidos</h3>
@@ -981,7 +815,8 @@
     </div>
 </div>
 <!-- FIM DO BLOCO DA SEÇÃO DE POSTS -->
-<!--AQUI É A SEÇÃO DE PARA AS FRASES DE MOTIVAÇÃO RELACIONADAS A DADOS-->
+
+<!-- SEÇÃO DE FRASES DE MOTIVAÇÃO -->
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-10 col-lg-8">
@@ -989,10 +824,8 @@
                 <div class="text-center">
                     <span class="badge rounded-pill bg-primary mb-3">Insight do Dia</span>
                     <blockquote class="blockquote mb-0">
-                        <p id="texto-frase" class="frase-texto-estilo italic">
-                            </p>
-                        <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;">
-                            </footer>
+                        <p id="texto-frase" class="frase-texto-estilo italic"></p>
+                        <footer id="autor-frase" class="blockquote-footer mt-2" style="color: #3a86ff;"></footer>
                     </blockquote>
                 </div>
             </div>
@@ -1155,7 +988,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
     document.addEventListener("DOMContentLoaded", function () {
-    const itensPorPagina = 3; // Quantidade de posts exibidos por vez no espaço
+    // ---- 1. LÓGICA DE PAGINAÇÃO E PESQUISA DOS POSTS ----
+    const itensPorPagina = 3; // Quantidade de posts exibidos por página
     let paginaAtual = 1;
 
     const inputPesquisa = document.getElementById("blogSearchInput");
@@ -1186,14 +1020,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // Esconde todos os artigos primeiro
         todosArtigos.forEach(artigo => artigo.style.display = "none");
 
-        // Mostra apenas os artigos da página atual que passaram na busca
+        // Mostra apenas os artigos da página atual que passaram no filtro de busca
         const inicio = (paginaAtual - 1) * itensPorPagina;
         const fim = inicio + itensPorPagina;
         const artigosDaPagina = artigosFiltrados.slice(inicio, fim);
 
         artigosDaPagina.forEach(artigo => artigo.style.display = "flex");
 
-        // Remove os números de página antigos antes de renderizar os novos
+        // Remove os números de página antigos
         const botoesNumericosAntigos = controlesPaginacao.querySelectorAll(".pg-number-dynamic");
         botoesNumericosAntigos.forEach(b => b.remove());
 
@@ -1212,7 +1046,7 @@ document.addEventListener("DOMContentLoaded", () => {
             controlesPaginacao.insertBefore(spanNum, btnProximo);
         }
 
-        // Controla o estado de opacidade e cliques dos botões de seta
+        // Controla opacidade e cliques das setas
         btnAnterior.style.opacity = paginaAtual === 1 ? "0.4" : "1";
         btnAnterior.style.pointerEvents = paginaAtual === 1 ? "none" : "auto";
 
@@ -1220,7 +1054,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnProximo.style.pointerEvents = paginaAtual === totalPaginas || totalPaginas === 0 ? "none" : "auto";
     }
 
-    // Ações das setas
     btnAnterior.addEventListener("click", () => {
         if (paginaAtual > 1) {
             paginaAtual--;
@@ -1237,16 +1070,107 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Ação ao digitar na caixa de pesquisa
     inputPesquisa.addEventListener("input", () => {
         paginaAtual = 1; // Reseta para a primeira página ao pesquisar
         atualizarPaginacao();
     });
 
-    // Inicialização ao carregar a página
+    // Inicialização da paginação
     atualizarPaginacao();
-});
 
+
+    // ---- 2. LÓGICA DO WIDGET DE CLIMA ----
+    async function carregarClimaComLocalizacao() {
+        const tempEl = document.getElementById('weather-temp');
+        const descEl = document.getElementById('weather-desc');
+        const cityEl = document.getElementById('weather-city');
+        const iconEl = document.getElementById('weather-icon');
+        const forecastListEl = document.getElementById('weather-forecast-list');
+
+        let lat = -23.6944; // São Bernardo do Campo - SP
+        let lon = -46.5654;
+        let nomeLocalidade = "São Bernardo do Campo";
+
+        try {
+            if (navigator.geolocation) {
+                const posicao = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject, { timeout: 5000 });
+                });
+                lat = posicao.coords.latitude;
+                lon = posicao.coords.longitude;
+
+                try {
+                    const respostaGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=pt`);
+                    const dadosGeo = await respostaGeo.json();
+                    if (dadosGeo && dadosGeo.address) {
+                        nomeLocalidade = dadosGeo.address.city || dadosGeo.address.town || dadosGeo.address.municipality || dadosGeo.address.village || "Sua Localização";
+                    }
+                } catch (e) {
+                    nomeLocalidade = "Localização Atual";
+                }
+            }
+
+            const urlClima = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto`;
+            const respostaClima = await fetch(urlClima);
+            const dadosClima = await respostaClima.json();
+
+            if (dadosClima && dadosClima.current) {
+                const temperatura = Math.round(dadosClima.current.temperature_2m);
+                const infoClimaAtual = traduzirCodigoClima(dadosClima.current.weather_code);
+
+                tempEl.textContent = `${temperatura}°C`;
+                cityEl.textContent = nomeLocalidade;
+                descEl.textContent = infoClimaAtual.descricao;
+                iconEl.textContent = infoClimaAtual.icone;
+            }
+
+            if (dadosClima && dadosClima.daily) {
+                forecastListEl.innerHTML = '';
+                const diasSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+
+                for (let i = 1; i <= 5; i++) {
+                    const dataObj = new Date(dadosClima.daily.time[i] + 'T00:00:00');
+                    const nomeDia = diasSemana[dataObj.getDay()];
+                    const maxTemp = Math.round(dadosClima.daily.temperature_2m_max[i]);
+                    const minTemp = Math.round(dadosClima.daily.temperature_2m_min[i]);
+                    const infoDia = traduzirCodigoClima(dadosClima.daily.weather_code[i]);
+
+                    forecastListEl.innerHTML += `
+                        <div class="forecast-item">
+                            <span class="forecast-day">${nomeDia}</span>
+                            <span class="forecast-icon">${infoDia.icone}</span>
+                            <div class="forecast-temps">
+                                <span class="forecast-max">${maxTemp}°</span>
+                                <span class="forecast-min">${minTemp}°</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        } catch (erro) {
+            // Mantém padrão caso dê erro ou bloqueie o GPS
+        }
+    }
+
+    function traduzirCodigoClima(codigo) {
+        const codigos = {
+            0: { descricao: "Céu limpo", icone: "☀️" },
+            1: { descricao: "Principalmente limpo", icone: "🌤️" },
+            2: { descricao: "Parcialmente nublado", icone: "⛅" },
+            3: { descricao: "Nublado", icone: "☁️" },
+            45: { descricao: "Nevoeiro", icone: "🌫️" },
+            48: { descricao: "Nevoeiro", icone: "🌫️" },
+            51: { descricao: "Garoa leve", icone: "🌧️" },
+            61: { descricao: "Chuva leve", icone: "🌧️" },
+            63: { descricao: "Chuva moderada", icone: "🌧️" },
+            65: { descricao: "Chuva forte", icone: "🌧️" },
+            95: { descricao: "Tempestade", icone: "⚡" }
+        };
+        return codigos[codigo] || { descricao: "Estável", icone: "🌡️" };
+    }
+
+    carregarClimaComLocalizacao();
+});
 
     
 </script>
