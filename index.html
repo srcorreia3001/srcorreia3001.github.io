@@ -95,6 +95,264 @@
   </button>
 </div>
 
+
+<!-- INÍCIO DO CARROSSEL DE DESTAQUES - TIAGO DATA -->
+<div class="data-carousel-wrapper">
+    <style>
+        .data-carousel-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto 40px auto;
+            padding: 0 15px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #0044cc;
+            padding-bottom: 8px;
+        }
+
+        .carousel-title {
+            font-size: 24px;
+            color: #0044cc;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .carousel-nav-btns {
+            display: flex;
+            gap: 8px;
+        }
+
+        .c-nav-btn {
+            background-color: #0044cc;
+            color: #fff;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .c-nav-btn:hover {
+            background-color: #003399;
+        }
+
+        /* Container deslizante */
+        .carousel-track-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding: 5px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        /* Cards do Carrossel */
+        .carousel-card {
+            min-width: calc(33.333% - 14px); /* Exibe 3 cards no PC */
+            background: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .carousel-card-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background-color: #f1f1f1;
+        }
+
+        .carousel-card-content {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .carousel-card-tag {
+            font-size: 11px;
+            font-weight: bold;
+            color: #0044cc;
+            text-transform: uppercase;
+        }
+
+        .carousel-card-title {
+            font-size: 16px;
+            color: #24292e;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .carousel-card-footer {
+            font-size: 12px;
+            color: #586069;
+            margin-top: 5px;
+        }
+
+        /* Responsividade para Tablets e Celulares */
+        @media screen and (max-width: 992px) {
+            .carousel-card {
+                min-width: calc(50% - 10px); /* Exibe 2 cards em tablets */
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .carousel-card {
+                min-width: 100%; /* Exibe 1 card inteiro em celulares */
+            }
+        }
+    </style>
+
+    <div class="carousel-header">
+        <h2 class="carousel-title">🚀 Em Destaque</h2>
+        <div class="carousel-nav-btns">
+            <button class="c-nav-btn" id="carouselPrev">&lt;</button>
+            <button class="c-nav-btn" id="carouselNext">&gt;</button>
+        </div>
+    </div>
+
+    <div class="carousel-track-container">
+        <div class="carousel-track" id="carouselTrack">
+            
+            <!-- Destaque 1 -->
+            <a href="https://srcorreia3001.github.io/posts/feed/desvendandodados.html" class="carousel-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh2jp1w9v_8dQwqtg_naLmhWKdyoRWuQVimqa6ut1_47BlgfrOaS-hLSqkRamU4dhSoGDg2jPSUFAK0xhC7Rs1o3P_RGqAr26__oTopgDSWieQikT_OQZ-KbPDZz3y3ecG1D1RlagM7iyabvWeqAQLG3vxMnd3Pvrk_GRiQUlgrI39GcjqtWA9oJjqHaaWO/s6000/dadoswwwtiagodatacombr.jpg" alt="Análise de Dados" class="carousel-card-img">
+                <div class="carousel-card-content">
+                    <div>
+                        <span class="carousel-card-tag">Ciência de Dados</span>
+                        <h3 class="carousel-card-title">Desvendando a Análise de Dados: Semelhanças e Diferenças</h3>
+                    </div>
+                    <span class="carousel-card-footer">📅 24/09/2026</span>
+                </div>
+            </a>
+
+            <!-- Destaque 2 -->
+            <a href="https://srcorreia3001.github.io/posts/feed/pythonvsr.html" class="carousel-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOySnwK9SBGbV7qMCN-B-RiSmF8ZYxOesEZ8XZLtgvJ6fUKNjiYalpEvPmCZOO7Hv0RgdH51lwjlrl8ss4Hzewic50RGrcor-OSdfaf9OKWTnO_s49ylJOEe8SaPwEaVCVn7yBgxdk4xvhTPVb8Y8_b_Hvh1_7DssdHkT0fllVaNUz-XWJp1bNEqx96RSq/s2816/wwwtiagodatacombrpythonvsr.jpg" alt="Python vs R" class="carousel-card-img">
+                <div class="carousel-card-content">
+                    <div>
+                        <span class="carousel-card-tag">Programação</span>
+                        <h3 class="carousel-card-title">Python vs Linguagem R: O duelo da análise de dados</h3>
+                    </div>
+                    <span class="carousel-card-footer">📅 25/09/2026</span>
+                </div>
+            </a>
+
+            <!-- Destaque 3 -->
+            <a href="https://srcorreia3001.github.io/posts/feed/inteligencia.html" class="carousel-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JmlVzHUDcA0WZ31KvAMoTMYEwtNWpt-kLLZ3jbkIGk9A3eZnSO3s7WvQX5mPwq9JtYtWAXm5Y0iuaaaFmUkqAEhQ7padGxy4lKgvXVbITJGNZUiVFbJQIhtx1TmiGa0jkEk3ZlNXCTU5iUHK6YgJAE46ayqp4Nxiw4hyHA5LNA4xD7_RKyrHyFIgR5D8/s2816/wwwtiagodatacombrinteligencia.jpeg" alt="Inteligência Artificial" class="carousel-card-img">
+                <div class="carousel-card-content">
+                    <div>
+                        <span class="carousel-card-tag">Inteligência Artificial</span>
+                        <h3 class="carousel-card-title">O Papel da Inteligência Artificial na Análise de Dados</h3>
+                    </div>
+                    <span class="carousel-card-footer">📅 29/09/2026</span>
+                </div>
+            </a>
+
+            <!-- Destaque 4 (Você pode adicionar quantos mais quiser aqui seguindo o mesmo modelo!) -->
+            <a href="https://srcorreia3001.github.io/posts/feed/metricas.html" class="carousel-card">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEja2ucWwnalLupvQg27jrjK94bqETU9KieE4973fDgS3Q3lLn8lRtR5QleGs_tOIDCH1lvjRKOh2TnvfI09xOUBX0v5R5yxRkHq1QwOFNfxFlKaPKk3BcsCmVnnPcBZ8q6L4Rkijd0lNhOwsRQX55EpAZ9zkyjAySZ3mz-e5ZFLwz63Uc5B1w1pUefKNR4A/s2816/metricas_www_tiagodata_com_br.jpeg" alt="Métricas" class="carousel-card-img">
+                <div class="carousel-card-content">
+                    <div>
+                        <span class="carousel-card-tag">Métricas</span>
+                        <h3 class="carousel-card-title">Métricas de Vaidade vs. Métricas Reais nos Dados</h3>
+                    </div>
+                    <span class="carousel-card-footer">📅 29/09/2026</span>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+
+<!-- Script de Controle do Carrossel -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const track = document.getElementById("carouselTrack");
+        const cards = track.querySelectorAll(".carousel-card");
+        const nextBtn = document.getElementById("carouselNext");
+        const prevBtn = document.getElementById("carouselPrev");
+
+        let currentIndex = 0;
+
+        function getCardsPerView() {
+            if (window.innerWidth <= 576) return 1;
+            if (window.innerWidth <= 992) return 2;
+            return 3;
+        }
+
+        function updateCarousel() {
+            const cardWidth = cards[0].getBoundingClientRect().width;
+            const gap = 20; // espaçamento do gap definido no CSS
+            const cardsPerView = getCardsPerView();
+            const maxIndex = Math.max(0, cards.length - cardsPerView);
+
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            const moveAmount = currentIndex * (cardWidth + gap);
+            track.style.transform = `translateX(-${moveAmount}px)`;
+        }
+
+        nextBtn.addEventListener("click", () => {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = cards.length - cardsPerView;
+            if (currentIndex < maxIndex) {
+                currentIndex++;
+                updateCarousel();
+            } else {
+                currentIndex = 0; // Volta ao início em looping opcional
+                updateCarousel();
+            }
+        });
+
+        prevBtn.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel();
+            } else {
+                const cardsPerView = getCardsPerView();
+                currentIndex = cards.length - cardsPerView; // Vai para o final
+                updateCarousel();
+            }
+        });
+
+        window.addEventListener("resize", updateCarousel);
+    });
+</script>    
+    
+
 <!-- CIÊNCIA DE DADOS -->
 <div class="container my-5">
     <section id="ciencia-dados" class="mb-5">
