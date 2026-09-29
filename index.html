@@ -386,10 +386,234 @@
 </script>  
     
 
+<!-- ========================================== -->
+<!-- 1. CARROSSEL DO TOPO (FULL WIDTH DESTAQUES)  -->
+<!-- ========================================== -->
+<div class="full-width-hero-wrapper">
+    <style>
+        .full-width-hero-wrapper {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            margin-top: 0;
+            margin-bottom: 40px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .hero-carousel-container {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            overflow: hidden;
+            background-color: #111;
+        }
+
+        .hero-carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            box-sizing: border-box;
+        }
+
+        .hero-slide-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.15) 100%);
+            z-index: 2;
+        }
+
+        .hero-content-box {
+            position: relative;
+            z-index: 3;
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto 35px auto;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 24px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            box-sizing: border-box;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        .hero-post-title {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: bold;
+            margin: 0;
+            line-height: 1.25;
+        }
+
+        .hero-post-desc {
+            font-size: 15px;
+            color: #d1d5db;
+            margin: 0;
+            line-height: 1.4;
+            max-width: 850px;
+        }
+
+        .hero-btn-action {
+            display: inline-block;
+            margin-top: 8px;
+            background-color: #0044cc;
+            color: #ffffff;
+            padding: 9px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .hero-btn-action:hover {
+            background-color: #003399;
+            transform: translateY(-2px);
+        }
+
+        .hero-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 4;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .hero-nav-btn:hover {
+            background: rgba(0, 68, 204, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        #heroPrev { left: 25px; }
+        #heroNext { right: 25px; }
+
+        .hero-dots-container {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+            display: flex;
+            gap: 8px;
+        }
+
+        .hero-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .hero-dot.active {
+            background: #0044cc;
+            transform: scale(1.3);
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-carousel-container { height: 380px; }
+            .hero-content-box { width: 92%; padding: 16px; }
+            .hero-post-title { font-size: 19px; }
+            .hero-post-desc { font-size: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+            .hero-nav-btn { width: 36px; height: 36px; font-size: 16px; }
+            #heroPrev { left: 10px; }
+            #heroNext { right: 10px; }
+        }
+    </style>
+
+    <div class="hero-carousel-container" id="heroCarousel">
+        <button class="hero-nav-btn" id="heroPrev">&#10094;</button>
+        <button class="hero-nav-btn" id="heroNext">&#10095;</button>
+
+        <div class="hero-carousel-track" id="heroTrack">
+            <!-- Slide 1 -->
+            <div class="hero-slide">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg" alt="Evasão Escolar" class="hero-slide-img">
+                <div class="hero-slide-overlay"></div>
+                <div class="hero-content-box">
+                    <h2 class="hero-post-title">PREVENDO a Evasão Escolar com Machine Learning</h2>
+                    <p class="hero-post-desc">A Evasão Escolar é um dos desafios mais complexos da gestão educacional pública e privada.</p>
+                    <a href="https://srcorreia3001.github.io/posts/cienciadados/projetodeevasaoescolar.html" class="hero-btn-action">Ver Projeto</a>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL5kx-V6atTiTllXQGBen9AG2XlJguf4pxiDZDTdoJxVxkGOA3rTM1oJbF6bEsedpC1hyphenhyphennZ-BhxdASPXY3g7g9oeB2bQG5B2Uej-7TcrQIPhDl_Px4sgN61W8f0e4GeQMGSm44jgpGwlfqCV8IIOR-3YvhSN47TEFx6co1N3mFI1gj3wboAdZ0fJcS8xYC/s1920/pabitrakaity-credit-card-6401275_1920.png" alt="Risco de Crédito" class="hero-slide-img">
+                <div class="hero-slide-overlay"></div>
+                <div class="hero-content-box">
+                    <h2 class="hero-post-title">Análise de Risco de Crédito</h2>
+                    <p class="hero-post-desc">Ser rigoroso demais significa perder receita e clientes; ser permissivo eleva drasticamente os prejuízos.</p>
+                    <a href="https://srcorreia3001.github.io/posts/cienciadados/analisederiscodecredito.html" class="hero-btn-action">Ver Projeto</a>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" alt="Vendas" class="hero-slide-img">
+                <div class="hero-slide-overlay"></div>
+                <div class="hero-content-box">
+                    <h2 class="hero-post-title">Análise de Vendas e Desempenho Comercial</h2>
+                    <p class="hero-post-desc">Projeto completo de análise de vendas e indicadores comerciais usando Python e Pandas.</p>
+                    <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="hero-btn-action">Ver Projeto</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-dots-container" id="heroDots"></div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 2. SEÇÕES DE CONTEÚDO (CIÊNCIA E ANÁLISE)    -->
+<!-- ========================================== -->
+
 <!-- CIÊNCIA DE DADOS -->
 <div class="container my-5">
     <section id="ciencia-dados" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4">Ciência de Dados</h2>
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4" style="color: #0044cc; font-weight: bold;">Ciência de Dados</h2>
         <div class="row g-4">
             
             <div class="col-12 col-sm-6 col-md-4 post-card">
@@ -414,23 +638,12 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-6 col-md-4 post-card d-none d-sm-block">
+            <div class="col-12 col-sm-6 col-md-4 post-card">
                 <div class="card h-100 bg-dark-blue border-blue shadow">
                     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqVXe7NVciIvf1lw9XawVYdXjl0y8avIUEYtbru0BKbbNQypfw7Km29FveY9sHBkw99hL4thrpmIRdrHb_lwhyphenhyphenHQvNrsR4NmTU5FHpjHKTgBc3qdMouxsdUk6EZJee7-r-QeusSpD92LzamTHaFA5F33MZlez6UYoV3j-ihAjv_Laui4hdOkzrVHoaSK_/s2000/reaxionlab-ecommerce-1706103.png" class="card-img-top" alt="Projeto 3">
                     <div class="card-body text-white d-flex flex-column">
                         <h5 class="card-title fw-bold">Previsão de Vendas e Demanda no Varejo</h5>
-                        <p class="card-text small">No setor varejista, o planejamento de estoque e a gestão de fluxo de caixa são pilares críticos para a saúde financeira de qualquer rede de lojas.</p>
-                        <a href="https://srcorreia3001.github.io/posts/cienciadados/previsaovendas.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card d-none d-sm-block d-md-none">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiOqVXe7NVciIvf1lw9XawVYdXjl0y8avIUEYtbru0BKbbNQypfw7Km29FveY9sHBkw99hL4thrpmIRdrHb_lwhyphenhyphenHQvNrsR4NmTU5FHpjHKTgBc3qdMouxsdUk6EZJee7-r-QeusSpD92LzamTHaFA5F33MZlez6UYoV3j-ihAjv_Laui4hdOkzrVHoaSK_/s2000/reaxionlab-ecommerce-1706103.png" class="card-img-top" alt="Projeto 4">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Previsão de Vendas e Demanda no Varejo</h5>
-                        <p class="card-text small">No setor varejista, o planejamento de estoque e a gestão de fluxo de caixa são pilares críticos para a saúde financeira de qualquer rede de lojas.</p>
+                        <p class="card-text small">No setor varejista, o planejamento de estoque e a gestão de fluxo de caixa são pilares críticos.</p>
                         <a href="https://srcorreia3001.github.io/posts/cienciadados/previsaovendas.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
@@ -440,10 +653,10 @@
     </section>
 </div>
 
-<!ANALISE DE DADOS -->
+<!-- ANÁLISE DE DADOS -->
 <div class="container my-5">
     <section id="analise-de-dados" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4">Análise de Dados</h2>
+        <h2 class="text-blue-logo border-bottom pb-2 mb-4" style="color: #0044cc; font-weight: bold;">Análise de Dados</h2>
         <div class="row g-4">
             
             <div class="col-12 col-sm-6 col-md-4 post-card">
@@ -459,10 +672,10 @@
 
             <div class="col-12 col-sm-6 col-md-4 post-card">
                 <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 2">
                     <div class="card-body text-white d-flex flex-column">
                         <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small">Projeto com o objetivo de transformar dados brutos em inteligência comercial</p>
+                        <p class="card-text small">Transformando dados brutos em inteligência comercial.</p>
                         <a href="https://srcorreia3001.github.io/posts/analise/analiserelacional.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
@@ -470,23 +683,11 @@
 
             <div class="col-12 col-sm-6 col-md-4 post-card">
                 <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 2">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 3">
                     <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes(RFM) </h5>
-                        <p class="card-text small">Construção de um pipeline análitico utilizando Python e SQL aplicado a metodologia RFM (Rec
-ẽncia, Frequência e Monetário)</p>
+                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes (RFM)</h5>
+                        <p class="card-text small">Pipeline analítico utilizando Python e SQL aplicado a metodologia RFM.</p>
                         <a href="https://srcorreia3001.github.io/posts/analise/analiserfm.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card d-none d-sm-block d-md-none">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png" class="card-img-top" alt="Projeto 4">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Dashboard Executivo</h5>
-                        <p class="card-text small">Visualização estratégica de KPIs em Power BI.</p>
-                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             </div>
@@ -495,67 +696,97 @@
     </section>
 </div>
 
+<!-- ========================================== -->
+<!-- 3. SCRIPT UNIFICADO (CARROSSEL + MAIS LIDOS) -->
+<!-- ========================================== -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // ---- A. LÓGICA DO CARROSSEL DO TOPO ----
+        const track = document.getElementById("heroTrack");
+        const slides = track.querySelectorAll(".hero-slide");
+        const nextBtn = document.getElementById("heroNext");
+        const prevBtn = document.getElementById("heroPrev");
+        const dotsContainer = document.getElementById("heroDots");
+
+        let currentIndex = 0;
+        let slideInterval;
+
+        slides.forEach((_, index) => {
+            const dot = document.createElement("button");
+            dot.className = `hero-dot ${index === 0 ? "active" : ""}`;
+            dot.addEventListener("click", () => {
+                goToSlide(index);
+                resetTimer();
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll(".hero-dot");
+
+        function updateSlidePosition() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlidePosition();
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlidePosition();
+        }
+
+        if (nextBtn && prevBtn) {
+            nextBtn.addEventListener("click", () => {
+                nextSlide();
+                resetTimer();
+            });
+            prevBtn.addEventListener("click", () => {
+                prevSlide();
+                resetTimer();
+            });
+        }
+
+        function startTimer() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            startTimer();
+        }
+
+        startTimer();
+
+
+        // ---- B. RASTREAMENTO INTELIGENTE PARA OS "MAIS LIDOS" ----
+        // Procura todos os links de projetos em todo o site (tanto no carrossel quanto nas seções de cards)
+        const todosLinksPosts = document.querySelectorAll('.hero-btn-action, .btn-ver-mais');
+        const STORAGE_KEY = "tiagodata_cliques_unificados_v1";
+        let cliques = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+        todosLinksPosts.forEach(link => {
+            if (!link.dataset.tracked) {
+                link.dataset.tracked = "true";
+                link.addEventListener("click", function () {
+                    const urlPost = link.href;
+                    cliques[urlPost] = (cliques[urlPost] || 0) + 1;
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(cliques));
+                });
+            }
+        });
+    });
+</script>
     
-<!--DASHBOARDS-->
-
-    
-
-
-<!--PYTHON-->
-
-<!--SQL-->
-<div class="container my-5">
-    <section id="sql" class="mb-5">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4">Mais Projetos</h2>
-        <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Analise de venda online E-commerce</h5>
-                        <p class="card-text small">Analisar o desempenho de vendas de uma loja virtual, identificando categorias de produtos com maior saída e o comportamento do ticket médio para auxiliar na tomada de decisão comercial.</p>
-                        <a href="https://srcorreia3001.github.io/posts/maisprojetos/analisedevendaspb.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgN9QKs5WbKELqoQrQYDQ4c5XtPd8P2az2cHHHrxCnkN6BWee9AVlSe_IhLbR53iJwfTtWYUdLUz8vBgnIkFRBOxlc80K7GKM5UHbMNCwFyTeNjU6U4UWgGR2u8jVo4bHU_aUIF1mAtsv1Tc3KkWD532eQCkvZJ-0xQUABPv9gSFIzGMg0Tnf9T-t4B2BVr/s852/Captura%20de%20tela%202026-09-21%20224757.png" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Sistema Leve de Cadastro de Alunos em Python</h5>
-                        <p class="card-text small">Esse projeto demonstra como a automação de processos simples pode ser feita de maneira eficiente através da tecnologia</p>
-                        <a href="https://srcorreia3001.github.io/posts/maisprojetos/cadastrosimplestkinter.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small">Projeto com o objetivo de transformar dados brutos em inteligência comercial</p>
-                        <a href="https://srcorreia3001.github.io/posts/analise/analiserelacional.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card d-none d-sm-block d-md-none">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=500" class="card-img-top" alt="Projeto 4">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Dashboard Executivo</h5>
-                        <p class="card-text small">Visualização estratégica de KPIs em Power BI.</p>
-                        <a href="#" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-</div><!-- SEÇÃO DE POSTS DE INFORMAÇÃO -->
 <!-- INÍCIO DO BLOCO DA SEÇÃO DE POSTS - TIAGO DATA -->
 <div class="blog-data-wrapper">
     <style>
