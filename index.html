@@ -1175,8 +1175,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (listaMaisLidosEl && containerArtigos) {
         const todosArtigos = Array.from(containerArtigos.querySelectorAll(".blog-card-item"));
         
-        // Mapeia todos os artigos do feed para extrair título e URL
-        const dadosArtigos = todosArtigos.map(artigo => {
+        // Mapeia todos os artigos do feed
+        const dadosArtigosTemp = todosArtigos.map(artigo => {
             const linkEl = artigo.querySelector("h4 a");
             return {
                 titulo: linkEl ? linkEl.textContent.trim() : "Sem Título",
@@ -1184,30 +1184,44 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         });
 
+        // Remove duplicatas com base na URL (garantindo que cada post seja único)
+        const dadosArtigos = [];
+        const urlsVistas = new Set();
+        for (const post of dadosArtigosTemp) {
+            if (!urlsVistas.has(post.url)) {
+                urlsVistas.add(post.url);
+                dadosArtigos.push(post);
+            }
+        }
+
         // Chave do localStorage para salvar os cliques de forma persistente
         const STORAGE_KEY = "tiagodata_cliques_posts";
         let cliques = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
-        // Adiciona um ouvinte de clique em cada artigo do feed
+        // Adiciona o monitor de cliques em cada link do feed principal
         todosArtigos.forEach(artigo => {
             const linkEl = artigo.querySelector("h4 a");
             if (linkEl) {
-                linkEl.addEventListener("click", function () {
-                    const urlPost = linkEl.href;
-                    cliques[urlPost] = (cliques[urlPost] || 0) + 1;
-                    localStorage.setItem(STORAGE_KEY, JSON.stringify(cliques));
-                });
+                // Evita múltiplos listeners caso o script rode mais de uma vez
+                if (!linkEl.dataset.tracked) {
+                    linkEl.dataset.tracked = "true";
+                    linkEl.addEventListener("click", function () {
+                        const urlPost = linkEl.href;
+                        cliques[urlPost] = (cliques[urlPost] || 0) + 1;
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(cliques));
+                    });
+                }
             }
         });
 
-        // Ordena os artigos com base nos cliques (do mais acessado para o menos acessado)
+        // Ordena os artigos únicos com base nos cliques
         const artigosOrdenados = [...dadosArtigos].sort((a, b) => {
             const cliquesA = cliques[a.url] || 0;
             const cliquesB = cliques[b.url] || 0;
             return cliquesB - cliquesA;
         });
 
-        // Renderiza os top 5 na lista de "Mais Lidos"
+        // Renderiza os top 5 sem repetições na lista de "Mais Lidos"
         listaMaisLidosEl.innerHTML = "";
         const topArtigos = artigosOrdenados.slice(0, 5);
 
