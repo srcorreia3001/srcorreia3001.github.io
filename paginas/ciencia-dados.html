@@ -136,7 +136,7 @@
         </div>
     </div>
 
-    <!-- GRADE DE POSTS / FEED EM LISTA -->
+    <!-- GRADE DE POSTS -->
 <div class="container my-5">
     <section id="ciencia-dados">
         
@@ -149,8 +149,8 @@
             </div>
         </div>
         
-        <!-- Lista de Posts (Injetada via JS) -->
-        <div id="cdProjectsList" class="cd-project-list-container"></div>
+        <!-- Grade de Posts (Injetada via JS) -->
+        <div id="cdProjectsGrid" class="row g-4"></div>
 
         <!-- Paginação Numérica -->
         <div id="cdPaginationContainer" class="cd-pagination-container"></div>
@@ -158,7 +158,7 @@
     </section>
 </div>
 
-<!-- Estilos CSS Escopados para o Feed -->
+<!-- Estilos CSS Escopados para a Grade -->
 <style>
     .cd-section-header {
         display: flex;
@@ -203,103 +203,37 @@
         font-size: 0.75rem;
     }
 
-    .cd-project-list-container {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+    .cd-card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
     }
 
-    .cd-project-list-item {
-        background-color: var(--card-dark-blue, #112240);
-        border: 1px solid var(--border-blue, #1e3a8a);
-        border-radius: 8px;
-        overflow: hidden;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    .cd-card-link:hover .card {
+        border-color: var(--accent-cyan, #00f2ff);
+        transform: translateY(-3px);
+    }
+
+    .cd-card-link:hover .card-title {
+        color: var(--accent-cyan, #00f2ff);
+    }
+
+    .card.bg-dark-blue {
+        background-color: var(--card-dark-blue, #112240) !important;
+        border-color: var(--border-blue, #1e3a8a) !important;
         transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
-    .cd-project-list-item:hover {
-        border-color: var(--accent-cyan, #00f2ff);
-        transform: translateY(-2px);
-    }
-
-    .cd-project-thumb {
-        width: 140px;
-        height: 90px;
+    .card-img-top {
+        height: 180px;
         object-fit: cover;
-        border-radius: 6px;
-        flex-shrink: 0;
-        background-color: #000;
-    }
-
-    .cd-project-content {
-        flex-grow: 1;
-        padding: 0 16px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .cd-project-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: #ffffff;
-        margin-bottom: 4px;
-        text-decoration: none;
-    }
-
-    .cd-project-title:hover {
-        color: var(--accent-cyan, #00f2ff);
-    }
-
-    .cd-project-excerpt {
-        font-size: 0.82rem;
-        color: #94a3b8;
-        margin-bottom: 6px;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .cd-project-meta {
-        font-size: 0.73rem;
-        color: #94a3b8;
-    }
-
-    .cd-project-action {
-        flex-shrink: 0;
-        padding-left: 10px;
-    }
-
-    .cd-btn-ver-mais {
-        background-color: transparent;
-        border: 1px solid var(--accent-cyan, #00f2ff);
-        color: var(--accent-cyan, #00f2ff);
-        font-size: 0.82rem;
-        padding: 6px 14px;
-        border-radius: 4px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.2s ease;
-        white-space: nowrap;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .cd-btn-ver-mais:hover {
-        background-color: var(--accent-cyan, #00f2ff);
-        color: var(--bg-deep-blue, #0a192f);
     }
 
     .cd-pagination-container {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 35px;
         gap: 6px;
     }
 
@@ -307,10 +241,10 @@
         background-color: var(--card-dark-blue, #112240);
         border: 1px solid var(--border-blue, #1e3a8a);
         color: #ffffff;
-        padding: 5px 11px;
+        padding: 6px 12px;
         border-radius: 4px;
         cursor: pointer;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         transition: all 0.2s ease;
     }
 
@@ -327,26 +261,6 @@
     }
 
     @media (max-width: 768px) {
-        .cd-project-list-item {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 14px;
-        }
-        .cd-project-thumb {
-            width: 100%;
-            height: 150px;
-            margin-bottom: 12px;
-        }
-        .cd-project-content {
-            padding: 0;
-            width: 100%;
-            margin-bottom: 12px;
-        }
-        .cd-project-action {
-            padding-left: 0;
-            width: 100%;
-            text-align: right;
-        }
         .cd-section-header {
             flex-direction: column;
             align-items: flex-start;
@@ -357,7 +271,7 @@
     }
 </style>
 
-<!-- Script JavaScript com os seus dados -->
+<!-- Script JavaScript atualizado (12 por página, sem botão de ver projeto) -->
 <script>
     const cdProjectsData = [
         {
@@ -386,19 +300,19 @@
         }
     ];
 
-    const cdItemsPerPage = 10;
+    const cdItemsPerPage = 12; // Alterado para 12 itens por página
     let cdCurrentPage = 1;
     let cdFilteredData = [...cdProjectsData];
 
     const cdSearchInput = document.getElementById('cdSearchInput');
-    const cdProjectsList = document.getElementById('cdProjectsList');
+    const cdProjectsGrid = document.getElementById('cdProjectsGrid');
     const cdPaginationContainer = document.getElementById('cdPaginationContainer');
 
     function cdRenderProjects() {
-        cdProjectsList.innerHTML = '';
+        cdProjectsGrid.innerHTML = '';
         
         if (cdFilteredData.length === 0) {
-            cdProjectsList.innerHTML = '<p class="text-center text-muted py-4">Nenhum projeto encontrado.</p>';
+            cdProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
             cdPaginationContainer.innerHTML = '';
             return;
         }
@@ -408,23 +322,23 @@
         const paginatedItems = cdFilteredData.slice(start, end);
 
         paginatedItems.forEach(item => {
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'cd-project-list-item';
-            itemDiv.innerHTML = `
-                <img src="${item.image}" class="cd-project-thumb" alt="${item.title}">
-                <div class="cd-project-content">
-                    <a href="${item.url}" class="cd-project-title">${item.title}</a>
-                    <p class="cd-project-excerpt">${item.excerpt}</p>
-                    <div class="cd-project-meta">
-                        <span><i class="far fa-calendar-alt me-1"></i> ${item.date}</span> &bull; 
-                        <span><i class="far fa-user me-1"></i> ${item.author}</span>
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
+            colDiv.innerHTML = `
+                <a href="${item.url}" class="cd-card-link">
+                    <div class="card h-100 bg-dark-blue border-blue shadow">
+                        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+                        <div class="card-body text-white d-flex flex-column">
+                            <h5 class="card-title fw-bold">${item.title}</h5>
+                            <p class="card-text small text-muted">${item.excerpt}</p>
+                            <div class="mt-auto pt-2 small text-muted border-top border-secondary">
+                                <span><i class="far fa-calendar-alt me-1"></i> ${item.date}</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="cd-project-action">
-                    <a href="${item.url}" class="cd-btn-ver-mais">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                </div>
+                </a>
             `;
-            cdProjectsList.appendChild(itemDiv);
+            cdProjectsGrid.appendChild(colDiv);
         });
 
         cdRenderPagination();
