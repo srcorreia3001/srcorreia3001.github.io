@@ -136,53 +136,205 @@
     </div>
 
 <!-- GRADE DE POSTS -->
-
-    <div class="container my-5">
+<div class="container my-5">
     <section id="dashboards">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4 text-uppercase">Projetos de DashBoards</h2>
         
-        <div class="row g-4">
-            
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes(RFM) </h5>
-                        <p class="card-text small">Construção de um pipeline análitico utilizando Python e SQL aplicado a metodologia RFM (Rec
-ẽncia, Frequência e Monetário)</p>
-                        <a href="https://srcorreia3001.github.io/posts/sql/analiserfmsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small">Projeto com o objetivo de transformar dados brutos em inteligência comercial</p>
-                        <a href="https://srcorreia3001.github.io/posts/analise/analiserelacional.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Analise de venda online E-commerce</h5>
-                        <p class="card-text small">Analisar o desempenho de vendas de uma loja virtual, identificando categorias de produtos com maior saída e o comportamento do ticket médio para auxiliar na tomada de decisão comercial.</p>
-                        <a href="https://srcorreia3001.github.io/posts/maisprojetos/analisedevendaspb.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Cabeçalho com Título -->
+        <div class="db-section-header">
+            <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de DashBoards</h2>
         </div>
+        
+        <!-- Grade de Posts (Injetada via JS) -->
+        <div id="dbProjectsGrid" class="row g-4"></div>
+
+        <!-- Paginação Numérica -->
+        <div id="dbPaginationContainer" class="db-pagination-container"></div>
+
     </section>
 </div>
 
+<!-- Estilos CSS Escopados para a Grade -->
+<style>
+    .db-section-header {
+        border-bottom: 2px solid var(--border-blue, #1e3a8a);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
 
+    .db-title-link {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s ease;
+    }
 
+    .db-title-link:hover {
+        color: var(--accent-cyan, #00f2ff);
+    }
+
+    .card.bg-dark-blue {
+        background-color: var(--card-dark-blue, #112240) !important;
+        border-color: var(--border-blue, #1e3a8a) !important;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+        border-color: var(--accent-cyan, #00f2ff);
+        transform: translateY(-3px);
+    }
+
+    .card-img-top {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .btn-ver-mais {
+        background-color: transparent;
+        border: 1px solid var(--accent-cyan, #00f2ff);
+        color: var(--accent-cyan, #00f2ff);
+        font-size: 0.85rem;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .btn-ver-mais:hover {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+    }
+
+    .db-pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        gap: 6px;
+    }
+
+    .db-page-btn {
+        background-color: var(--card-dark-blue, #112240);
+        border: 1px solid var(--border-blue, #1e3a8a);
+        color: #ffffff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+
+    .db-page-btn:hover:not(:disabled), .db-page-btn.active {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+        border-color: var(--accent-cyan, #00f2ff);
+        font-weight: bold;
+    }
+
+    .db-page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+</style>
+
+<!-- Script JavaScript com os dados de Dashboards -->
+<script>
+    const dbProjectsData = [
+        {
+            title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
+            excerpt: "Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            url: "https://srcorreia3001.github.io/posts/sql/analiserfmsql.html"
+        },
+        {
+            title: "Análise Relacional e Consulta SQL para Negócios",
+            excerpt: "Projeto com o objetivo de transformar dados brutos em inteligência comercial",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html"
+        },
+        {
+            title: "Analise de venda online E-commerce",
+            excerpt: "Analisar o desempenho de vendas de uma loja virtual, identificando categorias de produtos com maior saída e o comportamento do ticket médio para auxiliar na tomada de decisão comercial.",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png",
+            url: "https://srcorreia3001.github.io/posts/maisprojetos/analisedevendaspb.html"
+        }
+    ];
+
+    const dbItemsPerPage = 12;
+    let dbCurrentPage = 1;
+
+    const dbProjectsGrid = document.getElementById('dbProjectsGrid');
+    const dbPaginationContainer = document.getElementById('dbPaginationContainer');
+
+    function dbRenderProjects() {
+        dbProjectsGrid.innerHTML = '';
+        
+        if (dbProjectsData.length === 0) {
+            dbProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
+            dbPaginationContainer.innerHTML = '';
+            return;
+        }
+
+        const start = (dbCurrentPage - 1) * dbItemsPerPage;
+        const end = start + dbItemsPerPage;
+        const paginatedItems = dbProjectsData.slice(start, end);
+
+        paginatedItems.forEach(item => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
+            colDiv.innerHTML = `
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <a href="${item.url}">
+                        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+                    </a>
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">
+                            <a href="${item.url}" class="db-title-link">${item.title}</a>
+                        </h5>
+                        <p class="card-text small text-muted">${item.excerpt}</p>
+                        <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            `;
+            dbProjectsGrid.appendChild(colDiv);
+        });
+
+        dbRenderPagination();
+    }
+
+    function dbRenderPagination() {
+        dbPaginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(dbProjectsData.length / dbItemsPerPage);
+
+        if (pageCount <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'db-page-btn';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.disabled = dbCurrentPage === 1;
+        prevBtn.onclick = () => { if (dbCurrentPage > 1) { dbCurrentPage--; dbRenderProjects(); } };
+        dbPaginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= pageCount; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `db-page-btn ${i === dbCurrentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            pageBtn.onclick = () => { dbCurrentPage = i; dbRenderProjects(); };
+            dbPaginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'db-page-btn';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.disabled = dbCurrentPage === pageCount;
+        nextBtn.onclick = () => { if (dbCurrentPage < pageCount) { dbCurrentPage++; dbRenderProjects(); } };
+        dbPaginationContainer.appendChild(nextBtn);
+    }
+
+    dbRenderProjects();
+</script>
 <!--FRASE DA SEMANA -->
 
     <div class="container my-5">
