@@ -490,6 +490,193 @@
     </section>
 
 
+    <!-- DESTAQUE DO TOPO (HERO SECTION) -->
+<div class="hero-section-container">
+    <div class="container py-5">
+        <div class="row align-items-center g-4">
+            
+            <!-- Coluna da Foto à Esquerda -->
+            <div class="col-12 col-md-4 text-center">
+                <div class="hero-avatar-wrapper">
+                    <!-- Substitua o src pela URL da sua foto -->
+                    <img src="https://via.placeholder.com/220" alt="Tiago de Lima Correia" id="heroAvatar" class="hero-avatar-img">
+                    <div class="hero-avatar-glow"></div>
+                </div>
+            </div>
+
+            <!-- Coluna das Informações à Direita -->
+            <div class="col-12 col-md-8 text-center text-md-start">
+                <div class="hero-content">
+                    <h1 class="hero-title" id="heroName">Tiago de Lima Correia</h1>
+                    <p class="hero-subtitle">Estudante de Ciência e Análise de Dados</p>
+                    
+                    <p class="hero-description">
+                        Transformando dados brutos em insights acionáveis. Apaixonado por Machine Learning e Data Visualization.
+                    </p>
+
+                    <!-- Botões de Rede Social -->
+                    <div class="hero-social-buttons mt-4">
+                        <a href="https://github.com/srcorreia3001" target="_blank" rel="noopener" class="btn-hero-github">
+                            <i class="fab fa-github me-2"></i> GitHub
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn-hero-linkedin">
+                            <i class="fab fa-linkedin-in me-2"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Estilos CSS do Destaque -->
+<style>
+    .hero-section-container {
+        background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+        border-bottom: 2px solid #1e3a8a;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Estilo da Foto à Esquerda */
+    .hero-avatar-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 180px;
+        height: 180px;
+    }
+
+    .hero-avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid #00f2ff;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .hero-avatar-img:hover {
+        transform: scale(1.03);
+    }
+
+    .hero-avatar-glow {
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        background: linear-gradient(45deg, #00f2ff, #ffcc00);
+        border-radius: 50%;
+        z-index: 1;
+        opacity: 0.4;
+        filter: blur(8px);
+        animation: pulseGlow 4s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+        0% { opacity: 0.2; transform: scale(0.98); }
+        100% { opacity: 0.5; transform: scale(1.02); }
+    }
+
+    /* Estilos dos Textos */
+    .hero-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #ffcc00; /* Dourado da identidade visual */
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #00f2ff; /* Azul ciano neon */
+        margin-bottom: 12px;
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        max-width: 600px;
+        margin-bottom: 0;
+    }
+
+    /* Botões de Redes Sociais */
+    .hero-social-buttons {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+        .hero-social-buttons {
+            justify-content: flex-start;
+        }
+    }
+
+    .btn-hero-github {
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: #ffffff;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-hero-github:hover {
+        border-color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #ffffff;
+    }
+
+    .btn-hero-linkedin {
+        background-color: #0077b5;
+        border: 1px solid #0077b5;
+        color: #ffffff;
+        padding: 8px 20px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .btn-hero-linkedin:hover {
+        background-color: #005f93;
+        border-color: #005f93;
+        color: #ffffff;
+    }
+</style>
+
+<!-- Script JavaScript Interativo -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Efeito sutil de fade-in ao carregar a seção do topo
+        const heroContent = document.querySelector('.hero-section-container');
+        if (heroContent) {
+            heroContent.style.opacity = '0';
+            heroContent.style.transition = 'opacity 0.8s ease-in-out';
+            setTimeout(() => {
+                heroContent.style.opacity = '1';
+            }, 100);
+        }
+    });
+</script>
+
+
 
 <!--teste
  <header class="hero-section d-flex align-items-center justify-content-center text-center">
