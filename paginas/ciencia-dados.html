@@ -140,13 +140,9 @@
 <div class="container my-5">
     <section id="ciencia-dados">
         
-        <!-- Cabeçalho com Título e Pesquisa Sutil -->
+        <!-- Cabeçalho com Título -->
         <div class="cd-section-header">
             <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de Ciência de Dados</h2>
-            <div class="cd-subtle-search-container">
-                <i class="fas fa-search cd-subtle-search-icon"></i>
-                <input type="text" id="cdSearchInput" class="cd-subtle-search-input" placeholder="Pesquisar nesta página...">
-            </div>
         </div>
         
         <!-- Grade de Posts (Injetada via JS) -->
@@ -161,46 +157,9 @@
 <!-- Estilos CSS Escopados para a Grade -->
 <style>
     .cd-section-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 15px;
         border-bottom: 2px solid var(--border-blue, #1e3a8a);
         padding-bottom: 10px;
         margin-bottom: 25px;
-    }
-
-    .cd-subtle-search-container {
-        position: relative;
-        max-width: 250px;
-        width: 100%;
-    }
-
-    .cd-subtle-search-input {
-        width: 100%;
-        background-color: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 20px;
-        padding: 5px 15px 5px 33px;
-        color: #ffffff;
-        font-size: 0.85rem;
-        outline: none;
-        transition: all 0.3s ease;
-    }
-
-    .cd-subtle-search-input:focus {
-        border-color: var(--accent-cyan, #00f2ff);
-        box-shadow: 0 0 5px rgba(0, 242, 255, 0.25);
-    }
-
-    .cd-subtle-search-icon {
-        position: absolute;
-        left: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #94a3b8;
-        font-size: 0.75rem;
     }
 
     .cd-title-link {
@@ -279,19 +238,9 @@
         opacity: 0.4;
         cursor: not-allowed;
     }
-
-    @media (max-width: 768px) {
-        .cd-section-header {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .cd-subtle-search-container {
-            max-width: 100%;
-        }
-    }
 </style>
 
-<!-- Script JavaScript atualizado (12 por página, com botão ver projeto) -->
+<!-- Script JavaScript (12 por página, sem pesquisa) -->
 <script>
     const cdProjectsData = [
         {
@@ -322,16 +271,14 @@
 
     const cdItemsPerPage = 12;
     let cdCurrentPage = 1;
-    let cdFilteredData = [...cdProjectsData];
 
-    const cdSearchInput = document.getElementById('cdSearchInput');
     const cdProjectsGrid = document.getElementById('cdProjectsGrid');
     const cdPaginationContainer = document.getElementById('cdPaginationContainer');
 
     function cdRenderProjects() {
         cdProjectsGrid.innerHTML = '';
         
-        if (cdFilteredData.length === 0) {
+        if (cdProjectsData.length === 0) {
             cdProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
             cdPaginationContainer.innerHTML = '';
             return;
@@ -339,7 +286,7 @@
 
         const start = (cdCurrentPage - 1) * cdItemsPerPage;
         const end = start + cdItemsPerPage;
-        const paginatedItems = cdFilteredData.slice(start, end);
+        const paginatedItems = cdProjectsData.slice(start, end);
 
         paginatedItems.forEach(item => {
             const colDiv = document.createElement('div');
@@ -366,7 +313,7 @@
 
     function cdRenderPagination() {
         cdPaginationContainer.innerHTML = '';
-        const pageCount = Math.ceil(cdFilteredData.length / cdItemsPerPage);
+        const pageCount = Math.ceil(cdProjectsData.length / cdItemsPerPage);
 
         if (pageCount <= 1) return;
 
@@ -393,19 +340,8 @@
         cdPaginationContainer.appendChild(nextBtn);
     }
 
-    cdSearchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        cdFilteredData = cdProjectsData.filter(item => 
-            item.title.toLowerCase().includes(query) || 
-            item.excerpt.toLowerCase().includes(query)
-        );
-        cdCurrentPage = 1;
-        cdRenderProjects();
-    });
-
     cdRenderProjects();
 </script>
-
 <!-- GRADE DE POSTS -->
 
     <div class="container my-5">
