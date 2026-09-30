@@ -796,8 +796,6 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
             <p class="text-info">FIAP</p>
         </div>
 
-
-        <div class="container pb-5 professional-summary-section">
     
     <!-- RESUMO PROFISSIONAL -->
     <div class="mb-5 animate-on-scroll">
@@ -841,124 +839,6 @@ Estou pronto para contribuir com empresas que valorizam a dedicação, a ética 
             </div>
         </div>
     </div>
-
-    <!-- FORMAÇÃO ACADÊMICA -->
-    <div class="mb-5 animate-on-scroll">
-        <h2 class="section-title text-uppercase fw-bold pb-2 mb-4 border-bottom" style="color: var(--accent-cyan, #00f2ff); border-color: var(--border-blue, #1e3a8a) !important;">Formação Acadêmica</h2>
-        
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="formacao-box p-4 rounded-3 h-100 shadow-sm" style="background-color: var(--card-dark-blue, #112240); border: 1px solid var(--border-blue, #1e3a8a);">
-                    <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-graduation-cap text-info fs-4 me-3"></i>
-                        <div>
-                            <h5 class="fw-bold mb-0 text-white">Tecnólogo em Ciência de Dados</h5>
-                            <span class="badge bg-secondary mt-1">2025 - 2027</span>
-                        </div>
-                    </div>
-                    <p class="text-info mb-0 fw-semibold">Universidade Santa Cecília (Unisanta)</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="formacao-box p-4 rounded-3 h-100 shadow-sm" style="background-color: var(--card-dark-blue, #112240); border: 1px solid var(--border-blue, #1e3a8a);">
-                    <div class="d-flex align-items-center mb-2">
-                        <i class="fas fa-university text-info fs-4 me-3"></i>
-                        <div>
-                            <h5 class="fw-bold mb-0 text-white">Tecnologia da Informação</h5>
-                            <span class="badge bg-secondary mt-1">2026 - 2029</span>
-                        </div>
-                    </div>
-                    <p class="text-info mb-0 fw-semibold">Universidade Virtual do Estado De São Paulo (UNIVESP)</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CURSOS E CAPACITAÇÕES -->
-    <div class="animate-on-scroll">
-        <h2 class="section-title text-uppercase fw-bold pb-2 mb-4 border-bottom" style="color: var(--accent-cyan, #00f2ff); border-color: var(--border-blue, #1e3a8a) !important;">Cursos & Certificações</h2>
-        
-        <div class="row g-3">
-            <div class="col-md-6">
-                <div class="formacao-box p-4 rounded-3 h-100 shadow-sm" style="background-color: var(--card-dark-blue, #112240); border: 1px solid var(--border-blue, #1e3a8a);">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="fw-bold text-white mb-0">Análise de Dados</h5>
-                        <span class="badge bg-dark border border-secondary">2024</span>
-                    </div>
-                    <p class="text-muted small mb-2">Modelagem | ADM - Banco de Dados | Power BI</p>
-                    <p class="text-info mb-0 fw-semibold small">Fundação Bradesco</p>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="formacao-box p-4 rounded-3 h-100 shadow-sm" style="background-color: var(--card-dark-blue, #112240); border: 1px solid var(--border-blue, #1e3a8a);">
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="fw-bold text-white mb-0">Big Data Analytics</h5>
-                        <span class="badge bg-dark border border-secondary">2024</span>
-                    </div>
-                    <p class="text-muted small mb-2">Power BI | Python | Lógica de Programação | Infraestrutura</p>
-                    <p class="text-info mb-0 fw-semibold small">FIAP</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<!-- Estilos CSS -->
-<style>
-    .professional-summary-section p {
-        font-size: 0.95rem;
-    }
-    
-    .formacao-box, .feature-card {
-        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .formacao-box:hover, .feature-card:hover {
-        transform: translateY(-4px);
-        border-color: var(--accent-cyan, #00f2ff) !important;
-        box-shadow: 0 6px 15px rgba(0, 242, 255, 0.1) !important;
-    }
-
-    /* Classes para animação de scroll via JavaScript */
-    .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .animate-on-scroll.visible {
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-<!-- Script JavaScript Interativo -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Observador de interseção para animar os blocos conforme o usuário rola a página
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target); // Anima apenas uma vez ao entrar na tela
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.animate-on-scroll').forEach(section => {
-            observer.observe(section);
-        });
-    });
-</script>
 
 
         
