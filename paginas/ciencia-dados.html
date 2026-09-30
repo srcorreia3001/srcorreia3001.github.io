@@ -136,7 +136,7 @@
         </div>
     </div>
 
-    <!-- GRADE DE POSTS -->
+   <!-- GRADE DE POSTS -->
 <div class="container my-5">
     <section id="ciencia-dados">
         
@@ -203,19 +203,13 @@
         font-size: 0.75rem;
     }
 
-    .cd-card-link {
+    .cd-title-link {
         text-decoration: none;
         color: inherit;
-        display: block;
-        height: 100%;
+        transition: color 0.2s ease;
     }
 
-    .cd-card-link:hover .card {
-        border-color: var(--accent-cyan, #00f2ff);
-        transform: translateY(-3px);
-    }
-
-    .cd-card-link:hover .card-title {
+    .cd-title-link:hover {
         color: var(--accent-cyan, #00f2ff);
     }
 
@@ -225,9 +219,35 @@
         transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
+    .card:hover {
+        border-color: var(--accent-cyan, #00f2ff);
+        transform: translateY(-3px);
+    }
+
     .card-img-top {
         height: 180px;
         object-fit: cover;
+    }
+
+    .btn-ver-mais {
+        background-color: transparent;
+        border: 1px solid var(--accent-cyan, #00f2ff);
+        color: var(--accent-cyan, #00f2ff);
+        font-size: 0.85rem;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .btn-ver-mais:hover {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
     }
 
     .cd-pagination-container {
@@ -271,7 +291,7 @@
     }
 </style>
 
-<!-- Script JavaScript atualizado (12 por página, sem botão de ver projeto) -->
+<!-- Script JavaScript atualizado (12 por página, com botão ver projeto) -->
 <script>
     const cdProjectsData = [
         {
@@ -300,7 +320,7 @@
         }
     ];
 
-    const cdItemsPerPage = 12; // Alterado para 12 itens por página
+    const cdItemsPerPage = 12;
     let cdCurrentPage = 1;
     let cdFilteredData = [...cdProjectsData];
 
@@ -325,18 +345,18 @@
             const colDiv = document.createElement('div');
             colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
             colDiv.innerHTML = `
-                <a href="${item.url}" class="cd-card-link">
-                    <div class="card h-100 bg-dark-blue border-blue shadow">
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <a href="${item.url}">
                         <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                        <div class="card-body text-white d-flex flex-column">
-                            <h5 class="card-title fw-bold">${item.title}</h5>
-                            <p class="card-text small text-muted">${item.excerpt}</p>
-                            <div class="mt-auto pt-2 small text-muted border-top border-secondary">
-                                <span><i class="far fa-calendar-alt me-1"></i> ${item.date}</span>
-                            </div>
-                        </div>
+                    </a>
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">
+                            <a href="${item.url}" class="cd-title-link">${item.title}</a>
+                        </h5>
+                        <p class="card-text small text-muted">${item.excerpt}</p>
+                        <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
-                </a>
+                </div>
             `;
             cdProjectsGrid.appendChild(colDiv);
         });
@@ -385,7 +405,6 @@
 
     cdRenderProjects();
 </script>
-    
 
 <!-- GRADE DE POSTS -->
 
