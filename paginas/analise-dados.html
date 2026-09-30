@@ -135,6 +135,208 @@
         </div>
     </div>
 
+
+    <!-- GRADE DE POSTS -->
+<div class="container my-5">
+    <section id="analise-dados">
+        
+        <!-- Cabeçalho com Título -->
+        <div class="ad-section-header">
+            <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de Análise de Dados</h2>
+        </div>
+        
+        <!-- Grade de Posts (Injetada via JS) -->
+        <div id="adProjectsGrid" class="row g-4"></div>
+
+        <!-- Paginação Numérica -->
+        <div id="adPaginationContainer" class="ad-pagination-container"></div>
+
+    </section>
+</div>
+
+<!-- Estilos CSS Escopados para a Grade -->
+<style>
+    .ad-section-header {
+        border-bottom: 2px solid var(--border-blue, #1e3a8a);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    .ad-title-link {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.2s ease;
+    }
+
+    .ad-title-link:hover {
+        color: var(--accent-cyan, #00f2ff);
+    }
+
+    .card.bg-dark-blue {
+        background-color: var(--card-dark-blue, #112240) !important;
+        border-color: var(--border-blue, #1e3a8a) !important;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+        border-color: var(--accent-cyan, #00f2ff);
+        transform: translateY(-3px);
+    }
+
+    .card-img-top {
+        height: 180px;
+        object-fit: cover;
+    }
+
+    .btn-ver-mais {
+        background-color: transparent;
+        border: 1px solid var(--accent-cyan, #00f2ff);
+        color: var(--accent-cyan, #00f2ff);
+        font-size: 0.85rem;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .btn-ver-mais:hover {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+    }
+
+    .ad-pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 35px;
+        gap: 6px;
+    }
+
+    .ad-page-btn {
+        background-color: var(--card-dark-blue, #112240);
+        border: 1px solid var(--border-blue, #1e3a8a);
+        color: #ffffff;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+    }
+
+    .ad-page-btn:hover:not(:disabled), .ad-page-btn.active {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+        border-color: var(--accent-cyan, #00f2ff);
+        font-weight: bold;
+    }
+
+    .ad-page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+</style>
+
+<!-- Script JavaScript com os novos dados de Análise de Dados -->
+<script>
+    const adProjectsData = [
+        {
+            title: "Análise de Vendas e Desempenho Comercial",
+            excerpt: "Projeto de análise de dados usando python e pandas",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg",
+            url: "https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html"
+        },
+        {
+            title: "Análise Relacional e Consulta SQL para Negócios",
+            excerpt: "Projeto com o objetivo de transformar dados brutos em inteligência comercial",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html"
+        },
+        {
+            title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
+            excerpt: "Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html"
+        }
+    ];
+
+    const adItemsPerPage = 12;
+    let adCurrentPage = 1;
+
+    const adProjectsGrid = document.getElementById('adProjectsGrid');
+    const adPaginationContainer = document.getElementById('adPaginationContainer');
+
+    function adRenderProjects() {
+        adProjectsGrid.innerHTML = '';
+        
+        if (adProjectsData.length === 0) {
+            adProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
+            adPaginationContainer.innerHTML = '';
+            return;
+        }
+
+        const start = (adCurrentPage - 1) * adItemsPerPage;
+        const end = start + adItemsPerPage;
+        const paginatedItems = adProjectsData.slice(start, end);
+
+        paginatedItems.forEach(item => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
+            colDiv.innerHTML = `
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <a href="${item.url}">
+                        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+                    </a>
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">
+                            <a href="${item.url}" class="ad-title-link">${item.title}</a>
+                        </h5>
+                        <p class="card-text small text-muted">${item.excerpt}</p>
+                        <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            `;
+            adProjectsGrid.appendChild(colDiv);
+        });
+
+        adRenderPagination();
+    }
+
+    function adRenderPagination() {
+        adPaginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(adProjectsData.length / adItemsPerPage);
+
+        if (pageCount <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'ad-page-btn';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.disabled = adCurrentPage === 1;
+        prevBtn.onclick = () => { if (adCurrentPage > 1) { adCurrentPage--; adRenderProjects(); } };
+        adPaginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= pageCount; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `ad-page-btn ${i === adCurrentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            pageBtn.onclick = () => { adCurrentPage = i; adRenderProjects(); };
+            adPaginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'ad-page-btn';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.disabled = adCurrentPage === pageCount;
+        nextBtn.onclick = () => { if (adCurrentPage < pageCount) { adCurrentPage++; adRenderProjects(); } };
+        adPaginationContainer.appendChild(nextBtn);
+    }
+
+    adRenderProjects();
+</script>
+  
 <!-- GRADE DE POSTS -->
 
     <div class="container my-5">
