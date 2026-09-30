@@ -136,6 +136,343 @@
         </div>
     </div>
 
+    <!-- GRADE DE POSTS / FEED EM LISTA -->
+<div class="container my-5">
+    <section id="ciencia-dados">
+        
+        <!-- Cabeçalho com Título e Pesquisa Sutil -->
+        <div class="cd-section-header">
+            <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de Ciência de Dados</h2>
+            <div class="cd-subtle-search-container">
+                <i class="fas fa-search cd-subtle-search-icon"></i>
+                <input type="text" id="cdSearchInput" class="cd-subtle-search-input" placeholder="Pesquisar nesta página...">
+            </div>
+        </div>
+        
+        <!-- Lista de Posts (Injetada via JS) -->
+        <div id="cdProjectsList" class="cd-project-list-container"></div>
+
+        <!-- Paginação Numérica -->
+        <div id="cdPaginationContainer" class="cd-pagination-container"></div>
+
+    </section>
+</div>
+
+<!-- Estilos CSS Escopados para o Feed -->
+<style>
+    .cd-section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        border-bottom: 2px solid var(--border-blue, #1e3a8a);
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+    }
+
+    .cd-subtle-search-container {
+        position: relative;
+        max-width: 250px;
+        width: 100%;
+    }
+
+    .cd-subtle-search-input {
+        width: 100%;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 5px 15px 5px 33px;
+        color: #ffffff;
+        font-size: 0.85rem;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .cd-subtle-search-input:focus {
+        border-color: var(--accent-cyan, #00f2ff);
+        box-shadow: 0 0 5px rgba(0, 242, 255, 0.25);
+    }
+
+    .cd-subtle-search-icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #94a3b8;
+        font-size: 0.75rem;
+    }
+
+    .cd-project-list-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .cd-project-list-item {
+        background-color: var(--card-dark-blue, #112240);
+        border: 1px solid var(--border-blue, #1e3a8a);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .cd-project-list-item:hover {
+        border-color: var(--accent-cyan, #00f2ff);
+        transform: translateY(-2px);
+    }
+
+    .cd-project-thumb {
+        width: 140px;
+        height: 90px;
+        object-fit: cover;
+        border-radius: 6px;
+        flex-shrink: 0;
+        background-color: #000;
+    }
+
+    .cd-project-content {
+        flex-grow: 1;
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .cd-project-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 4px;
+        text-decoration: none;
+    }
+
+    .cd-project-title:hover {
+        color: var(--accent-cyan, #00f2ff);
+    }
+
+    .cd-project-excerpt {
+        font-size: 0.82rem;
+        color: #94a3b8;
+        margin-bottom: 6px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .cd-project-meta {
+        font-size: 0.73rem;
+        color: #94a3b8;
+    }
+
+    .cd-project-action {
+        flex-shrink: 0;
+        padding-left: 10px;
+    }
+
+    .cd-btn-ver-mais {
+        background-color: transparent;
+        border: 1px solid var(--accent-cyan, #00f2ff);
+        color: var(--accent-cyan, #00f2ff);
+        font-size: 0.82rem;
+        padding: 6px 14px;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .cd-btn-ver-mais:hover {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+    }
+
+    .cd-pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        gap: 6px;
+    }
+
+    .cd-page-btn {
+        background-color: var(--card-dark-blue, #112240);
+        border: 1px solid var(--border-blue, #1e3a8a);
+        color: #ffffff;
+        padding: 5px 11px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s ease;
+    }
+
+    .cd-page-btn:hover:not(:disabled), .cd-page-btn.active {
+        background-color: var(--accent-cyan, #00f2ff);
+        color: var(--bg-deep-blue, #0a192f);
+        border-color: var(--accent-cyan, #00f2ff);
+        font-weight: bold;
+    }
+
+    .cd-page-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+        .cd-project-list-item {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 14px;
+        }
+        .cd-project-thumb {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 12px;
+        }
+        .cd-project-content {
+            padding: 0;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .cd-project-action {
+            padding-left: 0;
+            width: 100%;
+            text-align: right;
+        }
+        .cd-section-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .cd-subtle-search-container {
+            max-width: 100%;
+        }
+    }
+</style>
+
+<!-- Script JavaScript com os seus dados -->
+<script>
+    const cdProjectsData = [
+        {
+            title: "Análise Relacional e Consulta SQL para Negócios",
+            excerpt: "Projeto com o objetivo de transformar dados brutos em inteligência comercial",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
+        },
+        {
+            title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
+            excerpt: "Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
+        },
+        {
+            title: "Prevendo a evasão escolar com Machine Learning",
+            excerpt: "A evasão escolar é um dos desafios mais complexos e impactantes da gestão educacional pública e privada.",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg",
+            url: "https://srcorreia3001.github.io/posts/cienciadados/projetodeevasaoescolar.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
+        }
+    ];
+
+    const cdItemsPerPage = 10;
+    let cdCurrentPage = 1;
+    let cdFilteredData = [...cdProjectsData];
+
+    const cdSearchInput = document.getElementById('cdSearchInput');
+    const cdProjectsList = document.getElementById('cdProjectsList');
+    const cdPaginationContainer = document.getElementById('cdPaginationContainer');
+
+    function cdRenderProjects() {
+        cdProjectsList.innerHTML = '';
+        
+        if (cdFilteredData.length === 0) {
+            cdProjectsList.innerHTML = '<p class="text-center text-muted py-4">Nenhum projeto encontrado.</p>';
+            cdPaginationContainer.innerHTML = '';
+            return;
+        }
+
+        const start = (cdCurrentPage - 1) * cdItemsPerPage;
+        const end = start + cdItemsPerPage;
+        const paginatedItems = cdFilteredData.slice(start, end);
+
+        paginatedItems.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cd-project-list-item';
+            itemDiv.innerHTML = `
+                <img src="${item.image}" class="cd-project-thumb" alt="${item.title}">
+                <div class="cd-project-content">
+                    <a href="${item.url}" class="cd-project-title">${item.title}</a>
+                    <p class="cd-project-excerpt">${item.excerpt}</p>
+                    <div class="cd-project-meta">
+                        <span><i class="far fa-calendar-alt me-1"></i> ${item.date}</span> &bull; 
+                        <span><i class="far fa-user me-1"></i> ${item.author}</span>
+                    </div>
+                </div>
+                <div class="cd-project-action">
+                    <a href="${item.url}" class="cd-btn-ver-mais">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            `;
+            cdProjectsList.appendChild(itemDiv);
+        });
+
+        cdRenderPagination();
+    }
+
+    function cdRenderPagination() {
+        cdPaginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(cdFilteredData.length / cdItemsPerPage);
+
+        if (pageCount <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'cd-page-btn';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.disabled = cdCurrentPage === 1;
+        prevBtn.onclick = () => { if (cdCurrentPage > 1) { cdCurrentPage--; cdRenderProjects(); } };
+        cdPaginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= pageCount; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `cd-page-btn ${i === cdCurrentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            pageBtn.onclick = () => { cdCurrentPage = i; cdRenderProjects(); };
+            cdPaginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'cd-page-btn';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.disabled = cdCurrentPage === pageCount;
+        nextBtn.onclick = () => { if (cdCurrentPage < pageCount) { cdCurrentPage++; cdRenderProjects(); } };
+        cdPaginationContainer.appendChild(nextBtn);
+    }
+
+    cdSearchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        cdFilteredData = cdProjectsData.filter(item => 
+            item.title.toLowerCase().includes(query) || 
+            item.excerpt.toLowerCase().includes(query)
+        );
+        cdCurrentPage = 1;
+        cdRenderProjects();
+    });
+
+    cdRenderProjects();
+</script>
+    
+
 <!-- GRADE DE POSTS -->
 
     <div class="container my-5">
