@@ -144,51 +144,42 @@
 
 <div class="post-container">
 
-    <span class="post-tag">Ciência de Dados</span>
-    <h2 class="post-title">Como criamos um Sistema de Recomendação Inteligente que realmente aumenta as vendas (sem ser chato)</h2>
-    <div class="post-meta">05 de Outubro de 2026 • 3 min de leitura</div>
+    <span class="post-tag">Mais Projetos</span>
+    <h2 class="post-title">Dashboard analise de vendas e-commerce</h2>
+    <div class="post-meta">10 de agosto, 2026 • 3 min de leitura</div>
 <p></p>
 
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzrbLpD6nEH83mixvYYpnThuszl8OBonr0IECaxIJo-wABid2mVH7VMzZnsy36TXVGJUHhJUJ4vGMUP1OpB828YdHNVdr1scsi5l3juZH4zRuOQjoaBRiUHympPLyvqwErfSi56KnbXA7uOKxuppza-OiCzXPPIl_hm8ujbfmpyvV-LVrvB8VXy5ggcv_n/s2752/vendas-www-tiagodata-com-br.jpeg" alt="imagem 1" width="900" height="500">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgf8wrE2BFBngKVgFV867BexixdVQQaImjMiwHfssVzDjTziPsmheUZetEaeF6onpRp84QrI2JN-QBbjcLnnao8SfY8vfz73jLbYnczWQ4PVX3MdwV0JMcgcRJbNTNC5mNz2yaBk5YxWYEF-Bf-RoONMJhoEtdb3UR6ObGZpRfBIYKsbA690ucaOJ06HHV4/s1316/imagem%20dashboard.png" alt="imagem 1" width="900" height="500">
 
-        <h1>Como criamos um Sistema de Recomendação Inteligente que realmente aumenta as vendas (sem ser chato)</h1>
+    <h4>Sobre o Projeto...</h4>
+    <p>Analisar o desempenho de vendas de uma loja virtual, identificando categorias de produtos com maior saída e o comportamento do ticket médio para auxiliar na tomada de decisão comercial.
+</p>
 
-      <p>Sabe aquela sensação de entrar em uma loja física, pedir um notebook novo e o atendente logo em seguida te mostrar a mochila perfeita e um mouse gamer? Parece mágica, mas é pura ciência de dados aplicada ao atendimento.</p>
 
-      <p>No e-commerce, a gente tenta fazer a mesma coisa, mas muitas vezes o resultado é um desastre: recomendações sem nexo, sugestões repetidas ou telas poluídas.</p>
+    <h4>Ferramentas utilizadas</h4>
 
-      <p>Se você quer transformar a sua loja virtual de um "catálogo passivo" para um consultor de vendas digital afiado, o segredo é construir um <strong>Sistema de Recomendação focado em Cross-selling (venda cruzada)</strong>. Vamos ver como estruturamos isso do zero, direto no código?</p>
+    <ul>
+      <li><b>Power BI Desktop:</b> Construção de Dashboard e tratamento de dados.</li>
+      <li><b>DAX:</b> Criação de medidas Calculadas(Faturamento, Qtd Vendida, Ticket Médio).</li>
+      <li><b>Excel/CSV:</b> Base de dados tratada.</li>
+    </ul>
 
-      <h2>1. As Perguntas que Motivam o Projeto</h2>
-      <p>Antes de abrir qualquer linha de código, um bom projeto de dados nasce de uma dor real de negócio. Nós nos fizemos perguntas como:</p>
-      <ul>
-        <li><em>Por que o nosso ticket médio está travado?</em></li>
-        <li><em>Quais produtos os clientes costumam comprar juntos, mas que o site atual não sugere ativamente?</em></li>
-        <li><em>Como usar o histórico do usuário para prever o que ele vai querer comprar em seguida?</em></li>
-      </ul>
-      <p>Com isso, o objetivo ficou claro: <strong>aumentar o valor de cada carrinho através de relevância.</strong></p>
+    <h4>Principais indicadores</h4>
 
-      <h2>O Código por Trás da Mágica</h2>
-      <p>Para construir nossa solução de forma limpa, começamos simulando um banco de dados de transações de e-commerce em Python com o Pandas, e logo em seguida aplicamos duas técnicas poderosas de Machine Learning:</p>
-
-      
-        <h3>Regras de Associação (Algoritmo Apriori)</h3>
-        <p>Descobrimos quais produtos têm uma sinergia natural de compra utilizando Análise da Cesta de Compras (<em>Market Basket Analysis</em>). O modelo varreu milhares de transações e encontrou regras fortíssimas com <strong>100% de confiança</strong>, como:</p>
-        <ul>
-          <li>Quem compra <strong>Notebook + Mochila</strong> leva também <strong>Mouse Gamer</strong>.</li>
-          <li>Quem compra <strong>Capinha de Celular + Película</strong> leva também o <strong>Smartphone</strong>.</li>
-        </ul>
+    <ul>
+        <li><b>Faturamento Total:</b> Valor acumulado em vendas</li>
+        <li><b>Ticket Médio:</b> Média de valor por pedido</li>
+        <li><b>Sazonalidade:</b> Análise temporal das vendas</li>
+    </ul>
     
 
-   
-        <h3>Passo B: Filtragem Colaborativa baseada em Similaridade de Cosseno</h3>
-        <p>Depois, criamos uma matriz de recomendação personalizada por usuário. O algoritmo calcula a similaridade entre os produtos com base no comportamento de toda a base de clientes. Assim, se o <code>User_012</code> comprou determinados itens, o sistema cruza esses dados com o comportamento de outros usuários parecidos e sugere novas oportunidades de compra sob medida.</p>
-      
+<h4>Principais Insights</h4>
+  <p>Através da segmentação de dados, foi possível identificar que a categoria Eletrônicos possui maior volume de faturamento, representando a maior parte da receita total do período analidado.</p>
 
-      <h2>Sendo assim...</h2>
-      <p>Construir um sistema de recomendação não é sobre empurrar produtos caros, mas sim sobre <strong>timing e relevância</strong>. Quando você acerta a sugestão, o cliente ganha tempo, a experiência de compra melhora e o faturamento da empresa cresce de forma saudável.</p>
 
-      <p><strong>E você?</strong> Como o seu e-commerce lida com as recomendações hoje? Conta aqui nos comentários! 👇</p>
+
+<p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/dashboard_de_vendas_e_commerce">GitHub</a></p>
+</div>
 
 
 
