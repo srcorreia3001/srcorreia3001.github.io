@@ -148,64 +148,46 @@
     <div class="post-meta">31 de Julho, 2026 • 4 min de leitura</div>
 <p></p>
      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjL5kx-V6atTiTllXQGBen9AG2XlJguf4pxiDZDTdoJxVxkGOA3rTM1oJbF6bEsedpC1hyphenhyphennZ-BhxdASPXY3g7g9oeB2bQG5B2Uej-7TcrQIPhDl_Px4sgN61W8f0e4GeQMGSm44jgpGwlfqCV8IIOR-3YvhSN47TEFx6co1N3mFI1gj3wboAdZ0fJcS8xYC/s1920/pabitrakaity-credit-card-6401275_1920.png" alt="imagem 1" width="900" height="500">
+<article class="blog-post-content">
+  <h1>Como criamos um Sistema de Recomendação Inteligente que realmente aumenta as vendas (sem ser chato)</h1>
 
-    <p>No mercado financeiro e de fintechs, um dos maiores desafios diários é equilibrar a concessão de crédito com a mitigação de riscos de inadimplência (calotes). Ser rigoroso demais significa perder receita e clientes em potencial; ser permissivo demais eleva drasticamente os prejuízos operacionais.
-</p>
+  <p>Sabe aquela sensação de entrar em uma loja física, pedir um notebook novo e o atendente logo em seguida te mostrar a mochila perfeita e um mouse gamer? Parece mágica, mas é pura ciência de dados aplicada ao atendimento.</p>
 
-    <p>Neste projeto de portfólio de nível sênior, construímos um pipeline analítico de ponta a ponta utilizando dados reais do setor de crédito para estruturar um banco relacional, tratar inconsistências corporativas, realizar engenharia de atributos e aplicar um modelo de Machine Learning não supervisionado para segmentar perfis de risco e comportamento de clientes.
-</p>
+  <p>No e-commerce, a gente tenta fazer a mesma coisa, mas muitas vezes o resultado é um desastre: recomendações sem nexo, sugestões repetidas ou telas poluídas.</p>
 
-    <h2>Stack Tecnológica e Arquitetura</h2>
+  <p>Se você quer transformar a sua loja virtual de um "catálogo passivo" para um consultor de vendas digital afiado, o segredo é construir um <strong>Sistema de Recomendação focado em Cross-selling (venda cruzada)</strong>. Vamos ver como estruturamos isso do zero, direto no código?</p>
 
-        <ul>
-      <li>Linguagem: Python (Pandas para manipulação, Scikit-Learn para modelagem preditiva).</li>
-      <li>Banco de Dados: SQLite (criação e persistência de um ambiente relacional local).</li>
-      <li>Linguagem de Consulta: SQL Avançado (agregações, tratamento de cardinalidade e agrupamentos por chave única de cliente).</li>
-      <li>Machine Learning: Algoritmo K-Means Clustering com padronização de variáveis (StandardScaler).</li>
-      <li>Ambiente: Kaggle Notebooks.</li>
-
+  <h2>1. As Perguntas que Motivam o Projeto</h2>
+  <p>Antes de abrir qualquer linha de código, um bom projeto de dados nasce de uma dor real de negócio. Nós nos fizemos perguntas como:</p>
+  <ul>
+    <li><em>Por que o nosso ticket médio está travado?</em></li>
+    <li><em>Quais produtos os clientes costumam comprar juntos, mas que o site atual não sugere ativamente?</em></li>
+    <li><em>Como usar o histórico do usuário para prever o que ele vai querer comprar em seguida?</em></li>
   </ul>
+  <p>Com isso, o objetivo ficou claro: <strong>aumentar o valor de cada carrinho através de relevância.</strong></p>
 
-     <img src=" " alt="imagem 1" width="900" height="500">
+  <h2>2. A Mão na Massa: O Código por Trás da Mágica</h2>
+  <p>Para construir nossa solução de forma limpa, começamos simulando um banco de dados de transações de e-commerce em Python com o Pandas, e logo em seguida aplicamos duas técnicas poderosas de Machine Learning:</p>
 
-<h2>Etapas de Desenvolvimento do Projeto</h2>
-<h4>Ingestão e Modelagem Relacional (ETL)</h4>
-
-<p>A partir da base transacional de cartões e histórico financeiro, criamos um script automatizado de ETL que varre a fonte de dados, extrai as informações brutas e as consolida em uma tabela estruturada dentro de um banco de dados SQLite local (banco_risco_credito.db).</p>
-
-<h4>O Desafio e Tratamento de Nulos Corporativos</h4>
-<p>Em bases de dados de crédito reais, a presença massiva de valores nulos (NaN) é comum. Identificamos que colunas de saldos e faturamento histórico ausentes representam, na verdade, a inatividade do cliente ou a ausência daquele produto financeiro específico.</p>
-
+  <div class="post-card">
+    <h3>Passo A: Regras de Associação (Algoritmo Apriori)</h3>
+    <p>Descobrimos quais produtos têm uma sinergia natural de compra utilizando Análise da Cesta de Compras (<em>Market Basket Analysis</em>). O modelo varreu milhares de transações e encontrou regras fortíssimas com <strong>100% de confiança</strong>, como:</p>
     <ul>
-       <li>Aplicamos tratamentos inteligentes via Pandas e SQL, convertendo os nulos financeiros em zero (indicando ausência de movimentação no período) e estruturando datas de relacionamento padrão.</li>
+      <li>Quem compra <strong>Notebook + Mochila</strong> leva também <strong>Mouse Gamer</strong>.</li>
+      <li>Quem compra <strong>Capinha de Celular + Película</strong> leva também o <strong>Smartphone</strong>.</li>
     </ul>
+  </div>
 
-<h4>Engenharia de Atributos e Agregação por Cliente (case_id)</h4>
-<p>Como o histórico transacional continha múltiplos registros por indivíduo, utilizamos consultas SQL avançadas com agregações (COUNT, MAX, SUM) e agrupamentos por case_id para construir uma Feature Store limpa. Cada linha passou a representar unicamente um cliente, destacando métricas cruciais como:</p>
-<ul>
-    <li>Saldo máximo em 180 dias.</li>
-    <li>Movimentações acumuladas (turnover) de 180 e 30 dias.</li>
-    <li>Volume total de transações registradas.</li>
-</ul>
+  <div class="post-card">
+    <h3>Passo B: Filtragem Colaborativa baseada em Similaridade de Cosseno</h3>
+    <p>Depois, criamos uma matriz de recomendação personalizada por usuário. O algoritmo calcula a similaridade entre os produtos com base no comportamento de toda a base de clientes. Assim, se o <code>User_012</code> comprou determinados itens, o sistema cruza esses dados com o comportamento de outros usuários parecidos e sugere novas oportunidades de compra sob medida.</p>
+  </div>
 
-<h4>Machine Learning: Clusterização e Perfis de Risco (K-Means)</h4>
-<p>Para classificar inteligentemente a base sem depender de rótulos prévios, utilizamos o algoritmo K-Means. Após normalizar os dados com StandardScaler para garantir a mesma escala de importância entre as variáveis financeiras, dividimos a base em 3 clusters estratégicos para o negócio:</p>
+  <h2>Resumo da Ópera</h2>
+  <p>Construir um sistema de recomendação não é sobre empurrar produtos caros, mas sim sobre <strong>timing e relevância</strong>. Quando você acerta a sugestão, o cliente ganha tempo, a experiência de compra melhora e o faturamento da empresa cresce de forma saudável.</p>
 
-<ul>
-    <li>Baixo Risco / Padrão: Representa a grande massa de clientes com comportamento estável ou menor volume transacional (106.900 clientes).</li>
-    <li>Médio Risco / Ativo: Consumidores com engajamento financeiro intermediário e maior monitoramento (4.407 clientes).</li>
-    <li>Alto Volume / VIP: O grupo seleto de alto valor transacional e movimentação robusta (465 clientes).</li>
-</ul>
-
-<h2>Principais Insights e Aplicações Práticas</h2>
-<ul>
-    <li>Mitigação Preventiva de Risco: A identificação precisa de grupos de médio e alto risco permite que a mesa de crédito ajuste limites dinamicamente, evitando perdas futuras com inadimplência.</li>
-    <li>Estratégias de Relacionamento (VIP): O isolamento do cluster de Alto Volume / VIP fundamenta ações comerciais direcionadas, como oferta de taxas diferenciadas e produtos de crédito exclusivos, maximizando a rentabilidade da instituição.</li>
-</ul>
-    
-<p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/Analise_de_risco_de_credito/blob/main/analise_de_risco_de_credito.ipynb">GitHub</a></p>
-</div>
-
+  <p><strong>E você?</strong> Como o seu e-commerce lida com as recomendações hoje? Conta aqui nos comentários! 👇</p>
+</article>
 
 
 <!----- POSTS---->
