@@ -1,0 +1,26 @@
+[
+  {
+    "titulo": "Análise Relacional e Consulta SQL para Negócios",
+    "descricao": "Projeto com o objetivo de transformar dados brutos em inteligência comercial.",
+    "imagem": "/assets/img/seu-banner-sql.jpg", 
+    "link": "/posts/sql-negocios.html",
+    "tags": ["mais-acessados"],
+    "views": 1500
+  },
+  {
+    "titulo": "Análise de Comportamento e Segmentação de Clientes (RFM)",
+    "descricao": "Construção de um pipeline analítico utilizando Python e SQL aplicado a metodologia RFM (Recência, Frequência e Monetário).",
+    "imagem": "/assets/img/seu-banner-rfm.jpg",
+    "link": "/posts/rfm-segmentation.html",
+    "tags": ["mais-acessados"],
+    "views": 1200
+  },
+  {
+    "titulo": "Análise de Vendas e Desempenho Comercial",
+    "descricao": "Projeto de análise de vendas usando Python e Pandas.",
+    "imagem": "/assets/img/seu-banner-vendas.jpg",
+    "link": "/posts/vendas-desempenho.html",
+    "tags": ["mais-acessados"],
+    "views": 950
+  }
+]
