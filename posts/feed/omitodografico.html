@@ -250,7 +250,122 @@
     
 <!----- POSTS---->
 
+<!---GRADE DOS POSTS MAIS ACESSADOS-->
 
+<style>
+    .posts-section {
+        background-color: #0b0f19;
+        padding: 40px 20px;
+        font-family: Arial, sans-serif;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .posts-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        color: #00d2ff;
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .card {
+        background-color: #121824;
+        border: 1px solid #1e293b;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 16px;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .card:hover {
+        border-color: #00d2ff;
+        transform: translateY(-4px);
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 15px;
+    }
+
+    .card h3 {
+        color: #ffffff;
+        font-size: 1.1rem;
+        margin: 0 0 10px 0;
+        line-height: 1.4;
+    }
+
+    .card p {
+        color: #94a3b8;
+        font-size: 0.85rem;
+        margin: 0 0 20px 0;
+        line-height: 1.5;
+    }
+
+    .card a.btn {
+        display: block;
+        text-align: center;
+        background: transparent;
+        color: #00d2ff;
+        border: 1px solid #00d2ff;
+        padding: 10px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: background 0.2s, color 0.2s;
+    }
+
+    .card a.btn:hover {
+        background: #00d2ff;
+        color: #0b0f19;
+    }
+
+    @media (max-width: 900px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="posts-section">
+    <div class="posts-container">
+        <h2 class="section-title">Mais Acessados</h2>
+        <div class="grid-container" id="popular-posts-grid">
+            <!-- Os cards serão injetados dinamicamente via JS -->
+        </div>
+    </div>
+</section>
+
+<!---FIM DA GRADE DOS  POSTS MAIS ACESSADOS-->
 
 <!-- GRADE DE POSTS -->
 
@@ -394,6 +509,46 @@
             document.getElementById('ano-atual').textContent = new Date().getFullYear();
         }
         window.onload = carregar;
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+    fetch('/assets/data/posts.json') 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os dados.');
+            }
+            return response.json();
+        })
+        .then(posts => {
+            const topPosts = posts
+                .filter(post => post.tags && post.tags.includes('mais-acessados'))
+                .sort((a, b) => b.views - a.views)
+                .slice(0, 3);
+
+            const gridContainer = document.getElementById('popular-posts-grid');
+            if (!gridContainer) return;
+
+            const postsToRender = topPosts.length > 0 ? topPosts : posts.sort((a, b) => b.views - a.views).slice(0, 3);
+
+            gridContainer.innerHTML = postsToRender.map(post => `
+                <div class="card">
+                    <div class="card-content">
+                        <img src="${post.imagem}" alt="${post.titulo}">
+                        <h3>${post.titulo}</h3>
+                        <p>${post.descricao}</p>
+                    </div>
+                    <a href="${post.link}" class="btn">Ver Projeto →</a>
+                </div>
+            `).join('');
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            const gridContainer = document.getElementById('popular-posts-grid');
+            if (gridContainer) {
+                gridContainer.innerHTML = '<p style="color: #94a3b8;">Não foi possível carregar os posts no momento.</p>';
+            }
+        });
+});
     </script>
 </body>
 </html>
