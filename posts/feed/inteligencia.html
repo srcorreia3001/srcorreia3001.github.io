@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciência de Dados | Tiago Correia</title>
+    <title>Analista de Dados | Tiago Correia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
+
+         html, body {
+    overflow-x: hidden;
+}
+
+        
         /* --- CSS GERAL E CORES --- */
         :root {
             --azul-escuro: #0a192f;
@@ -50,20 +56,6 @@
             border: 1px solid var(--azul-brilhante);
         }
 
-        /* --- GRADE DE POSTS --- */
-        .bg-dark-blue { background-color: var(--azul-escuro) !important; }
-        .border-blue { border: 1px solid var(--azul-botao) !important; transition: 0.3s; }
-        .border-blue:hover { transform: translateY(-5px); border-color: var(--azul-brilhante) !important; }
-        .text-blue-logo { color: var(--azul-brilhante) !important; }
-
-        .btn-ver-mais {
-            background-color: transparent;
-            color: var(--azul-brilhante) !important;
-            border: 2px solid var(--azul-brilhante);
-            font-weight: bold;
-            transition: 0.4s;
-        }
-        .btn-ver-mais:hover { background-color: var(--azul-brilhante); color: white !important; }
 
         /* --- FRASE DA SEMANA --- */
         .frase-da-semana { background: var(--azul-escuro); border: 1px solid var(--azul-brilhante); border-radius: 15px; }
@@ -72,6 +64,22 @@
         .footer-limpo { background-color: var(--azul-escuro) !important; color: white; border-top: 1px solid var(--azul-brilhante); }
 
         html { scroll-padding-top: 70px; }
+
+        /*--- Botão enviar na caixa de menssagem -- */
+        .btn-ver-mais {
+  background-color: #e3f2fd; /* Azul claro que usamos nas tags */
+  color: #1565c0;          /* Cor do texto em azul escuro para dar contraste */
+  border: 1px solid #90caf5; /* Uma bordinha sutil */
+  font-weight: 500;
+  transition: all 0.3s ease; /* Deixa a animação suave */
+}
+
+/* Efeito quando o mouse passa por cima do botão */
+.btn-ver-mais:hover {
+  background-color: #bbdefb; /* Um azul um pouco mais forte no hover */
+  color: #0d47a1;
+  border-color: #64b5f6;
+}
 
 /* Esconde do 10º projeto em diante apenas em telas pequenas (Smartphone) */
 @media (max-width: 767px) {
@@ -113,6 +121,15 @@
     margin: 0 auto 20px auto; /* O 'auto' nas laterais centraliza a imagem perfeitamente */
     border-radius: 6px;
 }
+        .post-tag {
+  background-color: #e3f2fd; /* Azul claro */
+  color: #1565c0;          /* Azul escuro para o texto dar contraste */
+  padding: 4px 10px;       /* Um espaçamento interno para respirar */
+  border-radius: 12px;     /* Bordas arredondadas */
+  font-size: 0.85rem;      /* Tamanho proporcional */
+  font-weight: 500;        /* Um leve destaque na espessura da fonte */
+  display: inline-block;   /* Garante que o fundo respeite o tamanho do texto */
+}
 
 
 
@@ -143,7 +160,7 @@
 
 <div class="post-container">
 
-    <span class="post-tag">feed</span>
+    <span class="post-tag">Feed</span>
     <h2 class="post-title">O Papel da Inteligência Artificial na Análise de Dados: Ela vai roubar o seu emprego?</h2>
     <div class="post-meta">26 de setembro, 2026 • 3 min de leitura | Tiago Correia</div>
 <p></p>
@@ -152,9 +169,7 @@
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7JmlVzHUDcA0WZ31KvAMoTMYEwtNWpt-kLLZ3jbkIGk9A3eZnSO3s7WvQX5mPwq9JtYtWAXm5Y0iuaaaFmUkqAEhQ7padGxy4lKgvXVbITJGNZUiVFbJQIhtx1TmiGa0jkEk3ZlNXCTU5iUHK6YgJAE46ayqp4Nxiw4hyHA5LNA4xD7_RKyrHyFIgR5D8/s2816/wwwtiagodatacombrinteligencia.jpeg" alt="imagem 1" width="900" height="500">
 <article class="post-analise-de-dados">
 
-    <!--<div class="keywords-box" style="font-size: 0.9em; color: #555555; background-color: #f8f9fa; padding: 10px 15px; border-left: 4px solid #3498db; margin-bottom: 30px;">
-        <strong>Palavras-chave:</strong> inteligencia artificial na analise de dados, automacao de dados, futuro do cientista de dados, ia vai substituir analistas, machine learning nos negocios.
-    </div>-->
+
 
     <p>Se você acompanha as notícias de tecnologia, com certeza já esbarrou em alguma manchete alarmista dizendo que a Inteligência Artificial vai substituir todos os profissionais do mercado. Quando o assunto é tecnologia e números, o medo de que os robôs tomem conta das planilhas e gráficos costuma assustar muita gente.</p>
 
@@ -207,14 +222,10 @@
 
     <p>E você? Tem usado ferramentas de IA no seu dia a dia profissional ou ainda olha para elas com um pé atrás? Conta aqui nos comentários!</p>
 
-    <div class="blog-tags" style="margin: 35px 0 25px 0; font-size: 0.9em; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-        <strong style="color: #444;">Tags:</strong>
-        <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Inteligência Artificial</span>
-        <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Análise de Dados</span>
-        <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Futuro do Trabalho</span>
-        <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Tecnologia</span>
-    </div>
 </article>
+
+    
+
 
 
     <!-- Seção de Comentários (API Disqus) -->
@@ -253,54 +264,121 @@
     
 <!----- POSTS---->
 
+<!---GRADE DOS POSTS MAIS ACESSADOS-->
 
+<style>
+    /* Estilos isolados com prefixo próprio para evitar conflitos com o restante do site */
+    .tc-pop-section {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
 
-<!-- GRADE DE POSTS -->
+    .tc-pop-wrapper {
+        max-width: 1200px; /* Mesma largura máxima dos blocos inferiores */
+        margin: 0 auto;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
 
-    
-    <div class="container my-5">
-    <section id="ciencia-dados">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4 text-uppercase">Projetos de Ciência de Dados</h2>
+    .tc-pop-title {
+        color: #00d2ff;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
 
-        <div class="row g-4">
+    .tc-pop-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
 
-            <div class="col-12 col-md-4 projeto-item">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1" width="350">
-                    <div class="card-body text-white d-flex flex-column text-center">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small">Projeto com o obejtivo de transformar dados brutos em inteligência comercial</p>
-                        <a href="https://srcorreia3001.github.io/posts/sql/analiserelacionalsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
-                    </div>
-                </div>
-            </div>
+    .tc-pop-card {
+        background-color: #121824;
+        border: 1px solid #1e293b;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        box-sizing: border-box;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
 
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes(RFM) </h5>
-                        <p class="card-text small">Construção de um pipeline análitico utilizando Python e SQL aplicado a metodologia RFM (Rec
-ẽncia, Frequência e Monetário)</p>
-                        <a href="https://srcorreia3001.github.io/posts/sql/analiserfmsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+    .tc-pop-card:hover {
+        border-color: #00d2ff;
+        transform: translateY(-3px);
+    }
 
-                     <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Vendas e Desempenho Comercial</h5>
-                        <p class="card-text small">Projeto de análise de vendas usando Python e Pandas.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
+    .tc-pop-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .tc-pop-card h3 {
+        color: #ffffff;
+        font-size: 1rem;
+        margin: 0 c 8px 0;
+        line-height: 1.3;
+    }
+
+    .tc-pop-card p {
+        color: #94a3b8;
+        font-size: 0.8rem;
+        margin: 0 0 15px 0;
+        line-height: 1.4;
+    }
+
+    .tc-pop-btn {
+        display: block;
+        text-align: center;
+        background: transparent;
+        color: #00d2ff;
+        border: 1px solid #00d2ff;
+        padding: 8px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.85rem;
+        transition: background 0.2s, color 0.2s;
+        margin-top: auto;
+    }
+
+    .tc-pop-btn:hover {
+        background: #00d2ff;
+        color: #0b0f19;
+    }
+
+    @media (max-width: 900px) {
+        .tc-pop-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 600px) {
+        .tc-pop-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="tc-pop-section">
+    <div class="tc-pop-wrapper">
+        <h2 class="tc-pop-title">Destaques</h2>
+        <div class="tc-pop-grid" id="tc-popular-posts-grid">
+            <!-- Os cards serão preenchidos pelo JavaScript -->
         </div>
-    </section>
     </div>
+</section>
 
+<!---FIM DA GRADE DOS  POSTS MAIS ACESSADOS
 
 
 <!--FRASE DA SEMANA -->
@@ -345,9 +423,10 @@
             <div class="col-md-6 d-flex flex-column justify-content-center">
                 <div class="ps-md-4">
                     <h3 style="color: #0d6efd;">Tiago de Lima Correia</h3>
-                    <p class="lead text-muted">Estudante de Ciência e Análise de Dados</p>
-                    <p><strong>Instituição:</strong> Universidade Santa Cecília (UniSanta)</p>
-
+                    <p class="lead text-muted">Analista de Dados</p>
+                    <p class="mb-1"><strong>Instituições:</strong></p>
+                    <p class="mb-1">• Universidade Santa Cecília (UniSanta)</p>
+                    <p>• Universidade Virtual do Estado de São Paulo (UNIVESP)</p>
                     <ul class="list-unstyled mt-4">
                         <li class="mb-2">
                             <i class="fab fa-whatsapp text-success me-2"></i> 
@@ -397,6 +476,46 @@
             document.getElementById('ano-atual').textContent = new Date().getFullYear();
         }
         window.onload = carregar;
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    fetch('/assets/data/posts.json') 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro ao carregar os dados.');
+            }
+            return response.json();
+        })
+        .then(posts => {
+            const topPosts = posts
+                .filter(post => post.tags && post.tags.includes('mais-acessados'))
+                .sort((a, b) => b.views - a.views)
+                .slice(0, 3);
+
+            const gridContainer = document.getElementById('tc-popular-posts-grid');
+            if (!gridContainer) return;
+
+            const postsToRender = topPosts.length > 0 ? topPosts : posts.sort((a, b) => b.views - a.views).slice(0, 3);
+
+            gridContainer.innerHTML = postsToRender.map(post => `
+                <div class="tc-pop-card">
+                    <div>
+                        <img src="${post.imagem}" alt="${post.titulo}">
+                        <h3>${post.titulo}</h3>
+                        <p>${post.descricao}</p>
+                    </div>
+                    <a href="${post.link}" class="tc-pop-btn">Ver Projeto →</a>
+                </div>
+            `).join('');
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            const gridContainer = document.getElementById('tc-popular-posts-grid');
+            if (gridContainer) {
+                gridContainer.innerHTML = '<p style="color: #94a3b8; font-size: 0.9rem;">Não foi possível carregar os posts no momento.</p>';
+            }
+        });
+});
     </script>
 </body>
 </html>
