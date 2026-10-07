@@ -184,25 +184,25 @@
 
     <h3>Etapas de Desenvolvimento do Projeto</h3>
 
-    <h4>1. Ingestão e Estruturação no Banco Relacional (ETL)</h4>
+    <h4>Ingestão e Estruturação no Banco Relacional (ETL)</h4>
     <p>A partir da base transacional de vendas diárias por loja, criamos um script automatizado de ETL que varre a fonte de dados, extrai as informações brutas e as consolida em uma tabela estruturada dentro de um banco de dados SQLite local (<code>banco_vendas_varejo.db</code>).</p>
 
-    <h3>2. Análise Exploratória e Histórico Anual via SQL</h3>
+    <h3>Análise Exploratória e Histórico Anual via SQL</h3>
     <p>Utilizando consultas SQL avançadas, realizamos a extração e o cruzamento dos dados temporais para mapear o comportamento da rede ao longo dos anos:</p>
     <ul>
         <li><strong>Expansão da Rede:</strong> Acompanhamento do crescimento do número de lojas ativas de 47 em 2013 para 54 em 2017.</li>
         <li><strong>Volume de Transações:</strong> Identificação dos picos de movimentação da rede (ultrapassando 31 milhões de transações anuais entre 2015 e 2016) e análise da média diária estável por unidade (faixa de 1.600 a 1.750 transações/dia).</li>
     </ul>
 
-    <h3>3. Engenharia de Atributos Temporais (Feature Engineering)</h3>
+    <h3>Engenharia de Atributos Temporais (Feature Engineering)</h3>
     <p>Em séries temporais, o modelo precisa aprender com o comportamento passado para antecipar o futuro. Consolidamos o total de transações diárias de toda a rede e criamos variáveis explicativas fundamentais:</p>
     <ul>
-        <li><strong><code>Lag_1</code> (Defasagem de 1 dia):</strong> Captura o comportamento e o volume de transações imediatamente anterior.</li>
-        <li><strong><code>Lag_7</code> (Defasagem de 7 dias):</strong> Captura a <strong>sazonalidade semanal</strong> (o volume de vendas no mesmo dia da semana anterior).</li>
-        <li><strong><code>Media_Movel_7d</code> (Média Móvel de 7 dias):</strong> Suaviza flutuações diárias e destaca a tendência de curto prazo da operação.</li>
+        <li><strong>(Defasagem de 1 dia):</strong> Captura o comportamento e o volume de transações imediatamente anterior.</li>
+        <li><strong>(Defasagem de 7 dias):</strong> Captura a <strong>sazonalidade semanal</strong> (o volume de vendas no mesmo dia da semana anterior).</li>
+        <li><strong>(Média Móvel de 7 dias):</strong> Suaviza flutuações diárias e destaca a tendência de curto prazo da operação.</li>
     </ul>
 
-    <h3>4. Divisão Cronológica e Treinamento do Modelo (Machine Learning)</h3>
+    <h3>Divisão Cronológica e Treinamento do Modelo (Machine Learning)</h3>
     <p>Diferente de problemas tradicionais de classificação, em séries temporais <strong>nunca realizamos divisões aleatórias</strong>, preservando rigorosamente a ordem cronológica do tempo para evitar vazamento de dados futuros.</p>
     <ul>
         <li><strong>Conjunto de Treino:</strong> 80% iniciais da série temporal (passado).</li>
@@ -218,6 +218,17 @@
     </ul>
 
 <p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/projeto-de-eves-o-escolar/blob/main/C%C3%B3pia_de_projeto_de_ci_ncia_de_dados_evas_o_escolar.ipynb">GitHub</a></p>
+<div style="background-color: #e3f2fd; border-left: 4px solid #1565c0; padding: 20px; border-radius: 8px; margin: 30px 0;">
+  <p style="margin: 0 0 10px 0; font-weight: 600; color: #0d47a1; font-size: 1.05rem;">
+    Gostou deste projeto? 🚀
+  </p>
+  <p style="margin: 0 0 15px 0; color: #333; font-size: 0.95rem;">
+    Gostou do projeto? Veja o código completo e estruturado no meu GitHub.
+  </p>
+  <a href="https://github.com/srcorreia3001/projeto-de-eves-o-escolar/blob/main/C%C3%B3pia_de_projeto_de_ci_ncia_de_dados_evas_o_escolar.ipynb" target="_blank" style="background-color: #1565c0; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block; font-size: 0.9rem;">
+    Ver Código no GitHub →
+  </a>
+</div>        
 
 
 
