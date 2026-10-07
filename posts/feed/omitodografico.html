@@ -119,6 +119,15 @@
     margin: 0 auto 20px auto; /* O 'auto' nas laterais centraliza a imagem perfeitamente */
     border-radius: 6px;
 }
+        .post-tag {
+  background-color: #e3f2fd; /* Azul claro */
+  color: #1565c0;          /* Azul escuro para o texto dar contraste */
+  padding: 4px 10px;       /* Um espaçamento interno para respirar */
+  border-radius: 12px;     /* Bordas arredondadas */
+  font-size: 0.85rem;      /* Tamanho proporcional */
+  font-weight: 500;        /* Um leve destaque na espessura da fonte */
+  display: inline-block;   /* Garante que o fundo respeite o tamanho do texto */
+}
 
 
 
@@ -149,7 +158,7 @@
 
 <div class="post-container">
 
-    <span class="post-tag">feed</span>
+    <span class="post-tag">Feed</span>
     <h2 class="post-title">O Papel da Inteligência Artificial na Análise de Dados: Ela vai roubar o seu emprego?</h2>
     <div class="post-meta">26 de setembro, 2026 • 3 min de leitura | Tiago Correia</div>
 <p></p>
@@ -211,7 +220,7 @@
 <p>E você? Já sofreu tentando decifrar algum relatório confuso por aí ou tem o costume de simplificar suas análises? Conta aqui nos comentários!</p>
 
 <div class="blog-tags" style="margin: 35px 0 25px 0; font-size: 0.9em; display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-    <strong style="color: #444;">Tags:</strong>
+    <strong style="color: #444;"></strong>
     <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Visualização de Dados</span>
     <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Storytelling com Dados</span>
     <span style="background-color: #e9ecef; color: #495057; padding: 5px 12px; border-radius: 20px;">Dashboards</span>
@@ -370,54 +379,7 @@
     </div>
 </section>
 
-<!---FIM DA GRADE DOS  POSTS MAIS ACESSADOS-->
-
-<!-- GRADE DE POSTS -->
-
-    
-  <!-- <div class="container my-5">
-    <section id="ciencia-dados">
-        <h2 class="text-blue-logo border-bottom pb-2 mb-4 text-uppercase">Projetos de Ciência de Dados</h2>
-
-        <div class="row g-4">
-
-            <div class="col-12 col-md-4 projeto-item">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg" class="card-img-top" alt="Projeto 1" width="350">
-                    <div class="card-body text-white d-flex flex-column text-center">
-                        <h5 class="card-title fw-bold">Análise Relacional e Consulta SQL para Negócios</h5>
-                        <p class="card-text small">Projeto com o obejtivo de transformar dados brutos em inteligência comercial</p>
-                        <a href="https://srcorreia3001.github.io/posts/sql/analiserelacionalsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg" class="card-img-top" alt="Projeto 2">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Comportamento e Segmentação de Clientes(RFM) </h5>
-                        <p class="card-text small">Construção de um pipeline análitico utilizando Python e SQL aplicado a metodologia RFM (Rec
-ẽncia, Frequência e Monetário)</p>
-                        <a href="https://srcorreia3001.github.io/posts/sql/analiserfmsql.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-                     <div class="col-12 col-sm-6 col-md-4 post-card">
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" class="card-img-top" alt="Projeto 1">
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">Análise de Vendas e Desempenho Comercial</h5>
-                        <p class="card-text small">Projeto de análise de vendas usando Python e Pandas.</p>
-                        <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div> 
-    </section>
-    </div>-->
-
+<!---FIM DA GRADE DOS  POSTS MAIS ACESSADOS
 
 
 <!--FRASE DA SEMANA -->
