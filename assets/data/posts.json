@@ -10,10 +10,34 @@
   {
     "titulo": "Análise de Comportamento e Segmentação de Clientes (RFM)",
     "descricao": "Construção de um pipeline analítico utilizando Python e SQL aplicado a metodologia RFM (Recência, Frequência e Monetário).",
-    "imagem": "/assets/img/seu-banner-rfm.jpg",
-    "link": "/posts/rfm-segmentation.html",
+    "imagem": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+    "link":"https://srcorreia3001.github.io/posts/analise/analiserfm.html",
     "tags": ["mais-acessados"],
     "views": 1200
+  },
+  {
+    "titulo":  "Prevendo a evasão escolar com Machine Learning",
+    "descricao": "Projeto de análise de vendas usando Python e Pandas.",
+    "imagem":  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg",
+    "link": "https://srcorreia3001.github.io/posts/cienciadados/projetodeevasaoescolar.html",
+    "tags": ["mais-acessados"],
+    "views": 950
+  },
+  {
+    "titulo": "Como criamos um Sistema de Recomendação Inteligente que realmente aumenta as vendas (sem ser chato)",
+    "descricao": "Sabe aquela sensação de entrar em uma loja física, pedir um notebook novo e o atendente logo em seguida te mostrar a mochila perfeita e um mouse gamer?",
+    "imagem": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzrbLpD6nEH83mixvYYpnThuszl8OBonr0IECaxIJo-wABid2mVH7VMzZnsy36TXVGJUHhJUJ4vGMUP1OpB828YdHNVdr1scsi5l3juZH4zRuOQjoaBRiUHympPLyvqwErfSi56KnbXA7uOKxuppza-OiCzXPPIl_hm8ujbfmpyvV-LVrvB8VXy5ggcv_n/s2752/vendas-www-tiagodata-com-br.jpeg",
+    "link":  "https://srcorreia3001.github.io/posts/cienciadados/sistema-de-recomendacao-de-produto.html",
+    "tags": ["mais-acessados"],
+    "views": 950
+  },
+  {
+    "titulo": "Análise de Vendas e Desempenho Comercial",
+    "descricao": "Projeto de análise de vendas usando Python e Pandas.",
+    "imagem": "/assets/img/seu-banner-vendas.jpg",
+    "link": "/posts/vendas-desempenho.html",
+    "tags": ["mais-acessados"],
+    "views": 950
   },
   {
     "titulo": "Análise de Vendas e Desempenho Comercial",
