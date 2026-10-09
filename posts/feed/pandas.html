@@ -161,7 +161,7 @@
 <div class="post-container">
 
     <span class="post-tag">Feed</span>
-    <h2 class="post-title">Desvendando a Análise de Dados: Semelhanças, Diferenças e o que você precisa saber</h2>
+    <h2 class="post-title">Pandas:O Guia para começar sua análise em Python</h2>
     <div class="post-meta">20 de setembro, 2026 • 3 min de leitura | Tiago Correia</div>
 <p></p>
 
@@ -169,22 +169,48 @@
 <article class="post-analise-de-dados">
   
 
-   
+    <strong>análise de dados</strong>
 
-    <p>Se você já ouviu a frase "os dados são o novo petróleo", provavelmente também ficou se perguntando: <em>mas o que diabos a gente faz com todo esse óleo digital?</em></p>
+    <p>Olá pessoal aqui começamos à nossa nova série de estudos dedicada ao mundo da <strong>análise de dados com Python</strong>. Se você já olhou para uma planilha gigante cheia de linhas e colunas e pensou "deve existir um jeito melhor de lidar com isso", saiba que você está no lugar certo.</p>
 
-    <p>A resposta curta é... <strong>análise de dados</strong>. Mas calma! Se você acha que esse é um bicho de sete cabeças restrito a gênios da matemática, pode tirar o cavalinho da chuva. Hoje vamos bater um papo leve, descomplicado e direto ao ponto sobre o que é essa prática, o que ela come, onde vive e como se diferencia de outros conceitos parecidos. Bora lá?</p>
+    <p>Neste primeiro artigo da série, vamos colocar a mão na massa e conhecer a ferramenta que vai virar sua melhor amiga: o <strong>Pandas.</strong></p>
 
     <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
 
-    <h2>O que é Análise de Dados, afinal?</h2>
+    <h2>O que é o Pandas e como usá-lo?</h2>
 
-    <p>Imagine que você tem uma gaveta cheia de meias emboladas, recibos antigos, botões soltos e moedas. Olhando para aquela bagunça, você não sabe quanto dinheiro tem nem qual meia forma par.</p>
+    <p>Quando começamos a programar em Python, lidamos com listas e dicionários. Mas, à medida que os dados crescem, essas estruturas nativas ficam limitadas. É aí que entra o Pandas. Criada por Wes McKinney em 2008, essa biblioteca transformou o Python em uma potência para processamento de dados tabulares.</p>
 
-    <p>A <strong>análise de dados</strong> é exatamente o processo de esvaziar essa gaveta, organizar tudo por categorias, contar as moedas e descobrir, por exemplo, que você gasta mais com café do que imaginava.</p>
+    <p>Pense no Pandas como uma versão do Excel turbinada por código, capaz de rodar em cima de milhares ou milhões de linhas em segundos.</p>
 
     <p>No mundo dos negócios (e na nossa vida também), analisar dados significa pegar um monte de informações brutas e soltas (números de vendas, cliques em um site, batimentos cardíacos no smartwatch) e transformá-las em <strong>insights úteis</strong>. É responder à pergunta: <em>"O que está acontecendo e o que eu devo fazer com essa informação?"</em></p>
 
+    <p>Para começar a usá-lo, o ritual básico é sempre o mesmo: importar a biblioteca (geralmente apelidada de <strong>pd</strong> por convenção):</p>
+
+    <style>
+  .caixa-codigo {
+    background-color: #2d2d2d; /* Fundo cinza escuro (ou use #f1f1f1 para cinza claro) */
+    color: #ffffff;            /* Cor do texto (branca para fundo escuro) */
+    padding: 16px;             /* Espaçamento interno */
+    border-radius: 8px;        /* Bordas arredondadas */
+    font-family: 'Courier New', Courier, monospace; /* Fonte monoespaçada */
+    overflow-x: auto;          /* Adiciona barra de rolagem se a linha for muito longa */
+    font-size: 14px;
+    margin: 20px 0;
+  }
+  
+  /* Estilização opcional para destacar partes do código */
+  .caixa-codigo .palavra-chave { color: #569cd6; }
+  .caixa-codigo .variavel { color: #9cdcfe; }
+</style>
+
+<div class="caixa-codigo">
+  <span style="font-size: 12px; color: #888; display: block; margin-bottom: 8px;">Python</span>
+  <code>
+    <span class="palavra-chave">import</span> pandas <span class="palavra-chave">as</span> pd
+  </code>
+</div>
+    
     <hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 30px 0;">
 
     <h2>O que a Análise de Dados tem em comum com outras áreas?</h2>
