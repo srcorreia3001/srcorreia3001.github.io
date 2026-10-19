@@ -243,6 +243,9 @@
 <!-- Script JavaScript com os novos dados de Análise de Dados -->
 <script>
     const adProjectsData = [
+       
+       <script>
+    const adProjectsData = [
         {
             title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
             excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
@@ -267,6 +270,102 @@
             image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAWCjaR6YWDVQHD-8QZkalmobuqZkVROCTwuvMULXeNizQIy",
             url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html"
         }
+    ];
+
+    const adItemsPerPage = 12;
+    let adCurrentPage = 1;
+
+    function adRenderProjects() {
+        const adProjectsGrid = document.getElementById('adProjectsGrid');
+        const adPaginationContainer = document.getElementById('adPaginationContainer');
+
+        if (!adProjectsGrid) return;
+
+        adProjectsGrid.innerHTML = '';
+
+        if (adProjectsData.length === 0) {
+            adProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
+            if (adPaginationContainer) adPaginationContainer.innerHTML = '';
+            return;
+        }
+
+        const start = (adCurrentPage - 1) * adItemsPerPage;
+        const end = start + adItemsPerPage;
+        const paginatedItems = adProjectsData.slice(start, end);
+
+        paginatedItems.forEach(item => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
+            colDiv.innerHTML = `
+                <div class="card h-100 bg-dark-blue border-blue shadow">
+                    <a href="${item.url}">
+                        <img src="${item.image}" class="card-img-top" alt="${item.title}">
+                    </a>
+                    <div class="card-body text-white d-flex flex-column">
+                        <h5 class="card-title fw-bold">
+                            <a href="${item.url}" class="ad-title-link">${item.title}</a>
+                        </h5>
+                        <p class="card-text small text-muted">${item.excerpt}</p>
+                        <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            `;
+            adProjectsGrid.appendChild(colDiv);
+        });
+
+        adRenderPagination();
+    }
+
+    function adRenderPagination() {
+        const adPaginationContainer = document.getElementById('adPaginationContainer');
+        if (!adPaginationContainer) return;
+
+        adPaginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(adProjectsData.length / adItemsPerPage);
+
+        if (pageCount <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'ad-page-btn';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.disabled = adCurrentPage === 1;
+        prevBtn.onclick = () => { 
+            if (adCurrentPage > 1) { 
+                adCurrentPage--; 
+                adRenderProjects(); 
+            } 
+        };
+        adPaginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= pageCount; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `ad-page-btn ${i === adCurrentPage ? 'active' : ''}`;
+            pageBtn.innerText = i;
+            pageBtn.onclick = () => { 
+                adCurrentPage = i; 
+                adRenderProjects(); 
+            };
+            adPaginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'ad-page-btn';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.disabled = adCurrentPage === pageCount;
+        nextBtn.onclick = () => { 
+            if (adCurrentPage < pageCount) { 
+                adCurrentPage++; 
+                adRenderProjects(); 
+            } 
+        };
+        adPaginationContainer.appendChild(nextBtn);
+    }
+
+    // Executa a renderização somente após o carregamento completo do HTML da página
+    document.addEventListener('DOMContentLoaded', function() {
+        adRenderProjects();
+    });
+</script>
     ];
 
     const adItemsPerPage = 12;
