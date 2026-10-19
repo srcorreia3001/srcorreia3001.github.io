@@ -246,47 +246,43 @@
         {
             title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
             excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAWCjaR6YWDVQHD-8QZkalmobuqZkVROCTwuvMULXeNizQIy",
             url: "https://srcorreia3001.github.io/posts/analise/lojadecalcados.html"
         },
         {
             title: "Análise de Vendas e Desempenho Comercial",
             excerpt: "<span style='color: white;'>Projeto de análise de dados usando python e pandas</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg",
-            url: "https://srcorreia3001.github.io/posts/analisedevendas.html"
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDQa5aTZ31ueSGlIHsEp7Xt9mewkhBoG_QywjJE94f8I251BmQPdaC",
+            url: "https://srcorreia3001.github.io/posts/analise/analisedevendas.html"
         },
         {
             title: "Análise Relacional e Consulta SQL para Negócios",
             excerpt: "<span style='color: white;'>Projeto com o objetivo de transformar dados brutos em inteligência comercial</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgR1iz21gh4fWaJUHgkodiBRQxpqp4avMuFnV1nawz2PGyKoR_YK3zrgeVM",
             url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html"
         },
         {
             title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
             excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAWCjaR6YWDVQHD-8QZkalmobuqZkVROCTwuvMULXeNizQIy",
             url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html"
-        },
-        {
-            title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
-            excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
-            url: "https://srcorreia3001.github.io/posts/analise/lojadecalcados.html"
-        },
+        }
     ];
 
     const adItemsPerPage = 12;
     let adCurrentPage = 1;
 
-    const adProjectsGrid = document.getElementById('adProjectsGrid');
-    const adPaginationContainer = document.getElementById('adPaginationContainer');
-
     function adRenderProjects() {
+        const adProjectsGrid = document.getElementById('adProjectsGrid');
+        const adPaginationContainer = document.getElementById('adPaginationContainer');
+
+        if (!adProjectsGrid) return;
+
         adProjectsGrid.innerHTML = '';
-        
+
         if (adProjectsData.length === 0) {
             adProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
-            adPaginationContainer.innerHTML = '';
+            if (adPaginationContainer) adPaginationContainer.innerHTML = '';
             return;
         }
 
@@ -318,6 +314,9 @@
     }
 
     function adRenderPagination() {
+        const adPaginationContainer = document.getElementById('adPaginationContainer');
+        if (!adPaginationContainer) return;
+
         adPaginationContainer.innerHTML = '';
         const pageCount = Math.ceil(adProjectsData.length / adItemsPerPage);
 
@@ -327,14 +326,22 @@
         prevBtn.className = 'ad-page-btn';
         prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
         prevBtn.disabled = adCurrentPage === 1;
-        prevBtn.onclick = () => { if (adCurrentPage > 1) { adCurrentPage--; adRenderProjects(); } };
+        prevBtn.onclick = () => { 
+            if (adCurrentPage > 1) { 
+                adCurrentPage--; 
+                adRenderProjects(); 
+            } 
+        };
         adPaginationContainer.appendChild(prevBtn);
 
         for (let i = 1; i <= pageCount; i++) {
             const pageBtn = document.createElement('button');
             pageBtn.className = `ad-page-btn ${i === adCurrentPage ? 'active' : ''}`;
             pageBtn.innerText = i;
-            pageBtn.onclick = () => { adCurrentPage = i; adRenderProjects(); };
+            pageBtn.onclick = () => { 
+                adCurrentPage = i; 
+                adRenderProjects(); 
+            };
             adPaginationContainer.appendChild(pageBtn);
         }
 
@@ -342,11 +349,19 @@
         nextBtn.className = 'ad-page-btn';
         nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
         nextBtn.disabled = adCurrentPage === pageCount;
-        nextBtn.onclick = () => { if (adCurrentPage < pageCount) { adCurrentPage++; adRenderProjects(); } };
+        nextBtn.onclick = () => { 
+            if (adCurrentPage < pageCount) { 
+                adCurrentPage++; 
+                adRenderProjects(); 
+            } 
+        };
         adPaginationContainer.appendChild(nextBtn);
     }
 
-    adRenderProjects();
+    // Executa a renderização somente após o carregamento completo do HTML da página
+    document.addEventListener('DOMContentLoaded', function() {
+        adRenderProjects();
+    });
 </script>
   
 <!-- GRADE DE POSTS -->
