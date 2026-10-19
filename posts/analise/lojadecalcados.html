@@ -168,68 +168,178 @@
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" alt="imagem 1" width="900" height="500">
 
-    <h4>Sobre o Projeto...</h4>
-    <p>Desenvolvi este projeto pratico de análise de dados com o objetivo de explorar um conjunto de dados transacionais de e-commerce (Superstore), passando por todas as etapas fundamentais da rotina de análise de dados: Desde a importação no ambiente Kaggle e inspeção estrutural até a exploração comercial (EDA) e visualização gráfica.
-</p>
+  <article class="blog-post">
+  <header>
+    <h1>Como a Análise de Dados Salvou o Estoque e Aumentou o Lucro de uma Loja de Calçados 👟📊</h1>
+  </header>
 
+  <p>No varejo de calçados, existe uma regra de ouro que todo gestor aprende da forma mais difícil: <strong>estoque parado é dinheiro queimado na prateleira</strong>.</p>
 
-    <h4>Etapas do Desenvolvimento</h4>
+  <p>Se a loja compra pares demais dos tamanhos que ninguém usa, o capital de giro fica preso. Se compra de menos dos números mais procurados, o cliente entra, não encontra o produto e vai direto comprar no concorrente.</p>
 
+  <p>Para resolver esse problema de forma definitiva, desenvolvemos este projeto de <strong>Análise Exploratória e de Negócios em Python</strong>[cite: 7]. Simulamos o banco de dados transacional de uma loja de calçados ao longo de um ano (200 vendas[cite: 6]) para responder às perguntas mais críticas da operação e transformar números em decisões financeiras reais.</p>
 
-        <ul>
-      <li>Ambiente e Aquisição: Carga de Dados diretamente no ambiente do Kaggle, lidando com arquivos estriturados no formato planilha(.xlsx)</li>
-      <li>Inspeção de Dados: Validação dos tipos de dados (datatime, float, int) e checagem de integridade (verificação de valores nulos utilizando o pandas).</li>
-      <li>Análise Exploratória (EDA): Agrupamento e agregação para responder a perguntas de negócio cruciais, calculando o Faturamento Total: (R$ 2.297.200,86) e o Lucro total (R$ 286.397,02)</li>
-      <li>Visualização de Dados: Construção de gráficos modernos com Seaborn e Matplotlib para destacar o desempenho de vendas por categoria Technology liderou o faturamento. 
+  <hr>
 
-  </ul>
+  <section>
+    <h2>❓ As 3 Perguntas de Negócio que Deram Origem ao Projeto</h2>
+    <p>Antes de escrever qualquer linha de código, definimos as três dores do gestor da loja que precisavam ser respondidas:</p>
+    <ul>
+      <li><strong>Estoque e Grade:</strong> Quais numerações e modelos estão travando o capital da empresa (encalhados) e quais esgotam rápido demais, gerando perda de vendas?</li>
+      <li><strong>Sazonalidade e Timing:</strong> Qual é o momento exato do ano para trocar a vitrine de produtos de verão (sandálias) por produtos de inverno (botas) sem perder a onda de consumo?</li>
+      <li><strong>Ticket Médio (Cesta de Compras):</strong> Qual é o comportamento de compra combinada[cite: 5]? O cliente que leva um sapato costuma levar outro item junto no mesmo recibo[cite: 5]?</li>
+    </ul>
+  </section>
 
-     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjUiQbFgcSpxjjT1kVPDZX6waQa7Xrz8ojxyoNHbytKS8BXikFbjntqNnt2Umr9yTrguUno_CjP4upt87_QLIbYaA4-vChGqgqHqsJOgAPFub_4zmczW8eqka1fZLl50vCMUUgzmStrBmewzjjvs4vW2hyBGghfZe7-q8T5h_bAn9GQNqkhmnk-7sdCu9Pe/s1559/99666.png" alt="imagem 1" width="900" height="500">
-    <article>
+  <section>
+    <h2>⚙️ A Estrutura dos Dados e Metodologia</h2>
+    <p>Criamos uma base de dados realista via Python contendo as colunas essenciais de uma operação de caixa:</p>
+    <ul>
+      <li><code>ID_Transacao</code>: Identificador da fatura (permite identificar vendas com múltiplos itens)[cite: 5].</li>
+      <li><code>Data_Venda</code>: Data precisa para avaliar o comportamento mensal[cite: 4].</li>
+      <li><code>Categoria_Produto</code>: Tênis Esportivo, Bota de Couro, Sandália e Sapato Social[cite: 4].</li>
+      <li><code>Tamanho</code>: Numeração do 34 ao 44[cite: 1].</li>
+      <li><code>Custo_Fabrica</code> e <code>Preco_Venda</code>: Para cálculo direto do lucro e margem[cite: 6].</li>
+    </ul>
+  </section>
 
-<h4>Principais Insights</h4>
-  <ul>
-<li>A categoria Technology puxa a maior fatia da receita total da empresa, demonstrando alta tração de ticket médio.</li>
-<li>A base apresentou exelente consistência estrutural, sem registros de valores ausentes, o que permitiu focar totalmente nos insights estratégicos de negócios.</li>
-</ul>
+  <section>
+    <h2>🔍 Passo a Passo das Descobertas e Resultados</h2>
 
+    <article class="post-subsection">
+      <h3>1. O Mistério da Grade de Tamanhos (Adeus, "Grade Fechada"!)</h3>
+      <p>Ao agrupar as vendas por tamanho de calçado e gerar o gráfico de distribuição, a resposta surgiu imediatamente na forma de uma <strong>curva de sino</strong>[cite: 1]:</p>
+      <ul>
+        <li><strong>Os Campeões de Venda:</strong> Os tamanhos <strong>37, 38 e 39</strong> concentraram a grande maioria de todo o volume comercializado na loja[cite: 1].</li>
+        <li><strong>O Estoque Encalhado:</strong> Os tamanhos das extremidades (<strong>34, 35, 43 e 44</strong>) registraram giro quase nulo ao longo do ano inteiro[cite: 1].</li>
+      </ul>
+      <blockquote>
+        <p><strong>💡 Solução de Negócio:</strong> A loja deve parar imediatamente de comprar "grades fechadas" do fabricante (que vêm com a mesma quantidade de todos os números) e negociar "grades abertas", direcionando a verba para reforçar os tamanhos centrais (37 ao 39)[cite: 1].</p>
+      </blockquote>
+      <figure>
+        <figcaption>📸 <strong>Imagem 1:</strong> Gráfico de Barras da Curva de Vendas por Tamanho com as linhas vermelhas de risco nas extremidades.</figcaption>
+      </figure>
+    </article>
 
-<h4>Tecnologias Utilizadas: </h4>
+    <article class="post-subsection">
+      <h3>2. O Timing Exato de Mudança das Vitrines (Sazonalidade)</h3>
+      <p>A análise da evolução de vendas mês a mês por categoria revelou um padrão claro de transição de consumo[cite: 4]:</p>
+      <ul>
+        <li><strong>O Ponto de Virada:</strong> A linha de tendência mostra que as vendas de <strong>Sandálias</strong> começam a cair drasticamente após março, enquanto a procura por <strong>Botas de Couro</strong> e <strong>Tênis</strong> atinge seu pico de transição exatamente no mês de <strong>Abril</strong> (marcado pelo primeiro frio do outono)[cite: 4].</li>
+        <li><strong>A Armadilha do Inverno:</strong> Esperar julho para expor as botas faz a loja perder dois meses de demanda aquecida[cite: 4].</li>
+      </ul>
+      <blockquote>
+        <p><strong>💡 Solução de Negócio:</strong> Mudar o calendário comercial. A liquidação do estoque de verão (sandálias) deve ser antecipada para março, liberando espaço físico e caixa para expor a coleção de outono/inverno já no início de abril[cite: 4].</p>
+      </blockquote>
+      <figure>
+        <figcaption>📸 <strong>Imagem 2:</strong> Gráfico de Linhas da Sazonalidade mostrando o cruzamento em Abril.</figcaption>
+      </figure>
+    </article>
 
- <ul>
-   <li>Python</li>
-   <li>Pandas (Manipulação e agregação de dados)</li>
-   <li>Matplotlib & Seaborn (Visualização gráfica avançada)</li>
-   <li>Kaggle Notebooks (Ambiente de desenvolvimento)</li>
- </ul>
+    <article class="post-subsection">
+      <h3>3. O Comportamento no Balcão de Caixa (Venda Cruzada)</h3>
+      <p>Analisamos as faturas que continham mais de um item para entender quais produtos são comprados em conjunto[cite: 5]:</p>
+      <ul>
+        <li>Das 104 faturas emitidas no ano, <strong>60 contiveram 2 ou mais itens</strong>, representando uma taxa de venda cruzada de 57,7%[cite: 5].</li>
+        <li><strong>A Combinação Campeã:</strong> <code>Sapato Social + Tênis Esportivo</code> liderou o ranking com <strong>9 ocorrências no mesmo recibo</strong>[cite: 5]. Isso mostra um perfil de cliente que resolve a compra do trabalho e do lazer na mesma visita[cite: 5].</li>
+      </ul>
+      <blockquote>
+        <p><strong>💡 Solução de Negócio:</strong> Treinamento direcionado para a equipe de vendas. Sempre que um cliente provar um sapato social, o vendedor é instruído a apresentar um tênis esportivo no balcão oferecendo um desconto progressivo no segundo par[cite: 5].</p>
+      </blockquote>
+      <figure>
+        <figcaption>📸 <strong>Imagem 3:</strong> Print da Tabela do Terminal exibindo o Top 5 Combinações de Produtos.</figcaption>
+      </figure>
+    </article>
 
+    <article class="post-subsection">
+      <h3>4. O Fechamento Financeiro: A DRE Consolidada da Operação</h3>
+      <p>Para fechar o projeto com chave de ouro, consolidamos todas as 200 transações em uma <strong>Demonstração do Resultado do Exercício (DRE)</strong> simplificada para apresentar à diretoria[cite: 6]:</p>
+      
+      <table border="1" cellspacing="0" cellpadding="8">
+        <thead>
+          <tr>
+            <th>Linha da DRE</th>
+            <th>Valor Consolidado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. Receita Bruta de Vendas (Faturamento)</strong></td>
+            <td>R$ 43.650,00[cite: 6]</td>
+          </tr>
+          <tr>
+            <td><strong>2. (-) Custo de Mercadorias Vendidas (CMV)</strong></td>
+            <td>R$ 17.970,00[cite: 6]</td>
+          </tr>
+          <tr>
+            <td><strong>3. (=) Lucro Bruto Consolidado</strong></td>
+            <td>R$ 25.680,00[cite: 6]</td>
+          </tr>
+          <tr>
+            <td><strong>4. Margem de Lucro Bruto (%)</strong></td>
+            <td>58.83%[cite: 6]</td>
+          </tr>
+          <tr>
+            <td><strong>5. Ticket Médio por Item Vendido</strong></td>
+            <td>R$ 218.25[cite: 6]</td>
+          </tr>
+          <tr>
+            <td><strong>6. Total de Volume Comercializado</strong></td>
+            <td>200 pares[cite: 6]</td>
+          </tr>
+        </tbody>
+      </table>
 
-     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguqEDrk046WkvxR-vt7o7ENqKKjTzn8hzeEarK4hUhiKD4jAqSHJt8abJlW_fovIcWFoo-xpbRV65GnIoim6q8HANeSIui6V_nv09WbipH0sAAboNha-YI2ofTZXjuZgTz93pt5uxzTNkS4ByHEN_HBFMcDhT03dI5Fsx8VzsQX8K_6DiVnE8lYmFsKrje/s879/99665.jpg" alt="imagem 2" width="500" height="300">
+      <p>Com uma margem bruta sólida de <strong>58,83%</strong> e faturamento total de <strong>R$ 43.650,00</strong>, os dados mostram uma operação saudável, mas com alto potencial de otimização assim que o estoque encalhado for reduzido[cite: 6].</p>
+      <figure>
+        <figcaption>📸 <strong>Imagem 4:</strong> Print da DRE gerada no terminal do Python.</figcaption>
+      </figure>
+    </article>
+  </section>
 
+  <hr>
 
-<p>Gostou do projeto? Veja o código completo e estruturado no meu <a href="https://github.com/srcorreia3001/Analise_de_vendas_e_desempenho_Comercial_com_Python_e_Pandas">GitHub</a></p>
+  <section>
+    <h2>🚀 Resumo Executivo das Respostas e Ações</h2>
+    <table border="1" cellspacing="0" cellpadding="8">
+      <thead>
+        <tr>
+          <th>Pergunta de Negócio</th>
+          <th>O que os Dados Provaram</th>
+          <th>Decisão Estratégica Tomada</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1. Quais tamanhos comprar?</strong></td>
+          <td>Tamanhos 38 e 39 dominam o giro; 34 e 44 encalham no estoque[cite: 1].</td>
+          <td>Migrar de "grade fechada" para "grade aberta" focada nos tamanhos centrais[cite: 1].</td>
+        </tr>
+        <tr>
+          <td><strong>2. Quando trocar a vitrine?</strong></td>
+          <td>O pico de transição das coleções ocorre no mês de <strong>Abril</strong>[cite: 4].</td>
+          <td>Antecipar liquidação de verão para março e expor botas no início de abril[cite: 4].</td>
+        </tr>
+        <tr>
+          <td><strong>3. Como aumentar a cesta?</strong></td>
+          <td><code>Sapato Social + Tênis Esportivo</code> é o combo mais vendido conjuntamente (9x)[cite: 5].</td>
+          <td>Criar oferta de venda cruzada no caixa com desconto no segundo par[cite: 5].</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 
-        <div style="background-color: #e3f2fd; border-left: 4px solid #1565c0; padding: 20px; border-radius: 8px; margin: 30px 0;">
-  <p style="margin: 0 0 10px 0; font-weight: 600; color: #0d47a1; font-size: 1.05rem;">
-    Gostou deste projeto? 🚀
-  </p>
-  <p style="margin: 0 0 15px 0; color: #333; font-size: 0.95rem;">
-    Veja o código completo e estruturado no meu repositório do GitHub.
-  </p>
-  <a href="https://github.com/srcorreia3001/Analise_de_vendas_e_desempenho_Comercial_com_Python_e_Pandas" target="_blank" style="background-color: #1565c0; color: #ffffff; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 500; display: inline-block; font-size: 0.9rem;">
-    Ver Código no GitHub →
-  </a>
-</div>
-
-
-
-
-
-
-
-
-
-
+  <section>
+    <h2>📷 Guia Visual para Publicação do Post</h2>
+    <p>Para montar a postagem no seu blog ou portfólio, utilize as seguintes imagens capturadas durante a execução do projeto:</p>
+    <ol>
+      <li><strong>Imagem de Capa (Banner):</strong> Imagem temática sobre varejo de calçados e análise de dados.</li>
+      <li><strong>Imagem 1:</strong> O gráfico de barras azul da curva de sino dos tamanhos (com as linhas vermelhas tracejadas)[cite: 1].</li>
+      <li><strong>Imagem 2:</strong> O gráfico de linhas das tendências mensais com a linha pontilhada destacando o mês de abril[cite: 4].</li>
+      <li><strong>Imagem 3:</strong> A captura de tela do console com a tabela das top combinações de produtos[cite: 5].</li>
+      <li><strong>Imagem 4:</strong> A captura de tela da tabela DRE final consolidando o faturamento de R$ 43.650,00 e a margem de 58.83%[cite: 6].</li>
+    </ol>
+  </section>
 </article>
 
 
