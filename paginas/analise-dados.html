@@ -18,6 +18,7 @@
             --branco: #ffffff;
         }
 
+        
         body { background-color: #f8f9fa; }
 
         /* --- MENU --- */
@@ -125,50 +126,49 @@
     <div id="carrosselProjetos" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDqA5aTZ31ueSGiIHsEp7Xt9mewkhBoG_QYwjJE34f8i25lBmqPdaczJhGwEI6_lcWnmmi_Dxul3dY61HvQfVzP3at81WGSb6Ls4xDwDJYSAl-dwSwlH31nLbc9lYvYac9y91hRb8XTsxLNdBkmcZp6WOTKZ-tXx7kbh19GcXB0zrRvlzOMtiL6tbW/s1920/1000000266.jpg" class="d-block w-100 banner-img" alt="Ciência de Dados">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg" alt="Ciência de Dados">
                 <div class="carousel-caption capa-filtro">
-                    <h2 class="fw-bold">Análise de Vendas e Desempenho Comercial</h2>
-                    <p>Projeto de análise de dados usando python e pandas</p>
-                    <a href="https://srcorreia3001.github.io/posts/analisedevendascompythonepandas.html" class="btn btn-primary">Ver Projeto</a>
+                    <h2 class="fw-bold">Prevendo a evasão escolar com Machine Learning</h2>
+                    <p> A evasão escolar é um dos desafios mais complexos e impactantes da gestão educacional pública e privada.</p>
+                    <a href="https://srcorreia3001.github.io/posts/cdprojetodeevasaoescolar.html" class="btn btn-primary">Ver Mais!</a>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!-- GRADE DE POSTS -->
+   <!-- GRADE DE POSTS -->
 <div class="container my-5">
-    <section id="analise-dados">
+    <section id="ciencia-dados">
         
         <!-- Cabeçalho com Título -->
-        <div class="ad-section-header">
-            <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de Análise de Dados</h2>
+        <div class="cd-section-header">
+            <h2 class="text-blue-logo border-bottom pb-2 mb-0 text-uppercase fs-4">Projetos de Ciência de Dados</h2>
         </div>
         
         <!-- Grade de Posts (Injetada via JS) -->
-        <div id="adProjectsGrid" class="row g-4"></div>
+        <div id="cdProjectsGrid" class="row g-4"></div>
 
         <!-- Paginação Numérica -->
-        <div id="adPaginationContainer" class="ad-pagination-container"></div>
+        <div id="cdPaginationContainer" class="cd-pagination-container"></div>
 
     </section>
 </div>
 
 <!-- Estilos CSS Escopados para a Grade -->
 <style>
-    .ad-section-header {
+    .cd-section-header {
         border-bottom: 2px solid var(--border-blue, #1e3a8a);
         padding-bottom: 10px;
         margin-bottom: 25px;
     }
 
-    .ad-title-link {
+    .cd-title-link {
         text-decoration: none;
         color: inherit;
         transition: color 0.2s ease;
     }
 
-    .ad-title-link:hover {
+    .cd-title-link:hover {
         color: var(--accent-cyan, #00f2ff);
     }
 
@@ -209,14 +209,14 @@
         color: var(--bg-deep-blue, #0a192f);
     }
 
-    .ad-pagination-container {
+    .cd-pagination-container {
         display: flex;
         justify-content: center;
         margin-top: 35px;
         gap: 6px;
     }
 
-    .ad-page-btn {
+    .cd-page-btn {
         background-color: var(--card-dark-blue, #112240);
         border: 1px solid var(--border-blue, #1e3a8a);
         color: #ffffff;
@@ -227,71 +227,75 @@
         transition: all 0.2s ease;
     }
 
-    .ad-page-btn:hover:not(:disabled), .ad-page-btn.active {
+    .cd-page-btn:hover:not(:disabled), .cd-page-btn.active {
         background-color: var(--accent-cyan, #00f2ff);
         color: var(--bg-deep-blue, #0a192f);
         border-color: var(--accent-cyan, #00f2ff);
         font-weight: bold;
     }
 
-    .ad-page-btn:disabled {
+    .cd-page-btn:disabled {
         opacity: 0.4;
         cursor: not-allowed;
     }
 </style>
 
-<!-- Script JavaScript com os novos dados de Análise de Dados -->
+<!-- Script JavaScript (12 por página, sem pesquisa) -->
 <script>
-    const adProjectsData = [
-       
-       <script>
-    const adProjectsData = [
-        {
-            title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
-            excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
-            image: "   ",
-            url: "https://srcorreia3001.github.io/posts/analise/lojadecalcados.html"
-        },
-        {
-            title: "Análise de Vendas e Desempenho Comercial",
-            excerpt: "<span style='color: white;'>Projeto de análise de dados usando python e pandas</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjI4ILDQa5aTZ31ueSGlIHsEp7Xt9mewkhBoG_QywjJE94f8I251BmQPdaC",
-            url: "https://srcorreia3001.github.io/posts/analise/analisedevendas.html"
-        },
+    const cdProjectsData = [
         {
             title: "Análise Relacional e Consulta SQL para Negócios",
             excerpt: "<span style='color: white;'>Projeto com o objetivo de transformar dados brutos em inteligência comercial</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgR1iz21gh4fWaJUHgkodiBRQxpqp4avMuFnV1nawz2PGyKoR_YK3zrgeVM",
-            url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html"
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgRliz21gh4fWaJUBgkpd1bRQxpqp4avMofnVluawzZPGyKok_YK3zgev0M8eY7w_2qWyy_c6pJJwyKEBoWD-Q0o0_rIaZBUo8S1IoqKdQ183jcu7t3qFDSmn3j3aZS7-6HRGrTSycXHPDJ6NPBRgKs8XNIyCk7PY7xHvIqcRIpcC3_eSxgIu-N-W1JBPA8/s1920/1000000267.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserelacional.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
         },
         {
             title: "Análise de Comportamento e Segmentação de Clientes (RFM)",
             excerpt: "<span style='color: white;'>Construção de um pipeline analítico utilizando Python e SQL aplicado à metodologia RFM (Recência, Frequência e Monetário)</span>",
-            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAWCjaR6YWDVQHD-8QZkalmobuqZkVROCTwuvMULXeNizQIy",
-            url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html"
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEifujXxmP9-bAwCjaR6YwDVQHO-8QzkaLmobuqZkVRQCIwuvmULXeNizQIyjgqxy-IK_fVdyNZLLRbJ8Lp_ZgWZQAeba-6wzXO_1s2Wer6PZTTAngpFm7obFdyyt4jl1wlKo9yAABTNhXGp5L2umoI986tuFEoCzyVxp_fJ9YP-3RIASgd-7QI3FRcxErMs/s1280/geralt-data-4404730_1280.jpg",
+            url: "https://srcorreia3001.github.io/posts/analise/analiserfm.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
+        },
+        {
+            title: "Prevendo a evasão escolar com Machine Learning",
+            excerpt: "<span style='color: white;'>A evasão escolar é um dos desafios mais complexos e impactantes da gestão educacional pública e privada.</span>",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj_PO8CDg5D1P9TZnT1fboU27QWQIhldW6DcC5ab7G-ii0yQHlrtKPm8Bf3YKsEDaQ2x4pRLzN_KRUCPKFXKqzZSgkiamwNAJEo86Keg1c4xCXLZDrkfBwGQ3TpCcXiaSkfKO00yc0hZolCrEfuVgdmQpbsu56zQPUzjYRtMaMcOI_C_gQ1OzNuWQbQqdsi/s4752/1000000099.jpg",
+            url: "https://srcorreia3001.github.io/posts/cienciadados/projetodeevasaoescolar.html",
+            date: "Setembro, 2026",
+            author: "Tiago de Lima Correia"
+        },
+        {
+            title: "Como criamos um Sistema de Recomendação Inteligente que realmente aumenta as vendas (sem ser chato)",
+            excerpt: "<span style='color: white;'>Sabe aquela sensação de entrar em uma loja física, pedir um notebook novo e o atendente logo em seguida te mostrar a mochila perfeita e um mouse gamer?</span>",
+            image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzrbLpD6nEH83mixvYYpnThuszl8OBonr0IECaxIJo-wABid2mVH7VMzZnsy36TXVGJUHhJUJ4vGMUP1OpB828YdHNVdr1scsi5l3juZH4zRuOQjoaBRiUHympPLyvqwErfSi56KnbXA7uOKxuppza-OiCzXPPIl_hm8ujbfmpyvV-LVrvB8VXy5ggcv_n/s2752/vendas-www-tiagodata-com-br.jpeg",
+            url: "https://srcorreia3001.github.io/posts/cienciadados/sistema-de-recomendacao-de-produto.html",
+            date: "Outubro, 2026",
+            author: "Tiago Correia"
         }
+        
     ];
 
-    const adItemsPerPage = 12;
-    let adCurrentPage = 1;
+    const cdItemsPerPage = 12;
+    let cdCurrentPage = 1;
 
-    function adRenderProjects() {
-        const adProjectsGrid = document.getElementById('adProjectsGrid');
-        const adPaginationContainer = document.getElementById('adPaginationContainer');
+    const cdProjectsGrid = document.getElementById('cdProjectsGrid');
+    const cdPaginationContainer = document.getElementById('cdPaginationContainer');
 
-        if (!adProjectsGrid) return;
-
-        adProjectsGrid.innerHTML = '';
-
-        if (adProjectsData.length === 0) {
-            adProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
-            if (adPaginationContainer) adPaginationContainer.innerHTML = '';
+    function cdRenderProjects() {
+        cdProjectsGrid.innerHTML = '';
+        
+        if (cdProjectsData.length === 0) {
+            cdProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
+            cdPaginationContainer.innerHTML = '';
             return;
         }
 
-        const start = (adCurrentPage - 1) * adItemsPerPage;
-        const end = start + adItemsPerPage;
-        const paginatedItems = adProjectsData.slice(start, end);
+        const start = (cdCurrentPage - 1) * cdItemsPerPage;
+        const end = start + cdItemsPerPage;
+        const paginatedItems = cdProjectsData.slice(start, end);
 
         paginatedItems.forEach(item => {
             const colDiv = document.createElement('div');
@@ -303,167 +307,52 @@
                     </a>
                     <div class="card-body text-white d-flex flex-column">
                         <h5 class="card-title fw-bold">
-                            <a href="${item.url}" class="ad-title-link">${item.title}</a>
+                            <a href="${item.url}" class="cd-title-link">${item.title}</a>
                         </h5>
                         <p class="card-text small text-muted">${item.excerpt}</p>
                         <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
                     </div>
                 </div>
             `;
-            adProjectsGrid.appendChild(colDiv);
+            cdProjectsGrid.appendChild(colDiv);
         });
 
-        adRenderPagination();
+        cdRenderPagination();
     }
 
-    function adRenderPagination() {
-        const adPaginationContainer = document.getElementById('adPaginationContainer');
-        if (!adPaginationContainer) return;
-
-        adPaginationContainer.innerHTML = '';
-        const pageCount = Math.ceil(adProjectsData.length / adItemsPerPage);
+    function cdRenderPagination() {
+        cdPaginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(cdProjectsData.length / cdItemsPerPage);
 
         if (pageCount <= 1) return;
 
         const prevBtn = document.createElement('button');
-        prevBtn.className = 'ad-page-btn';
+        prevBtn.className = 'cd-page-btn';
         prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        prevBtn.disabled = adCurrentPage === 1;
-        prevBtn.onclick = () => { 
-            if (adCurrentPage > 1) { 
-                adCurrentPage--; 
-                adRenderProjects(); 
-            } 
-        };
-        adPaginationContainer.appendChild(prevBtn);
+        prevBtn.disabled = cdCurrentPage === 1;
+        prevBtn.onclick = () => { if (cdCurrentPage > 1) { cdCurrentPage--; cdRenderProjects(); } };
+        cdPaginationContainer.appendChild(prevBtn);
 
         for (let i = 1; i <= pageCount; i++) {
             const pageBtn = document.createElement('button');
-            pageBtn.className = `ad-page-btn ${i === adCurrentPage ? 'active' : ''}`;
+            pageBtn.className = `cd-page-btn ${i === cdCurrentPage ? 'active' : ''}`;
             pageBtn.innerText = i;
-            pageBtn.onclick = () => { 
-                adCurrentPage = i; 
-                adRenderProjects(); 
-            };
-            adPaginationContainer.appendChild(pageBtn);
+            pageBtn.onclick = () => { cdCurrentPage = i; cdRenderProjects(); };
+            cdPaginationContainer.appendChild(pageBtn);
         }
 
         const nextBtn = document.createElement('button');
-        nextBtn.className = 'ad-page-btn';
+        nextBtn.className = 'cd-page-btn';
         nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-        nextBtn.disabled = adCurrentPage === pageCount;
-        nextBtn.onclick = () => { 
-            if (adCurrentPage < pageCount) { 
-                adCurrentPage++; 
-                adRenderProjects(); 
-            } 
-        };
-        adPaginationContainer.appendChild(nextBtn);
+        nextBtn.disabled = cdCurrentPage === pageCount;
+        nextBtn.onclick = () => { if (cdCurrentPage < pageCount) { cdCurrentPage++; cdRenderProjects(); } };
+        cdPaginationContainer.appendChild(nextBtn);
     }
 
-    // Executa a renderização somente após o carregamento completo do HTML da página
-    document.addEventListener('DOMContentLoaded', function() {
-        adRenderProjects();
-    });
+    cdRenderProjects();
 </script>
-    ];
 
-    const adItemsPerPage = 12;
-    let adCurrentPage = 1;
 
-    function adRenderProjects() {
-        const adProjectsGrid = document.getElementById('adProjectsGrid');
-        const adPaginationContainer = document.getElementById('adPaginationContainer');
-
-        if (!adProjectsGrid) return;
-
-        adProjectsGrid.innerHTML = '';
-
-        if (adProjectsData.length === 0) {
-            adProjectsGrid.innerHTML = '<div class="col-12"><p class="text-center text-muted py-4">Nenhum projeto encontrado.</p></div>';
-            if (adPaginationContainer) adPaginationContainer.innerHTML = '';
-            return;
-        }
-
-        const start = (adCurrentPage - 1) * adItemsPerPage;
-        const end = start + adItemsPerPage;
-        const paginatedItems = adProjectsData.slice(start, end);
-
-        paginatedItems.forEach(item => {
-            const colDiv = document.createElement('div');
-            colDiv.className = 'col-12 col-sm-6 col-md-4 post-card';
-            colDiv.innerHTML = `
-                <div class="card h-100 bg-dark-blue border-blue shadow">
-                    <a href="${item.url}">
-                        <img src="${item.image}" class="card-img-top" alt="${item.title}">
-                    </a>
-                    <div class="card-body text-white d-flex flex-column">
-                        <h5 class="card-title fw-bold">
-                            <a href="${item.url}" class="ad-title-link">${item.title}</a>
-                        </h5>
-                        <p class="card-text small text-muted">${item.excerpt}</p>
-                        <a href="${item.url}" class="btn btn-ver-mais mt-auto">Ver Projeto <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            `;
-            adProjectsGrid.appendChild(colDiv);
-        });
-
-        adRenderPagination();
-    }
-
-    function adRenderPagination() {
-        const adPaginationContainer = document.getElementById('adPaginationContainer');
-        if (!adPaginationContainer) return;
-
-        adPaginationContainer.innerHTML = '';
-        const pageCount = Math.ceil(adProjectsData.length / adItemsPerPage);
-
-        if (pageCount <= 1) return;
-
-        const prevBtn = document.createElement('button');
-        prevBtn.className = 'ad-page-btn';
-        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-        prevBtn.disabled = adCurrentPage === 1;
-        prevBtn.onclick = () => { 
-            if (adCurrentPage > 1) { 
-                adCurrentPage--; 
-                adRenderProjects(); 
-            } 
-        };
-        adPaginationContainer.appendChild(prevBtn);
-
-        for (let i = 1; i <= pageCount; i++) {
-            const pageBtn = document.createElement('button');
-            pageBtn.className = `ad-page-btn ${i === adCurrentPage ? 'active' : ''}`;
-            pageBtn.innerText = i;
-            pageBtn.onclick = () => { 
-                adCurrentPage = i; 
-                adRenderProjects(); 
-            };
-            adPaginationContainer.appendChild(pageBtn);
-        }
-
-        const nextBtn = document.createElement('button');
-        nextBtn.className = 'ad-page-btn';
-        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-        nextBtn.disabled = adCurrentPage === pageCount;
-        nextBtn.onclick = () => { 
-            if (adCurrentPage < pageCount) { 
-                adCurrentPage++; 
-                adRenderProjects(); 
-            } 
-        };
-        adPaginationContainer.appendChild(nextBtn);
-    }
-
-    // Executa a renderização somente após o carregamento completo do HTML da página
-    document.addEventListener('DOMContentLoaded', function() {
-        adRenderProjects();
-    });
-</script>
-  
-<!-- GRADE DE POSTS -->
 
 
 <!--FRASE DA SEMANA -->
@@ -514,7 +403,7 @@
                     <ul class="list-unstyled mt-4">
                         <li class="mb-2">
                             <i class="fab fa-whatsapp text-success me-2"></i> 
-                            <a href="https://wa.me/5511957013454" target="_blank" class="text-decoration-none text-dark">11 95701-3454</a>
+                            <a href="https://wa.me/5511957013453" target="_blank" class="text-decoration-none text-dark">11 95701-3454</a>
                         </li>
                         <li class="mb-2">
                             <i class="fas fa-envelope text-primary me-2"></i> 
@@ -563,5 +452,3 @@
     </script>
 </body>
 </html>
-
-
