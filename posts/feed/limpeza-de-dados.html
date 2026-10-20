@@ -167,83 +167,79 @@
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMZ8pP-hoapTxz1M3WK2ApiaVQYM_iQK2fcWeHDm9zn7lzyS0mbvDX_WJxAHq0t9FrWzswh62n8b7rJJj9PC1l8y9Cljo1jLCrJPEdd-BfooJFuNFepdKu8ymEYznk711sdIfpdetjPjhtb0WAHHJaQ9JUBLe7dsSWK_B06wlbFpuBKtNL55VAmKmY7WSA/s4752/www-tiagodata-com-br-pandas.jpg" alt="imagem 1" width="900" height="500">
 <article class="post-content">
+    <h2>Faxina nos Dados: Como Limpar e Tratar seu Dataset com Pandas</h2>
+    <p class="post-subtitle"><em>(Série: Python para Análise de Dados — Parte 2)</em></p>
 
-    <p class="post-subtitle"><em>(Série: Python para Análise de Dados — Parte 1)</em></p>
-
-    <p>Fala, pessoal! Seja muito bem-vindo à nossa nova série de estudos dedicada ao mundo da <strong>análise de dados com Python</strong>. Se você já olhou para uma planilha gigante cheia de linhas e colunas e pensou "deve existir um jeito melhor de lidar com isso", saiba que você está no lugar certo.</p>
+    <p>Fala, pessoal! Sejam muito bem-vindos de volta à nossa série sobre <strong>análise de dados com Python</strong>. No nosso primeiro encontro, vimos como dar os primeiros passos com o <strong>Pandas</strong>, criando DataFrames, filtrando informações e entendendo a estrutura básica das tabelas.</p>
     
-    <p>Neste primeiro artigo da série, vamos colocar a mão na massa e conhecer a ferramenta que vai virar sua melhor amiga: o <strong>Pandas</strong>.</p>
+    <p>Mas quem já trabalhou com dados na vida real sabe de uma verdade universal: <strong>os dados brutos são uma bagunça</strong>. Arquivos corrompidos, valores faltando, espaços em branco indesejados e linhas duplicadas aparecem o tempo todo. É por isso que hoje vamos aprender a fazer aquela faxina profissional usando o Pandas.</p>
 
-    <h3>O que é o Pandas e por que usá-lo?</h3>
-    <p>Quando começamos a programar em Python, lidamos com listas e dicionários. Mas, à medida que os dados crescem, essas estruturas nativas ficam limitadas. É aí que entra o Pandas. Criada por Wes McKinney em 2008, essa biblioteca transformou o Python em uma potência para processamento de dados tabulares.</p>
-    
-    <p>Pense no Pandas como uma versão do Excel turbinada por código, capaz de rodar em cima de milhares ou milhões de linhas em segundos. Para começar a usá-lo, o ritual básico é sempre o mesmo:</p>
-
-    <pre><code class="language-python">import pandas as pd</code></pre>
-
-    <h3>As Duas Estrelas do Show: Series e DataFrame</h3>
-    <p>O Pandas opera basicamente com dois tipos de estruturas de dados:</p>
-    <ul>
-        <li><strong>Series:</strong> É uma matriz unidimensional. Pense nela como <strong>uma única coluna</strong> de uma planilha, acompanhada de um índice.</li>
-        <li><strong>DataFrame:</strong> É a estrutura principal (a que você vai usar 99% do tempo). É uma tabela bidimensional completa, formada por linhas e colunas rotuladas.</li>
-    </ul>
-
-    <p>Vamos criar um DataFrame manualmente para ver como funciona na prática:</p>
+    <h3>1. O Inimigo Oculto: Identificando Valores Ausentes (NaN)</h3>
+    <p>O primeiro passo de qualquer análise séria é descobrir se existem buracos nos seus dados. No Pandas, valores vazios ou nulos são chamados de <code>NaN</code> (Not a Number). Para encontrá-los rapidamente, usamos a combinação de <code>isna()</code> com <code>sum()</code>:</p>
 
     <pre><code class="language-python">import pandas as pd
+import numpy as np
 
-# Criando um dicionário com nossos dados de exemplo
+# Criando um DataFrame de exemplo com alguns valores ausentes (NaN)
 dados = {
-    'Nome': ['Ana', 'Bruno', 'Carlos'],
-    'Idade': [25, 30, 35],
-    'Cidade': ['São Paulo', 'Rio de Janeiro', 'Curitiba']
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor', 'Headset'],
+    'Preço': [3500.0, 150.0, np.nan, 1200.0, np.nan],
+    'Estoque': [10, 25, 15, np.nan, 30]
 }
 
-# Transformando o dicionário em um DataFrame do Pandas
 df = pd.DataFrame(dados)
+
+# Contando quantos valores nulos existem em cada coluna
+print(df.isna().sum())</code></pre>
+
+    <h3>2. O Que Fazer com os Dados Faltantes?</h3>
+    <p>Identificou os buracos? Agora você tem duas escolhas principais: <strong>remover</strong> as linhas problemáticas ou <strong>preencher</strong> esses espaços com algum valor inteligente (como a média da coluna ou zero).</p>
+
+    <pre><code class="language-python"># Opção A: Removendo qualquer linha que tenha pelo menos um valor nulo
+df_limpo = df.dropna()
+
+# Opção B: Preenchendo valores nulos (por exemplo, preenchendo o preço ausente com 0 ou com a média)
+df['Preço'] = df['Preço'].fillna(0)
+
+# Preenchendo o estoque com a média dos valores existentes na coluna
+media_estoque = df['Estoque'].mean()
+df['Estoque'] = df['Estoque'].fillna(media_estoque)
 
 print(df)</code></pre>
 
-    <p>O resultado dessa execução nos devolve uma tabela limpa e organizada:</p>
-    <pre><code class="language-text">     Nome  Idade          Cidade
-0     Ana     25       São Paulo
-1   Bruno     30  Rio de Janeiro
-2  Carlos     35        Curitiba</code></pre>
+    <h3>3. Removendo Linhas Duplicadas</h3>
+    <p>Outro clássico dos erros de extração de dados são as duplicatas. Elas distorcem análises, inflam contagens e estragam médias. Limpar isso no Pandas é extremamente simples:</p>
 
-    <h3>Olhando por Dentro: Como Inspecionar Seus Dados</h3>
-    <p>Na vida real, você raramente vai criar dados no braço. O mais comum é carregar arquivos externos (como um <code>.csv</code> ou <code>.xlsx</code>) usando comandos como <code>df = pd.read_csv('dados.csv')</code>.</p>
-    
-    <p>Assim que os dados entram no ambiente, precisamos "conhecer" o nosso dataset utilizando ótimos atalhos:</p>
-    <ul>
-        <li><strong><code>df.head()</code>:</strong> Mostra as primeiras 5 linhas para você bater o olho.</li>
-        <li><strong><code>df.info()</code>:</strong> Dá um raio-x completo dos tipos de dados e valores nulos.</li>
-        <li><strong><code>df.describe()</code>:</strong> Gera um resumo estatístico rápido das colunas numéricas.</li>
-    </ul>
+    <pre><code class="language-python"># Verificando se há linhas duplicadas no DataFrame
+print("Linhas duplicadas:", df.duplicated().sum())
 
-    <h3>Filtrando e Selecionando: Encontrando a Agulha no Palheiro</h3>
-    <p>Uma das maiores vantagens do Pandas é a facilidade para extrair informações específicas. Quer filtrar apenas as pessoas com mais de 28 anos?</p>
+# Removendo as duplicatas de vez (o parâmetro inplace=True altera o DataFrame original)
+df.drop_duplicates(inplace=True)</code></pre>
 
-    <pre><code class="language-python"># Filtrando linhas onde a Idade é maior que 28
-mais_velhos = df[df['Idade'] > 28]
+    <h3>4. Convertendo Tipos de Dados (Data Types)</h3>
+    <p>Às vezes, um número importante (como o preço de um produto ou um ID) é importado como se fosse texto (string) por causa de um caractere especial ou erro de leitura. Se tentarmos fazer uma operação matemática, o Python vai reclamar. Para resolver isso, usamos o método <code>astype()</code> ou funções de conversão:</p>
 
-print(mais_velhos)</code></pre>
+    <pre><code class="language-python"># Verificando o tipo de cada coluna
+print(df.dtypes)
 
-    <p>Você também pode selecionar colunas específicas isoladamente:</p>
-    <pre><code class="language-python"># Retorna apenas a coluna 'Nome' como uma Series
-nomes = df['Nome']</code></pre>
+# Convertendo a coluna 'Estoque' de float para inteiro (int)
+df['Estoque'] = df['Estoque'].astype(int)
 
-    <h3>A Mágica do Agrupamento (<code>groupby</code>)</h3>
-    <p>Quando precisamos resumir informações — como o faturamento total por categoria de produto ou a média de idade por cidade —, o comando <code>groupby</code> resolve o problema de forma elegante, funcionando como as tabelas dinâmicas do Excel:</p>
+# Convertendo uma coluna de texto para data, caso necessário:
+# df['Data_Venda'] = pd.to_datetime(df['Data_Venda'])</code></pre>
 
-    <pre><code class="language-python"># Exemplo conceitual de agrupamento para calcular médias por grupo:
-# resumo = df.groupby('Cidade')['Idade'].mean()</code></pre>
+    <h3>5. Limpando Textos (String Methods)</h3>
+    <p>Dados textuais costumam vir cheios de inconsistências: espaços extras no começo ou fim, mistura de maiúsculas e minúsculas ("São Paulo", "são paulo ", "SÃO PAULO"). O acessor <code>.str</code> do Pandas resolve isso em lote:</p>
+
+    <pre><code class="language-python"># Exemplo de tratamento de strings em uma coluna de cidades
+# df['Cidade'] = df['Cidade'].str.strip()          # Remove espaços extras nas pontas
+# df['Cidade'] = df['Cidade'].str.capitalize()     # Padroniza a primeira letra maiúscula</code></pre>
 
     <h3>Próximos Passos</h3>
-    <p>Com essa base, você já consegue carregar, inspecionar, filtrar e manipular tabelas básicas em Python. No próximo artigo da nossa série, vamos avançar para a <strong>limpeza de dados (Data Cleaning)</strong> — afinal, os dados reais vêm cheios de valores ausentes e inconsistências que precisamos corrigir.</p>
+    <p>Com esses comandos de limpeza no bolso, seus dados finalmente estão higienizados, confiáveis e prontos para o próximo nível. No terceiro artigo da nossa série, vamos entrar de cabeça na <strong>Análise Exploratória de Dados (EDA)</strong> e começar a extração dos primeiros insights reais dos nossos datasets!</p>
 
-    <p>Gostou do post? o que acha de nos falar sobre como esta sendo a sua experiência em Pandas nos comentário? Até a próxima, e bons códigos!</p>
+    <p>Até a próxima, e bons códigos!</p>
 </article>
-    
 
 
 
