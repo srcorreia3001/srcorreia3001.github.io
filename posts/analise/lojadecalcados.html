@@ -175,44 +175,44 @@
 
   <p>Se a loja compra pares demais dos tamanhos que ninguém usa, o capital de giro fica preso. Se compra de menos dos números mais procurados, o cliente entra, não encontra o produto e vai direto comprar no concorrente.</p>
 
-  <p>Para resolver esse problema de forma definitiva, desenvolvemos este projeto de <strong>Análise Exploratória e de Negócios em Python</strong>[cite: 7]. Simulamos o banco de dados transacional de uma loja de calçados ao longo de um ano (200 vendas[cite: 6]) para responder às perguntas mais críticas da operação e transformar números em decisões financeiras reais.</p>
+  <p>Para resolver esse problema de forma definitiva, desenvolvemos este projeto de <strong>Análise Exploratória e de Negócios em Python</strong>. Simulamos o banco de dados transacional de uma loja de calçados ao longo de um ano (200 vendas) para responder às perguntas mais críticas da operação e transformar números em decisões financeiras reais.</p>
 
   <hr>
 
   <section>
-    <h2>❓ As 3 Perguntas de Negócio que Deram Origem ao Projeto</h2>
+    <h3>As 3 Perguntas de Negócio que Deram Origem ao Projeto</h3>
     <p>Antes de escrever qualquer linha de código, definimos as três dores do gestor da loja que precisavam ser respondidas:</p>
     <ul>
       <li><strong>Estoque e Grade:</strong> Quais numerações e modelos estão travando o capital da empresa (encalhados) e quais esgotam rápido demais, gerando perda de vendas?</li>
       <li><strong>Sazonalidade e Timing:</strong> Qual é o momento exato do ano para trocar a vitrine de produtos de verão (sandálias) por produtos de inverno (botas) sem perder a onda de consumo?</li>
-      <li><strong>Ticket Médio (Cesta de Compras):</strong> Qual é o comportamento de compra combinada[cite: 5]? O cliente que leva um sapato costuma levar outro item junto no mesmo recibo[cite: 5]?</li>
+      <li><strong>Ticket Médio (Cesta de Compras):</strong> Qual é o comportamento de compra combinada? O cliente que leva um sapato costuma levar outro item junto no mesmo recibo?</li>
     </ul>
   </section>
 
   <section>
-    <h2>⚙️ A Estrutura dos Dados e Metodologia</h2>
+    <h3>A Estrutura dos Dados e Metodologia</h3>
     <p>Criamos uma base de dados realista via Python contendo as colunas essenciais de uma operação de caixa:</p>
     <ul>
       <li><code>ID_Transacao</code>: Identificador da fatura (permite identificar vendas com múltiplos itens)[cite: 5].</li>
-      <li><code>Data_Venda</code>: Data precisa para avaliar o comportamento mensal[cite: 4].</li>
-      <li><code>Categoria_Produto</code>: Tênis Esportivo, Bota de Couro, Sandália e Sapato Social[cite: 4].</li>
-      <li><code>Tamanho</code>: Numeração do 34 ao 44[cite: 1].</li>
-      <li><code>Custo_Fabrica</code> e <code>Preco_Venda</code>: Para cálculo direto do lucro e margem[cite: 6].</li>
+      <li><code>Data_Venda</code>: Data precisa para avaliar o comportamento mensal.</li>
+      <li><code>Categoria_Produto</code>: Tênis Esportivo, Bota de Couro, Sandália e Sapato Social.</li>
+      <li><code>Tamanho</code>: Numeração do 34 ao 44.</li>
+      <li><code>Custo_Fabrica</code> e <code>Preco_Venda</code>: Para cálculo direto do lucro e margem.</li>
     </ul>
   </section>
 
   <section>
-    <h2>🔍 Passo a Passo das Descobertas e Resultados</h2>
+    <h3>🔍 Passo a Passo das Descobertas e Resultados</h3>
 
     <article class="post-subsection">
       <h3>1. O Mistério da Grade de Tamanhos (Adeus, "Grade Fechada"!)</h3>
-      <p>Ao agrupar as vendas por tamanho de calçado e gerar o gráfico de distribuição, a resposta surgiu imediatamente na forma de uma <strong>curva de sino</strong>[cite: 1]:</p>
+      <p>Ao agrupar as vendas por tamanho de calçado e gerar o gráfico de distribuição, a resposta surgiu imediatamente na forma de uma <strong>curva de sino</strong>:</p>
       <ul>
-        <li><strong>Os Campeões de Venda:</strong> Os tamanhos <strong>37, 38 e 39</strong> concentraram a grande maioria de todo o volume comercializado na loja[cite: 1].</li>
-        <li><strong>O Estoque Encalhado:</strong> Os tamanhos das extremidades (<strong>34, 35, 43 e 44</strong>) registraram giro quase nulo ao longo do ano inteiro[cite: 1].</li>
+        <li><strong>Os Campeões de Venda:</strong> Os tamanhos <strong>37, 38 e 39</strong> concentraram a grande maioria de todo o volume comercializado na loja.</li>
+        <li><strong>O Estoque Encalhado:</strong> Os tamanhos das extremidades (<strong>34, 35, 43 e 44</strong>) registraram giro quase nulo ao longo do ano inteiro.</li>
       </ul>
       <blockquote>
-        <p><strong>💡 Solução de Negócio:</strong> A loja deve parar imediatamente de comprar "grades fechadas" do fabricante (que vêm com a mesma quantidade de todos os números) e negociar "grades abertas", direcionando a verba para reforçar os tamanhos centrais (37 ao 39)[cite: 1].</p>
+        <p><strong>Solução de Negócio:</strong> A loja deve parar imediatamente de comprar "grades fechadas" do fabricante (que vêm com a mesma quantidade de todos os números) e negociar "grades abertas", direcionando a verba para reforçar os tamanhos centrais (37 ao 39).</p>
       </blockquote>
       <figure>
         <figcaption>📸 <strong>Imagem 1:</strong> Gráfico de Barras da Curva de Vendas por Tamanho com as linhas vermelhas de risco nas extremidades.</figcaption>
