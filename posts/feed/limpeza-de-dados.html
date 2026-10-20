@@ -161,20 +161,19 @@
 <div class="post-container">
 
     <span class="post-tag">Feed</span>
-    <h2 class="post-title">Pandas:O Guia para começar sua análise em Python</h2>
-    <div class="post-meta">20 de setembro, 2026 • 3 min de leitura | Tiago Correia</div>
+    <h2 class="post-title">Faxina nos Dados: Como Limpar e Tratar seu Dataset com Pandas</h2>
+    <div class="post-meta">20 de Outubro, 2026  | Tiago Correia</div>
 <p></p>
 
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgMZ8pP-hoapTxz1M3WK2ApiaVQYM_iQK2fcWeHDm9zn7lzyS0mbvDX_WJxAHq0t9FrWzswh62n8b7rJJj9PC1l8y9Cljo1jLCrJPEdd-BfooJFuNFepdKu8ymEYznk711sdIfpdetjPjhtb0WAHHJaQ9JUBLe7dsSWK_B06wlbFpuBKtNL55VAmKmY7WSA/s4752/www-tiagodata-com-br-pandas.jpg" alt="imagem 1" width="900" height="500">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgvGezRI3vanooyuLp9aqcVbsAzmCGr21vHL6E5Wr_mT-DaUyzJ0mYGdLvCXZDZ2vRaS1vffbpvpzLNbSKwAstkAbrwpgBjUAk-aoeeZ0dewowETa6BCcFUIgmzulpWHwRgRjmVWLLnj5GHY-r2r6hKXCQ5fqKVc-_AFBLxj8Y8pTGHhCvi-NY6YExKvIVK/s2816/tiagodata-limpeza-de-dados.jpeg" alt="imagem 1" width="900" height="500">
 <article class="post-content">
-    <h2>Faxina nos Dados: Como Limpar e Tratar seu Dataset com Pandas</h2>
     <p class="post-subtitle"><em>(Série: Python para Análise de Dados — Parte 2)</em></p>
 
     <p>Fala, pessoal! Sejam muito bem-vindos de volta à nossa série sobre <strong>análise de dados com Python</strong>. No nosso primeiro encontro, vimos como dar os primeiros passos com o <strong>Pandas</strong>, criando DataFrames, filtrando informações e entendendo a estrutura básica das tabelas.</p>
     
     <p>Mas quem já trabalhou com dados na vida real sabe de uma verdade universal: <strong>os dados brutos são uma bagunça</strong>. Arquivos corrompidos, valores faltando, espaços em branco indesejados e linhas duplicadas aparecem o tempo todo. É por isso que hoje vamos aprender a fazer aquela faxina profissional usando o Pandas.</p>
 
-    <h3>1. O Inimigo Oculto: Identificando Valores Ausentes (NaN)</h3>
+    <h3>O Inimigo Oculto: Identificando Valores Ausentes (NaN)</h3>
     <p>O primeiro passo de qualquer análise séria é descobrir se existem buracos nos seus dados. No Pandas, valores vazios ou nulos são chamados de <code>NaN</code> (Not a Number). Para encontrá-los rapidamente, usamos a combinação de <code>isna()</code> com <code>sum()</code>:</p>
 
     <pre><code class="language-python">import pandas as pd
@@ -192,7 +191,7 @@ df = pd.DataFrame(dados)
 # Contando quantos valores nulos existem em cada coluna
 print(df.isna().sum())</code></pre>
 
-    <h3>2. O Que Fazer com os Dados Faltantes?</h3>
+    <h3>O Que Fazer com os Dados Faltantes?</h3>
     <p>Identificou os buracos? Agora você tem duas escolhas principais: <strong>remover</strong> as linhas problemáticas ou <strong>preencher</strong> esses espaços com algum valor inteligente (como a média da coluna ou zero).</p>
 
     <pre><code class="language-python"># Opção A: Removendo qualquer linha que tenha pelo menos um valor nulo
@@ -207,7 +206,7 @@ df['Estoque'] = df['Estoque'].fillna(media_estoque)
 
 print(df)</code></pre>
 
-    <h3>3. Removendo Linhas Duplicadas</h3>
+    <h3>Removendo Linhas Duplicadas</h3>
     <p>Outro clássico dos erros de extração de dados são as duplicatas. Elas distorcem análises, inflam contagens e estragam médias. Limpar isso no Pandas é extremamente simples:</p>
 
     <pre><code class="language-python"># Verificando se há linhas duplicadas no DataFrame
@@ -216,7 +215,7 @@ print("Linhas duplicadas:", df.duplicated().sum())
 # Removendo as duplicatas de vez (o parâmetro inplace=True altera o DataFrame original)
 df.drop_duplicates(inplace=True)</code></pre>
 
-    <h3>4. Convertendo Tipos de Dados (Data Types)</h3>
+    <h3>Convertendo Tipos de Dados (Data Types)</h3>
     <p>Às vezes, um número importante (como o preço de um produto ou um ID) é importado como se fosse texto (string) por causa de um caractere especial ou erro de leitura. Se tentarmos fazer uma operação matemática, o Python vai reclamar. Para resolver isso, usamos o método <code>astype()</code> ou funções de conversão:</p>
 
     <pre><code class="language-python"># Verificando o tipo de cada coluna
@@ -228,7 +227,7 @@ df['Estoque'] = df['Estoque'].astype(int)
 # Convertendo uma coluna de texto para data, caso necessário:
 # df['Data_Venda'] = pd.to_datetime(df['Data_Venda'])</code></pre>
 
-    <h3>5. Limpando Textos (String Methods)</h3>
+    <h3>Limpando Textos (String Methods)</h3>
     <p>Dados textuais costumam vir cheios de inconsistências: espaços extras no começo ou fim, mistura de maiúsculas e minúsculas ("São Paulo", "são paulo ", "SÃO PAULO"). O acessor <code>.str</code> do Pandas resolve isso em lote:</p>
 
     <pre><code class="language-python"># Exemplo de tratamento de strings em uma coluna de cidades
@@ -238,7 +237,7 @@ df['Estoque'] = df['Estoque'].astype(int)
     <h3>Próximos Passos</h3>
     <p>Com esses comandos de limpeza no bolso, seus dados finalmente estão higienizados, confiáveis e prontos para o próximo nível. No terceiro artigo da nossa série, vamos entrar de cabeça na <strong>Análise Exploratória de Dados (EDA)</strong> e começar a extração dos primeiros insights reais dos nossos datasets!</p>
 
-    <p>Até a próxima, e bons códigos!</p>
+    <p>Espero que esteja gostando da nossa serie de posts sobre <strong>Analise de dados com Python</strong>,mas e você! como tem lipado os seus dados? conta aqui nos comentarios e juntos vamos enriquecer o conhecimento! Até a próxima, e bons códigos!</p>
 </article>
 
 
