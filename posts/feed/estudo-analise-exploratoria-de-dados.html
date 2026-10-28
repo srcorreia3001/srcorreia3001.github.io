@@ -166,233 +166,74 @@
 <p></p>
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjBKQjGnSl8bM2bSucwsw_jtkvli9et0wSBgOzFHGLVRSUz9MDu84j-W7W9QWYxnHFMa18Mj0YFmoUYfpVWKsv1LQaa6mCQfG0e8_Jz6H42HlDiJRZeY3ql3c-sdIMdhmEftuECIR6lzZqe_HMIr2wQSwhPNPCv7b4-BVyUS80XST1TjXCFYFNYoF814SAl/s2752/tiagodata-eleicoes-2026.jpg" alt="imagem 1" width="900" height="500">
-<article class="blog-post">
-  <style>
-    .blog-post {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 12px;
-    }
+<article class="post-content">
+    <h2>Descobrindo Padrões: Introdução à Análise Exploratória de Dados (EDA) com Pandas</h2>
+    <p class="post-subtitle"><em>(Série: Python para Análise de Dados — Parte 3)</em></p>
+
+    <p>Fala, pessoal! Sejam muito bem-vindos de volta à nossa série de estudos sobre <strong>análise de dados com Python</strong>. Nosso dataset já passou pela "faxina" (vimos valores nulos, duplicatas e ajustes de tipos no post passado), o que significa que agora ele está tinindo e pronto para o trabalho de investigação.</p>
     
-    /* Layout de Cartões para Mobile */
-    .data-card {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-    }
+    <p>É aqui que entra a famosa <strong>EDA (Exploratory Data Analysis)</strong> ou Análise Exploratória de Dados. Em vez de apenas olhar para números soltos, vamos usar o Pandas para fazer perguntas aos dados e descobrir padrões, tendências e comportamentos ocultos.</p>
+
+    <h3>1. Estatística Descritiva: Um Raio-X dos Seus Dados</h3>
+    <p>Antes de criar gráficos complexos, precisamos entender a distribuição numérica do nosso dataset. O Pandas faz isso de forma brilhante com o método <code>describe()</code>, que resume contagem, média, desvio padrão, mínimo, máximo e os quartis:</p>
+
+    <pre><code class="language-python">import pandas as pd
+
+# Exemplo de DataFrame de vendas limpo
+dados = {
+    'Produto': ['Notebook', 'Mouse', 'Teclado', 'Monitor', 'Headset', 'Mousepad'],
+    'Preço': [3500.0, 150.0, 250.0, 1200.0, 300.0, 50.0],
+    'Quantidade_Vendida': [12, 150, 80, 45, 90, 200]
+}
+
+df = pd.DataFrame(dados)
+
+# Gerando o resumo estatístico das colunas numéricas
+print(df.describe())</code></pre>
+
+    <p>Com uma única linha de código, você descobre, por exemplo, qual é o produto mais caro, a média de vendas ou onde estão concentrados os maiores volumes.</p>
+
+    <h3>2. Contando Frequências com <code>value_counts()</code></h3>
+    <p>Quando estamos analisando variáveis categóricas (como categorias de produtos, cidades ou status de pedidos), queremos saber com que frequência cada valor aparece. O <code>value_counts()</code> é perfeito para isso:</p>
+
+    <pre><code class="language-python"># Descobrindo quantas vezes cada categoria ou valor aparece
+# Exemplo imaginando uma coluna de 'Categoria'
+# print(df['Categoria'].value_counts())
     
-    .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin: 0 0 12px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #f1f5f9;
-      padding-bottom: 8px;
-    }
-    
-    .badge-eleito {
-      background-color: #dcfce7;
-      color: #15803d;
-      font-size: 0.8rem;
-      padding: 3px 8px;
-      border-radius: 12px;
-      font-weight: 600;
-    }
+# Se quisermos ver em porcentagem, basta usar o parâmetro normalize=True:
+# print(df['Categoria'].value_counts(normalize=True) * 100)</code></pre>
 
-    .data-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 6px 0;
-      font-size: 0.95rem;
-    }
+    <h3>3. Agrupamentos Estratégicos com <code>groupby</code></h3>
+    <p>Lembra do <code>groupby</code> que pincelamos lá no primeiro artigo? Na EDA ele brilha de verdade. Queremos responder perguntas de negócio, como: <em>"Qual produto gerou mais faturamento total?"</em> (Preço $\times$ Quantidade).</p>
 
-    .data-label {
-      color: #64748b;
-    }
+    <pre><code class="language-python"># Criando uma nova coluna de Faturamento Total por linha
+df['Faturamento_Total'] = df['Preço'] * df['Quantidade_Vendida']
 
-    .data-value {
-      font-weight: 600;
-      text-align: right;
-    }
+# Agrupando por produto e somando o faturamento
+faturamento_por_produto = df.groupby('Produto')['Faturamento_Total'].sum()
 
-    .highlight-green {
-      color: #16a34a;
-      font-weight: 700;
-    }
+print(faturamento_por_produto)</code></pre>
 
-    .highlight-blue {
-      color: #2563eb;
-      font-weight: 700;
-    }
+    <h3>4. Correlação: Descobrindo Relações Ocultas</h3>
+    <p>Será que quanto mais caro o produto, menos ele vende? Ou o preço não afeta a saída? Para responder isso, usamos a matriz de correlação. Ela mede a força da relação entre variáveis numéricas (variando de -1 a 1):</p>
 
-    .highlight-red {
-      color: #dc2626;
-      font-weight: 700;
-    }
+    <pre><code class="language-python"># Calculando a correlação entre as colunas numéricas
+print(df[['Preço', 'Quantidade_Vendida', 'Faturamento_Total']].corr())</code></pre>
 
-    .faq-item {
-      background: #f8fafc;
-      border-left: 4px solid #2563eb;
-      padding: 12px 16px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 12px;
-    }
+    <h3>5. Primeiros Passos na Visualização Direta no Pandas</h3>
+    <p>Embora bibliotecas como Matplotlib e Seaborn sejam especialistas em gráficos, o próprio Pandas já integra funções visuais rápidas baseadas no Matplotlib para facilitar a nossa vida durante a exploração:</p>
 
-    .faq-item p {
-      margin: 4px 0;
-    }
-  </style>
+    <pre><code class="language-python">import matplotlib.pyplot as plt
 
+# Gerando um gráfico de barras simples direto do DataFrame
+df.plot(kind='bar', x='Produto', y='Faturamento_Total', title='Faturamento por Produto')
 
-  <section class="intro">
-    <p>Compreender os resultados de uma eleição presidencial vai muito além de olhar para quem ficou em primeiro lugar. Para entender a dinâmica real do eleitorado, é fundamental analisar a movimentação de votos entre a primeira e a segunda volta: onde os candidatos cresceram, para onde foram os votos dos candidatos eliminados e como o eleitorado reagiu.</p>
-    <p>Nesse caso desconstruímos todos os dados oficiais, comparando ponto por ponto o desempenho de cada candidatura, a variação da abstenção e o comportamento dos votos brancos e nulos.</p>
-  </section>
+plt.show()</code></pre>
 
-  <section class="candidatos-detalhado">
-    <h3>O Placar dos Candidatos: Da Liderança Inicial à Virada</h3>
-    <p>No 1.º turno, Flavio Bolsonaro liderava a corrida presidencial com uma vantagem inicial de mais de 2,2 milhões de votos sobre Lula. No entanto, a configuração do 2.º turno alterou significativamente essa vantagem, resultando na vitória de Lula com 51,76% dos votos válidos.</p>
+    <h3>Próximos Passos</h3>
+    <p>Com a Análise Exploratória, você deixa de apenas "olhar" para a tabela e passa a extrair respostas concretas e insights de negócio. Na próxima etapa da nossa série, vamos expandir ainda mais essas visualizações usando ferramentas dedicadas para criar gráficos profissionais!</p>
 
-    <!-- Card Lula -->
-    <div class="data-card">
-      <div class="card-title">
-        <span>Lula (PT)</span>
-        <span class="badge-eleito">ELEITO</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">1.º Turno:</span>
-        <span class="data-value">53.879.538 (45,16%)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">2.º Turno:</span>
-        <span class="data-value">64.145.442 (51,76%)</span>
-      </div>
-      <div class="data-row" style="border-top: 1px dashed #e2e8f0; margin-top: 6px; padding-top: 8px;">
-        <span class="data-label">Crescimento:</span>
-        <span class="data-value highlight-green">+10.265.904 votos</span>
-      </div>
-    </div>
-
-    <!-- Card Flavio Bolsonaro -->
-    <div class="data-card">
-      <div class="card-title">
-        <span>Flavio Bolsonaro (PL)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">1.º Turno:</span>
-        <span class="data-value">56.104.503 (47,03%)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">2.º Turno:</span>
-        <span class="data-value">59.775.583 (48,24%)</span>
-      </div>
-      <div class="data-row" style="border-top: 1px dashed #e2e8f0; margin-top: 6px; padding-top: 8px;">
-        <span class="data-label">Crescimento:</span>
-        <span class="data-value highlight-blue">+3.671.080 votos</span>
-      </div>
-    </div>
-
-    <!-- Card Outros Candidatos (Resumido) -->
-    <div class="data-card" style="background-color: #f8fafc;">
-      <div class="card-title">
-        <span>Outros Candidatos (1.º Turno)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">Augusto Cury (AVANTE):</span>
-        <span class="data-value">3.448.569 (2,89%)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">Renan Santos (MISSÃO):</span>
-        <span class="data-value">2.675.887 (2,24%)</span>
-      </div>
-      <div class="data-row">
-        <span class="data-label">Ronaldo Caiado (PSD):</span>
-        <span class="data-value">2.605.148 (2,18%)</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="participacao-detalhado">
-    <h3>Participação Geral: Válidos, Brancos, Nulos e Abstenções</h3>
-    <p>Além da disputa direta entre candidatos, o comportamento do eleitorado global mostrou uma mobilização substancialmente maior no 2.º turno, com aumento da taxa de participação direta nas escolhas.</p>
-
-    <!-- Cards de Indicadores Gerais -->
-    <div class="data-card">
-      <div class="card-title">Votos Válidos</div>
-      <div class="data-row"><span class="data-label">1.º Turno:</span><span class="data-value">119.300.788 (95,23%)</span></div>
-      <div class="data-row"><span class="data-label">2.º Turno:</span><span class="data-value">123.921.025 (96,76%)</span></div>
-      <div class="data-row"><span class="data-label">Variação:</span><span class="data-value highlight-green">+4.620.237 (+1,53 p.p.)</span></div>
-    </div>
-
-    <div class="data-card">
-      <div class="card-title">Votos Brancos</div>
-      <div class="data-row"><span class="data-label">1.º Turno:</span><span class="data-value">2.300.798 (1,84%)</span></div>
-      <div class="data-row"><span class="data-label">2.º Turno:</span><span class="data-value">1.428.854 (1,12%)</span></div>
-      <div class="data-row"><span class="data-label">Variação:</span><span class="data-value highlight-red">-871.944 (-37,9%)</span></div>
-    </div>
-
-    <div class="data-card">
-      <div class="card-title">Votos Nulos</div>
-      <div class="data-row"><span class="data-label">1.º Turno:</span><span class="data-value">3.674.249 (2,93%)</span></div>
-      <div class="data-row"><span class="data-label">2.º Turno:</span><span class="data-value">2.719.459 (2,12%)</span></div>
-      <div class="data-row"><span class="data-label">Variação:</span><span class="data-value highlight-red">-954.790 (-26,0%)</span></div>
-    </div>
-
-    <div class="data-card">
-      <div class="card-title">Abstenções (Eleitores ausentes)</div>
-      <div class="data-row"><span class="data-label">1.º Turno:</span><span class="data-value">33.469.244</span></div>
-      <div class="data-row"><span class="data-label">2.º Turno:</span><span class="data-value">30.448.250</span></div>
-      <div class="data-row"><span class="data-label">Variação:</span><span class="data-value highlight-green">-3.020.994 (Mais comparência)</span></div>
-    </div>
-  </section>
-
-  <section class="explicacao-mecanismos">
-    <h3>3. Onde Foi Decidida a Eleição? (Explicação Didática)</h3>
-    <p>Para entender como Lula obteve um saldo positivo de <strong>10.265.904 votos</strong> adicionais contra <strong>3.671.080 votos</strong> ganhos por Flavio Bolsonaro, é preciso olhar para três fontes principais de votos:</p>
-
-    <ol>
-      <li>
-        <strong>A Distribuição do Eleitorado da Terceira Via:</strong><br>
-        No 1.º turno, a soma dos candidatos Augusto Cury, Renan Santos e Ronaldo Caiado atingiu <strong>8.729.604 votos</strong> (7,31% dos votos válidos). No 2.º turno, sem essas opções no boletim de voto, a grande maioria destes eleitores tendeu para a candidatura de Lula, garantindo a base principal da sua expansão.
-      </li>
-      <li>
-        <strong>A Conversão de Votos Não Válidos (Brancos e Nulos):</strong><br>
-        Juntos, os votos brancos e nulos caíram de 5.975.047 no 1.º turno para 4.148.313 no 2.º turno. Isto significa que <strong>1.826.734 eleitores</strong> deixaram de anular ou votar em branco e decidiram escolher ativamente um dos dois finalistas.
-      </li>
-      <li>
-        <strong>A Redução Atípica da Abstenção:</strong><br>
-        Em muitos pleitos, a abstenção tende a subir no segundo turno. Contudo, neste cenário ocorreu o oposto: <strong>3.020.994 eleitores</strong> que não tinham comparecido no 1.º turno foram às urnas no 2.º turno, aumentando a base total de votos válidos para 123.921.025.
-      </li>
-    </ol>
-  </section>
-
-  <section class="faq-rapida">
-    <h3>Perguntas que ficam no ar...</h3>
-    
-    <div class="faq-item">
-      <p><strong>P: Qual foi a margem final de vitória?</strong></p>
-      <p>R: A diferença final entre os dois candidatos no 2.º turno foi de <strong>4.369.859 votos</strong> a favor de Lula (51,76% contra 48,24%).</p>
-    </div>
-
-    <div class="faq-item">
-      <p><strong>P: O número de votos válidos aumentou?</strong></p>
-      <p>R: Sim. A percentagem de votos válidos subiu de 95,23% para 96,76%, refletindo um eleitorado mais decidido a escolher um dos nomes no boletim de voto.</p>
-    </div>
-  </section>
-
-  <section class="conclusao">
-    <h3>Sendo assim, Nesse caso e Portanto...</h3>
-    <p>O resultado final demonstra que a eleição foi definida pela capacidade de mobilização sobre o eleitorado indeferente e disputado. Enquanto Flavio Bolsonaro manteve a sua base e adicionou cerca de 3,67 milhões de votos, Lula conseguiu captação majoritária dos votos da terceira via, aliada à conversão de votos nulos/brancos e ao regresso de eleitores abstencionistas, superando a desvantagem do primeiro turno e pela quarta vez sendo eleito Presidente, vencedo mais uma eleição.</p>
-  </section>
+    <p>Até a próxima, e bons códigos!</p>
 </article>
 
 
