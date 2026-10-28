@@ -161,20 +161,19 @@
 <div class="post-container">
 
     <span class="post-tag">Feed</span>
-    <h2 class="post-title">Análise das Urnas: A Virada do 1.º para o 2.º Turno </h2>
+    <h2 class="post-title">Descobrindo Padrões: Introdução à Análise Exploratória de Dados (EDA) com Pandas</h2>
     <div class="post-meta">Outubro de 2026 | Tiago Correia</div>
 <p></p>
 
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgUQ3HurjIX8T0fbnTYyJf42AwuFX8hj4izZNE0bpHt3fvhch7qLpv6vXdY23Z9IXR4rLvYXz4rOdHpgksg5AO0JCNZXKcQRu-VtQrBWKwqRu4guOtuwIN8iIho2yoW80Qk2eYOGqvgonT3s9E88KWHiVsmNWdvrJSM4ruHimDXI9EEPi6r0PiUvu7zsjKJ/s2816/tiagodata-analise-exploratoria-de-dados.jpeg" alt="imagem 1" width="900" height="500">
 <article class="post-content">
-    <h2>Descobrindo Padrões: Introdução à Análise Exploratória de Dados (EDA) com Pandas</h2>
     <p class="post-subtitle"><em>(Série: Python para Análise de Dados — Parte 3)</em></p>
 
     <p>Fala, pessoal! Sejam muito bem-vindos de volta à nossa série de estudos sobre <strong>análise de dados com Python</strong>. Nosso dataset já passou pela "faxina" (vimos valores nulos, duplicatas e ajustes de tipos no post passado), o que significa que agora ele está tinindo e pronto para o trabalho de investigação.</p>
     
     <p>É aqui que entra a famosa <strong>EDA (Exploratory Data Analysis)</strong> ou Análise Exploratória de Dados. Em vez de apenas olhar para números soltos, vamos usar o Pandas para fazer perguntas aos dados e descobrir padrões, tendências e comportamentos ocultos.</p>
 
-    <h3>1. Estatística Descritiva: Um Raio-X dos Seus Dados</h3>
+    <h3>Estatística Descritiva: Um Raio-X dos Seus Dados</h3>
     <p>Antes de criar gráficos complexos, precisamos entender a distribuição numérica do nosso dataset. O Pandas faz isso de forma brilhante com o método <code>describe()</code>, que resume contagem, média, desvio padrão, mínimo, máximo e os quartis:</p>
 
     <pre><code class="language-python">import pandas as pd
@@ -193,7 +192,7 @@ print(df.describe())</code></pre>
 
     <p>Com uma única linha de código, você descobre, por exemplo, qual é o produto mais caro, a média de vendas ou onde estão concentrados os maiores volumes.</p>
 
-    <h3>2. Contando Frequências com <code>value_counts()</code></h3>
+    <h3>Contando Frequências com <code>value_counts()</code></h3>
     <p>Quando estamos analisando variáveis categóricas (como categorias de produtos, cidades ou status de pedidos), queremos saber com que frequência cada valor aparece. O <code>value_counts()</code> é perfeito para isso:</p>
 
     <pre><code class="language-python"># Descobrindo quantas vezes cada categoria ou valor aparece
@@ -203,7 +202,7 @@ print(df.describe())</code></pre>
 # Se quisermos ver em porcentagem, basta usar o parâmetro normalize=True:
 # print(df['Categoria'].value_counts(normalize=True) * 100)</code></pre>
 
-    <h3>3. Agrupamentos Estratégicos com <code>groupby</code></h3>
+    <h3>Agrupamentos Estratégicos com <code>groupby</code></h3>
     <p>Lembra do <code>groupby</code> que pincelamos lá no primeiro artigo? Na EDA ele brilha de verdade. Queremos responder perguntas de negócio, como: <em>"Qual produto gerou mais faturamento total?"</em> (Preço $\times$ Quantidade).</p>
 
     <pre><code class="language-python"># Criando uma nova coluna de Faturamento Total por linha
@@ -214,13 +213,13 @@ faturamento_por_produto = df.groupby('Produto')['Faturamento_Total'].sum()
 
 print(faturamento_por_produto)</code></pre>
 
-    <h3>4. Correlação: Descobrindo Relações Ocultas</h3>
+    <h3>Correlação: Descobrindo Relações Ocultas</h3>
     <p>Será que quanto mais caro o produto, menos ele vende? Ou o preço não afeta a saída? Para responder isso, usamos a matriz de correlação. Ela mede a força da relação entre variáveis numéricas (variando de -1 a 1):</p>
 
     <pre><code class="language-python"># Calculando a correlação entre as colunas numéricas
 print(df[['Preço', 'Quantidade_Vendida', 'Faturamento_Total']].corr())</code></pre>
 
-    <h3>5. Primeiros Passos na Visualização Direta no Pandas</h3>
+    <h3>Primeiros Passos na Visualização Direta no Pandas</h3>
     <p>Embora bibliotecas como Matplotlib e Seaborn sejam especialistas em gráficos, o próprio Pandas já integra funções visuais rápidas baseadas no Matplotlib para facilitar a nossa vida durante a exploração:</p>
 
     <pre><code class="language-python">import matplotlib.pyplot as plt
