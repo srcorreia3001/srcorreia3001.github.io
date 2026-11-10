@@ -1122,152 +1122,142 @@
             <!--============================================================================================================-->
             <!-- INICIO: Widget: Apps & Downloads -->
             <!--=============================================================================================================-->
-<div class="blog-downloads-section">
-    <style>
-        .blog-downloads-section {
-            background-color: #ffffff;
-            border: 1px solid #e1e4e8;
-            border-radius: 12px;
-            padding: 20px;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            font-family: Arial, sans-serif;
-        }
+<!-- INÍCIO DO BANNER PROMOCIONAL -->
+<style>
+    .banner-saas-wrap {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        border-radius: 24px;
+        padding: 48px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+        max-width: 900px;
+        margin: 40px auto;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
-        .downloads-heading {
-            font-size: 20px;
-            font-weight: 600;
-            color: #0044cc;
-            border-bottom: 2px solid #222;
-            padding-bottom: 8px;
-            margin-top: 0;
-            margin-bottom: 18px;
-        }
+    /* Efeito de luz neon no fundo */
+    .banner-saas-wrap::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+        pointer-events: none;
+    }
 
-        .downloads-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
+    .banner-saas-tag {
+        background: rgba(99, 102, 241, 0.15);
+        color: #a5b4fc;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        padding: 6px 16px;
+        border-radius: 999px;
+        margin-bottom: 24px;
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        position: relative;
+        z-index: 10;
+    }
 
-        .download-card-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f6f8fa;
-            border: 1px solid #e1e4e8;
-            border-radius: 8px;
-            padding: 14px;
-            text-decoration: none;
-            transition: all 0.2s ease-in-out;
-        }
+    .banner-saas-titulo {
+        color: #ffffff;
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin: 0 0 16px 0;
+        position: relative;
+        z-index: 10;
+    }
 
-        .download-card-item:hover {
-            background: #ebf0f4;
-            border-color: #0044cc;
-            transform: translateY(-2px);
-        }
+    .banner-saas-titulo span {
+        background: linear-gradient(to right, #818cf8, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-        .download-info-box {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
+    .banner-saas-subtitulo {
+        color: #94a3b8;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 0 32px 0;
+        position: relative;
+        z-index: 10;
+    }
 
-        .download-item-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #24292e;
-            margin: 0;
-        }
+    .banner-saas-botao {
+        background: #4f46e5;
+        color: #ffffff !important;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        padding: 16px 40px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 10;
+        box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.5);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
 
-        .download-item-desc {
-            font-size: 12px;
-            color: #586069;
-            margin: 0;
-        }
+    .banner-saas-botao:hover {
+        background: #4338ca;
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.6);
+        color: #ffffff !important;
+    }
 
-        .download-action-btn {
-            background-color: #0044cc;
-            color: #fff;
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            white-space: nowrap;
-        }
+    .banner-saas-botao svg {
+        width: 20px;
+        height: 20px;
+        transition: transform 0.3s ease;
+    }
 
-        .download-card-item:hover .download-action-btn {
-            background-color: #003399;
-        }
-    </style>
+    .banner-saas-botao:hover svg {
+        transform: translateX(4px);
+    }
 
-    <h3 class="downloads-heading">Apps & Downloads</h3>
+    /* Responsividade para celular */
+    @media (max-width: 600px) {
+        .banner-saas-titulo { font-size: 1.8rem; }
+        .banner-saas-subtitulo { font-size: 1rem; }
+        .banner-saas-wrap { padding: 32px 20px; border-radius: 16px; }
+        .banner-saas-botao { width: 100%; justify-content: center; }
+    }
+</style>
+
+<section class="banner-saas-wrap">
+    <div class="banner-saas-tag">✨ Sistema Multi-Plataforma</div>
     
-    <div class="downloads-grid">
-
-        <!-- Calculadora Python -->
-<a href="https://calculadora-tiagodata.onrender.com" target="_blank" class="download-card-item">
-  <div class="download-info-box">
-    <h4 class="download-item-title">🖩 Calculadora Python</h4>
-    <p class="download-item-desc">Interface Web & Desktop (NiceGUI)</p>
-  </div>
-  <div class="download-action-btn">
-    🔍 Acessar
-  </div>
-</a>
-        
-        <!-- Programa Windows 1 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">💻 Gestão Escolar</h4>
-                <p class="download-item-desc">Programa Windows (Flet / SQLite)</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Programa Windows 2 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">💻 Scripts de Análise</h4>
-                <p class="download-item-desc">Automação Python / Pandas</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Aplicativo Android 1 -->
-        <a href="https://github.com/srcorreia3001" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">📱 App Mobile Dados</h4>
-                <p class="download-item-desc">Aplicativo para Android (.apk)</p>
-            </div>
-            <div class="download-action-btn">
-                ⬇️ Baixar
-            </div>
-        </a>
-
-        <!-- Repositório Geral -->
-        <a href="https://tiagodata.com.br" target="_blank" class="download-card-item">
-            <div class="download-info-box">
-                <h4 class="download-item-title">📁 Repositório Dev</h4>
-                <p class="download-item-desc">Central de Ferramentas</p>
-            </div>
-            <div class="download-action-btn">
-                🔍 Acessar
-            </div>
-        </a>
-
-    </div>
-</div>
+    <h2 class="banner-saas-titulo">
+        A gestão da sua instituição<br>
+        <span>do seu jeito.</span>
+    </h2>
+    
+    <p class="banner-saas-subtitulo">
+        Chega de planilhas bagunçadas. Tenha controle total de chamadas, notas e relatórios em um sistema que fala a sua língua, seja para EBD, Catequese, Células ou Terreiros.
+    </p>
+    
+    <!-- SUBSTITUA O "LINK_AQUI" PELO LINK DA SUA LANDING PAGE OU CADASTRO -->
+    <a href="LINK_AQUI" class="banner-saas-botao">
+        Fazer Teste Grátis por 15 Dias
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+        </svg>
+    </a>
+</section>
+<!-- FIM DO BANNER PROMOCIONAL -->
             <!--FIM DA AREA DE APP-->
                     
             
